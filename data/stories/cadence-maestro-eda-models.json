@@ -1,0 +1,61 @@
+{
+  "id": "cadence-maestro-eda-models",
+  "date": "2026-10-27",
+  "published": "2026-10-26",
+  "category": "DOMAIN MODELS",
+  "priority": "High",
+  "title": "Cadence introduces domain-specialized AI models for chip design",
+  "dek": "Maestro combines specialized models, agents and EDA tools in a reinforcement-learning loop tailored to design workflows.",
+  "tags": [
+    "Models",
+    "Agents",
+    "Infrastructure"
+  ],
+  "evidence": "Cadence vendor announcement and early design results",
+  "takeaway": "Benchmark specialist models on validated task success and end-to-end workflow cost, not token benchmarks alone.",
+  "sections": [
+    {
+      "title": "Technical approach",
+      "bullets": [
+        {
+          "lead": "Specialization",
+          "detail": "Cadence pairs domain-trained models with its AI Super Agents, EDA/SDA tools and a vertically integrated reinforcement-learning environment."
+        },
+        {
+          "lead": "Deployment",
+          "detail": "The design supports cloud and customer-controlled on-premises operation, with some early-access models due in Q4 2026."
+        }
+      ],
+      "paragraphs": [
+        "Specialization: Cadence pairs domain-trained models with its AI Super Agents, EDA/SDA tools and a vertically integrated reinforcement-learning environment.",
+        "Deployment: The design supports cloud and customer-controlled on-premises operation, with some early-access models due in Q4 2026."
+      ]
+    },
+    {
+      "title": "What to test",
+      "bullets": [
+        {
+          "lead": "Claims",
+          "detail": "Cadence reports up to 30% higher design quality and up to 5× token efficiency versus general-purpose foundation models in selected workflows; baselines are vendor-selected."
+        },
+        {
+          "lead": "Benchmark",
+          "detail": "Compare verified design-rule closure, timing/power/area targets, retries and engineer review time under identical design constraints."
+        }
+      ],
+      "paragraphs": [
+        "Claims: Cadence reports up to 30% higher design quality and up to 5× token efficiency versus general-purpose foundation models in selected workflows; baselines are vendor-selected.",
+        "Benchmark: Compare verified design-rule closure, timing/power/area targets, retries and engineer review time under identical design constraints."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Cadence — Maestro model portfolio",
+      "url": "https://newsroom.cadence.com/press-releases/press-release-details/2026/Cadence-Introduces-Maestro-a-Domain-Specialized-AI-Model-Portfolio-to-Revolutionize-Agentic-Chip-and-System-Design/default.aspx",
+      "published": "2026-10-26",
+      "type": "Vendor announcement"
+    }
+  ],
+  "related": []
+}
