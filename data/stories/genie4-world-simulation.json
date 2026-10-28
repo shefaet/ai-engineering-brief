@@ -1,0 +1,61 @@
+{
+  "id": "genie4-world-simulation",
+  "date": "2026-10-28",
+  "published": "2026-10-27",
+  "category": "WORLD MODELS",
+  "priority": "High",
+  "title": "DeepMind adds real-time planning and native audio to Genie 4",
+  "dek": "A generated environment is continuously steered by a separate Gemini planning loop, but reliable long-horizon physics remains unresolved.",
+  "tags": [
+    "Models",
+    "Agents",
+    "Multimodal"
+  ],
+  "evidence": "Google DeepMind research preview and demonstrations; no independent physical-fidelity evaluation",
+  "takeaway": "Use world models as variable test environments only when their rules and state transitions can be validated independently.",
+  "sections": [
+    {
+      "title": "Architecture",
+      "bullets": [
+        {
+          "lead": "Generator",
+          "detail": "Genie 4 produces interactive visuals, ambient audio and dialogue; Gemini Omni helps anchor real-world appearance and behavior."
+        },
+        {
+          "lead": "Control loop",
+          "detail": "Gemini 3.8 Flash observes rendered frames, decomposes goals and updates its plan as the user modifies the simulated world. This separates environment generation from agent supervision."
+        }
+      ],
+      "paragraphs": [
+        "Generator: Genie 4 produces interactive visuals, ambient audio and dialogue; Gemini Omni helps anchor real-world appearance and behavior.",
+        "Control loop: Gemini 3.8 Flash observes rendered frames, decomposes goals and updates its plan as the user modifies the simulated world. This separates environment generation from agent supervision."
+      ]
+    },
+    {
+      "title": "Limitations and use",
+      "bullets": [
+        {
+          "lead": "Reliability",
+          "detail": "DeepMind reports remaining object-permanence drift, spatial inconsistency, physics errors and audio accuracy problems, especially after complex edits or long sessions."
+        },
+        {
+          "lead": "Evaluation",
+          "detail": "For agent testing, compare simulated outcomes with deterministic references on action validity, object state, temporal consistency and recovery; do not treat photorealistic visuals as proof of physical accuracy."
+        }
+      ],
+      "paragraphs": [
+        "Reliability: DeepMind reports remaining object-permanence drift, spatial inconsistency, physics errors and audio accuracy problems, especially after complex edits or long sessions.",
+        "Evaluation: For agent testing, compare simulated outcomes with deterministic references on action validity, object state, temporal consistency and recovery; do not treat photorealistic visuals as proof of physical accuracy."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Google DeepMind — Genie 4",
+      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+      "published": "2026-10-27",
+      "type": "Primary research announcement"
+    }
+  ],
+  "related": []
+}
