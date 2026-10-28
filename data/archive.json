@@ -22,6 +22,20 @@
           "evidence": "Vendor technical guidance",
           "summary": "A production agent must be judged as a complete system, not by one model benchmark.",
           "searchText": "Google Agents CLI evaluation traces grading benchmark regression failure analysis model swap latency finance source attribution authorized tool calls GEPA prompt optimization"
+        },
+        {
+          "id": "a2ui-express",
+          "title": "A2UI Express separates UI generation from rendering",
+          "category": "AGENT INFRASTRUCTURE",
+          "priority": "High",
+          "tags": [
+            "Agents",
+            "Infrastructure",
+            "Evaluation"
+          ],
+          "evidence": "Google vendor measurements; independent replication pending",
+          "summary": "Google's A2UI Express compiles compact model output into validated UI messages. Google reports up to 3x fewer tokens and up to 3x lower latency than direct JSON; independent replication is pending.",
+          "searchText": "A2UI Express swappable inference formats generative user interface agent component catalog trusted renderer deterministic compiler validated JSON direct JSON streaming tokens latency 3x 51 task Gemini 3.5 Flash Jev decision model up to 80x controlled layouts 11 prompts 92 298 milliseconds 0.8 1.7 seconds Bloomberg financial AI entitlement security evaluation benchmark p95"
         }
       ]
     },
