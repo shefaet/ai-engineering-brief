@@ -1,0 +1,61 @@
+{
+  "id": "openai-science-claims-shepherding",
+  "date": "2026-10-27",
+  "published": "2026-10-26",
+  "category": "AI FOR SCIENCE",
+  "priority": "High",
+  "title": "OpenAI releases model-generated science claims for external scrutiny",
+  "dek": "The lab is testing different validation and publication methods for mathematical, complexity and physics results produced by AI.",
+  "tags": [
+    "Research",
+    "Evaluation",
+    "Science"
+  ],
+  "evidence": "OpenAI's announcement of research claims; independent validation incomplete",
+  "takeaway": "Separate model-generated proof artifacts from verified scientific conclusions; invest in reproducibility and expert review.",
+  "sections": [
+    {
+      "title": "Three distinct cases",
+      "bullets": [
+        {
+          "lead": "Mathematics",
+          "detail": "OpenAI published a claimed harmonic-analysis result and associated artifacts so outside researchers can study the argument."
+        },
+        {
+          "lead": "Complexity",
+          "detail": "A claimed result involving the Exponential Time Hypothesis is being examined with an external expert group; a claimed physics result is following a different, initially withheld-artifact review path."
+        }
+      ],
+      "paragraphs": [
+        "Mathematics: OpenAI published a claimed harmonic-analysis result and associated artifacts so outside researchers can study the argument.",
+        "Complexity: A claimed result involving the Exponential Time Hypothesis is being examined with an external expert group; a claimed physics result is following a different, initially withheld-artifact review path."
+      ]
+    },
+    {
+      "title": "What matters",
+      "bullets": [
+        {
+          "lead": "Verification gap",
+          "detail": "A formal-looking proof or model-generated manuscript is not equivalent to independent acceptance of a major theorem. Different disciplines require distinct validation processes."
+        },
+        {
+          "lead": "Engineering insight",
+          "detail": "Treat formal checks, reproducible experiments, external critical review and provenance as separate validation gates. Publish uncertainty at the same prominence as the claim."
+        }
+      ],
+      "paragraphs": [
+        "Verification gap: A formal-looking proof or model-generated manuscript is not equivalent to independent acceptance of a major theorem. Different disciplines require distinct validation processes.",
+        "Engineering insight: Treat formal checks, reproducible experiments, external critical review and provenance as separate validation gates. Publish uncertainty at the same prominence as the claim."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI — Working with academic communities to build scientific understanding",
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities/",
+      "published": "2026-10-26",
+      "type": "Primary vendor announcement"
+    }
+  ],
+  "related": []
+}
