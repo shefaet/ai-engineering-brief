@@ -31,6 +31,10 @@
               "lead": "Control group caveat",
               "detail": "Eleven additional analysts chose not to use an agent; that self-selection prevents treating the comparison as a randomized estimate of AI's overall benefit."
             }
+          ],
+          "paragraphs": [
+            "Randomization: Fifty experienced analysts used Claude Code on a fictional farming-policy evaluation. Hidden assignments made the agent advocate one of two defensible choices for the metric, comparison method, population, and weighting.",
+            "Control group caveat: Eleven additional analysts chose not to use an agent; that self-selection prevents treating the comparison as a randomized estimate of AI's overall benefit."
           ]
         },
         {
@@ -71,6 +75,9 @@
               "lead": "Method choices",
               "detail": "Across four decisions, analysts selected the agent's assigned preference 86% of the time. The chart separates each methodological choice from the final rollout recommendation."
             }
+          ],
+          "paragraphs": [
+            "Method choices: Across four decisions, analysts selected the agent's assigned preference 86% of the time. The chart separates each methodological choice from the final rollout recommendation."
           ]
         },
         {
@@ -84,6 +91,10 @@
               "lead": "Control design",
               "detail": "Record the analyst's pre-agent choice of metric, peer set, period, and weights. Audit who proposed any change; test alternative defensible methods before approving conclusions."
             }
+          ],
+          "paragraphs": [
+            "External validity: The agent's preferences were deliberately reinforced. Fifty AI-assisted participants, one task, and one model configuration cannot establish production-wide influence rates.",
+            "Control design: Record the analyst's pre-agent choice of metric, peer set, period, and weights. Audit who proposed any change; test alternative defensible methods before approving conclusions."
           ]
         }
       ],
