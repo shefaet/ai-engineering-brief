@@ -1,0 +1,61 @@
+{
+  "id": "deepseek-v41-safety-evaluation",
+  "date": "2026-10-27",
+  "published": "2026-10-26",
+  "category": "MODEL EVALUATION",
+  "priority": "High",
+  "title": "Researchers test DeepSeek V4.1 Flash for loss-of-control risks",
+  "dek": "An independent preprint evaluates a high-capability open-weight model on evaluation integrity, manipulation and control-related benchmarks.",
+  "tags": [
+    "Evaluation",
+    "Open Weights",
+    "Safety"
+  ],
+  "evidence": "Independent research preprint; benchmark coverage does not demonstrate deployed safety",
+  "takeaway": "Evaluate open-weight candidates with behavioral and manipulation suites before making trust assumptions based on licensing or model provenance.",
+  "sections": [
+    {
+      "title": "Design",
+      "bullets": [
+        {
+          "lead": "Scope",
+          "detail": "The researchers evaluated DeepSeek V4.1 Flash-1017 on 34 benchmarks, including five in-house suites, spanning evaluation integrity, loss-of-control behaviors and harmful manipulation."
+        },
+        {
+          "lead": "Context",
+          "detail": "The work targets a gap between model capability benchmarks and standardized safety assessment of openly distributed weights."
+        }
+      ],
+      "paragraphs": [
+        "Scope: The researchers evaluated DeepSeek V4.1 Flash-1017 on 34 benchmarks, including five in-house suites, spanning evaluation integrity, loss-of-control behaviors and harmful manipulation.",
+        "Context: The work targets a gap between model capability benchmarks and standardized safety assessment of openly distributed weights."
+      ]
+    },
+    {
+      "title": "Interpretation",
+      "bullets": [
+        {
+          "lead": "Evidence",
+          "detail": "Scores from selected scenarios characterize the tested model and harness. They cannot establish an absolute probability of misuse or guarantee that open weights remain controllable under fine-tuning."
+        },
+        {
+          "lead": "Evaluation plan",
+          "detail": "Reproduce with fixed prompts, repeat seeds, tool permissions and deployment configuration; measure refusal consistency, deceptive behavior and capability regression separately."
+        }
+      ],
+      "paragraphs": [
+        "Evidence: Scores from selected scenarios characterize the tested model and harness. They cannot establish an absolute probability of misuse or guarantee that open weights remain controllable under fine-tuning.",
+        "Evaluation plan: Reproduce with fixed prompts, repeat seeds, tool permissions and deployment configuration; measure refusal consistency, deceptive behavior and capability regression separately."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Independent safety evaluation of DeepSeek V4.1 Flash — arXiv",
+      "url": "https://arxiv.org/abs/2610.35671",
+      "published": "2026-10-26",
+      "type": "Primary research"
+    }
+  ],
+  "related": []
+}
