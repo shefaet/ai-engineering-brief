@@ -1,68 +1,50 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "updated": "2026-10-28",
-  "editions": [
+  "stories": [
     {
+      "id": "agent-eval-loop",
       "date": "2026-10-28",
-      "issue": "002",
-      "title": "Evaluating agents as evolving systems",
-      "dek": "A repeatable evaluation cycle for agents that change with prompts, tools, and model upgrades.",
-      "summary": "Google's Agents CLI walkthrough documents an evaluation loop built around traces, grading, run comparisons, failure analysis, and prompt optimization.",
-      "stories": [
-        {
-          "id": "agent-eval-loop",
-          "title": "Google describes a hill-climbing workflow for agent evaluation",
-          "category": "AGENT ENGINEERING",
-          "priority": "High",
-          "tags": [
-            "Agents",
-            "Evaluation",
-            "Infrastructure"
-          ],
-          "evidence": "Vendor technical guidance",
-          "summary": "A production agent must be judged as a complete system, not by one model benchmark.",
-          "searchText": "Google Agents CLI evaluation traces grading benchmark regression failure analysis model swap latency finance source attribution authorized tool calls GEPA prompt optimization"
-        },
-        {
-          "id": "a2ui-express",
-          "title": "A2UI Express separates UI generation from rendering",
-          "category": "AGENT INFRASTRUCTURE",
-          "priority": "High",
-          "tags": [
-            "Agents",
-            "Infrastructure",
-            "Evaluation"
-          ],
-          "evidence": "Google vendor measurements; independent replication pending",
-          "summary": "Google's A2UI Express compiles compact model output into validated UI messages. Google reports up to 3x fewer tokens and up to 3x lower latency than direct JSON; independent replication is pending.",
-          "searchText": "A2UI Express swappable inference formats generative user interface agent component catalog trusted renderer deterministic compiler validated JSON direct JSON streaming tokens latency 3x 51 task Gemini 3.5 Flash Jev decision model up to 80x controlled layouts 11 prompts 92 298 milliseconds 0.8 1.7 seconds Bloomberg financial AI entitlement security evaluation benchmark p95"
-        }
-      ]
+      "title": "Google describes a hill-climbing workflow for agent evaluation",
+      "category": "AGENT ENGINEERING",
+      "tags": [
+        "Agents",
+        "Evaluation",
+        "Infrastructure"
+      ],
+      "evidence": "Vendor technical guidance",
+      "summary": "A production agent must be judged as a complete system, not by one model benchmark.",
+      "searchText": "Google Agents CLI evaluation traces grading benchmark regression failure analysis model swap latency finance source attribution authorized tool calls GEPA prompt optimization"
     },
     {
+      "id": "a2ui-express",
+      "date": "2026-10-28",
+      "title": "A2UI Express separates UI generation from rendering",
+      "category": "AGENT INFRASTRUCTURE",
+      "tags": [
+        "Agents",
+        "Infrastructure",
+        "Evaluation"
+      ],
+      "evidence": "Google vendor measurements; independent replication pending",
+      "summary": "Google's A2UI Express compiles compact model output into validated UI messages. Google reports up to 3x fewer tokens and up to 3x lower latency than direct JSON; independent replication is pending.",
+      "searchText": "A2UI Express swappable inference formats generative user interface agent component catalog trusted renderer deterministic compiler validated JSON direct JSON streaming tokens latency 3x 51 task Gemini 3.5 Flash Jev decision model up to 80x controlled layouts 11 prompts 92 298 milliseconds 0.8 1.7 seconds financial-information financial AI entitlement security evaluation benchmark p95"
+    },
+    {
+      "id": "agent-judgment",
       "date": "2026-10-27",
-      "issue": "001",
-      "title": "Agent influence and human oversight",
-      "dek": "A controlled study shows why human sign-off is not necessarily independent judgment.",
-      "summary": "Anthropic studied 50 analysts using Claude Code and found strong effects from randomly assigned agent preferences on analytical choices.",
-      "stories": [
-        {
-          "id": "agent-judgment",
-          "title": "Anthropic measures how agents influence expert decisions",
-          "category": "RESEARCH & SAFETY",
-          "priority": "Very high",
-          "tags": [
-            "Agents",
-            "Evaluation",
-            "Safety",
-            "Financial AI"
-          ],
-          "evidence": "Primary controlled experiment",
-          "summary": "Across four methodological choices, analysts matched an agent's randomly assigned preference 86% of the time.",
-          "searchText": "Anthropic expert analysts causal inference experimental randomization outcome metric comparison population weights 86 percent financial research human oversight methodology interactive explainer causal trial paper randomized coin flip slider simulation observed outcomes architecture step-by-step visual explanation",
-          "paperSlug": "agent-judgment"
-        }
-      ]
+      "title": "Anthropic measures how agents influence expert decisions",
+      "category": "RESEARCH & SAFETY",
+      "tags": [
+        "Agents",
+        "Evaluation",
+        "Safety",
+        "Financial AI"
+      ],
+      "evidence": "Primary controlled experiment",
+      "summary": "Across four methodological choices, analysts matched an agent's randomly assigned preference 86% of the time.",
+      "searchText": "Anthropic expert analysts causal inference experimental randomization outcome metric comparison population weights 86 percent financial research human oversight methodology interactive explainer causal trial paper randomized coin flip slider simulation observed outcomes architecture step-by-step visual explanation",
+      "paperSlug": "agent-judgment"
     }
   ]
 }
