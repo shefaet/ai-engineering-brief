@@ -1,0 +1,61 @@
+{
+  "id": "hedge-fund-ai-control-boundaries",
+  "date": "2026-10-28",
+  "published": "2026-10-27",
+  "category": "FINANCIAL AI",
+  "priority": "High",
+  "title": "Hedge funds report using agents for research while restricting autonomy",
+  "dek": "Firms describe research augmentation and process automation but emphasize security isolation and the risk of passive analytical dependence.",
+  "tags": [
+    "Financial AI",
+    "Agents",
+    "Governance"
+  ],
+  "evidence": "Industry executive interviews and reporting; no comparable audited fund performance study",
+  "takeaway": "Measure agent-aided research quality and analyst independence, not just the volume of automated outputs.",
+  "sections": [
+    {
+      "title": "Operating patterns",
+      "bullets": [
+        {
+          "lead": "Research",
+          "detail": "Reported examples include independent agent-assisted research preparation, codified research processes and reduction of routine analyst work."
+        },
+        {
+          "lead": "Boundaries",
+          "detail": "Executives stressed narrow environments and human control for agents that could touch sensitive systems, investment decisions or trading workflows."
+        }
+      ],
+      "paragraphs": [
+        "Research: Reported examples include independent agent-assisted research preparation, codified research processes and reduction of routine analyst work.",
+        "Boundaries: Executives stressed narrow environments and human control for agents that could touch sensitive systems, investment decisions or trading workflows."
+      ]
+    },
+    {
+      "title": "Evidence and tests",
+      "bullets": [
+        {
+          "lead": "Cognitive risk",
+          "detail": "An assistant that generates plausible theses can cause analysts to inherit unsupported assumptions; workflow productivity is not a demonstrated investment alpha."
+        },
+        {
+          "lead": "Evaluation",
+          "detail": "Compare idea novelty, citation fidelity, methodological challenge rate, analyst disagreement and post-trade attribution; keep portfolio decisions under explicit authorized controls."
+        }
+      ],
+      "paragraphs": [
+        "Cognitive risk: An assistant that generates plausible theses can cause analysts to inherit unsupported assumptions; workflow productivity is not a demonstrated investment alpha.",
+        "Evaluation: Compare idea novelty, citation fidelity, methodological challenge rate, analyst disagreement and post-trade attribution; keep portfolio decisions under explicit authorized controls."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Business Insider — How hedge funds are handling AI",
+      "url": "https://www.businessinsider.com/hedge-funds-citadel-and-bridgewater-handling-ai-2026-10",
+      "published": "2026-10-27",
+      "type": "Independent reporting"
+    }
+  ],
+  "related": []
+}
