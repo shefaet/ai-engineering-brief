@@ -7,6 +7,21 @@ This repository publishes **two related products**:
 
 The article JSON must reference the explainer via `paperSlug`, and the matching item in `data/archive.json` must use the same `paperSlug`. The page renderer links both entries automatically.
 
+## Dense, bullet-first editorial schema
+
+Use structured bullets on both the daily edition and interactive paper chapters. Preserve exact technical nuance without forcing the reader through introductory prose.
+
+In `data/posts/YYYY-MM-DD.json`, use `sections: [{ "title": "Mechanism", "bullets": [{"lead":"Architecture","detail":"What actually changed, with constraints."}] }]`. In `data/papers/<slug>.json`, a chapter may use the same `bullets` property instead of `paragraphs`. Legacy `paragraphs` remain readable, but **new articles should be bullet-first**.
+
+- Each bullet is one useful idea: a **short bold claim or dimension** followed by its causal/technical explanation. Use natural sentences, not slogan fragments.
+- Aim for 2-4 bullets per section and 4-9 per article when justified. This is not a quota; a difficult method may require more detail and a straightforward update much less.
+- Preserve architecture, actual benchmark setup (model, dataset, baseline, units), quantitative results, failure modes, major evidence caveat and an actionable engineering test. Omit dimensions without new information.
+- Make the headline state **what happened** and the takeaway state **what decision changes**. The bullets should explain **why/how/evidence**; never repeat either.
+- Don't use bullet labels like "Key point", "Important" or "Context". Prefer "Streaming", "Evaluation", "Failure mode", "Deployment gate", etc.
+- A concise but rigorous list beats superficial bullets. Avoid the habit of mechanically converting each sentence into a separate bullet or hiding missing reasoning under a short label.
+- Interactive figures replace prose when possible. Explain what cannot be inferred from a chart, not the numbers already printed on it.
+- Put detailed source URLs in the existing source disclosure, and avoid repeating citation boilerplate.
+
 ## Selection criteria
 
 Prioritize technical papers with a new mechanism, nontrivial architecture, measurable trade-off, or strong implications for model systems. Do not create a pseudo-interactive article for an ordinary press release, minor incremental benchmark, or unverified claim. Publish **at most one substantial explainer when there is a suitable paper**. Do not create one to satisfy a quota.
