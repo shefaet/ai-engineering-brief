@@ -136,7 +136,7 @@ async function main(){
   }
   tocDetails.append(tocTitle,nav);toc.append(tocDetails);layout.append(body,toc);root.append(layout);
   const source=E("section","paper-citation");source.append(external("Original research ↗",data.source.url));root.append(source);
-  const back=E("a","paper-return","← Daily briefing");back.href="post.html?date="+encodeURIComponent(data.issue)+"#"+encodeURIComponent(data.storyId);root.append(back);
+  const back=E("a","paper-return","← Daily briefing");back.href="story.html?id="+encodeURIComponent(data.storyId);root.append(back);
   if(location.hash)requestAnimationFrame(()=>document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView());
  }catch(err){console.error(err);root.replaceChildren(E("p","", "This explainer could not load. Return to the research archive."));}
 }
