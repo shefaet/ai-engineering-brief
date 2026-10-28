@@ -1,0 +1,67 @@
+{
+  "id": "gpt-61-terra-release",
+  "date": "2026-10-27",
+  "published": "2026-10-26",
+  "category": "MODEL RELEASES",
+  "priority": "High",
+  "title": "OpenAI releases GPT-6.1 Terra for computer-use workloads",
+  "dek": "A lower-priced model prioritizes visual understanding and tool-driven desktop tasks over frontier reasoning per token.",
+  "tags": [
+    "Models",
+    "Agents",
+    "Economics"
+  ],
+  "evidence": "OpenAI vendor benchmark and price disclosures, not an independent ranking",
+  "takeaway": "Compare cost and successful completion across identical computer-use tasks before substituting a cheaper model.",
+  "sections": [
+    {
+      "title": "Model trade-off",
+      "bullets": [
+        {
+          "lead": "API pricing",
+          "detail": "Standard API prices are $1 per million input tokens, $0.05 per million cached input tokens and $5 per million output tokens. Its token prices differ from total workflow cost."
+        },
+        {
+          "lead": "Positioning",
+          "detail": "OpenAI reports improved computer use and visual reasoning versus GPT-5.6 Terra, with deployments in Work, Codex and the API rather than general ChatGPT conversation."
+        }
+      ],
+      "paragraphs": [
+        "API pricing: Standard API prices are $1 per million input tokens, $0.05 per million cached input tokens and $5 per million output tokens. Its token prices differ from total workflow cost.",
+        "Positioning: OpenAI reports improved computer use and visual reasoning versus GPT-5.6 Terra, with deployments in Work, Codex and the API rather than general ChatGPT conversation."
+      ]
+    },
+    {
+      "title": "Evaluation",
+      "bullets": [
+        {
+          "lead": "Reported benchmark",
+          "detail": "At medium effort, OpenAI cites a 15-percentage-point gain on Agents' Last Exam versus GPT-5.6 Terra at roughly one-third of the cost; this is a vendor comparison."
+        },
+        {
+          "lead": "Deployment test",
+          "detail": "Use a frozen set of visual navigation, form entry, spreadsheet and tool-recovery tasks; measure cost per verified task, p95 duration and unauthorized-action attempts."
+        }
+      ],
+      "paragraphs": [
+        "Reported benchmark: At medium effort, OpenAI cites a 15-percentage-point gain on Agents' Last Exam versus GPT-5.6 Terra at roughly one-third of the cost; this is a vendor comparison.",
+        "Deployment test: Use a frozen set of visual navigation, form entry, spreadsheet and tool-recovery tasks; measure cost per verified task, p95 duration and unauthorized-action attempts."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI — Introducing GPT-6.1 Terra",
+      "url": "https://openai.com/index/introducing-gpt-6-1-terra/",
+      "published": "2026-10-26",
+      "type": "Vendor release"
+    },
+    {
+      "name": "OpenAI — Model release notes",
+      "url": "https://help.openai.com/en/articles/9624314-model-release-notes",
+      "published": "2026-10-26",
+      "type": "Official product documentation"
+    }
+  ],
+  "related": []
+}
