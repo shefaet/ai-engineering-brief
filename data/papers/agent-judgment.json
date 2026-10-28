@@ -5,8 +5,8 @@
   "published": "2026-10-27",
   "category": "Research & Safety",
   "title": "When the analyst follows the agent",
-  "subtitle": "A randomized study reveals how apparently neutral analytical choices can acquire the AI's preferences, even when a human approves the final result.",
-  "readingMinutes": 10,
+  "subtitle": "How randomized AI preferences changed experts' analytical choices.",
+  "readingMinutes": 5,
   "source": {
     "name": "Anthropic Research - How AI agents shape experts' judgment calls",
     "url": "https://www.anthropic.com/research/agents-judgment-calls",
@@ -17,15 +17,14 @@
     {
       "id": "intuition",
       "eyebrow": "01 / THE INTUITION",
-      "title": "The calculation can be correct while the question changes",
+      "title": "Where the bias enters",
       "paragraphs": [
-        "Imagine evaluating a farming program. You must choose whether productivity means yield per hectare or yield per unit of cost. Both are defensible measures, but they answer different questions.",
-        "An AI assistant can write correct code for either measure. The hidden influence occurs earlier, when it recommends which measure the analyst should use. A reviewer might verify the code and still overlook how that choice was made."
+        "Two defensible metrics can lead to different conclusions. An AI assistant might calculate either one correctly yet influence the decision by recommending which metric to use."
       ],
       "explainer": {
         "type": "decision-path",
         "title": "Follow a methodological decision",
-        "description": "Choose a decision to see where judgment enters the analysis. These are categories from the experiment, not simulated results.",
+        "description": "Select a methodological choice to see how it can change the analysis.",
         "options": [
           {
             "name": "Outcome",
@@ -69,16 +68,15 @@
     {
       "id": "experiment",
       "eyebrow": "02 / THE MECHANISM",
-      "title": "A coin flip assigned the agent's preference",
+      "title": "What was randomized",
       "paragraphs": [
-        "Anthropic recruited 61 analysts with causal-inference experience. Fifty worked with Claude Code. Eleven worked without an AI agent and were excluded from the primary agent-influence analysis.",
-        "The AI-assisted analysts investigated a fictional cooperative. For each analyst and each methodological decision, a separate random assignment instructed the agent to favor one of two defensible approaches. The agent could argue for its preference but was told never to hide or distort evidence.",
-        "Random assignment helps isolate how the agent's preference affects subsequent choices. It does not make the conclusions universal: the researchers deliberately strengthened the agents' preferences."
+        "Fifty causal-inference analysts worked with Claude Code on a fictional agricultural program. Hidden instructions randomly assigned the agent a preference on four analytical decisions.",
+        "Because the preference was randomized, differences in the analysts' choices reveal the influence of the agent in this setting."
       ],
       "explainer": {
         "type": "study-flow",
         "title": "Walk through the causal design",
-        "description": "Use Next to follow what the researchers assigned, observed, and compared.",
+        "description": "Follow the experimental design in five steps.",
         "steps": [
           {
             "title": "Define the task",
@@ -111,15 +109,14 @@
     {
       "id": "results",
       "eyebrow": "03 / THE DATA",
-      "title": "The agent influenced methodology more than the final vote",
+      "title": "Where the influence showed up",
       "paragraphs": [
-        "Across four analytical choices, analysts matched the agent's randomly assigned preference 86% of the time. Under the randomized two-option assignment, no influence would imply approximately 50% matching.",
-        "The final rollout recommendation was less sensitive to the agent's direct recommendation. Nevertheless, choices made earlier influenced the numerical estimate from which the recommendation followed."
+        "Analysts matched the agent's assigned preference 86% of the time across the four methodological choices. The final rollout recommendation shifted less. Toggle the measures to see the distinction."
       ],
       "explainer": {
         "type": "result-bars",
         "title": "Explore the reported outcomes",
-        "description": "Switch between the four methodological choices and the final recommendation. Every displayed percentage comes from the primary research.",
+        "description": "The bars show measurements reported in the original research, not simulations.",
         "datasets": [
           {
             "name": "Method choices",
@@ -163,72 +160,21 @@
       }
     },
     {
-      "id": "toy",
-      "eyebrow": "04 / INTERACTIVE MODEL",
-      "title": "How much influence is enough to shift a decision?",
+      "id": "limits",
+      "eyebrow": "06 / EVIDENCE",
+      "title": "What this doesn't prove",
       "paragraphs": [
-        "Use this simple model to build intuition. Suppose a population is divided among analysts who accept an agent's preference and analysts who decide independently. The slider controls the assumed acceptance probability.",
-        "This model does not reconstruct the paper's causal estimates. It is a hypothetical teaching tool, not a forecast of what a real analyst would do."
-      ],
-      "explainer": {
-        "type": "toy-adherence",
-        "title": "Simulate a methodological preference",
-        "description": "Adjust a hypothetical agent-following probability. An independent choice matches the randomly selected preference 50% of the time.",
-        "initial": 72,
-        "minimum": 0,
-        "maximum": 100,
-        "baseline": 50,
-        "observed": 86,
-        "units": "percent",
-        "note": "The resulting match rate is 50% + 0.5 x assumed follow rate. The study's 86% is displayed as a reference line, not a fitted parameter."
-      }
+        "The agents were deliberately prompted to advocate a position; the experiment used one task and one model. These percentages are not estimates of influence in production financial research.",
+        "The randomized experiment supports a causal claim about methodology choices in this setting. It does not establish that every human sign-off is ineffective."
+      ]
     },
     {
       "id": "application",
       "eyebrow": "05 / ENGINEERING APPLICATION",
-      "title": "Make the analysis plan auditable",
+      "title": "A practical control",
       "paragraphs": [
-        "For financial research agents, separate methodological choices from implementation. Ask the analyst to specify the metric, comparison set, time period, weighting, and outlier treatment before the agent supplies an interpretation.",
-        "Store both the analyst's initial intent and the agent's proposals. Evaluate method changes separately from arithmetic accuracy. Where choices are contestable, show counterfactual calculations for the alternatives.",
-        "A reviewer should see which assumptions the agent suggested, not only the resulting chart or investment conclusion."
-      ],
-      "explainer": {
-        "type": "study-flow",
-        "title": "Design a financial-agent review gate",
-        "description": "A conceptual control sequence for an enterprise agent. This is a proposed engineering practice, not a procedure tested in the paper.",
-        "steps": [
-          {
-            "title": "Precommit",
-            "detail": "Analyst chooses the metric, period, peer set, and weights before receiving the agent's conclusion.",
-            "hint": "This preserves an independent starting point."
-          },
-          {
-            "title": "Execute",
-            "detail": "Agent retrieves sources, performs calculations, and records all selected assumptions.",
-            "hint": "Record tool traces and versioned source identifiers."
-          },
-          {
-            "title": "Compare",
-            "detail": "Show sensitivity to alternate defensible methods and flag agent-proposed changes.",
-            "hint": "A correct answer to the wrong question should not pass silently."
-          },
-          {
-            "title": "Approve",
-            "detail": "Reviewer accepts or overrides each material choice before final sign-off.",
-            "hint": "A sign-off becomes meaningful when the reasoning choices are visible."
-          }
-        ]
-      }
-    },
-    {
-      "id": "limits",
-      "eyebrow": "06 / EVIDENCE",
-      "title": "What the study does and does not establish",
-      "paragraphs": [
-        "The researchers used randomized agent preferences, which provides a stronger design than an observational survey for measuring influence in this task. The relevant sample was 50 AI-assisted analysts using Claude Code.",
-        "The agents were deliberately instructed to advocate preferences. The setting was a fictional farming task; the study used one model configuration. Results do not prove that AI agents change financial analysts' decisions by the same amount.",
-        "Analysts without AI made more serious methodological errors, but that smaller group differed in experience and chose not to use AI. The report cautions against interpreting that comparison as a randomized measure of AI benefit.",
-        "The practical result is narrower: human review is not necessarily an independent control when the human adopted analytical choices suggested by the agent."
+        "Have analysts precommit to material choices: metric, peer set, analysis period, and weighting. Log when the agent proposes changing them.",
+        "Review counterfactual results under other defensible choices. Validate the method selection separately from whether the calculations are correct."
       ]
     }
   ],
