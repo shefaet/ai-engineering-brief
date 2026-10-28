@@ -1,0 +1,61 @@
+{
+  "id": "google-sleep-continual-learning",
+  "date": "2026-10-28",
+  "published": "2026-10-27",
+  "category": "MODEL RESEARCH",
+  "priority": "High",
+  "title": "Google proposes a sleep phase to reduce continual-learning forgetting",
+  "dek": "A dedicated consolidation phase attempts to integrate new information without degrading older model capabilities.",
+  "tags": [
+    "Research",
+    "Models",
+    "Training"
+  ],
+  "evidence": "Google Research technical announcement; claims await reproduction outside reported settings",
+  "takeaway": "Benchmark retention and adaptation jointly: new-fact accuracy is not valuable if it destroys existing competencies.",
+  "sections": [
+    {
+      "title": "Mechanism",
+      "bullets": [
+        {
+          "lead": "Problem",
+          "detail": "Continual parameter updates can cause catastrophic forgetting; in-context learning preserves new facts only while they remain in the prompt."
+        },
+        {
+          "lead": "Approach",
+          "detail": "Google introduces a sleep-like consolidation phase that integrates acquired information across learning cycles, aiming to preserve earlier knowledge and improve reasoning."
+        }
+      ],
+      "paragraphs": [
+        "Problem: Continual parameter updates can cause catastrophic forgetting; in-context learning preserves new facts only while they remain in the prompt.",
+        "Approach: Google introduces a sleep-like consolidation phase that integrates acquired information across learning cycles, aiming to preserve earlier knowledge and improve reasoning."
+      ]
+    },
+    {
+      "title": "Evaluation implications",
+      "bullets": [
+        {
+          "lead": "Trade-off",
+          "detail": "A model can appear better on recently introduced facts while regressing on established tasks. Claims of continual learning require both retention and adaptation measurements."
+        },
+        {
+          "lead": "Test",
+          "detail": "Build a sequential curriculum with frozen old-task probes, newly learned facts, interference cases, update compute and post-update calibration. Measure forgetting per stage rather than only final accuracy."
+        }
+      ],
+      "paragraphs": [
+        "Trade-off: A model can appear better on recently introduced facts while regressing on established tasks. Claims of continual learning require both retention and adaptation measurements.",
+        "Test: Build a sequential curriculum with frozen old-task probes, newly learned facts, interference cases, update compute and post-update calibration. Measure forgetting per stage rather than only final accuracy."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Google Research — The sleep framework",
+      "url": "https://www.research.google/blog/the-sleep-framework-a-new-way-for-llms-to-retain-knowledge-in-continual-learning/",
+      "published": "2026-10-27",
+      "type": "Primary vendor research"
+    }
+  ],
+  "related": []
+}
