@@ -18,9 +18,6 @@
       "id": "intuition",
       "eyebrow": "01 / THE INTUITION",
       "title": "Where the bias enters",
-      "paragraphs": [
-        "Two defensible metrics can lead to different conclusions. An AI assistant might calculate either one correctly yet influence the decision by recommending which metric to use."
-      ],
       "explainer": {
         "type": "decision-path",
         "title": "Follow a methodological decision",
@@ -63,16 +60,18 @@
             "consequence": "Weights can change the estimate by giving large farms more influence."
           }
         ]
-      }
+      },
+      "bullets": [
+        {
+          "lead": "The failure mode",
+          "detail": "An agent can execute correct code for the wrong estimand. Selecting the outcome, control group, population, or weights can change the conclusion before any arithmetic begins."
+        }
+      ]
     },
     {
       "id": "experiment",
       "eyebrow": "02 / THE MECHANISM",
       "title": "What was randomized",
-      "paragraphs": [
-        "Fifty causal-inference analysts worked with Claude Code on a fictional agricultural program. Hidden instructions randomly assigned the agent a preference on four analytical decisions.",
-        "Because the preference was randomized, differences in the analysts' choices reveal the influence of the agent in this setting."
-      ],
       "explainer": {
         "type": "study-flow",
         "title": "Walk through the causal design",
@@ -104,15 +103,22 @@
             "hint": "A randomized test supports a causal interpretation for the studied setting, not all financial research workflows."
           }
         ]
-      }
+      },
+      "bullets": [
+        {
+          "lead": "Design",
+          "detail": "Fifty analysts using Claude Code assessed a fictional farm program. For each of four methodological choices, a concealed random assignment determined which defensible approach the agent advocated."
+        },
+        {
+          "lead": "Causal interpretation",
+          "detail": "Random assignment isolates the influence of the agent's preference on the analyst's choice in this setting—not the effect of AI assistance generally."
+        }
+      ]
     },
     {
       "id": "results",
       "eyebrow": "03 / THE DATA",
       "title": "Where the influence showed up",
-      "paragraphs": [
-        "Analysts matched the agent's assigned preference 86% of the time across the four methodological choices. The final rollout recommendation shifted less. Toggle the measures to see the distinction."
-      ],
       "explainer": {
         "type": "result-bars",
         "title": "Explore the reported outcomes",
@@ -157,24 +163,46 @@
             ]
           }
         ]
-      }
+      },
+      "bullets": [
+        {
+          "lead": "Key result",
+          "detail": "Analysts matched the agent's randomly assigned methodological preference 86% of the time across the four decisions; final rollout recommendations moved less."
+        },
+        {
+          "lead": "Read the chart",
+          "detail": "Method agreement and rollout recommendation are different outcomes. Compare them separately rather than combining the percentages."
+        }
+      ]
     },
     {
       "id": "limits",
       "eyebrow": "06 / EVIDENCE",
       "title": "What this doesn't prove",
-      "paragraphs": [
-        "The agents were deliberately prompted to advocate a position; the experiment used one task and one model. These percentages are not estimates of influence in production financial research.",
-        "The randomized experiment supports a causal claim about methodology choices in this setting. It does not establish that every human sign-off is ineffective."
+      "bullets": [
+        {
+          "lead": "Strength",
+          "detail": "Randomized preference assignment supports causal attribution of influence within the study task."
+        },
+        {
+          "lead": "Boundary",
+          "detail": "One fictional task, one model configuration, deliberately forceful agent preferences, and 50 assisted participants do not estimate effects in live financial research."
+        }
       ]
     },
     {
       "id": "application",
       "eyebrow": "05 / ENGINEERING APPLICATION",
       "title": "A practical control",
-      "paragraphs": [
-        "Have analysts precommit to material choices: metric, peer set, analysis period, and weighting. Log when the agent proposes changing them.",
-        "Review counterfactual results under other defensible choices. Validate the method selection separately from whether the calculations are correct."
+      "bullets": [
+        {
+          "lead": "Precommit",
+          "detail": "Elicit the metric, peer set, period, exclusions, and weights before presenting an agent's preferred methodology; log all later changes."
+        },
+        {
+          "lead": "Validate",
+          "detail": "Evaluate methodology selection independently of numerical correctness. Compare results under plausible alternative specifications and inspect who initiated each choice."
+        }
       ]
     }
   ],
