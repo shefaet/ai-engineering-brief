@@ -6,7 +6,7 @@
   "category": "Research & Safety",
   "title": "When the analyst follows the agent",
   "subtitle": "A randomized study reveals how apparently neutral analytical choices can acquire the AI's preferences, even when a human approves the final result.",
-  "readingMinutes": 16,
+  "readingMinutes": 10,
   "source": {
     "name": "Anthropic Research - How AI agents shape experts' judgment calls",
     "url": "https://www.anthropic.com/research/agents-judgment-calls",
