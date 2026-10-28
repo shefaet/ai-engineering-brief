@@ -8,7 +8,7 @@ function paragraph(text){return E("p","",text);}
 function chooseButton(label,onClick){const b=E("button","",label);b.type="button";b.addEventListener("click",onClick);return b;}
 function createFigure(spec,ordinal){
  const box=E("section","paper-figure");box.setAttribute("aria-label",spec.title||"Interactive figure");
- const head=E("header"),h=heading("h3",spec.title||"Explore"),type=E("span","","INTERACTIVE "+String(ordinal).padStart(2,"0"));head.append(h,type);box.append(head);
+ const head=E("header"),h=heading("h3",spec.title||"Explore");head.append(h);box.append(head);
  if(spec.description)box.append(E("p","figure-description",spec.description));
  switch(spec.type){
   case "decision-path":renderDecisions(box,spec);break;
@@ -108,10 +108,9 @@ async function main(){
   document.title=data.title+" | Interactive paper | AI Engineering Brief";
   root.replaceChildren();
   const intro=E("header","paper-header");
-  intro.append(E("div","overline","INTERACTIVE PAPER / "+data.category.toUpperCase()),heading("h1",data.title),E("p","paper-lede",data.subtitle));
-  const meta=E("div","paper-meta");meta.append(E("span","",data.published),E("span","",data.readingMinutes+" min reading"),E("span","",data.chapters.filter(c=>c.explainer).length+" interactive figures"),E("span","","Primary-source checked"));intro.append(meta);
+  intro.append(E("div","overline",data.category.toUpperCase()),heading("h1",data.title),E("p","paper-lede",data.subtitle));
   root.append(intro);
-  const layout=E("div","paper-layout"),body=E("div","paper-body"),toc=E("aside","paper-toc"),tocTitle=E("strong","","IN THIS EXPLAINER"),nav=E("nav");nav.setAttribute("aria-label","Explainer chapters");
+  const layout=E("div","paper-layout"),body=E("div","paper-body"),toc=E("aside","paper-toc"),tocDetails=E("details","paper-toc-details"),tocTitle=E("summary","","Sections"),nav=E("nav");nav.setAttribute("aria-label","Explainer chapters");
   let figure=0;
   for(const c of data.chapters){
    const section=E("section","paper-chapter");section.id=c.id;
@@ -121,9 +120,9 @@ async function main(){
    body.append(section);
    const a=E("a","",c.title);a.href="#"+c.id;nav.append(a);
   }
-  toc.append(tocTitle,nav);layout.append(body,toc);root.append(layout);
-  const source=E("section","paper-citation");source.append(heading("h2","Primary source"),external(data.source.name+" ↗",data.source.url),paragraph(data.source.published+" / "+data.source.type));root.append(source);
-  const back=E("a","paper-return","← Back to the original daily edition");back.href="post.html?date="+encodeURIComponent(data.issue)+"#"+encodeURIComponent(data.storyId);root.append(back);
+  tocDetails.append(tocTitle,nav);toc.append(tocDetails);layout.append(body,toc);root.append(layout);
+  const source=E("section","paper-citation");source.append(external("Original research ↗",data.source.url));root.append(source);
+  const back=E("a","paper-return","← Daily briefing");back.href="post.html?date="+encodeURIComponent(data.issue)+"#"+encodeURIComponent(data.storyId);root.append(back);
   if(location.hash)requestAnimationFrame(()=>document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView());
  }catch(err){console.error(err);root.replaceChildren(E("p","", "This explainer could not load. Return to the research archive."));}
 }
