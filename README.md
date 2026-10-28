@@ -64,3 +64,16 @@ The existing 8 AM ChatGPT briefing can be adapted to:
 - `data/posts/*.json` - Structured daily articles
 - `tools/validate.py` - Offline JSON, source URL, and cross-reference checks
 - `.nojekyll` - Skip the Jekyll content build
+## Mobile reading and color themes
+
+- Every page loads `assets/reading.css` after the original CSS. The text uses a wider mobile reading measure, 17px long-form body type, and accessible touch controls.
+- `assets/theme.js` automatically follows the device light/dark preference and persists manual changes in localStorage. The toggle appears in the header of the archive, edition, and paper reader.
+- Both themes use shared CSS variables. Check chart labels, focus outlines, readable contrast, reduced-motion support, and no sideways scrolling before publishing.
+
+## Interactive research explainers
+
+Selected high-impact technical research is treated as a separate, intuition-first explainer. The first example is `paper.html?slug=agent-judgment` with a source-linked walkthrough, methodology choice explorer, animated study design, measured-results comparison, and clearly labeled hypothetical slider.
+
+Paper data lives in `data/papers/<slug>.json`; the renderer is `assets/paper.js` and `assets/paper.css`. To link from the daily briefing, set `paperSlug` on the story in BOTH `data/posts/YYYY-MM-DD.json` and `data/archive.json`.
+
+Before creating new visual types or publishing a paper deep dive, follow **`docs/interactive-paper-authoring.md`**. All visualizations use approved JSON schemas, not arbitrary daily generated JS. Source measurements and hypothetical model outcomes must be clearly distinguished.
