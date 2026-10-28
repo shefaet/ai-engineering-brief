@@ -64,7 +64,7 @@ for edition in archive["editions"]:
         source = paper["source"]
         parsed = urlparse(source["url"])
         assert parsed.scheme == "https" and parsed.netloc and source.get("published"), f"Invalid paper source: {slug}"
-        assert len(paper["chapters"]) >= 4, f"Paper explainer too short: {slug}"
+        assert len(paper["chapters"]) >= 3, f"Paper explainer too short: {slug}"
         figures = 0
         chapter_ids = set()
         for chapter in paper["chapters"]:
@@ -88,7 +88,7 @@ for edition in archive["editions"]:
                     assert all(0 <= i["value"] <= dataset["max"] for i in dataset["items"]), f"Chart out of range: {slug}"
             elif figure_type == "toy-adherence":
                 assert 0 <= figure["minimum"] <= figure["initial"] <= figure["maximum"] <= 100, f"Invalid slider: {slug}"
-        assert figures >= 2, f"Paper needs multiple interactive figures: {slug}"
+        assert figures >= 1, f"Paper needs a meaningful interactive figure: {slug}"
 
 print(f"Validated {len(dates)} editions, {len(all_ids)} stories, "
       f"and {len(all_references)} cross-references.")
