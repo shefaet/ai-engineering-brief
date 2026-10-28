@@ -2,16 +2,16 @@
 
 This repository publishes **two related products**:
 
-1. A daily edition (only genuinely material developments; usually 1-5), stored at `data/posts/YYYY-MM-DD.json`.
+1. Independently published story posts (only genuinely material developments), stored at `data/stories/SLUG.json`.
 2. A deeper, optional interactive research explainer for selected significant technical papers, stored at `data/papers/<slug>.json` and rendered at `paper.html?slug=<slug>`.
 
-The article JSON must reference the explainer via `paperSlug`, and the matching item in `data/archive.json` must use the same `paperSlug`. The page renderer links both entries automatically.
+A story post at `story.html?id=SLUG` references its optional explainer via `paperSlug`; the matching flat record in `data/archive.json` must carry the same `paperSlug`. The page renderer links both entries automatically.
 
 ## Dense, bullet-first editorial schema
 
 Use structured bullets on both the daily edition and interactive paper chapters. Preserve exact technical nuance without forcing the reader through introductory prose.
 
-In `data/posts/YYYY-MM-DD.json`, use `sections: [{ "title": "Mechanism", "bullets": [{"lead":"Architecture","detail":"What actually changed, with constraints."}] }]`. In `data/papers/<slug>.json`, a chapter may use the same `bullets` property instead of `paragraphs`. Legacy `paragraphs` remain readable, but **new articles should be bullet-first**.
+In `data/stories/SLUG.json`, use `sections: [{ "title": "Mechanism", "bullets": [{"lead":"Architecture","detail":"What actually changed, with constraints."}] }]`. In `data/papers/<slug>.json`, a chapter may use the same `bullets` property instead of `paragraphs`. Legacy `paragraphs` remain readable, but **new articles should be bullet-first**.
 
 - Each bullet is one useful idea: a **short bold claim or dimension** followed by its causal/technical explanation. Use natural sentences, not slogan fragments.
 - Aim for 2-4 bullets per section and 4-9 per article when justified. This is not a quota; a difficult method may require more detail and a straightforward update much less.
@@ -75,13 +75,20 @@ Only use the allowed types with valid JSON. Never insert model-generated JS, HTM
 
 1. Read source paper, appendix and code if available. Confirm every numeric claim against the source.
 2. Verify paper JSON parses and all chapters/figure types have the fields the renderer expects.
-3. Verify the `paperSlug` points to a real `data/papers/<slug>.json` file, and that archive and post reference the same slug.
+3. Verify the `paperSlug` points to a real `data/papers/<slug>.json` file and that the flat archive record and standalone story reference the same slug.
 4. Test controls and animations at 375px mobile and desktop sizes; inspect both light and dark themes and keyboard navigation.
 5. Check figures for overflowing labels, clipped bars, stale text, and invalid interactions.
 6. Ensure `prefers-reduced-motion` is honored; avoid auto-play by default.
-7. Commit and read back both the paper JSON and the article/index files.
+7. Commit and read back the optional paper JSON, standalone story JSON, and flat archive-index record.
 8. Publish a short daily notification with article URL only after confirming GitHub writes. A GitHub commit does not by itself establish that Pages has deployed.
 
 ## Editorial rule for automation
 
-**Do not fabricate interactive depth.** If there is no validated paper worthy of a deep dive, publish a concise daily edition and mark that no paper explainer was added that day. Incomplete or unverified charts must not be published.
+**Do not fabricate interactive depth.** If there is no validated paper worthy of a deep dive, publish the standalone story without one. Do not add a placeholder note. Incomplete or unverified charts must not be published.
+
+## Independent publication and organization neutrality
+
+- Each development is a separate self-contained post with a globally unique slug and a date in `data/stories/SLUG.json`. The v2 flat `data/archive.json` records one indexed story per post, sorted by publication date. Do not create new multi-story daily edition files.
+- Related-story links and paper backlinks use `story.html?id=SLUG` (not daily-edition anchors). Retain old URLs only for backwards compatibility.
+- Do not refer to a reader's employer, internal department, employer-specific rollout plans, or named enterprise affiliation. A company, including Bloomberg, can be discussed when it is substantively the subject of verified public AI news; otherwise keep examples and implications organization-neutral.
+- The narrative should stand alone for any technical reader; avoid second-person references to the owner's organization.
