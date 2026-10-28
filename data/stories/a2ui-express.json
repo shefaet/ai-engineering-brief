@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-28",
+  "id": "a2ui-express",
+  "category": "AGENT INFRASTRUCTURE",
+  "priority": "High",
+  "title": "A2UI Express separates UI generation from rendering",
+  "dek": "Google introduces a compact inference format that compiles into validated A2UI messages, reducing model output while keeping rendering under client control.",
+  "tags": [
+    "Agents",
+    "Infrastructure",
+    "Evaluation"
+  ],
+  "evidence": "Google vendor measurements; independent replication pending",
+  "published": "2026-10-27",
+  "takeaway": "Prototype A2UI Express against direct JSON on representative financial workflows. Measure end-to-end latency, valid render rate, authorization checks and correction cost before selecting a generation format.",
+  "sections": [
+    {
+      "title": "Mechanism",
+      "bullets": [
+        {
+          "lead": "Trust boundary",
+          "detail": "The client supplies a catalog of allowed UI components. The agent proposes a component tree; the client renders validated structures rather than executing model-generated interface code."
+        },
+        {
+          "lead": "Authorization",
+          "detail": "Catalog constraints restrict UI structures, not the truth of displayed values or permission to execute actions. Server-side entitlements and data provenance remain separate controls."
+        }
+      ],
+      "paragraphs": [
+        "Trust boundary: The client supplies a catalog of allowed UI components. The agent proposes a component tree; the client renders validated structures rather than executing model-generated interface code.",
+        "Authorization: Catalog constraints restrict UI structures, not the truth of displayed values or permission to execute actions. Server-side entitlements and data provenance remain separate controls."
+      ],
+      "example": {
+        "type": "code-comparison",
+        "caption": "Same card, different model output",
+        "variants": [
+          {
+            "label": "Before · Direct JSON",
+            "language": "json",
+            "code": "{\n  \"version\": \"v0.9.1\",\n  \"updateComponents\": {\n    \"surfaceId\": \"alert\",\n    \"components\": [\n      {\n        \"id\": \"root\",\n        \"component\": \"Card\",\n        \"child\": \"label\"\n      },\n      {\n        \"id\": \"label\",\n        \"component\": \"Text\",\n        \"text\": \"Risk alert\"\n      }\n    ]\n  }\n}"
+          },
+          {
+            "label": "After · A2UI Express",
+            "language": "text",
+            "code": "surface(\"alert\")\nroot=Card(label)\nlabel=Text(\"Risk alert\")"
+          }
+        ],
+        "takeaway": "Express replaces repeated field names with short assignments. The SDK compiles them into A2UI JSON for the same renderer.",
+        "note": "Schematic example; the JSON excerpt omits surface creation. Not benchmark data."
+      }
+    },
+    {
+      "title": "Performance claims",
+      "bullets": [
+        {
+          "lead": "Vendor benchmark",
+          "detail": "Google reports up to 3× fewer output tokens and up to 3× lower latency versus Direct JSON; its comparison spans 51 tasks with gemini-3.5-flash under different thinking settings."
+        },
+        {
+          "lead": "Streaming trade-off",
+          "detail": "Direct JSON can stream chunks; Express waits for the full response before compilation. Faster completion does not guarantee earlier first useful render."
+        },
+        {
+          "lead": "Constrained layouts",
+          "detail": "Google separately cites up to 80× faster layout decisions with Jev. An 11-prompt demonstration reported 92–298 ms component trees and 0.8–1.7 s complete screens; this is not an independent Express comparison."
+        }
+      ],
+      "paragraphs": [
+        "Vendor benchmark: Google reports up to 3× fewer output tokens and up to 3× lower latency versus Direct JSON; its comparison spans 51 tasks with gemini-3.5-flash under different thinking settings.",
+        "Streaming trade-off: Direct JSON can stream chunks; Express waits for the full response before compilation. Faster completion does not guarantee earlier first useful render.",
+        "Constrained layouts: Google separately cites up to 80× faster layout decisions with Jev. An 11-prompt demonstration reported 92–298 ms component trees and 0.8–1.7 s complete screens; this is not an independent Express comparison."
+      ]
+    },
+    {
+      "title": "What to verify",
+      "bullets": [
+        {
+          "lead": "Evidence gap",
+          "detail": "Published figures are vendor measurements, not independently replicated production latency, cost, correctness, or security results. Jev's format is not yet included in the cited SDKs."
+        },
+        {
+          "lead": "Controlled experiment",
+          "detail": "Run 50–100 representative document, market-data, alert, and research tasks with the same model, catalog, and backend; compare Direct JSON with Express."
+        },
+        {
+          "lead": "Release gates",
+          "detail": "Measure p50/p95 end-to-end time, first useful render, token cost, valid renders, missing fields, retries, and denied-action behavior. Only promote when correctness and authorization meet baseline thresholds."
+        }
+      ],
+      "paragraphs": [
+        "Evidence gap: Published figures are vendor measurements, not independently replicated production latency, cost, correctness, or security results. Jev's format is not yet included in the cited SDKs.",
+        "Controlled experiment: Run 50–100 representative document, market-data, alert, and research tasks with the same model, catalog, and backend; compare Direct JSON with Express.",
+        "Release gates: Measure p50/p95 end-to-end time, first useful render, token cost, valid renders, missing fields, retries, and denied-action behavior. Only promote when correctness and authorization meet baseline thresholds."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Google Developers Blog - Fast, reliable A2UI, with swappable inference formats",
+      "url": "https://developers.googleblog.com/fast-reliable-a2ui/",
+      "published": "2026-10-27",
+      "type": "Official vendor technical article"
+    }
+  ],
+  "related": [
+    {
+      "date": "2026-10-28",
+      "id": "agent-eval-loop",
+      "label": "Related: Evaluating agents as evolving systems"
+    }
+  ]
+}
