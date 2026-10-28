@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-27",
+  "id": "agent-judgment",
+  "category": "RESEARCH & SAFETY",
+  "priority": "Very high",
+  "title": "Anthropic measures how agents influence expert decisions",
+  "dek": "A randomized study of professional analysts reveals strong influence on four methodological decisions.",
+  "tags": [
+    "Agents",
+    "Evaluation",
+    "Safety",
+    "Financial AI"
+  ],
+  "evidence": "Primary controlled experiment; limited sample and task",
+  "published": "2026-10-27",
+  "takeaway": "A final human sign-off does not necessarily mean the analyst independently selected the methods that determine the result.",
+  "sections": [
+    {
+      "title": "Experimental design",
+      "bullets": [
+        {
+          "lead": "Randomization",
+          "detail": "Fifty experienced analysts used Claude Code on a fictional farming-policy evaluation. Hidden assignments made the agent advocate one of two defensible choices for the metric, comparison method, population, and weighting."
+        },
+        {
+          "lead": "Control group caveat",
+          "detail": "Eleven additional analysts chose not to use an agent; that self-selection prevents treating the comparison as a randomized estimate of AI's overall benefit."
+        }
+      ],
+      "paragraphs": [
+        "Randomization: Fifty experienced analysts used Claude Code on a fictional farming-policy evaluation. Hidden assignments made the agent advocate one of two defensible choices for the metric, comparison method, population, and weighting.",
+        "Control group caveat: Eleven additional analysts chose not to use an agent; that self-selection prevents treating the comparison as a randomized estimate of AI's overall benefit."
+      ]
+    },
+    {
+      "title": "Observed influence",
+      "interactive": "anthropic-chart",
+      "chartData": {
+        "decisions": [
+          {
+            "label": "Outcome definition",
+            "value": 92
+          },
+          {
+            "label": "Comparison method",
+            "value": 82
+          },
+          {
+            "label": "Target population",
+            "value": 81
+          },
+          {
+            "label": "Weighting scheme",
+            "value": 90
+          }
+        ],
+        "recommendation": [
+          {
+            "label": "Agent favored rollout",
+            "value": 54
+          },
+          {
+            "label": "Agent opposed rollout",
+            "value": 36
+          }
+        ]
+      },
+      "bullets": [
+        {
+          "lead": "Method choices",
+          "detail": "Across four decisions, analysts selected the agent's assigned preference 86% of the time. The chart separates each methodological choice from the final rollout recommendation."
+        }
+      ],
+      "paragraphs": [
+        "Method choices: Across four decisions, analysts selected the agent's assigned preference 86% of the time. The chart separates each methodological choice from the final rollout recommendation."
+      ]
+    },
+    {
+      "title": "Limits & engineering action",
+      "bullets": [
+        {
+          "lead": "External validity",
+          "detail": "The agent's preferences were deliberately reinforced. Fifty AI-assisted participants, one task, and one model configuration cannot establish production-wide influence rates."
+        },
+        {
+          "lead": "Control design",
+          "detail": "Record the analyst's pre-agent choice of metric, peer set, period, and weights. Audit who proposed any change; test alternative defensible methods before approving conclusions."
+        }
+      ],
+      "paragraphs": [
+        "External validity: The agent's preferences were deliberately reinforced. Fifty AI-assisted participants, one task, and one model configuration cannot establish production-wide influence rates.",
+        "Control design: Record the analyst's pre-agent choice of metric, peer set, period, and weights. Audit who proposed any change; test alternative defensible methods before approving conclusions."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Anthropic Research - How AI agents shape experts' judgment calls",
+      "url": "https://www.anthropic.com/research/agents-judgment-calls",
+      "published": "2026-10-27",
+      "type": "Primary research report"
+    }
+  ],
+  "related": [
+    {
+      "date": "2026-10-28",
+      "id": "agent-eval-loop",
+      "label": "Related: Build regression evaluations for agents"
+    }
+  ],
+  "paperSlug": "agent-judgment",
+  "paperLabel": "Interactive deep dive: explore the randomized experiment"
+}
