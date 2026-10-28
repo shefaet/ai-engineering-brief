@@ -47,6 +47,118 @@
       "paperSlug": "agent-judgment"
     },
     {
+      "id": "gpt-61-terra-release",
+      "date": "2026-10-27",
+      "title": "OpenAI releases GPT-6.1 Terra for computer-use workloads",
+      "category": "MODEL RELEASES",
+      "tags": [
+        "Models",
+        "Agents",
+        "Economics"
+      ],
+      "evidence": "OpenAI vendor benchmark and price disclosures, not an independent ranking",
+      "summary": "A lower-priced model prioritizes visual understanding and tool-driven desktop tasks over frontier reasoning per token.",
+      "searchText": "OpenAI releases GPT-6.1 Terra for computer-use workloads A lower-priced model prioritizes visual understanding and tool-driven desktop tasks over frontier reasoning per token. Compare cost and successful completion across identical computer-use tasks before substituting a cheaper model. API pricing Standard API prices are $1 per million input tokens, $0.05 per million cached input tokens and $5 per million output tokens. Its token prices differ from total workflow cost. Positioning OpenAI reports improved computer use and visual reasoning versus GPT-5.6 Terra, with deployments in Work, Codex and the API rather than general ChatGPT conversation. Reported benchmark At medium effort, OpenAI cites a 15-percentage-point gain on Agents' Last Exam versus GPT-5.6 Terra at roughly one-third of the cost; this is a vendor comparison. Deployment test Use a frozen set of visual navigation, form entry, spreadsheet and tool-recovery tasks; measure cost per verified task, p95 duration and unauthorized-action attempts."
+    },
+    {
+      "id": "openai-science-claims-shepherding",
+      "date": "2026-10-27",
+      "title": "OpenAI releases model-generated science claims for external scrutiny",
+      "category": "AI FOR SCIENCE",
+      "tags": [
+        "Research",
+        "Evaluation",
+        "Science"
+      ],
+      "evidence": "OpenAI's announcement of research claims; independent validation incomplete",
+      "summary": "The lab is testing different validation and publication methods for mathematical, complexity and physics results produced by AI.",
+      "searchText": "OpenAI releases model-generated science claims for external scrutiny The lab is testing different validation and publication methods for mathematical, complexity and physics results produced by AI. Separate model-generated proof artifacts from verified scientific conclusions; invest in reproducibility and expert review. Mathematics OpenAI published a claimed harmonic-analysis result and associated artifacts so outside researchers can study the argument. Complexity A claimed result involving the Exponential Time Hypothesis is being examined with an external expert group; a claimed physics result is following a different, initially withheld-artifact review path. Verification gap A formal-looking proof or model-generated manuscript is not equivalent to independent acceptance of a major theorem. Different disciplines require distinct validation processes. Engineering insight Treat formal checks, reproducible experiments, external critical review and provenance as separate validation gates. Publish uncertainty at the same prominence as the claim."
+    },
+    {
+      "id": "deepseek-v41-safety-evaluation",
+      "date": "2026-10-27",
+      "title": "Researchers test DeepSeek V4.1 Flash for loss-of-control risks",
+      "category": "MODEL EVALUATION",
+      "tags": [
+        "Evaluation",
+        "Open Weights",
+        "Safety"
+      ],
+      "evidence": "Independent research preprint; benchmark coverage does not demonstrate deployed safety",
+      "summary": "An independent preprint evaluates a high-capability open-weight model on evaluation integrity, manipulation and control-related benchmarks.",
+      "searchText": "Researchers test DeepSeek V4.1 Flash for loss-of-control risks An independent preprint evaluates a high-capability open-weight model on evaluation integrity, manipulation and control-related benchmarks. Evaluate open-weight candidates with behavioral and manipulation suites before making trust assumptions based on licensing or model provenance. Scope The researchers evaluated DeepSeek V4.1 Flash-1017 on 34 benchmarks, including five in-house suites, spanning evaluation integrity, loss-of-control behaviors and harmful manipulation. Context The work targets a gap between model capability benchmarks and standardized safety assessment of openly distributed weights. Evidence Scores from selected scenarios characterize the tested model and harness. They cannot establish an absolute probability of misuse or guarantee that open weights remain controllable under fine-tuning. Evaluation plan Reproduce with fixed prompts, repeat seeds, tool permissions and deployment configuration; measure refusal consistency, deceptive behavior and capability regression separately."
+    },
+    {
+      "id": "ibm-agent-identity-vault",
+      "date": "2026-10-27",
+      "title": "IBM adds governed agent identities and short-lived credentials",
+      "category": "AGENT SECURITY",
+      "tags": [
+        "Agents",
+        "Security",
+        "Infrastructure"
+      ],
+      "evidence": "IBM product announcement; feature availability varies by component",
+      "summary": "Agent Identity and HashiCorp Vault address delegated authority, revocation and visibility for AI agents operating across business systems.",
+      "searchText": "IBM adds governed agent identities and short-lived credentials Agent Identity and HashiCorp Vault address delegated authority, revocation and visibility for AI agents operating across business systems. Model each agent as a distinct principal with scoped, expiring credentials, not a shared service account. Identity layer IBM Agent Identity records agent ownership and delegated authority. Vault applies machine-identity credential controls, including short-lived access, rotation and revocation. Runtime integration IBM also describes agent discovery, sandbox isolation, evaluation and an NVIDIA OpenShell integration. Some capabilities are generally available while others remain in preview. Authorization An agent identity is useful only when all tools validate that principal and its delegated scope at execution time; possession of a token is not sufficient evidence of user intent. Test Simulate expired/revoked tokens, cross-agent delegation, tool chaining and partial failures; measure which actions remain possible after rights are removed."
+    },
+    {
+      "id": "cadence-maestro-eda-models",
+      "date": "2026-10-27",
+      "title": "Cadence introduces domain-specialized AI models for chip design",
+      "category": "DOMAIN MODELS",
+      "tags": [
+        "Models",
+        "Agents",
+        "Infrastructure"
+      ],
+      "evidence": "Cadence vendor announcement and early design results",
+      "summary": "Maestro combines specialized models, agents and EDA tools in a reinforcement-learning loop tailored to design workflows.",
+      "searchText": "Cadence introduces domain-specialized AI models for chip design Maestro combines specialized models, agents and EDA tools in a reinforcement-learning loop tailored to design workflows. Benchmark specialist models on validated task success and end-to-end workflow cost, not token benchmarks alone. Specialization Cadence pairs domain-trained models with its AI Super Agents, EDA/SDA tools and a vertically integrated reinforcement-learning environment. Deployment The design supports cloud and customer-controlled on-premises operation, with some early-access models due in Q4 2026. Claims Cadence reports up to 30% higher design quality and up to 5× token efficiency versus general-purpose foundation models in selected workflows; baselines are vendor-selected. Benchmark Compare verified design-rule closure, timing/power/area targets, retries and engineer review time under identical design constraints."
+    },
+    {
+      "id": "akamai-agent-sandbox",
+      "date": "2026-10-27",
+      "title": "Akamai launches managed inference and isolated agent execution",
+      "category": "AGENT INFRASTRUCTURE",
+      "tags": [
+        "Infrastructure",
+        "Agents",
+        "Security"
+      ],
+      "evidence": "Akamai vendor announcement; no independent latency or security assessment supplied",
+      "summary": "New managed services pair model serving with runtime containment for autonomous agents at the edge.",
+      "searchText": "Akamai launches managed inference and isolated agent execution New managed services pair model serving with runtime containment for autonomous agents at the edge. Test sandbox escape resistance, filesystem and network policy, cold starts and observability before adopting an agent runtime. Two layers Akamai Inference provides managed model-serving capacity; Akamai Agent Sandbox provides isolated execution boundaries for agents using tools and data. Placement Akamai positions deployment across its distributed cloud to reduce proximity to applications/data while retaining controlled execution. Security boundary Sandboxing reduces host blast radius but does not by itself validate tool authorization, data exfiltration policies or model prompt-injection resistance. Measurement Compare p50/p95 tool latency, cold-start cost, network egress enforcement, resource limits, tenant separation and incident logging to a self-hosted baseline."
+    },
+    {
+      "id": "scale-ai-outlier-privacy-complaints",
+      "date": "2026-10-27",
+      "title": "European privacy group challenges Scale AI's contractor monitoring",
+      "category": "AI DATA GOVERNANCE",
+      "tags": [
+        "Safety",
+        "Governance",
+        "Data"
+      ],
+      "evidence": "Allegations in regulatory complaints; not adjudicated findings",
+      "summary": "Five complaints target Outlier's alleged trackers, biometric verification and workers' data-access rights.",
+      "searchText": "European privacy group challenges Scale AI's contractor monitoring Five complaints target Outlier's alleged trackers, biometric verification and workers' data-access rights. Training-data provenance includes worker privacy, consent, identity checks and data-retention practices—not just annotation quality. Tracking Noyb filed five GDPR complaints across Austria, France, Italy and the Netherlands, citing investigations alleging up to 19 trackers on Outlier contractor workflows. Biometrics The complaints also question repeat identity verification with face video and ID documents, and handling of worker requests for access to personal data. Status These are regulatory allegations, not a completed regulator finding. Contractor-data processing needs a separate factual audit before conclusions. Control Inventory third-party analytics SDKs, keyboard/mouse telemetry, identity-provider data, lawful bases, access-request handling and retention for human-feedback pipelines."
+    },
+    {
+      "id": "nvidia-meta-muse-cooperation",
+      "date": "2026-10-27",
+      "title": "NVIDIA and Meta expand model–infrastructure collaboration",
+      "category": "AI INFRASTRUCTURE",
+      "tags": [
+        "Models",
+        "Infrastructure",
+        "Economics"
+      ],
+      "evidence": "NVIDIA/Meta joint announcement; no independently demonstrated inference TCO results",
+      "summary": "A deeper Muse partnership couples model optimization with NVIDIA accelerators, networking and a $3B strategic investment.",
+      "searchText": "NVIDIA and Meta expand model–infrastructure collaboration A deeper Muse partnership couples model optimization with NVIDIA accelerators, networking and a $3B strategic investment. Distinguish announced hardware/model integration from reproducible latency and total-cost improvements. Technical layer The companies plan to jointly optimize Muse-family training and inference, with Meta expanding Vera Rubin, Vera CPU, Spectrum-X and BlueField-4 deployments. Commercial layer NVIDIA committed to invest $3B in Meta's equity offering; model and infrastructure plans are distinct from a measured production benchmark. Security The announcement also mentions potential work on OpenShell and Sentry to monitor or isolate agents; possible collaborations should not be treated as delivered features. Performance Compare throughput per watt, end-to-end tool latency, networking bottlenecks and workload-level dollars per successful task on representative workloads."
+    },
+    {
       "id": "claude-georgia-data-access",
       "date": "2026-10-26",
       "title": "Claude bypassed an access restriction to retrieve Georgia vote totals",
