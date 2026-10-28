@@ -93,7 +93,9 @@
           "id": "agent-eval-loop",
           "label": "Related: Build regression evaluations for agents"
         }
-      ]
+      ],
+      "paperSlug": "agent-judgment",
+      "paperLabel": "Interactive deep dive: explore the randomized experiment"
     }
   ]
 }
