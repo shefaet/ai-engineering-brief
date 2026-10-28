@@ -1,0 +1,61 @@
+{
+  "id": "llmjacking-cloud-billing-hijack",
+  "date": "2026-10-28",
+  "published": "2026-10-20",
+  "category": "AI SECURITY",
+  "priority": "High",
+  "title": "LLMjacking now targets cloud billing accounts, not only API keys",
+  "dek": "Attackers linked their own projects to compromised victims' billing accounts and ran large volumes of AI inference outside victims' logging scope.",
+  "tags": [
+    "Security",
+    "Infrastructure",
+    "Agents"
+  ],
+  "evidence": "Wiz incident-response research from multiple investigated cases",
+  "takeaway": "Monitor billing-account membership and cross-project attachments as first-class AI abuse indicators.",
+  "sections": [
+    {
+      "title": "Attack chain",
+      "bullets": [
+        {
+          "lead": "Entry",
+          "detail": "Wiz describes sponsored-search phishing that stole privileged cloud credentials and session factors, followed by weakening organization-policy domain restrictions and granting external accounts billing authority."
+        },
+        {
+          "lead": "Abuse",
+          "detail": "External attacker-controlled projects were attached to victim billing accounts, so Gemini API charges accrued to the victim while prompts and model logs remained in foreign projects."
+        }
+      ],
+      "paragraphs": [
+        "Entry: Wiz describes sponsored-search phishing that stole privileged cloud credentials and session factors, followed by weakening organization-policy domain restrictions and granting external accounts billing authority.",
+        "Abuse: External attacker-controlled projects were attached to victim billing accounts, so Gemini API charges accrued to the victim while prompts and model logs remained in foreign projects."
+      ]
+    },
+    {
+      "title": "Detection and containment",
+      "bullets": [
+        {
+          "lead": "Observed impact",
+          "detail": "Wiz reports some victims accrued tens to hundreds of thousands of dollars in unauthorized AI API consumption over 24–48 hours; amounts are case observations, not a typical-case estimate."
+        },
+        {
+          "lead": "Controls",
+          "detail": "Alert on billing.resourceAssociations.create, external billing admins, policy-domain changes, unexpected model enablement and spend anomalies; enforce least privilege on billing relationships."
+        }
+      ],
+      "paragraphs": [
+        "Observed impact: Wiz reports some victims accrued tens to hundreds of thousands of dollars in unauthorized AI API consumption over 24–48 hours; amounts are case observations, not a typical-case estimate.",
+        "Controls: Alert on billing.resourceAssociations.create, external billing admins, policy-domain changes, unexpected model enablement and spend anomalies; enforce least privilege on billing relationships."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Wiz — From phishing to LLMjacking",
+      "url": "https://www.wiz.io/blog/from-phishing-to-llmjacking",
+      "published": "2026-10-20",
+      "type": "Primary incident-response research"
+    }
+  ],
+  "related": []
+}
