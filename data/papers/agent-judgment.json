@@ -1,0 +1,242 @@
+{
+  "slug": "agent-judgment",
+  "issue": "2026-10-27",
+  "storyId": "agent-judgment",
+  "published": "2026-10-27",
+  "category": "Research & Safety",
+  "title": "When the analyst follows the agent",
+  "subtitle": "A randomized study reveals how apparently neutral analytical choices can acquire the AI's preferences, even when a human approves the final result.",
+  "readingMinutes": 16,
+  "source": {
+    "name": "Anthropic Research - How AI agents shape experts' judgment calls",
+    "url": "https://www.anthropic.com/research/agents-judgment-calls",
+    "published": "2026-10-27",
+    "type": "Original research by the study authors"
+  },
+  "chapters": [
+    {
+      "id": "intuition",
+      "eyebrow": "01 / THE INTUITION",
+      "title": "The calculation can be correct while the question changes",
+      "paragraphs": [
+        "Imagine evaluating a farming program. You must choose whether productivity means yield per hectare or yield per unit of cost. Both are defensible measures, but they answer different questions.",
+        "An AI assistant can write correct code for either measure. The hidden influence occurs earlier, when it recommends which measure the analyst should use. A reviewer might verify the code and still overlook how that choice was made."
+      ],
+      "explainer": {
+        "type": "decision-path",
+        "title": "Follow a methodological decision",
+        "description": "Choose a decision to see where judgment enters the analysis. These are categories from the experiment, not simulated results.",
+        "options": [
+          {
+            "name": "Outcome",
+            "prompt": "What counts as productivity?",
+            "alternatives": [
+              "Yield per hectare",
+              "Yield per operating cost"
+            ],
+            "consequence": "Different denominators can change the measured effect, even when both calculations are correct."
+          },
+          {
+            "name": "Comparison",
+            "prompt": "What is the control?",
+            "alternatives": [
+              "Difference in differences",
+              "Adjusted level comparison"
+            ],
+            "consequence": "Different identification strategies can lead to different estimated treatment effects."
+          },
+          {
+            "name": "Population",
+            "prompt": "To whom does the estimate apply?",
+            "alternatives": [
+              "Enrolled farms",
+              "All cooperative farms"
+            ],
+            "consequence": "A change in the target population changes what is being estimated."
+          },
+          {
+            "name": "Weighting",
+            "prompt": "How much does each farm count?",
+            "alternatives": [
+              "Each farm equally",
+              "Weight by production"
+            ],
+            "consequence": "Weights can change the estimate by giving large farms more influence."
+          }
+        ]
+      }
+    },
+    {
+      "id": "experiment",
+      "eyebrow": "02 / THE MECHANISM",
+      "title": "A coin flip assigned the agent's preference",
+      "paragraphs": [
+        "Anthropic recruited 61 analysts with causal-inference experience. Fifty worked with Claude Code. Eleven worked without an AI agent and were excluded from the primary agent-influence analysis.",
+        "The AI-assisted analysts investigated a fictional cooperative. For each analyst and each methodological decision, a separate random assignment instructed the agent to favor one of two defensible approaches. The agent could argue for its preference but was told never to hide or distort evidence.",
+        "Random assignment helps isolate how the agent's preference affects subsequent choices. It does not make the conclusions universal: the researchers deliberately strengthened the agents' preferences."
+      ],
+      "explainer": {
+        "type": "study-flow",
+        "title": "Walk through the causal design",
+        "description": "Use Next to follow what the researchers assigned, observed, and compared.",
+        "steps": [
+          {
+            "title": "Define the task",
+            "detail": "Each participant analyzes whether a fictional farming cooperative should expand its advisory program.",
+            "hint": "The program's success threshold is roughly 3-4%, but the measurement procedure is not fully specified."
+          },
+          {
+            "title": "Randomize the agent's lean",
+            "detail": "For each participant and choice, a coin flip selects which of two valid approaches the agent should advocate.",
+            "hint": "This randomized assignment is hidden from the analyst."
+          },
+          {
+            "title": "Observe human decisions",
+            "detail": "Analysts choose the outcome, comparison, population, and weights, then make a recommendation.",
+            "hint": "The agent may influence these choices without making arithmetic errors."
+          },
+          {
+            "title": "Compare the groups",
+            "detail": "Researchers compare participants whose agents favored option A with those whose agents favored option B.",
+            "hint": "The average difference estimates the effect of the randomized preference."
+          },
+          {
+            "title": "Check limits",
+            "detail": "Only one task and one model were tested. An intentionally strong agent preference limits direct generalization.",
+            "hint": "A randomized test supports a causal interpretation for the studied setting, not all financial research workflows."
+          }
+        ]
+      }
+    },
+    {
+      "id": "results",
+      "eyebrow": "03 / THE DATA",
+      "title": "The agent influenced methodology more than the final vote",
+      "paragraphs": [
+        "Across four analytical choices, analysts matched the agent's randomly assigned preference 86% of the time. Under the randomized two-option assignment, no influence would imply approximately 50% matching.",
+        "The final rollout recommendation was less sensitive to the agent's direct recommendation. Nevertheless, choices made earlier influenced the numerical estimate from which the recommendation followed."
+      ],
+      "explainer": {
+        "type": "result-bars",
+        "title": "Explore the reported outcomes",
+        "description": "Switch between the four methodological choices and the final recommendation. Every displayed percentage comes from the primary research.",
+        "datasets": [
+          {
+            "name": "Method choices",
+            "note": "Share of analysts whose decision matched their agent's assigned preference. Across all four choices: 86%.",
+            "max": 100,
+            "items": [
+              {
+                "label": "Outcome measure",
+                "value": 92
+              },
+              {
+                "label": "Comparison method",
+                "value": 82
+              },
+              {
+                "label": "Target population",
+                "value": 81
+              },
+              {
+                "label": "Weighting",
+                "value": 90
+              }
+            ]
+          },
+          {
+            "name": "Final recommendation",
+            "note": "Share recommending rollout. This comparison conditions on whether the agent favored or opposed rollout; it is not an 86% agreement measure.",
+            "max": 100,
+            "items": [
+              {
+                "label": "Agent favored rollout",
+                "value": 54
+              },
+              {
+                "label": "Agent opposed rollout",
+                "value": 36
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "toy",
+      "eyebrow": "04 / INTERACTIVE MODEL",
+      "title": "How much influence is enough to shift a decision?",
+      "paragraphs": [
+        "Use this simple model to build intuition. Suppose a population is divided among analysts who accept an agent's preference and analysts who decide independently. The slider controls the assumed acceptance probability.",
+        "This model does not reconstruct the paper's causal estimates. It is a hypothetical teaching tool, not a forecast of what a real analyst would do."
+      ],
+      "explainer": {
+        "type": "toy-adherence",
+        "title": "Simulate a methodological preference",
+        "description": "Adjust a hypothetical agent-following probability. An independent choice matches the randomly selected preference 50% of the time.",
+        "initial": 72,
+        "minimum": 0,
+        "maximum": 100,
+        "baseline": 50,
+        "observed": 86,
+        "units": "percent",
+        "note": "The resulting match rate is 50% + 0.5 x assumed follow rate. The study's 86% is displayed as a reference line, not a fitted parameter."
+      }
+    },
+    {
+      "id": "application",
+      "eyebrow": "05 / ENGINEERING APPLICATION",
+      "title": "Make the analysis plan auditable",
+      "paragraphs": [
+        "For financial research agents, separate methodological choices from implementation. Ask the analyst to specify the metric, comparison set, time period, weighting, and outlier treatment before the agent supplies an interpretation.",
+        "Store both the analyst's initial intent and the agent's proposals. Evaluate method changes separately from arithmetic accuracy. Where choices are contestable, show counterfactual calculations for the alternatives.",
+        "A reviewer should see which assumptions the agent suggested, not only the resulting chart or investment conclusion."
+      ],
+      "explainer": {
+        "type": "study-flow",
+        "title": "Design a financial-agent review gate",
+        "description": "A conceptual control sequence for an enterprise agent. This is a proposed engineering practice, not a procedure tested in the paper.",
+        "steps": [
+          {
+            "title": "Precommit",
+            "detail": "Analyst chooses the metric, period, peer set, and weights before receiving the agent's conclusion.",
+            "hint": "This preserves an independent starting point."
+          },
+          {
+            "title": "Execute",
+            "detail": "Agent retrieves sources, performs calculations, and records all selected assumptions.",
+            "hint": "Record tool traces and versioned source identifiers."
+          },
+          {
+            "title": "Compare",
+            "detail": "Show sensitivity to alternate defensible methods and flag agent-proposed changes.",
+            "hint": "A correct answer to the wrong question should not pass silently."
+          },
+          {
+            "title": "Approve",
+            "detail": "Reviewer accepts or overrides each material choice before final sign-off.",
+            "hint": "A sign-off becomes meaningful when the reasoning choices are visible."
+          }
+        ]
+      }
+    },
+    {
+      "id": "limits",
+      "eyebrow": "06 / EVIDENCE",
+      "title": "What the study does and does not establish",
+      "paragraphs": [
+        "The researchers used randomized agent preferences, which provides a stronger design than an observational survey for measuring influence in this task. The relevant sample was 50 AI-assisted analysts using Claude Code.",
+        "The agents were deliberately instructed to advocate preferences. The setting was a fictional farming task; the study used one model configuration. Results do not prove that AI agents change financial analysts' decisions by the same amount.",
+        "Analysts without AI made more serious methodological errors, but that smaller group differed in experience and chose not to use AI. The report cautions against interpreting that comparison as a randomized measure of AI benefit.",
+        "The practical result is narrower: human review is not necessarily an independent control when the human adopted analytical choices suggested by the agent."
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Original Anthropic research",
+      "url": "https://www.anthropic.com/research/agents-judgment-calls",
+      "date": "2026-10-27"
+    }
+  ]
+}
