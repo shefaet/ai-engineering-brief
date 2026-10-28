@@ -1,0 +1,61 @@
+{
+  "id": "cxmt-hbm3e-yield-challenge",
+  "date": "2026-10-28",
+  "published": "2026-10-28",
+  "category": "CHIP SUPPLY",
+  "priority": "High",
+  "title": "CXMT pushes into HBM3E production despite low manufacturing yields",
+  "dek": "Reported yields highlight why domestic memory substitution is a packaging and manufacturing problem, not just a design announcement.",
+  "tags": [
+    "Infrastructure",
+    "Semiconductors",
+    "Economics"
+  ],
+  "evidence": "Reuters citing people familiar with production; figures not independently audited",
+  "takeaway": "Forecast accelerator availability from known-good stacked memory and packaging throughput, not nominal production starts.",
+  "sections": [
+    {
+      "title": "Production signal",
+      "bullets": [
+        {
+          "lead": "Low yield",
+          "detail": "Reuters sources estimate roughly 20–30% usable HBM3E output in CXMT's process versus about 70% at SK Hynix; samples have reportedly reached domestic accelerator designers."
+        },
+        {
+          "lead": "Schedule",
+          "detail": "Limited production was expected within two months. Reported sample performance was nearer prior-generation HBM3 than leading HBM3E."
+        }
+      ],
+      "paragraphs": [
+        "Low yield: Reuters sources estimate roughly 20–30% usable HBM3E output in CXMT's process versus about 70% at SK Hynix; samples have reportedly reached domestic accelerator designers.",
+        "Schedule: Limited production was expected within two months. Reported sample performance was nearer prior-generation HBM3 than leading HBM3E."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Supply constraint",
+          "detail": "HBM stacks require dense interconnects, packaging and high known-good-die yield. Low yield raises cost per usable stack and limits the number of accelerators that can ship."
+        },
+        {
+          "lead": "Forecast",
+          "detail": "Sensitivity-test effective HBM bandwidth, yield, package capacity and qualification timing; do not infer export-independent accelerator scale from a launch announcement."
+        }
+      ],
+      "paragraphs": [
+        "Supply constraint: HBM stacks require dense interconnects, packaging and high known-good-die yield. Low yield raises cost per usable stack and limits the number of accelerators that can ship.",
+        "Forecast: Sensitivity-test effective HBM bandwidth, yield, package capacity and qualification timing; do not infer export-independent accelerator scale from a launch announcement."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Reuters — CXMT advanced AI memory production",
+      "url": "https://www.reuters.com/world/china/chinas-cxmt-start-advanced-ai-memory-production-despite-poor-yields-sources-say-2026-10-28/",
+      "published": "2026-10-28",
+      "type": "Independent reporting"
+    }
+  ],
+  "related": []
+}
