@@ -21,31 +21,46 @@
       "sections": [
         {
           "title": "What changed",
-          "paragraphs": [
-            "Google published a technical walkthrough of Agents CLI's evaluation commands. Its workflow separates running test cases, grading traces, comparing runs, analyzing repeated failures, and optimizing prompts.",
-            "The sample evaluation shows how an apparently harmless system-prompt edit can reduce tool use and cause hallucinated answers even though code still runs correctly."
+          "bullets": [
+            {
+              "lead": "Evaluation as a pipeline",
+              "detail": "Google's Agents CLI separates trace generation, grading, run comparisons, failure analysis, and prompt optimization; the unit of evaluation is the tool-using agent, not the model alone."
+            },
+            {
+              "lead": "Failure mode",
+              "detail": "A system-prompt edit can suppress tool calls and produce unsupported answers while the application code still executes."
+            }
           ]
         },
         {
-          "title": "Evaluation loop",
-          "paragraphs": [
-            "The workflow uses eval generate to produce traces, eval grade to score them, eval compare to inspect differences, eval analyze to identify repeated failures, and eval optimize for selected prompt-optimization tasks.",
-            "Select each stage below to explore the corresponding engineering control."
-          ],
+          "title": "Inspect the loop",
+          "bullets": [],
           "interactive": "eval-loop"
         },
         {
-          "title": "Numerical example",
-          "paragraphs": [
-            "In Google's small illustrative test of four cases, the average response quality score fell from 4.00 to 2.75 on a five-point scale after a prompt regression. The example shows why teams should inspect per-case failures rather than treating a single average as a reliable release gate.",
-            "Four test cases are insufficient to estimate production reliability. The numeric example demonstrates a workflow, not a general performance benchmark."
+          "title": "Evidence & limits",
+          "bullets": [
+            {
+              "lead": "Measured in example",
+              "detail": "Across four test cases, mean response-quality score dropped from 4.00 to 2.75 / 5 after a prompt regression."
+            },
+            {
+              "lead": "What it does not show",
+              "detail": "Four examples illustrate the regression-detection workflow; they are insufficient to estimate production reliability."
+            }
           ]
         },
         {
-          "title": "Application to financial AI",
-          "paragraphs": [
-            "Create a fixed evaluation dataset with financial document retrieval, numerical reconciliation, source attribution, entitlement checks, and structured query execution.",
-            "Record full tool traces and compare candidates on task success, unsupported claims, unauthorized tool attempts, cost, retries, and p95 latency. Review per-case regressions before promotion."
+          "title": "Engineering test",
+          "bullets": [
+            {
+              "lead": "Dataset",
+              "detail": "Freeze representative financial retrieval, numerical reconciliation, citations, entitlement checks, and structured-query tasks."
+            },
+            {
+              "lead": "Release gate",
+              "detail": "Compare per-case tool traces, task success, unsupported claims, unauthorized actions, p95 latency, and cost. Reject regressions masked by a stable mean."
+            }
           ]
         }
       ],
@@ -81,36 +96,54 @@
       "takeaway": "Prototype A2UI Express against direct JSON on representative financial workflows. Measure end-to-end latency, valid render rate, authorization checks and correction cost before selecting a generation format.",
       "sections": [
         {
-          "title": "Architecture and trust boundary",
-          "paragraphs": [
-            "A2UI is a protocol for agent-generated user interfaces. The client advertises a catalog of trusted components. An agent proposes a component tree using that catalog, and the client renderer constructs the screen. This separates the model's UI proposal from the code that actually renders and handles interactions.",
-            "Previously, agents produced the JSON transport format directly. In the new Express mode, a model emits a compact, line-oriented intermediate representation. The agent SDK generates format instructions from the component catalog's schema, then deterministically compiles the completed model response into validated A2UI messages. An inference format can be replaced without changing the catalog or renderer.",
-            "Catalog validation limits which component types and properties the model can request. It does not by itself establish that displayed facts are accurate or that an action is authorized. Applications must still validate data access, server-side actions and user permissions."
+          "title": "Mechanism",
+          "bullets": [
+            {
+              "lead": "Trust boundary",
+              "detail": "The client supplies a catalog of allowed UI components. The agent proposes a component tree; the client renders validated structures rather than executing model-generated interface code."
+            },
+            {
+              "lead": "Express format",
+              "detail": "The model emits compact, line-oriented output. The SDK deterministically compiles the full response to validated A2UI messages; the component catalog and renderer stay unchanged."
+            },
+            {
+              "lead": "Authorization",
+              "detail": "Catalog constraints restrict UI structures, not the truth of displayed values or permission to execute actions. Server-side entitlements and data provenance remain separate controls."
+            }
           ]
         },
         {
-          "title": "Latency and token benchmark specifics",
-          "paragraphs": [
-            "Google reports that Express uses up to three times fewer output tokens and can reduce latency by up to three times compared with Direct JSON for the same kinds of generated screens. These are vendor-reported upper bounds, not guaranteed speedups for every model or interface.",
-            "The team compared Direct JSON, Express, Atom and Elemental on a 51-task evaluation using gemini-3.5-flash with thinking enabled and disabled. Google says Express worked well without thinking, which can reduce generation time. The blog does not provide sufficient independent replication to establish production-wide performance.",
-            "Direct JSON can stream message chunks in the Python and TypeScript SDKs. Express compilation waits for the full model response. A shorter completion may therefore improve total time while delaying the first visible component. Benchmark time to first useful render as well as final completion.",
-            "For predefined layouts, Google describes a separate approach using the Jev decision model to select structures rather than generate a complete tree. Google cites up to 80 times faster layout decisions. In one small 11-prompt Apparite demonstration, component trees appeared in 92 to 298 milliseconds and full screens completed in 0.8 to 1.7 seconds. Those figures come from a limited demonstration, not a controlled independent comparison against Express."
+          "title": "Performance claims",
+          "bullets": [
+            {
+              "lead": "Vendor benchmark",
+              "detail": "Google reports up to 3× fewer output tokens and up to 3× lower latency versus Direct JSON; its comparison spans 51 tasks with gemini-3.5-flash under different thinking settings."
+            },
+            {
+              "lead": "Streaming trade-off",
+              "detail": "Direct JSON can stream chunks; Express waits for the full response before compilation. Faster completion does not guarantee earlier first useful render."
+            },
+            {
+              "lead": "Constrained layouts",
+              "detail": "Google separately cites up to 80× faster layout decisions with Jev. An 11-prompt demonstration reported 92–298 ms component trees and 0.8–1.7 s complete screens; this is not an independent Express comparison."
+            }
           ]
         },
         {
-          "title": "Limitations and evidence",
-          "paragraphs": [
-            "The main source is an October 27, 2026 Google Developers Blog engineering announcement. The performance results are vendor measurements. They should not be interpreted as an independent evaluation of correctness, security or cost under real production traffic.",
-            "Express is suitable when the model must choose from the full approved component catalog. A decision-model approach can be faster for known screen templates, but it cannot produce layouts outside its predefined grammar. The A2UI SDKs do not yet include the Jev decision-model inference format described in the demonstration.",
-            "A generated interface can still omit critical context, misstate financial values or suggest an unauthorized operation. Treat component-schema validation, data provenance, entitlements and server-side action authorization as separate release gates."
-          ]
-        },
-        {
-          "title": "Bloomberg engineering experiment",
-          "paragraphs": [
-            "Select 50 to 100 representative internal tasks: document search results, market-data comparison cards, alert setup, and multi-step research workflows. Use synthetic or authorized data. Keep the component catalog, backend responses and model fixed while comparing Direct JSON with Express.",
-            "Capture end-to-end p50 and p95 latency, time to first useful render, output tokens, total model cost, schema validity, missing or incorrect fields, and retries. For interactive actions, test denied entitlements, invalid parameters and attempts to use components or actions outside the catalog.",
-            "Run regression evaluations on every change to prompts, models, catalogs or inference formats. Pilot constrained layouts only where they cover the actual task distribution. Promote the faster format only if its task-completion and safety results meet the same thresholds as the baseline."
+          "title": "What to verify",
+          "bullets": [
+            {
+              "lead": "Evidence gap",
+              "detail": "Published figures are vendor measurements, not independently replicated production latency, cost, correctness, or security results. Jev's format is not yet included in the cited SDKs."
+            },
+            {
+              "lead": "Controlled experiment",
+              "detail": "Run 50–100 representative document, market-data, alert, and research tasks with the same model, catalog, and backend; compare Direct JSON with Express."
+            },
+            {
+              "lead": "Release gates",
+              "detail": "Measure p50/p95 end-to-end time, first useful render, token cost, valid renders, missing fields, retries, and denied-action behavior. Only promote when correctness and authorization meet baseline thresholds."
+            }
           ]
         }
       ],
