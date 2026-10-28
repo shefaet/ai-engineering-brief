@@ -34,6 +34,15 @@ for edition in archive["editions"]:
             assert section.get("paragraphs") or section.get("bullets") or section.get("interactive"), f"Empty article section: {date}/{story_id}"
             if section.get("bullets"):
                 assert len(section.get("paragraphs", [])) == len(section["bullets"]), f"Missing legacy text fallback: {date}/{story_id}"
+            example = section.get("example")
+            if example:
+                assert example.get("type") == "code-comparison", f"Unsupported example type: {date}/{story_id}"
+                variants = example.get("variants", [])
+                assert len(variants) == 2, f"Code comparison must have two variants: {date}/{story_id}"
+                assert example.get("caption"), f"Missing example caption: {date}/{story_id}"
+                for variant in variants:
+                    assert isinstance(variant.get("label"), str) and variant["label"].strip(), f"Missing code example label: {date}/{story_id}"
+                    assert isinstance(variant.get("code"), str) and 0 < len(variant["code"]) <= 4000, f"Invalid code example: {date}/{story_id}"
             for item in section.get("bullets", []):
                 assert isinstance(item, dict) and isinstance(item.get("lead"), str) and item["lead"].strip() and isinstance(item.get("detail"), str) and item["detail"].strip(), f"Malformed article bullet: {date}/{story_id}"
         for source in story["sources"]:
