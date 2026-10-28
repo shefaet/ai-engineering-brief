@@ -1,0 +1,61 @@
+{
+  "id": "llvmhammer-triton-rowhammer",
+  "date": "2026-10-26",
+  "published": "2026-10-22",
+  "category": "INFERENCE SECURITY",
+  "priority": "High",
+  "title": "LLVMhammer turns a DRAM bit flip into persistent LLM inference slowdown",
+  "dek": "A Rowhammer-induced compiler fault yields correct but slower cached Triton GPU kernels across vendors.",
+  "tags": [
+    "Infrastructure",
+    "Security",
+    "Research"
+  ],
+  "evidence": "Primary academic preprint; experimental threat model requires exploitable CPU DRAM faults",
+  "takeaway": "Include compiled-kernel integrity and performance anomalies in inference supply-chain threat models.",
+  "sections": [
+    {
+      "title": "Mechanism",
+      "bullets": [
+        {
+          "lead": "Target",
+          "detail": "The attack flips a bit in Triton's CPU-side MLIR/LLVM optimization pipeline, producing a functionally correct but suboptimal GPU kernel."
+        },
+        {
+          "lead": "Persistence",
+          "detail": "Triton caches generated kernels to disk. After the corruption, later inference runs can inherit the slowdown even when the bit-flip is no longer active."
+        }
+      ],
+      "paragraphs": [
+        "Target: The attack flips a bit in Triton's CPU-side MLIR/LLVM optimization pipeline, producing a functionally correct but suboptimal GPU kernel.",
+        "Persistence: Triton caches generated kernels to disk. After the corruption, later inference runs can inherit the slowdown even when the bit-flip is no longer active."
+      ]
+    },
+    {
+      "title": "Evidence and defense",
+      "bullets": [
+        {
+          "lead": "Observed impact",
+          "detail": "Across four open models on NVIDIA RTX 4090 and AMD RX 7900 XTX, the paper reports 4–16% server inference-latency increases; separate tests explore output corruption."
+        },
+        {
+          "lead": "Boundary",
+          "detail": "The paper demonstrates a physical-memory fault scenario rather than a typical remote prompt-injection pathway. Treat unusual kernel-cache changes, binary provenance and sustained latency regression as potential indicators."
+        }
+      ],
+      "paragraphs": [
+        "Observed impact: Across four open models on NVIDIA RTX 4090 and AMD RX 7900 XTX, the paper reports 4–16% server inference-latency increases; separate tests explore output corruption.",
+        "Boundary: The paper demonstrates a physical-memory fault scenario rather than a typical remote prompt-injection pathway. Treat unusual kernel-cache changes, binary provenance and sustained latency regression as potential indicators."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "LLVMhammer — arXiv preprint",
+      "url": "https://arxiv.org/abs/2610.30798",
+      "published": "2026-10-22",
+      "type": "Primary research"
+    }
+  ],
+  "related": []
+}
