@@ -115,19 +115,32 @@
               "detail": "The client supplies a catalog of allowed UI components. The agent proposes a component tree; the client renders validated structures rather than executing model-generated interface code."
             },
             {
-              "lead": "Express format",
-              "detail": "The model emits compact, line-oriented output. The SDK deterministically compiles the full response to validated A2UI messages; the component catalog and renderer stay unchanged."
-            },
-            {
               "lead": "Authorization",
               "detail": "Catalog constraints restrict UI structures, not the truth of displayed values or permission to execute actions. Server-side entitlements and data provenance remain separate controls."
             }
           ],
           "paragraphs": [
             "Trust boundary: The client supplies a catalog of allowed UI components. The agent proposes a component tree; the client renders validated structures rather than executing model-generated interface code.",
-            "Express format: The model emits compact, line-oriented output. The SDK deterministically compiles the full response to validated A2UI messages; the component catalog and renderer stay unchanged.",
             "Authorization: Catalog constraints restrict UI structures, not the truth of displayed values or permission to execute actions. Server-side entitlements and data provenance remain separate controls."
-          ]
+          ],
+          "example": {
+            "type": "code-comparison",
+            "caption": "Same card, different model output",
+            "variants": [
+              {
+                "label": "Before · Direct JSON",
+                "language": "json",
+                "code": "{\n  \"version\": \"v0.9.1\",\n  \"updateComponents\": {\n    \"surfaceId\": \"alert\",\n    \"components\": [\n      {\n        \"id\": \"root\",\n        \"component\": \"Card\",\n        \"child\": \"label\"\n      },\n      {\n        \"id\": \"label\",\n        \"component\": \"Text\",\n        \"text\": \"Risk alert\"\n      }\n    ]\n  }\n}"
+              },
+              {
+                "label": "After · A2UI Express",
+                "language": "text",
+                "code": "surface(\"alert\")\nroot=Card(label)\nlabel=Text(\"Risk alert\")"
+              }
+            ],
+            "takeaway": "Express replaces repeated field names with short assignments. The SDK compiles them into A2UI JSON for the same renderer.",
+            "note": "Schematic example; the JSON excerpt omits surface creation. Not benchmark data."
+          }
         },
         {
           "title": "Performance claims",
