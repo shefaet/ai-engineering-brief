@@ -1,79 +1,43 @@
 # AI Engineering Brief
 
-A small, static research publication designed for GitHub Pages. It uses HTML, CSS, browser JavaScript and optional D3.js (loaded from a CDN with a non-D3 fallback). There is **no build step**, no server, and no exposed API key.
+A minimal, mobile-first, source-linked AI engineering publication on GitHub Pages. **One story per post**, rather than one long daily edition. Stories appear in reverse publication-date order; every story has its own permalink.
 
-## Features
-
-- Daily edition archive with permanent URLs (`post.html?date=YYYY-MM-DD#story-id`)
-- Full-text search over all indexed article content
-- Tag filters and cross-edition links
-- Source provenance, evidence limitations, and engineering implications
-- Reusable, data-driven visualizations and a staged workflow explorer
-- Responsive desktop and mobile layout
-
-The included October 27 and 28, 2026 editions are **small, source-checked examples**, not complete 5-8 story daily briefings.
-
-## Preview locally
-
-From this directory run:
-
-```bash
-python3 -m http.server 8000
-```
-
-Open http://localhost:8000. Directly opening the HTML from the filesystem does not support JSON fetch in most browsers.
-
-## Publish with GitHub Pages, without a custom workflow
-
-1. Create a **public** GitHub repository named `ai-engineering-brief`.
-2. Add this directory's files to the repository root, including the empty `.nojekyll` file.
-3. In **Settings > Pages**, choose **Deploy from a branch**, branch `main`, folder `/ (root)`, then Save.
-4. The site address should be `https://YOUR-USERNAME.github.io/ai-engineering-brief/`.
-
-GitHub Pages manages deployment after commits. You do not need to create your own GitHub Actions YAML for this static version. GitHub may show an internal Pages deployment job.
-
-## Add a daily edition
-
-1. Create `data/posts/YYYY-MM-DD.json`, using the same schema as the examples.
-2. Prepend the edition's metadata and searchable story entries to `data/archive.json`. Include full-text content in each `searchText` field.
-3. Run `python3 tools/validate.py`. Review source links and numerical claims against original publications.
-4. Commit the two JSON changes. GitHub Pages then publishes the new content.
-
-Do not put credentials, private documents, or unpublished company information in the repository. The site is public.
-
-## ChatGPT publishing task (after a successful write test)
-
-The existing 8 AM ChatGPT briefing can be adapted to:
-
-- Research and verify 5-8 major developments from the last 24 hours, with dates and original source URLs.
-- Create a complete new edition JSON file and update the archive index.
-- Use only supported visual components. Provide chart data in JSON; never inject generated HTML or JavaScript into public articles.
-- Distinguish vendor assertions from independent evidence. Reject unsupported numeric claims. Cross-link earlier related coverage.
-- Commit to the authorized repository only if the connected GitHub integration permits it; report failures rather than claiming successful publication.
-- Deliver a short summary with the live URL only **after** the commit and publication can be verified.
-
-**Important:** GitHub repository access and unattended writes by ChatGPT scheduled tasks have not yet been verified. Do not disable the existing chat briefing until this works end to end.
+Live: https://shefaet.github.io/ai-engineering-brief/
 
 ## Structure
 
-- `index.html` - Archive, search, and tags
-- `post.html` - Single edition reader
-- `assets/site.js` - Archive reader, search, interactive explanations, visualization components
-- `assets/styles.css` - Design system and responsive styles
-- `data/archive.json` - Edition metadata and full-text search index
-- `data/posts/*.json` - Structured daily articles
-- `tools/validate.py` - Offline JSON, source URL, and cross-reference checks
-- `.nojekyll` - Skip the Jekyll content build
-## Mobile reading and color themes
+- `index.html` — chronological searchable story feed, with optional topic filter.
+- `story.html?id=SLUG` — standalone technical article (preferred, stable permalink).
+- `data/stories/SLUG.json` — each complete, independently publishable article.
+- `data/archive.json` — **schemaVersion 2** flat, searchable index of stories, each with `id`, `date`, `title`, `summary`, `category`, `tags`, `evidence`, `searchText`, optional `paperSlug`.
+- `paper.html?slug=SLUG` — optional deep interactive research explainer, backed by `data/papers/SLUG.json`.
+- `assets/site.js`, `assets/paper.js`, CSS, and `assets/theme.js` — safe front-end reading, example, search, and light/dark mode logic.
+- `tools/validate.py` — consistency, source, and paper-schema validator.
+- `docs/interactive-paper-authoring.md` — source and interactive-explainer editorial rules.
+- `post.html?date=YYYY-MM-DD#SLUG` — legacy daily-edition URLs: redirect to the standalone story when the hash identifies a story, otherwise list matching story links.
+- `data/posts/YYYY-MM-DD.json` — archived legacy edition data for historical reference, **not** for future publishing.
 
-- Every page loads `assets/reading.css` after the original CSS. The text uses a wider mobile reading measure, 17px long-form body type, and accessible touch controls.
-- `assets/theme.js` automatically follows the device light/dark preference and persists manual changes in localStorage. The toggle appears in the header of the archive, edition, and paper reader.
-- Both themes use shared CSS variables. Check chart labels, focus outlines, readable contrast, reduced-motion support, and no sideways scrolling before publishing.
+## Editorial policy
 
-## Interactive research explainers
+Publish only consequential, source-verified AI stories. Keep each post self-contained, technical, concise, and rich in context. Favor structured `sections[].bullets` entries of `{lead,detail}`, one useful mechanism/evidence/limitation/engineering implication each. Keep equivalent `paragraphs` fallback text for cached browsers. Optional `sections[].example` supports a labeled, inert `code-comparison` with two code or payload variants. Do not add decorative diagrams, unverified data, or repetitive text.
 
-Selected high-impact technical research is treated as a separate, intuition-first explainer. The first example is `paper.html?slug=agent-judgment` with a source-linked walkthrough, methodology choice explorer, animated study design, measured-results comparison, and clearly labeled hypothetical slider.
+**Institution-neutral publication:** Never refer to the publication owner's employer or customize recommendations to any specific organization. A company's name—including Bloomberg—may appear when that company is substantively the news subject, not merely because of the reader's affiliation. Generic financial/enterprise use cases are acceptable when technically relevant.
 
-Paper data lives in `data/papers/<slug>.json`; the renderer is `assets/paper.js` and `assets/paper.css`. To link from the daily briefing, set `paperSlug` on the story in BOTH `data/posts/YYYY-MM-DD.json` and `data/archive.json`.
+## Publishing a new story
 
-Before creating new visual types or publishing a paper deep dive, follow **`docs/interactive-paper-authoring.md`**. All visualizations use approved JSON schemas, not arbitrary daily generated JS. Source measurements and hypothetical model outcomes must be clearly distinguished.
+1. Research a significant development; verify original publication date, URL, all metrics, and limitations.
+2. Choose a globally unique, short lowercase hyphenated story ID. Create `data/stories/SLUG.json` with `id`, `date` (site publication date in America/New_York, YYYY-MM-DD), `published` (source date), `category`, `priority`, `title`, `dek`, `tags`, `evidence`, `takeaway`, `sections`, `sources`, optional `related`, optional `paperSlug`. Each story is one page, even if multiple stories are published on the same date.
+3. If justified by a significant research paper, create its validated `data/papers/SLUG.json` before the story and link its `paperSlug`.
+4. Append exactly one matching searchable record to `data/archive.json` `stories`, then sort by `date` newest-first (retain existing order within a date). Don't edit legacy `data/posts` or create dated multi-story bundles.
+5. Run `python3 tools/validate.py` locally where possible. At minimum verify the two new JSON files, existing story count, links, and rendered schema. Commit and read back the new post and updated index.
+6. Verify GitHub Pages deployment when possible. A successful GitHub commit is not by itself confirmation of live deployment.
+
+## Local preview
+
+Run `python3 -m http.server 8000` from the repository root and open http://localhost:8000.
+
+No build step, custom GitHub Actions YAML, or API key is needed. GitHub Pages serves the static files directly. The theme control follows device settings and remembers manual changes.
+
+## Scheduled publication
+
+The existing ChatGPT 8 AM America/New_York automation publishes each selected development as a separate JSON post and indexes each independently. It sends a short notification with direct links. It should report failed GitHub commits or incomplete indexing rather than claim publication.
