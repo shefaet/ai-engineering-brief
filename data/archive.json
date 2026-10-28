@@ -59,7 +59,8 @@
           ],
           "evidence": "Primary controlled experiment",
           "summary": "Across four methodological choices, analysts matched an agent's randomly assigned preference 86% of the time.",
-          "searchText": "Anthropic expert analysts causal inference experimental randomization outcome metric comparison population weights 86 percent financial research human oversight methodology"
+          "searchText": "Anthropic expert analysts causal inference experimental randomization outcome metric comparison population weights 86 percent financial research human oversight methodology interactive explainer causal trial paper randomized coin flip slider simulation observed outcomes architecture step-by-step visual explanation",
+          "paperSlug": "agent-judgment"
         }
       ]
     }
