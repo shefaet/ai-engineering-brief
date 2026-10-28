@@ -1,0 +1,61 @@
+{
+  "id": "china-proposed-ai-export-controls",
+  "date": "2026-10-28",
+  "published": "2026-10-28",
+  "category": "AI POLICY",
+  "priority": "High",
+  "title": "China proposes licensing limits on exports of advanced AI technology",
+  "dek": "Draft rules distinguish overseas access to Chinese AI services from exporting underlying models, data and know-how.",
+  "tags": [
+    "Policy",
+    "Models",
+    "Infrastructure"
+  ],
+  "evidence": "Reuters analysis of draft Chinese regulations; not final law",
+  "takeaway": "Evaluate portability of model weights, hosting rights and know-how transfers separately from ordinary API availability.",
+  "sections": [
+    {
+      "title": "Draft scope",
+      "bullets": [
+        {
+          "lead": "Transfer boundary",
+          "detail": "The proposals would allow many overseas customers to consume hosted Chinese AI, while requiring approval for certain transfers of models, data, advanced agents and related technology."
+        },
+        {
+          "lead": "Scope",
+          "detail": "Reuters reports 23 technologies added to proposed control lists, with additional attention to large-scale compute operations, model capability thresholds and ownership transfers."
+        }
+      ],
+      "paragraphs": [
+        "Transfer boundary: The proposals would allow many overseas customers to consume hosted Chinese AI, while requiring approval for certain transfers of models, data, advanced agents and related technology.",
+        "Scope: Reuters reports 23 technologies added to proposed control lists, with additional attention to large-scale compute operations, model capability thresholds and ownership transfers."
+      ]
+    },
+    {
+      "title": "What changes",
+      "bullets": [
+        {
+          "lead": "Uncertainty",
+          "detail": "The measures are proposals, with comments due November 15, and their implementation and definitions may change before adoption."
+        },
+        {
+          "lead": "Engineering consequence",
+          "detail": "Map models by provenance, weight custody, inference location, hosting terms and fallback options; distinguish SaaS access from exportable deployment artifacts."
+        }
+      ],
+      "paragraphs": [
+        "Uncertainty: The measures are proposals, with comments due November 15, and their implementation and definitions may change before adoption.",
+        "Engineering consequence: Map models by provenance, weight custody, inference location, hosting terms and fallback options; distinguish SaaS access from exportable deployment artifacts."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Reuters — China's new AI export controls",
+      "url": "https://www.reuters.com/business/retail-consumer/chinas-new-export-curbs-draw-line-around-its-ai-crown-jewels-2026-10-28/",
+      "published": "2026-10-28",
+      "type": "Independent regulatory reporting"
+    }
+  ],
+  "related": []
+}
