@@ -1,0 +1,67 @@
+{
+  "id": "kimi-k31-pro-long-context",
+  "date": "2026-10-26",
+  "published": "2026-10-24",
+  "category": "MODEL RELEASES",
+  "priority": "High",
+  "title": "Kimi K3.1 Pro extends Moonshot's agent model to 1M-token context",
+  "dek": "Moonshot's new 3T-class model emphasizes long-horizon coding and financial research with a faster serving tier.",
+  "tags": [
+    "Models",
+    "Open Weights",
+    "Agents"
+  ],
+  "evidence": "Moonshot model and product descriptions; benchmark and throughput claims vendor-reported",
+  "takeaway": "Evaluate effective long-context retrieval and cost per completed task, not nominal context length.",
+  "sections": [
+    {
+      "title": "Model and serving",
+      "bullets": [
+        {
+          "lead": "Context",
+          "detail": "Moonshot describes K3.1 Pro as a 3T-class model with up to one million tokens of context, available in Kimi Code with thinking modes."
+        },
+        {
+          "lead": "Highspeed",
+          "detail": "The separate K3.1 Pro Highspeed tier is claimed to provide roughly 2–3× throughput at the same output quality."
+        }
+      ],
+      "paragraphs": [
+        "Context: Moonshot describes K3.1 Pro as a 3T-class model with up to one million tokens of context, available in Kimi Code with thinking modes.",
+        "Highspeed: The separate K3.1 Pro Highspeed tier is claimed to provide roughly 2–3× throughput at the same output quality."
+      ]
+    },
+    {
+      "title": "Evaluation priorities",
+      "bullets": [
+        {
+          "lead": "Caveat",
+          "detail": "Maximum context size and provider throughput do not measure recall fidelity across long documents or the total latency of tool-heavy workflows."
+        },
+        {
+          "lead": "Test",
+          "detail": "Use long-document evidence attribution, codebase navigation and multi-step finance research; measure retrieval accuracy, cost, time to first token and completion-level success."
+        }
+      ],
+      "paragraphs": [
+        "Caveat: Maximum context size and provider throughput do not measure recall fidelity across long documents or the total latency of tool-heavy workflows.",
+        "Test: Use long-document evidence attribution, codebase navigation and multi-step finance research; measure retrieval accuracy, cost, time to first token and completion-level success."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Moonshot — Kimi model release notes",
+      "url": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html",
+      "published": "2026-10-23",
+      "type": "Vendor product documentation"
+    },
+    {
+      "name": "Moonshot — Research blog",
+      "url": "https://www.kimi.com/en/blog/",
+      "published": "2026-10-24",
+      "type": "Vendor research listing"
+    }
+  ],
+  "related": []
+}
