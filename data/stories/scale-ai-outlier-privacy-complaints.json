@@ -1,0 +1,61 @@
+{
+  "id": "scale-ai-outlier-privacy-complaints",
+  "date": "2026-10-27",
+  "published": "2026-10-27",
+  "category": "AI DATA GOVERNANCE",
+  "priority": "High",
+  "title": "European privacy group challenges Scale AI's contractor monitoring",
+  "dek": "Five complaints target Outlier's alleged trackers, biometric verification and workers' data-access rights.",
+  "tags": [
+    "Safety",
+    "Governance",
+    "Data"
+  ],
+  "evidence": "Allegations in regulatory complaints; not adjudicated findings",
+  "takeaway": "Training-data provenance includes worker privacy, consent, identity checks and data-retention practices—not just annotation quality.",
+  "sections": [
+    {
+      "title": "Allegations",
+      "bullets": [
+        {
+          "lead": "Tracking",
+          "detail": "Noyb filed five GDPR complaints across Austria, France, Italy and the Netherlands, citing investigations alleging up to 19 trackers on Outlier contractor workflows."
+        },
+        {
+          "lead": "Biometrics",
+          "detail": "The complaints also question repeat identity verification with face video and ID documents, and handling of worker requests for access to personal data."
+        }
+      ],
+      "paragraphs": [
+        "Tracking: Noyb filed five GDPR complaints across Austria, France, Italy and the Netherlands, citing investigations alleging up to 19 trackers on Outlier contractor workflows.",
+        "Biometrics: The complaints also question repeat identity verification with face video and ID documents, and handling of worker requests for access to personal data."
+      ]
+    },
+    {
+      "title": "Interpretation",
+      "bullets": [
+        {
+          "lead": "Status",
+          "detail": "These are regulatory allegations, not a completed regulator finding. Contractor-data processing needs a separate factual audit before conclusions."
+        },
+        {
+          "lead": "Control",
+          "detail": "Inventory third-party analytics SDKs, keyboard/mouse telemetry, identity-provider data, lawful bases, access-request handling and retention for human-feedback pipelines."
+        }
+      ],
+      "paragraphs": [
+        "Status: These are regulatory allegations, not a completed regulator finding. Contractor-data processing needs a separate factual audit before conclusions.",
+        "Control: Inventory third-party analytics SDKs, keyboard/mouse telemetry, identity-provider data, lawful bases, access-request handling and retention for human-feedback pipelines."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Reuters — Privacy group complaints against Scale AI",
+      "url": "https://www.reuters.com/business/privacy-group-files-complaints-against-scale-ai-over-alleged-worker-surveillance-2026-10-27/",
+      "published": "2026-10-27",
+      "type": "Independent reporting"
+    }
+  ],
+  "related": []
+}
