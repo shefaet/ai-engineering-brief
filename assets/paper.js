@@ -5,6 +5,20 @@ const external=(label,url)=>{const a=E("a","",label);a.href=url;a.target="_blank
 async function getJSON(path){const r=await fetch(path,{cache:"no-store"});if(!r.ok)throw Error("Request failed: "+r.status);return r.json();}
 function heading(tag,txt,cls=""){return E(tag,cls,txt);}
 function paragraph(text){return E("p","",text);}
+function renderBullets(parent,items){
+ if(!Array.isArray(items)||!items.length)return false;
+ const list=E("ul","paper-insight-list");
+ for(const item of items){
+  const li=E("li");
+  if(typeof item==="string")li.textContent=item;
+  else if(item&&typeof item==="object"){
+   if(item.lead)li.append(E("strong","",item.lead+(String(item.lead).endsWith(":")?"":":")));
+   if(item.detail)li.append(document.createTextNode((item.lead?" ":"")+item.detail));
+  }
+  list.append(li);
+ }
+ parent.append(list);return true;
+}
 function chooseButton(label,onClick){const b=E("button","",label);b.type="button";b.addEventListener("click",onClick);return b;}
 function createFigure(spec,ordinal){
  const box=E("section","paper-figure");box.setAttribute("aria-label",spec.title||"Interactive figure");
@@ -115,7 +129,7 @@ async function main(){
   for(const c of data.chapters){
    const section=E("section","paper-chapter");section.id=c.id;
    section.append(E("div","overline",c.eyebrow),heading("h2",c.title));
-   const prose=E("div","paper-prose");(c.paragraphs||[]).forEach(p=>prose.append(paragraph(p)));section.append(prose);
+   const prose=E("div","paper-prose");if(!renderBullets(prose,c.bullets))(c.paragraphs||[]).forEach(p=>prose.append(paragraph(p)));section.append(prose);
    if(c.explainer)section.append(createFigure(c.explainer,++figure));
    body.append(section);
    const a=E("a","",c.title);a.href="#"+c.id;nav.append(a);
