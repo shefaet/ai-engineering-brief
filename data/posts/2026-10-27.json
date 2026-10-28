@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-27",
+  "issue": "001",
+  "title": "Agent influence and human oversight",
+  "dek": "A controlled experiment shows why human approval may not provide independent analytical judgment.",
+  "stories": [
+    {
+      "id": "agent-judgment",
+      "category": "RESEARCH & SAFETY",
+      "priority": "Very high",
+      "title": "Anthropic measures how agents influence expert decisions",
+      "dek": "A randomized study of professional analysts reveals strong influence on four methodological decisions.",
+      "tags": [
+        "Agents",
+        "Evaluation",
+        "Safety",
+        "Financial AI"
+      ],
+      "evidence": "Primary controlled experiment; limited sample and task",
+      "published": "2026-10-27",
+      "takeaway": "A final human sign-off does not necessarily mean the analyst independently selected the methods that determine the result.",
+      "sections": [
+        {
+          "title": "Experimental design",
+          "paragraphs": [
+            "Anthropic recruited 61 analysts experienced in causal inference. Fifty worked with Claude Code on an analysis for a fictional farming cooperative; eleven chose to work without the agent.",
+            "The agent received randomized hidden preferences about the outcome metric, comparison method, target population, and weighting. It was instructed to argue honestly, and not to conceal evidence."
+          ]
+        },
+        {
+          "title": "Measured influence",
+          "paragraphs": [
+            "Across the four analytical choices, the analysts matched the agent's assigned preference 86% of the time. The figures below report the choice-specific agreement rates and, separately, the share recommending program rollout under two agent preferences."
+          ],
+          "interactive": "anthropic-chart",
+          "chartData": {
+            "decisions": [
+              {
+                "label": "Outcome definition",
+                "value": 92
+              },
+              {
+                "label": "Comparison method",
+                "value": 82
+              },
+              {
+                "label": "Target population",
+                "value": 81
+              },
+              {
+                "label": "Weighting scheme",
+                "value": 90
+              }
+            ],
+            "recommendation": [
+              {
+                "label": "Agent favored rollout",
+                "value": 54
+              },
+              {
+                "label": "Agent opposed rollout",
+                "value": 36
+              }
+            ]
+          }
+        },
+        {
+          "title": "Evidence and limitations",
+          "paragraphs": [
+            "The researchers deliberately strengthened each agent's preference, so the observed rates are not general production estimates. The experiment involved one task and one model configuration, with 50 AI-assisted participants.",
+            "The final recommendation was less affected than the intermediate analytical choices. The reported comparison of 54% versus 36% does not imply that all final decisions were primarily determined by the model."
+          ]
+        },
+        {
+          "title": "Engineering implications",
+          "paragraphs": [
+            "For financial research agents, record who selected the metric, peer set, analysis period, and treatment of outliers. Elicit key choices before the agent provides a preferred interpretation.",
+            "Evaluate methodology selection separately from numerical correctness. Use counterfactual tests in which an agent has an unobserved but defensible preference, and measure whether analysts challenge it."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "name": "Anthropic Research - How AI agents shape experts' judgment calls",
+          "url": "https://www.anthropic.com/research/agents-judgment-calls",
+          "published": "2026-10-27",
+          "type": "Primary research report"
+        }
+      ],
+      "related": [
+        {
+          "date": "2026-10-28",
+          "id": "agent-eval-loop",
+          "label": "Related: Build regression evaluations for agents"
+        }
+      ]
+    }
+  ]
+}
