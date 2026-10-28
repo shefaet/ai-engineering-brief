@@ -1,0 +1,66 @@
+{
+  "id": "meta-spacex-compute-financing",
+  "date": "2026-10-26",
+  "published": "2026-10-26",
+  "category": "AI INFRASTRUCTURE",
+  "priority": "High",
+  "title": "Meta and SpaceX show two ways to finance the AI compute buildout",
+  "dek": "Meta proposed large equity issuance while SpaceX disclosed a GPU leasing commitment—different capital structures for costly accelerator capacity.",
+  "tags": [
+    "Infrastructure",
+    "Economics"
+  ],
+  "evidence": "Meta offering announcement and SpaceX deal reporting; proposed programs are not committed funding",
+  "takeaway": "Model compute economics with lease obligations, delivery timelines and financing terms rather than raw announced capex.",
+  "sections": [
+    {
+      "title": "Capital structures",
+      "bullets": [
+        {
+          "lead": "Meta",
+          "detail": "Meta announced approximately $35B of underwritten equity offerings and proposed a future $60B at-the-market program; the latter was not yet established and may never occur."
+        },
+        {
+          "lead": "SpaceX",
+          "detail": "SpaceX disclosed an approximately $40B commitment for Apollo-managed entities to purchase and lease GPU/server equipment, with leases beginning as tranches are delivered."
+        }
+      ],
+      "paragraphs": [
+        "Meta: Meta announced approximately $35B of underwritten equity offerings and proposed a future $60B at-the-market program; the latter was not yet established and may never occur.",
+        "SpaceX: SpaceX disclosed an approximately $40B commitment for Apollo-managed entities to purchase and lease GPU/server equipment, with leases beginning as tranches are delivered."
+      ]
+    },
+    {
+      "title": "Analysis",
+      "bullets": [
+        {
+          "lead": "Different risk",
+          "detail": "Equity issuance dilutes ownership; equipment finance leases create ongoing obligations tied to asset life and delivery. Announcement totals should not be conflated with cash spent today."
+        },
+        {
+          "lead": "Model",
+          "detail": "Compare fleet utilization, depreciation, financing cost, residual hardware value, networking and power readiness before inferring a unit cost per token."
+        }
+      ],
+      "paragraphs": [
+        "Different risk: Equity issuance dilutes ownership; equipment finance leases create ongoing obligations tied to asset life and delivery. Announcement totals should not be conflated with cash spent today.",
+        "Model: Compare fleet utilization, depreciation, financing cost, residual hardware value, networking and power readiness before inferring a unit cost per token."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Meta — October 26 financing plan",
+      "url": "https://www.prnewswire.com/news-releases/meta-announces-launch-of-offering-of-depositary-shares-representing-series-a-mandatory-convertible-preferred-stock-and-offering-of-class-a-common-stock-in-connection-with-forward-sale-agreements-302919267.html",
+      "published": "2026-10-26",
+      "type": "Company announcement"
+    },
+    {
+      "name": "TechCrunch — SpaceX GPU financing",
+      "url": "https://techcrunch.com/2026/10/26/spacex-locks-in-40b-gpu-financing-deal-with-apollo/",
+      "published": "2026-10-26",
+      "type": "Independent reporting"
+    }
+  ],
+  "related": []
+}
