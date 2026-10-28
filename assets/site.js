@@ -1,7 +1,7 @@
 const $=(s,r=document)=>r.querySelector(s);
 const el=(tag,cls="",txt=null)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==null)n.textContent=String(txt);return n};
 const dateText=s=>new Date(s+"T12:00:00").toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"});
-const linkFor=(date,id)=>"post.html?date="+encodeURIComponent(date)+(id?"#"+encodeURIComponent(id):"");
+const linkFor=(date,id)=>"story.html?id="+encodeURIComponent(id);
 async function json(path){const r=await fetch(path,{cache:"no-store"});if(!r.ok)throw Error("Cannot retrieve "+path+" ("+r.status+")");return r.json()}
 function appendP(node,paras){for(const p of paras||[])node.append(el("p","",p))}
 function appendBullets(node,items){
@@ -38,39 +38,56 @@ function renderExample(where,spec){
 function error(node,msg){node.replaceChildren(el("div","empty",msg))}
 async function home(){
  const root=$("#article-list");
- try{
+ try {
   const archive=await json("data/archive.json");
-  const entries=archive.editions.flatMap(e=>e.stories.map(s=>({...s,date:e.date,issue:e.issue})));
+  if(archive.schemaVersion!==2||!Array.isArray(archive.stories))throw Error("Unsupported index");
+  const entries=[...archive.stories].sort((a,b)=>b.date.localeCompare(a.date));
   const tags=[...new Set(entries.flatMap(s=>s.tags||[]))].sort();
-  const url=new URL(location.href);
-  let tag=tags.includes(url.searchParams.get("tag"))?url.searchParams.get("tag"):"";
-  const input=$("#search");input.value=url.searchParams.get("q")||"";
-  const filter=$("#tag-filters");filter.replaceChildren();
-  const buttons=new Map();
-  for(const t of ["",...tags]){const b=el("button","tag-filter",t||"All");b.type="button";b.onclick=()=>{tag=t;render()};filter.append(b);buttons.set(t,b)}
-  const latest=archive.editions[0];if(latest){$("#latest-date").textContent="· "+dateText(latest.date);$("#latest-link").href=linkFor(latest.date)}
-  $("#edition-count").textContent=archive.editions.length+" editions";
+  const params=new URLSearchParams(location.search);
+  const input=$("#search");
+  input.value=params.get("q")||"";
+  let tag=tags.includes(params.get("tag"))?params.get("tag"):"";
+  const filter=$("#tag-filters"),buttons=new Map();
+  filter.replaceChildren();
+  for(const t of ["",...tags]) {
+   const b=el("button","tag-filter",t||"All");
+   b.type="button";b.addEventListener("click",()=>{tag=t;render()});
+   filter.append(b);buttons.set(t,b);
+  }
+  $("#edition-count").textContent=entries.length+" stories";
+  if(entries.length){
+   $("#latest-link").href=linkFor(entries[0].date,entries[0].id);
+   $("#latest-date").textContent="· "+dateText(entries[0].date);
+  }
   function render(){
    const terms=input.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
-   const found=entries.filter(s=>(!tag||(s.tags||[]).includes(tag))&&terms.every(t=>(s.title+" "+s.summary+" "+(s.tags||[]).join(" ")+" "+(s.searchText||"")+" "+s.date).toLowerCase().includes(t)));
-   const u=new URL(location.href);input.value.trim()?u.searchParams.set("q",input.value.trim()):u.searchParams.delete("q");tag?u.searchParams.set("tag",tag):u.searchParams.delete("tag");history.replaceState(null,"",u);
-   for(const [t,b]of buttons){b.classList.toggle("selected",t===tag);b.setAttribute("aria-pressed",String(t===tag))}
+   const found=entries.filter(s=>(!tag||(s.tags||[]).includes(tag))&&terms.every(t=>(s.title+" "+(s.summary||"")+" "+(s.searchText||"")+" "+(s.tags||[]).join(" ")+" "+s.date).toLowerCase().includes(t)));
+   const u=new URL(location.href);
+   input.value.trim()?u.searchParams.set("q",input.value.trim()):u.searchParams.delete("q");
+   tag?u.searchParams.set("tag",tag):u.searchParams.delete("tag");
+   history.replaceState(null,"",u);
+   for(const [value,b]of buttons){b.classList.toggle("selected",value===tag);b.setAttribute("aria-pressed",String(value===tag))}
    $("#result-count").textContent=found.length+" found";
-   root.replaceChildren();if(!found.length){error(root,"No matches.");return}
+   root.replaceChildren();
+   if(!found.length){error(root,"No matching stories.");return}
    for(const s of found){
-    const card=el("article","article-card");
-    const top=el("div","card-top");top.append(el("span","card-date",dateText(s.date)),el("span","card-category",s.category));card.append(top);
+    const card=el("article","article-card"),meta=el("div","card-top");
+    meta.append(el("span","card-date",dateText(s.date)),el("span","card-category",s.category));
+    card.append(meta);
     const h=el("h2","card-title"),a=el("a","",s.title);a.href=linkFor(s.date,s.id);h.append(a);card.append(h);
     if(s.summary&&s.summary.trim().toLowerCase()!==s.title.trim().toLowerCase())card.append(el("p","card-summary",s.summary));
-    if(s.paperSlug){const link=el("a","paper-deep-link","Interactive explainer ↗");link.href="paper.html?slug="+encodeURIComponent(s.paperSlug);card.append(link)}
-    root.append(card)
+    if(s.paperSlug){
+     const deep=el("a","paper-deep-link","Interactive explainer ↗");
+     deep.href="paper.html?slug="+encodeURIComponent(s.paperSlug);card.append(deep);
+    }
+    root.append(card);
    }
   }
   input.addEventListener("input",render);
-  $("#clear").onclick=()=>{input.value="";tag="";render();input.focus()};
+  $("#clear").addEventListener("click",()=>{input.value="";tag="";render();input.focus()});
   document.addEventListener("keydown",e=>{if(e.key==="/"&&!["INPUT","TEXTAREA"].includes(document.activeElement?.tagName)){e.preventDefault();input.focus()}});
-  render()
- }catch(e){console.error(e);error(root,"Archive unavailable.")}
+  render();
+ }catch(e){console.error(e);error(root,"Story index unavailable.");}
 }
 function interactiveCycle(where){
  const steps=[
@@ -112,46 +129,85 @@ function interactiveChart(where,data){
  viz.append(tools,target,note,el("p","viz-note","Research sample: 50 analysts using Claude Code. Method-choice agreement and final recommendations measure different outcomes. Source: Anthropic Research, October 27, 2026."));where.append(viz);draw("decisions")
 }
 
-async function post(){
+function renderStoryContent(article,story){
+ if(story.paperSlug){
+  const dive=el("a","paper-callout");
+  dive.href="paper.html?slug="+encodeURIComponent(story.paperSlug);
+  dive.append(el("strong","","Explore this paper interactively →"));article.append(dive);
+ }
+ for(const section of story.sections||[]){
+  const box=el("section","story-section");
+  if(section.title)box.append(el("h3","",section.title));
+  appendBullets(box,section.bullets);
+  if(!(section.bullets||[]).length)appendP(box,section.paragraphs);
+  if(section.example)renderExample(box,section.example);
+  if(section.interactive==="anthropic-chart")interactiveChart(box,section.chartData||{});
+  if(section.interactive==="eval-loop")interactiveCycle(box);
+  article.append(box);
+ }
+ const src=el("details","source-detail"),label=el("summary","","Sources & evidence"),links=el("div","source-detail-inner");
+ if(story.evidence)links.append(el("p","source-evidence",story.evidence));
+ for(const item of story.sources||[]){
+  const a=el("a","",item.name+" ↗");
+  a.href=/^https:\/\//.test(item.url)?item.url:"#";a.target="_blank";a.rel="noopener noreferrer";
+  links.append(a);
+ }
+ src.append(label,links);article.append(src);
+ if(story.related?.length){
+  const related=el("div","related-minimal");
+  for(const item of story.related){
+   const a=el("a","",item.label+" →");a.href=linkFor(item.date,item.id);related.append(a);
+  }
+  article.append(related);
+ }
+}
+async function storyPage(){
  const root=$("#issue");
  try{
-  const archive=await json("data/archive.json");const requested=new URLSearchParams(location.search).get("date");const date=requested||archive.editions[0].date;
-  if(!/^\d{4}-\d{2}-\d{2}$/.test(date)||!archive.editions.some(e=>e.date===date))throw Error("Unknown date");
-  const data=await json("data/posts/"+date+".json");document.title=dateText(date)+" | AI Engineering Brief";$("#issue-code").textContent="Issue "+data.issue;
-  const header=el("header","issue-header");header.append(el("h1","",dateText(date)));
-  header.append(el("p","issue-meta",data.stories.length+" developments"));root.append(header,el("div","issue-rule"));
-  const layout=el("div","issue-layout"),body=el("div","issue-body"),aside=el("aside","issue-side");
-  if(data.stories.length>2){
-   const details=el("details","contents-details"),summary=el("summary","","Jump to a story"),nav=el("nav");
-   for(const s of data.stories){const a=el("a","",s.title);a.href="#"+s.id;nav.append(a)}
-   details.append(summary,nav);aside.append(details);
-   layout.append(body,aside)
-  } else layout.append(body);
-  for(const s of data.stories){
-   const article=el("article","story");article.id=s.id;
-   article.append(el("div","story-kicker",s.category),el("h2","",s.title));
-   if(s.takeaway) article.append(el("p","story-lead",s.takeaway));
-   if(s.paperSlug){const dive=el("a","paper-callout");dive.href="paper.html?slug="+encodeURIComponent(s.paperSlug);dive.append(el("strong","","Explore the paper interactively →"));article.append(dive)}
-   for(const section of s.sections||[]){
-    const box=el("section","story-section");if(section.title)box.append(el("h3","",section.title));appendBullets(box,section.bullets);if(!(section.bullets||[]).length)appendP(box,section.paragraphs);if(section.example)renderExample(box,section.example);
-    if(section.interactive==="anthropic-chart")interactiveChart(box,section.chartData||{});
-    if(section.interactive==="eval-loop")interactiveCycle(box);
-    article.append(box)
-   }
-   const src=el("details","source-detail"),summary=el("summary","","Sources & evidence"),links=el("div","source-detail-inner");
-   if(s.evidence)links.append(el("p","source-evidence",s.evidence));
-   for(const s0 of s.sources||[]){const a=el("a","",s0.name+" ↗");a.href=/^https:\/\//.test(s0.url)?s0.url:"#";a.target="_blank";a.rel="noopener noreferrer";links.append(a)}
-   src.append(summary,links);article.append(src);
-   if(s.related?.length){const related=el("div","related-minimal");for(const item of s.related){const a=el("a","",item.label+" →");a.href=linkFor(item.date,item.id);related.append(a)}article.append(related)}
-   body.append(article)
-  }
-  root.append(layout);
-  const position=archive.editions.findIndex(e=>e.date===date),nav=el("nav","previous-editions");
-  if(archive.editions[position+1]){const d=archive.editions[position+1].date,a=el("a","","← "+dateText(d));a.href=linkFor(d);nav.append(a)}
-  if(position>0){const d=archive.editions[position-1].date,a=el("a","",dateText(d)+" →");a.href=linkFor(d);nav.append(a)}
+  const id=new URLSearchParams(location.search).get("id");
+  if(!/^[a-z0-9-]{1,90}$/.test(id||""))throw Error("Invalid story ID");
+  const archive=await json("data/archive.json");
+  const entries=[...archive.stories].sort((a,b)=>b.date.localeCompare(a.date));
+  const meta=entries.find(s=>s.id===id);if(!meta)throw Error("Story not indexed");
+  const s=await json("data/stories/"+id+".json");
+  if(s.id!==id||s.date!==meta.date)throw Error("Story index mismatch");
+  document.title=s.title+" | AI Engineering Brief";
+  const issueCode=$("#issue-code");if(issueCode)issueCode.textContent=dateText(s.date);
+  root.replaceChildren();
+  const header=el("header","issue-header");
+  header.append(el("div","story-kicker",s.category+" · "+dateText(s.date)),el("h1","",s.title));
+  if(s.takeaway)header.append(el("p","story-lead",s.takeaway));
+  root.append(header,el("div","issue-rule"));
+  const article=el("article","story");article.id=id;
+  renderStoryContent(article,s);root.append(article);
+  const at=entries.findIndex(x=>x.id===id),nav=el("nav","previous-editions");
+  if(entries[at+1]){const other=entries[at+1],a=el("a","","← "+other.title);a.href=linkFor(other.date,other.id);nav.append(a)}
+  if(at>0){const other=entries[at-1],a=el("a","",other.title+" →");a.href=linkFor(other.date,other.id);nav.append(a)}
   root.append(nav);
-  if(location.hash)requestAnimationFrame(()=>document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView())
- }catch(e){console.error(e);error(root,"Edition unavailable. Select a date from the archive.")}
+ }catch(e){console.error(e);error(root,"Story unavailable. Return to the archive.");}
+}
+async function legacyEdition(){
+ const root=$("#issue");
+ try{
+  const qs=new URLSearchParams(location.search);
+  const date=qs.get("date"),id=decodeURIComponent(location.hash.slice(1));
+  const archive=await json("data/archive.json");
+  if(id&&archive.stories.some(s=>s.id===id&&(!date||s.date===date))){
+   location.replace(linkFor(date,id));return;
+  }
+  const matches=archive.stories.filter(s=>!date||s.date===date);
+  if(!matches.length)throw Error("No stories found");
+  root.replaceChildren(el("header","issue-header", ""));
+  const heading=el("h1","",date?dateText(date):"Stories");
+  root.firstChild.append(heading);
+  for(const s of matches){
+   const card=el("article","article-card"),h=el("h2","card-title");
+   const a=el("a","",s.title);a.href=linkFor(s.date,s.id);h.append(a);
+   card.append(el("div","card-date",dateText(s.date)),h);
+   root.append(card);
+  }
+ }catch(e){console.error(e);error(root,"Archive unavailable.");}
 }
 if(document.body.dataset.page==="home")home();
-if(document.body.dataset.page==="post")post();
+if(document.body.dataset.page==="story")storyPage();
+if(document.body.dataset.page==="post")legacyEdition();
