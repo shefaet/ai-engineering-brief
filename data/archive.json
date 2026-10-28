@@ -31,6 +31,103 @@
       "searchText": "A2UI Express swappable inference formats generative user interface agent component catalog trusted renderer deterministic compiler validated JSON direct JSON streaming tokens latency 3x 51 task Gemini 3.5 Flash Jev decision model up to 80x controlled layouts 11 prompts 92 298 milliseconds 0.8 1.7 seconds financial-information financial AI entitlement security evaluation benchmark p95"
     },
     {
+      "id": "google-sleep-continual-learning",
+      "date": "2026-10-28",
+      "title": "Google proposes a sleep phase to reduce continual-learning forgetting",
+      "category": "MODEL RESEARCH",
+      "tags": [
+        "Research",
+        "Models",
+        "Training"
+      ],
+      "evidence": "Google Research technical announcement; claims await reproduction outside reported settings",
+      "summary": "A dedicated consolidation phase attempts to integrate new information without degrading older model capabilities.",
+      "searchText": "Google proposes a sleep phase to reduce continual-learning forgetting A dedicated consolidation phase attempts to integrate new information without degrading older model capabilities. Benchmark retention and adaptation jointly: new-fact accuracy is not valuable if it destroys existing competencies. Problem Continual parameter updates can cause catastrophic forgetting; in-context learning preserves new facts only while they remain in the prompt. Approach Google introduces a sleep-like consolidation phase that integrates acquired information across learning cycles, aiming to preserve earlier knowledge and improve reasoning. Trade-off A model can appear better on recently introduced facts while regressing on established tasks. Claims of continual learning require both retention and adaptation measurements. Test Build a sequential curriculum with frozen old-task probes, newly learned facts, interference cases, update compute and post-update calibration. Measure forgetting per stage rather than only final accuracy."
+    },
+    {
+      "id": "genie4-world-simulation",
+      "date": "2026-10-28",
+      "title": "DeepMind adds real-time planning and native audio to Genie 4",
+      "category": "WORLD MODELS",
+      "tags": [
+        "Models",
+        "Agents",
+        "Multimodal"
+      ],
+      "evidence": "Google DeepMind research preview and demonstrations; no independent physical-fidelity evaluation",
+      "summary": "A generated environment is continuously steered by a separate Gemini planning loop, but reliable long-horizon physics remains unresolved.",
+      "searchText": "DeepMind adds real-time planning and native audio to Genie 4 A generated environment is continuously steered by a separate Gemini planning loop, but reliable long-horizon physics remains unresolved. Use world models as variable test environments only when their rules and state transitions can be validated independently. Generator Genie 4 produces interactive visuals, ambient audio and dialogue; Gemini Omni helps anchor real-world appearance and behavior. Control loop Gemini 3.8 Flash observes rendered frames, decomposes goals and updates its plan as the user modifies the simulated world. This separates environment generation from agent supervision. Reliability DeepMind reports remaining object-permanence drift, spatial inconsistency, physics errors and audio accuracy problems, especially after complex edits or long sessions. Evaluation For agent testing, compare simulated outcomes with deterministic references on action validity, object state, temporal consistency and recovery; do not treat photorealistic visuals as proof of physical accuracy."
+    },
+    {
+      "id": "oracle-cerebras-oci-2027",
+      "date": "2026-10-28",
+      "title": "Oracle plans Cerebras wafer-scale inference capacity for 2027",
+      "category": "INFERENCE INFRASTRUCTURE",
+      "tags": [
+        "Infrastructure",
+        "Economics"
+      ],
+      "evidence": "Oracle roadmap announcement; no workload-specific service benchmark",
+      "summary": "OCI expands accelerator choices beyond GPUs; service timing is announced but deployment-level token throughput and price are not.",
+      "searchText": "Oracle plans Cerebras wafer-scale inference capacity for 2027 OCI expands accelerator choices beyond GPUs; service timing is announced but deployment-level token throughput and price are not. Treat specialized inference platforms as a workload-level latency and cost experiment, not an assumed speedup. Planned service Oracle says Cerebras wafer-scale inference will come to OCI in 2027 alongside planned SambaNova SN50 offerings and existing GPU/other accelerators. Architecture Wafer-scale processors reduce some off-chip communication, potentially benefiting latency-sensitive autoregressive token generation; actual performance depends on model, batching and service overhead. Evidence gap The October announcement did not give OCI workload-specific tokens/s, p95 latency, model availability or price, so no quantitative service advantage can be established. Benchmark Compare prefill/decode latency, queueing, network/tool overhead, batching, model quality and cost per completed task across equal prompts and concurrency."
+    },
+    {
+      "id": "hedge-fund-ai-control-boundaries",
+      "date": "2026-10-28",
+      "title": "Hedge funds report using agents for research while restricting autonomy",
+      "category": "FINANCIAL AI",
+      "tags": [
+        "Financial AI",
+        "Agents",
+        "Governance"
+      ],
+      "evidence": "Industry executive interviews and reporting; no comparable audited fund performance study",
+      "summary": "Firms describe research augmentation and process automation but emphasize security isolation and the risk of passive analytical dependence.",
+      "searchText": "Hedge funds report using agents for research while restricting autonomy Firms describe research augmentation and process automation but emphasize security isolation and the risk of passive analytical dependence. Measure agent-aided research quality and analyst independence, not just the volume of automated outputs. Research Reported examples include independent agent-assisted research preparation, codified research processes and reduction of routine analyst work. Boundaries Executives stressed narrow environments and human control for agents that could touch sensitive systems, investment decisions or trading workflows. Cognitive risk An assistant that generates plausible theses can cause analysts to inherit unsupported assumptions; workflow productivity is not a demonstrated investment alpha. Evaluation Compare idea novelty, citation fidelity, methodological challenge rate, analyst disagreement and post-trade attribution; keep portfolio decisions under explicit authorized controls."
+    },
+    {
+      "id": "china-proposed-ai-export-controls",
+      "date": "2026-10-28",
+      "title": "China proposes licensing limits on exports of advanced AI technology",
+      "category": "AI POLICY",
+      "tags": [
+        "Policy",
+        "Models",
+        "Infrastructure"
+      ],
+      "evidence": "Reuters analysis of draft Chinese regulations; not final law",
+      "summary": "Draft rules distinguish overseas access to Chinese AI services from exporting underlying models, data and know-how.",
+      "searchText": "China proposes licensing limits on exports of advanced AI technology Draft rules distinguish overseas access to Chinese AI services from exporting underlying models, data and know-how. Evaluate portability of model weights, hosting rights and know-how transfers separately from ordinary API availability. Transfer boundary The proposals would allow many overseas customers to consume hosted Chinese AI, while requiring approval for certain transfers of models, data, advanced agents and related technology. Scope Reuters reports 23 technologies added to proposed control lists, with additional attention to large-scale compute operations, model capability thresholds and ownership transfers. Uncertainty The measures are proposals, with comments due November 15, and their implementation and definitions may change before adoption. Engineering consequence Map models by provenance, weight custody, inference location, hosting terms and fallback options; distinguish SaaS access from exportable deployment artifacts."
+    },
+    {
+      "id": "cxmt-hbm3e-yield-challenge",
+      "date": "2026-10-28",
+      "title": "CXMT pushes into HBM3E production despite low manufacturing yields",
+      "category": "CHIP SUPPLY",
+      "tags": [
+        "Infrastructure",
+        "Semiconductors",
+        "Economics"
+      ],
+      "evidence": "Reuters citing people familiar with production; figures not independently audited",
+      "summary": "Reported yields highlight why domestic memory substitution is a packaging and manufacturing problem, not just a design announcement.",
+      "searchText": "CXMT pushes into HBM3E production despite low manufacturing yields Reported yields highlight why domestic memory substitution is a packaging and manufacturing problem, not just a design announcement. Forecast accelerator availability from known-good stacked memory and packaging throughput, not nominal production starts. Low yield Reuters sources estimate roughly 20–30% usable HBM3E output in CXMT's process versus about 70% at SK Hynix; samples have reportedly reached domestic accelerator designers. Schedule Limited production was expected within two months. Reported sample performance was nearer prior-generation HBM3 than leading HBM3E. Supply constraint HBM stacks require dense interconnects, packaging and high known-good-die yield. Low yield raises cost per usable stack and limits the number of accelerators that can ship. Forecast Sensitivity-test effective HBM bandwidth, yield, package capacity and qualification timing; do not infer export-independent accelerator scale from a launch announcement."
+    },
+    {
+      "id": "llmjacking-cloud-billing-hijack",
+      "date": "2026-10-28",
+      "title": "LLMjacking now targets cloud billing accounts, not only API keys",
+      "category": "AI SECURITY",
+      "tags": [
+        "Security",
+        "Infrastructure",
+        "Agents"
+      ],
+      "evidence": "Wiz incident-response research from multiple investigated cases",
+      "summary": "Attackers linked their own projects to compromised victims' billing accounts and ran large volumes of AI inference outside victims' logging scope.",
+      "searchText": "LLMjacking now targets cloud billing accounts, not only API keys Attackers linked their own projects to compromised victims' billing accounts and ran large volumes of AI inference outside victims' logging scope. Monitor billing-account membership and cross-project attachments as first-class AI abuse indicators. Entry Wiz describes sponsored-search phishing that stole privileged cloud credentials and session factors, followed by weakening organization-policy domain restrictions and granting external accounts billing authority. Abuse External attacker-controlled projects were attached to victim billing accounts, so Gemini API charges accrued to the victim while prompts and model logs remained in foreign projects. Observed impact Wiz reports some victims accrued tens to hundreds of thousands of dollars in unauthorized AI API consumption over 24–48 hours; amounts are case observations, not a typical-case estimate. Controls Alert on billing.resourceAssociations.create, external billing admins, policy-domain changes, unexpected model enablement and spend anomalies; enforce least privilege on billing relationships."
+    },
+    {
       "id": "agent-judgment",
       "date": "2026-10-27",
       "title": "Anthropic measures how agents influence expert decisions",
