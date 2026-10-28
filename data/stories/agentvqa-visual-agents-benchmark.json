@@ -1,0 +1,67 @@
+{
+  "id": "agentvqa-visual-agents-benchmark",
+  "date": "2026-10-26",
+  "published": "2026-10-22",
+  "category": "RESEARCH",
+  "priority": "High",
+  "title": "AgentVQA finds visual-state tracking limits in multimodal agents",
+  "dek": "An offline benchmark spans five interactive domains and isolates grounding failures that task-success scores can obscure.",
+  "tags": [
+    "Research",
+    "Evaluation",
+    "Multimodal"
+  ],
+  "evidence": "Original benchmark paper; offline multiple-choice proxy for online execution",
+  "takeaway": "Evaluate temporal state and object grounding before attributing multimodal agent failures to planning.",
+  "sections": [
+    {
+      "title": "Design",
+      "bullets": [
+        {
+          "lead": "Coverage",
+          "detail": "The authors manually selected 1,000 cases from 23 datasets across web agents, robotics, egocentric video, games and spatial planning."
+        },
+        {
+          "lead": "Result",
+          "detail": "The best of 22 evaluated models reached 58.5% accuracy. Error analysis emphasized UI localization, motion interpretation, evolving state and 3D relationships."
+        }
+      ],
+      "paragraphs": [
+        "Coverage: The authors manually selected 1,000 cases from 23 datasets across web agents, robotics, egocentric video, games and spatial planning.",
+        "Result: The best of 22 evaluated models reached 58.5% accuracy. Error analysis emphasized UI localization, motion interpretation, evolving state and 3D relationships."
+      ]
+    },
+    {
+      "title": "Interpretation",
+      "bullets": [
+        {
+          "lead": "Proxy boundary",
+          "detail": "Offline visual question answering is cheaper to compare than closed-loop execution, but cannot capture recovery, tool latency, policy violations or interactive exploration."
+        },
+        {
+          "lead": "Test",
+          "detail": "Add state-change questions to agent evaluation: what moved, what remains visible, which action changes state, and which UI element a proposed click actually targets."
+        }
+      ],
+      "paragraphs": [
+        "Proxy boundary: Offline visual question answering is cheaper to compare than closed-loop execution, but cannot capture recovery, tool latency, policy violations or interactive exploration.",
+        "Test: Add state-change questions to agent evaluation: what moved, what remains visible, which action changes state, and which UI element a proposed click actually targets."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "AgentVQA — arXiv preprint",
+      "url": "https://arxiv.org/abs/2610.31494",
+      "published": "2026-10-22",
+      "type": "Primary research"
+    },
+    {
+      "name": "AgentVQA project and examples",
+      "url": "https://zlab-princeton.github.io/AgentVQA/",
+      "published": "2026-10-22",
+      "type": "Primary benchmark website"
+    }
+  ],
+  "related": []
+}
