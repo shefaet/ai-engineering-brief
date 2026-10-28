@@ -1,113 +1,102 @@
 #!/usr/bin/env python3
-"""Validate the static AI Engineering Brief publication before committing."""
+"""Validate independently published, source-linked AI Engineering Brief stories."""
 import json
-import sys
+import re
+from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parent.parent
-archive = json.loads((ROOT / "data/archive.json").read_text(encoding="utf-8"))
-assert archive.get("schemaVersion") == 1, "Unsupported archive version"
-dates = set()
-all_ids = set()
-all_references = []
-
-for edition in archive["editions"]:
-    date = edition["date"]
-    assert date not in dates, f"Duplicate date: {date}"
-    dates.add(date)
-    path = ROOT / "data/posts" / f"{date}.json"
-    assert path.exists(), f"Missing post: {path}"
-    post = json.loads(path.read_text(encoding="utf-8"))
-    assert post["date"] == date
-    index_stories = {s["id"]: s for s in edition["stories"]}
-    post_stories = {s["id"]: s for s in post["stories"]}
-    assert set(index_stories) == set(post_stories), f"Story index mismatch: {date}"
-
-    for story_id, story in post_stories.items():
-        all_ids.add((date, story_id))
-        search = index_stories[story_id].get("searchText", "")
-        assert len(search) >= 20, f"Missing search text: {date}/{story_id}"
-        assert story["title"] == index_stories[story_id]["title"], f"Title mismatch: {date}/{story_id}"
-        assert story["sources"], f"Missing sources: {date}/{story_id}"
-        for section in story.get("sections", []):
-            assert section.get("paragraphs") or section.get("bullets") or section.get("interactive"), f"Empty article section: {date}/{story_id}"
-            if section.get("bullets"):
-                assert len(section.get("paragraphs", [])) == len(section["bullets"]), f"Missing legacy text fallback: {date}/{story_id}"
-            example = section.get("example")
-            if example:
-                assert example.get("type") == "code-comparison", f"Unsupported example type: {date}/{story_id}"
-                variants = example.get("variants", [])
-                assert len(variants) == 2, f"Code comparison must have two variants: {date}/{story_id}"
-                assert example.get("caption"), f"Missing example caption: {date}/{story_id}"
-                for variant in variants:
-                    assert isinstance(variant.get("label"), str) and variant["label"].strip(), f"Missing code example label: {date}/{story_id}"
-                    assert isinstance(variant.get("code"), str) and 0 < len(variant["code"]) <= 4000, f"Invalid code example: {date}/{story_id}"
-            for item in section.get("bullets", []):
-                assert isinstance(item, dict) and isinstance(item.get("lead"), str) and item["lead"].strip() and isinstance(item.get("detail"), str) and item["detail"].strip(), f"Malformed article bullet: {date}/{story_id}"
-        for source in story["sources"]:
-            url = urlparse(source["url"])
-            assert url.scheme == "https" and url.netloc, f"Invalid source URL: {source['url']}"
-            assert source.get("published"), f"Source missing publication date: {date}/{story_id}"
-        for related in story.get("related", []):
-            all_references.append((date, story_id, related["date"], related["id"]))
-
-for date, story_id, related_date, related_id in all_references:
-    assert (related_date, related_id) in all_ids, (
-        f"Broken related-story link: {date}/{story_id} -> {related_date}/{related_id}"
-    )
-
-# Validate optional interactive-paper references and the JSON-only figure schema.
+INDEX = ROOT / "data/archive.json"
+archive = json.loads(INDEX.read_text(encoding="utf-8"))
+assert archive.get("schemaVersion") == 2, "Expected flat story index (v2)"
+indexed = archive.get("stories")
+assert isinstance(indexed, list) and indexed, "No indexed stories"
+ids, stories = set(), {}
 allowed_figures = {"decision-path", "study-flow", "result-bars", "toy-adherence"}
-paper_slugs = set()
-for edition in archive["editions"]:
-    post = json.loads((ROOT / "data/posts" / f"{edition['date']}.json").read_text(encoding="utf-8"))
-    indexed = {s["id"]: s for s in edition["stories"]}
-    for story in post["stories"]:
-        slug = story.get("paperSlug")
-        indexed_slug = indexed[story["id"]].get("paperSlug")
-        assert slug == indexed_slug, f"Explainer index mismatch: {edition['date']}/{story['id']}"
-        if not slug:
-            continue
-        assert slug.replace("-", "").isalnum(), f"Invalid paper slug: {slug}"
-        paper_slugs.add(slug)
-        path = ROOT / "data/papers" / f"{slug}.json"
-        assert path.exists(), f"Missing paper explainer: {slug}"
-        paper = json.loads(path.read_text(encoding="utf-8"))
-        assert paper["slug"] == slug, f"Paper slug mismatch: {slug}"
-        assert paper["issue"] == edition["date"] and paper["storyId"] == story["id"], f"Broken paper return link: {slug}"
-        source = paper["source"]
-        parsed = urlparse(source["url"])
-        assert parsed.scheme == "https" and parsed.netloc and source.get("published"), f"Invalid paper source: {slug}"
-        assert len(paper["chapters"]) >= 3, f"Paper explainer too short: {slug}"
-        figures = 0
-        chapter_ids = set()
-        for chapter in paper["chapters"]:
-            assert chapter.get("id") and chapter["id"] not in chapter_ids, f"Duplicate chapter: {slug}"
-            chapter_ids.add(chapter["id"])
-            assert chapter.get("title") and (chapter.get("paragraphs") or chapter.get("bullets")), f"Missing chapter text: {slug}"
-            if chapter.get("bullets"):
-                assert len(chapter.get("paragraphs", [])) == len(chapter["bullets"]), f"Missing legacy paper fallback: {slug}"
-            for item in chapter.get("bullets", []):
-                assert isinstance(item, dict) and isinstance(item.get("lead"), str) and item["lead"].strip() and isinstance(item.get("detail"), str) and item["detail"].strip(), f"Malformed paper bullet: {slug}"
-            if not chapter.get("explainer"):
-                continue
-            figures += 1
-            figure = chapter["explainer"]
-            figure_type = figure.get("type")
-            assert figure_type in allowed_figures, f"Unsupported figure: {slug}/{figure_type}"
-            assert figure.get("title") and figure.get("description"), f"Figure missing explanation: {slug}"
-            if figure_type == "decision-path":
-                assert figure.get("options") and all(len(o.get("alternatives", [])) == 2 for o in figure["options"]), f"Invalid decisions: {slug}"
-            elif figure_type == "study-flow":
-                assert len(figure.get("steps", [])) >= 2, f"Invalid steps: {slug}"
-            elif figure_type == "result-bars":
-                assert figure.get("datasets") and all(d.get("max", 0) > 0 for d in figure["datasets"]), f"Invalid chart: {slug}"
-                for dataset in figure["datasets"]:
-                    assert all(0 <= i["value"] <= dataset["max"] for i in dataset["items"]), f"Chart out of range: {slug}"
-            elif figure_type == "toy-adherence":
-                assert 0 <= figure["minimum"] <= figure["initial"] <= figure["maximum"] <= 100, f"Invalid slider: {slug}"
-        assert figures >= 1, f"Paper needs a meaningful interactive figure: {slug}"
 
-print(f"Validated {len(dates)} editions, {len(all_ids)} stories, "
-      f"and {len(all_references)} cross-references.")
+def valid_date(s):
+    assert isinstance(s, str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", s), f"Bad date: {s}"
+    date.fromisoformat(s)
+
+def https_url(value):
+    u = urlparse(value)
+    assert u.scheme == "https" and u.netloc, f"Invalid source URL: {value}"
+
+def bullets_ok(section, context):
+    bullets = section.get("bullets", [])
+    if bullets:
+        # Older cached readers rely on equivalent paragraph text.
+        assert len(section.get("paragraphs", [])) == len(bullets), f"Missing fallback text: {context}"
+    for bullet in bullets:
+        assert isinstance(bullet, dict) and all(isinstance(bullet.get(k), str) and bullet[k].strip() for k in ("lead", "detail")), f"Invalid bullet: {context}"
+
+for record in indexed:
+    story_id = record["id"]
+    assert re.fullmatch(r"[a-z0-9-]{1,90}", story_id), f"Invalid story ID: {story_id}"
+    assert story_id not in ids, f"Duplicate story: {story_id}"
+    ids.add(story_id)
+    valid_date(record["date"])
+    assert len(record.get("searchText", "")) >= 20, f"Missing indexed text: {story_id}"
+    path = ROOT / "data/stories" / (story_id + ".json")
+    assert path.exists(), f"Missing standalone post: {path}"
+    story = json.loads(path.read_text(encoding="utf-8"))
+    stories[story_id] = story
+    assert story["id"] == story_id and story["date"] == record["date"], f"Story/date mismatch: {story_id}"
+    assert story["title"] == record["title"], f"Title mismatch: {story_id}"
+    assert story.get("sources"), f"Missing primary source: {story_id}"
+    for source in story["sources"]:
+        https_url(source["url"])
+        valid_date(source["published"])
+    for section in story.get("sections", []):
+        assert section.get("paragraphs") or section.get("bullets") or section.get("interactive") or section.get("example"), f"Empty section: {story_id}"
+        bullets_ok(section, story_id)
+        example = section.get("example")
+        if example:
+            assert example.get("type") == "code-comparison" and example.get("caption"), f"Bad code example: {story_id}"
+            v = example.get("variants", [])
+            assert len(v) == 2 and all(isinstance(x.get("code"), str) and 0 < len(x["code"]) <= 4000 and x.get("label") for x in v), f"Bad comparison: {story_id}"
+    # No internal organization-specific recommendations in unrelated public stories.
+    record_text = json.dumps(record, ensure_ascii=False)
+    story_text = json.dumps(story, ensure_ascii=False)
+    if "bloomberg" in (record_text + story_text).lower():
+        assert "bloomberg" in story["title"].lower(), f"Unrelated Bloomberg reference in story: {story_id}"
+
+for record in indexed:
+    story = stories[record["id"]]
+    for related in story.get("related", []):
+        assert related["id"] in ids, f"Broken related story: {record['id']} -> {related['id']}"
+    slug = story.get("paperSlug")
+    assert slug == record.get("paperSlug"), f"Paper index mismatch: {record['id']}"
+    if not slug:
+        continue
+    assert re.fullmatch(r"[a-z0-9-]{1,90}", slug), f"Invalid paper slug: {slug}"
+    path = ROOT / "data/papers" / (slug + ".json")
+    assert path.exists(), f"Missing paper: {slug}"
+    paper = json.loads(path.read_text(encoding="utf-8"))
+    assert paper["slug"] == slug and paper["storyId"] == story["id"] and paper["issue"] == story["date"], f"Paper backlink mismatch: {slug}"
+    https_url(paper["source"]["url"])
+    valid_date(paper["source"]["published"])
+    assert len(paper["chapters"]) >= 3, f"Paper explainer too short: {slug}"
+    fig_count, chapters = 0, set()
+    for ch in paper["chapters"]:
+        assert ch.get("title") and (ch.get("paragraphs") or ch.get("bullets")), f"Missing chapter: {slug}"
+        assert ch["id"] not in chapters, f"Duplicate chapter: {slug}"
+        chapters.add(ch["id"])
+        bullets_ok(ch, slug)
+        fig = ch.get("explainer")
+        if not fig:
+            continue
+        fig_count += 1
+        assert fig.get("type") in allowed_figures and fig.get("title") and fig.get("description"), f"Invalid figure: {slug}"
+        if fig["type"] == "decision-path":
+            assert fig.get("options") and all(len(v.get("alternatives", [])) == 2 for v in fig["options"]), f"Invalid decision figure: {slug}"
+        elif fig["type"] == "study-flow":
+            assert len(fig.get("steps", [])) >= 2, f"Invalid flow: {slug}"
+        elif fig["type"] == "result-bars":
+            assert fig.get("datasets") and all(v.get("max", 0) > 0 and all(0 <= i["value"] <= v["max"] for i in v.get("items", [])) for v in fig["datasets"]), f"Invalid bars: {slug}"
+        elif fig["type"] == "toy-adherence":
+            assert 0 <= fig["minimum"] <= fig["initial"] <= fig["maximum"] <= 100, f"Invalid slider: {slug}"
+    assert fig_count >= 1, f"Paper must have a meaningful figure: {slug}"
+
+print(f"Validated {len(stories)} standalone stories and linked explainers.")
