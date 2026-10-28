@@ -1,0 +1,61 @@
+{
+  "id": "akamai-agent-sandbox",
+  "date": "2026-10-27",
+  "published": "2026-10-27",
+  "category": "AGENT INFRASTRUCTURE",
+  "priority": "High",
+  "title": "Akamai launches managed inference and isolated agent execution",
+  "dek": "New managed services pair model serving with runtime containment for autonomous agents at the edge.",
+  "tags": [
+    "Infrastructure",
+    "Agents",
+    "Security"
+  ],
+  "evidence": "Akamai vendor announcement; no independent latency or security assessment supplied",
+  "takeaway": "Test sandbox escape resistance, filesystem and network policy, cold starts and observability before adopting an agent runtime.",
+  "sections": [
+    {
+      "title": "Architecture",
+      "bullets": [
+        {
+          "lead": "Two layers",
+          "detail": "Akamai Inference provides managed model-serving capacity; Akamai Agent Sandbox provides isolated execution boundaries for agents using tools and data."
+        },
+        {
+          "lead": "Placement",
+          "detail": "Akamai positions deployment across its distributed cloud to reduce proximity to applications/data while retaining controlled execution."
+        }
+      ],
+      "paragraphs": [
+        "Two layers: Akamai Inference provides managed model-serving capacity; Akamai Agent Sandbox provides isolated execution boundaries for agents using tools and data.",
+        "Placement: Akamai positions deployment across its distributed cloud to reduce proximity to applications/data while retaining controlled execution."
+      ]
+    },
+    {
+      "title": "Evaluation",
+      "bullets": [
+        {
+          "lead": "Security boundary",
+          "detail": "Sandboxing reduces host blast radius but does not by itself validate tool authorization, data exfiltration policies or model prompt-injection resistance."
+        },
+        {
+          "lead": "Measurement",
+          "detail": "Compare p50/p95 tool latency, cold-start cost, network egress enforcement, resource limits, tenant separation and incident logging to a self-hosted baseline."
+        }
+      ],
+      "paragraphs": [
+        "Security boundary: Sandboxing reduces host blast radius but does not by itself validate tool authorization, data exfiltration policies or model prompt-injection resistance.",
+        "Measurement: Compare p50/p95 tool latency, cold-start cost, network egress enforcement, resource limits, tenant separation and incident logging to a self-hosted baseline."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Akamai — AI Inference and Agent Sandbox",
+      "url": "https://www.akamai.com/newsroom/press-release/akamai-launches-ai-inference-service-and-agent-execution-environment",
+      "published": "2026-10-27",
+      "type": "Vendor announcement"
+    }
+  ],
+  "related": []
+}
