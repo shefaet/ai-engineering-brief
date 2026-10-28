@@ -1,0 +1,60 @@
+{
+  "id": "deutsche-bank-ai-lending",
+  "date": "2026-10-26",
+  "published": "2026-10-26",
+  "category": "FINANCIAL AI",
+  "priority": "High",
+  "title": "Deutsche Bank reports cutting some loan approvals from weeks to minutes",
+  "dek": "The bank says its AI-enabled corporate lending process accelerates narrower cases while using a managed internal agent platform.",
+  "tags": [
+    "Financial AI",
+    "Agents"
+  ],
+  "evidence": "Executive statements in Reuters; no independently audited accuracy or default-rate comparison",
+  "takeaway": "Measure throughput together with exception handling, underwriting quality and auditability rather than decision speed alone.",
+  "sections": [
+    {
+      "title": "Deployment",
+      "bullets": [
+        {
+          "lead": "Reported result",
+          "detail": "Technology chief Marie-Jeanne Deverdun said smaller, less complex corporate cases now take minutes rather than weeks; some multinational decisions moved from months to weeks."
+        },
+        {
+          "lead": "Operating layer",
+          "detail": "The bank described ADA, an internal platform to create, monitor and govern agents, manage model risk and switch among models."
+        }
+      ],
+      "paragraphs": [
+        "Reported result: Technology chief Marie-Jeanne Deverdun said smaller, less complex corporate cases now take minutes rather than weeks; some multinational decisions moved from months to weeks.",
+        "Operating layer: The bank described ADA, an internal platform to create, monitor and govern agents, manage model risk and switch among models."
+      ]
+    },
+    {
+      "title": "What is not established",
+      "bullets": [
+        {
+          "lead": "Evidence",
+          "detail": "The reported turnaround improvement is a bank claim, not a controlled study of matched loan cohorts or a disclosed credit-quality benchmark."
+        },
+        {
+          "lead": "Practical test",
+          "detail": "Compare cycle time by case complexity with overrides, human review, model drift and realized credit outcomes before extrapolating to high-risk underwriting."
+        }
+      ],
+      "paragraphs": [
+        "Evidence: The reported turnaround improvement is a bank claim, not a controlled study of matched loan cohorts or a disclosed credit-quality benchmark.",
+        "Practical test: Compare cycle time by case complexity with overrides, human review, model drift and realized credit outcomes before extrapolating to high-risk underwriting."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Reuters — AI cuts Deutsche Bank corporate loan decisions",
+      "url": "https://www.reuters.com/business/finance/ai-cuts-some-deutsche-bank-corporate-loan-decisions-minutes-2026-10-26/",
+      "published": "2026-10-26",
+      "type": "Independent interview reporting"
+    }
+  ],
+  "related": []
+}
