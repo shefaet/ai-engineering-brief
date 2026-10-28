@@ -1,0 +1,61 @@
+{
+  "id": "ibm-agent-identity-vault",
+  "date": "2026-10-27",
+  "published": "2026-10-27",
+  "category": "AGENT SECURITY",
+  "priority": "High",
+  "title": "IBM adds governed agent identities and short-lived credentials",
+  "dek": "Agent Identity and HashiCorp Vault address delegated authority, revocation and visibility for AI agents operating across business systems.",
+  "tags": [
+    "Agents",
+    "Security",
+    "Infrastructure"
+  ],
+  "evidence": "IBM product announcement; feature availability varies by component",
+  "takeaway": "Model each agent as a distinct principal with scoped, expiring credentials, not a shared service account.",
+  "sections": [
+    {
+      "title": "Architecture",
+      "bullets": [
+        {
+          "lead": "Identity layer",
+          "detail": "IBM Agent Identity records agent ownership and delegated authority. Vault applies machine-identity credential controls, including short-lived access, rotation and revocation."
+        },
+        {
+          "lead": "Runtime integration",
+          "detail": "IBM also describes agent discovery, sandbox isolation, evaluation and an NVIDIA OpenShell integration. Some capabilities are generally available while others remain in preview."
+        }
+      ],
+      "paragraphs": [
+        "Identity layer: IBM Agent Identity records agent ownership and delegated authority. Vault applies machine-identity credential controls, including short-lived access, rotation and revocation.",
+        "Runtime integration: IBM also describes agent discovery, sandbox isolation, evaluation and an NVIDIA OpenShell integration. Some capabilities are generally available while others remain in preview."
+      ]
+    },
+    {
+      "title": "Control gaps",
+      "bullets": [
+        {
+          "lead": "Authorization",
+          "detail": "An agent identity is useful only when all tools validate that principal and its delegated scope at execution time; possession of a token is not sufficient evidence of user intent."
+        },
+        {
+          "lead": "Test",
+          "detail": "Simulate expired/revoked tokens, cross-agent delegation, tool chaining and partial failures; measure which actions remain possible after rights are removed."
+        }
+      ],
+      "paragraphs": [
+        "Authorization: An agent identity is useful only when all tools validate that principal and its delegated scope at execution time; possession of a token is not sufficient evidence of user intent.",
+        "Test: Simulate expired/revoked tokens, cross-agent delegation, tool chaining and partial failures; measure which actions remain possible after rights are removed."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "IBM — Identity and control for AI agents",
+      "url": "https://newsroom.ibm.com/2026-10-27-ibm-introduces-identity-and-control-for-ai-agents%2C-securing-frontier-intelligence-for-the-enterprise?lnk=hpls2us",
+      "published": "2026-10-27",
+      "type": "Vendor announcement"
+    }
+  ],
+  "related": []
+}
