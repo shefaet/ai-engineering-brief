@@ -34,7 +34,7 @@ async function home(){
     const h=el("h3"),a=el("a","",s.title);a.href=linkFor(s.date,s.id);h.append(a);card.append(h,el("p","",s.summary));
     const chips=el("div","chip-line");for(const t of s.tags)chips.append(el("span","chip",t));chips.append(el("span","chip evidence-chip",s.evidence));card.append(chips);
     const bottom=el("div","card-bottom");bottom.append(el("span","card-date","ISSUE "+s.issue+" / "+s.priority.toUpperCase()+" PRIORITY"));
-    const more=el("a","read-more","Read analysis ↗");more.href=a.href;bottom.append(more);card.append(bottom);root.append(card)
+    const more=el("a","read-more","Read analysis ↗");more.href=a.href;bottom.append(more);card.append(bottom);if(s.paperSlug){const deep=el("a","paper-deep-link","Explore the interactive paper →");deep.href="paper.html?slug="+encodeURIComponent(s.paperSlug);card.append(deep)}root.append(card)
    }
   }
   input.addEventListener("input",render);
@@ -97,6 +97,7 @@ async function post(){
    article.append(el("div","story-kicker",s.category+"  /  "+s.priority.toUpperCase()+" PRIORITY"),el("h2","",s.title),el("p","story-dek",s.dek));
    const tags=el("div","story-tags");for(const t of s.tags)tags.append(el("span","chip",t));tags.append(el("span","chip evidence-chip",s.evidence));article.append(tags);
    const take=el("div","key-takeaway");take.append(el("span","","ENGINEERING TAKEAWAY"),el("div","",s.takeaway));article.append(take);
+   if(s.paperSlug){const dive=el("a","paper-callout");dive.href="paper.html?slug="+encodeURIComponent(s.paperSlug);dive.append(el("span","paper-callout-kicker","INTERACTIVE RESEARCH EXPLAINER"),el("strong","",s.paperLabel||"Explore this paper step by step"),el("span","paper-callout-arrow","Open explainer →"));article.append(dive)}
    for(const section of s.sections){
     const box=el("section","story-section");box.append(el("h3","",section.title));appendP(box,section.paragraphs);
     if(section.interactive==="anthropic-chart")interactiveChart(box,section.chartData||{});
