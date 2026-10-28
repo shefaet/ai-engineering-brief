@@ -22,16 +22,19 @@
       "sections": [
         {
           "title": "Experimental design",
-          "paragraphs": [
-            "Anthropic recruited 61 analysts experienced in causal inference. Fifty worked with Claude Code on an analysis for a fictional farming cooperative; eleven chose to work without the agent.",
-            "The agent received randomized hidden preferences about the outcome metric, comparison method, target population, and weighting. It was instructed to argue honestly, and not to conceal evidence."
+          "bullets": [
+            {
+              "lead": "Randomization",
+              "detail": "Fifty experienced analysts used Claude Code on a fictional farming-policy evaluation. Hidden assignments made the agent advocate one of two defensible choices for the metric, comparison method, population, and weighting."
+            },
+            {
+              "lead": "Control group caveat",
+              "detail": "Eleven additional analysts chose not to use an agent; that self-selection prevents treating the comparison as a randomized estimate of AI's overall benefit."
+            }
           ]
         },
         {
-          "title": "Measured influence",
-          "paragraphs": [
-            "Across the four analytical choices, the analysts matched the agent's assigned preference 86% of the time. The figures below report the choice-specific agreement rates and, separately, the share recommending program rollout under two agent preferences."
-          ],
+          "title": "Observed influence",
           "interactive": "anthropic-chart",
           "chartData": {
             "decisions": [
@@ -62,20 +65,25 @@
                 "value": 36
               }
             ]
-          }
-        },
-        {
-          "title": "Evidence and limitations",
-          "paragraphs": [
-            "The researchers deliberately strengthened each agent's preference, so the observed rates are not general production estimates. The experiment involved one task and one model configuration, with 50 AI-assisted participants.",
-            "The final recommendation was less affected than the intermediate analytical choices. The reported comparison of 54% versus 36% does not imply that all final decisions were primarily determined by the model."
+          },
+          "bullets": [
+            {
+              "lead": "Method choices",
+              "detail": "Across four decisions, analysts selected the agent's assigned preference 86% of the time. The chart separates each methodological choice from the final rollout recommendation."
+            }
           ]
         },
         {
-          "title": "Engineering implications",
-          "paragraphs": [
-            "For financial research agents, record who selected the metric, peer set, analysis period, and treatment of outliers. Elicit key choices before the agent provides a preferred interpretation.",
-            "Evaluate methodology selection separately from numerical correctness. Use counterfactual tests in which an agent has an unobserved but defensible preference, and measure whether analysts challenge it."
+          "title": "Limits & engineering action",
+          "bullets": [
+            {
+              "lead": "External validity",
+              "detail": "The agent's preferences were deliberately reinforced. Fifty AI-assisted participants, one task, and one model configuration cannot establish production-wide influence rates."
+            },
+            {
+              "lead": "Control design",
+              "detail": "Record the analyst's pre-agent choice of metric, peer set, period, and weights. Audit who proposed any change; test alternative defensible methods before approving conclusions."
+            }
           ]
         }
       ],
