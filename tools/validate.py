@@ -32,6 +32,8 @@ for edition in archive["editions"]:
         assert story["sources"], f"Missing sources: {date}/{story_id}"
         for section in story.get("sections", []):
             assert section.get("paragraphs") or section.get("bullets") or section.get("interactive"), f"Empty article section: {date}/{story_id}"
+            if section.get("bullets"):
+                assert len(section.get("paragraphs", [])) == len(section["bullets"]), f"Missing legacy text fallback: {date}/{story_id}"
             for item in section.get("bullets", []):
                 assert isinstance(item, dict) and isinstance(item.get("lead"), str) and item["lead"].strip() and isinstance(item.get("detail"), str) and item["detail"].strip(), f"Malformed article bullet: {date}/{story_id}"
         for source in story["sources"]:
@@ -75,6 +77,8 @@ for edition in archive["editions"]:
             assert chapter.get("id") and chapter["id"] not in chapter_ids, f"Duplicate chapter: {slug}"
             chapter_ids.add(chapter["id"])
             assert chapter.get("title") and (chapter.get("paragraphs") or chapter.get("bullets")), f"Missing chapter text: {slug}"
+            if chapter.get("bullets"):
+                assert len(chapter.get("paragraphs", [])) == len(chapter["bullets"]), f"Missing legacy paper fallback: {slug}"
             for item in chapter.get("bullets", []):
                 assert isinstance(item, dict) and isinstance(item.get("lead"), str) and item["lead"].strip() and isinstance(item.get("detail"), str) and item["detail"].strip(), f"Malformed paper bullet: {slug}"
             if not chapter.get("explainer"):
