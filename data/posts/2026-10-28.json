@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-28",
+  "issue": "002",
+  "title": "Evaluating agents as evolving systems",
+  "dek": "A practical evaluation loop for agents that change with prompts, tools, and model upgrades.",
+  "stories": [
+    {
+      "id": "agent-eval-loop",
+      "category": "AGENT ENGINEERING",
+      "priority": "High",
+      "title": "Google describes a hill-climbing workflow for agent evaluation",
+      "dek": "The unit of improvement is the complete agent system, not an isolated model score.",
+      "tags": [
+        "Agents",
+        "Evaluation",
+        "Infrastructure"
+      ],
+      "evidence": "Vendor engineering walkthrough; not independent results",
+      "published": "2026-10-28",
+      "takeaway": "Track full traces and per-case outcomes on a frozen regression set. Do not promote a model or prompt change based only on a mean score.",
+      "sections": [
+        {
+          "title": "What changed",
+          "paragraphs": [
+            "Google published a technical walkthrough of Agents CLI's evaluation commands. Its workflow separates running test cases, grading traces, comparing runs, analyzing repeated failures, and optimizing prompts.",
+            "The sample evaluation shows how an apparently harmless system-prompt edit can reduce tool use and cause hallucinated answers even though code still runs correctly."
+          ]
+        },
+        {
+          "title": "Evaluation loop",
+          "paragraphs": [
+            "The workflow uses eval generate to produce traces, eval grade to score them, eval compare to inspect differences, eval analyze to identify repeated failures, and eval optimize for selected prompt-optimization tasks.",
+            "Select each stage below to explore the corresponding engineering control."
+          ],
+          "interactive": "eval-loop"
+        },
+        {
+          "title": "Numerical example",
+          "paragraphs": [
+            "In Google's small illustrative test of four cases, the average response quality score fell from 4.00 to 2.75 on a five-point scale after a prompt regression. The example shows why teams should inspect per-case failures rather than treating a single average as a reliable release gate.",
+            "Four test cases are insufficient to estimate production reliability. The numeric example demonstrates a workflow, not a general performance benchmark."
+          ]
+        },
+        {
+          "title": "Application to financial AI",
+          "paragraphs": [
+            "Create a fixed evaluation dataset with financial document retrieval, numerical reconciliation, source attribution, entitlement checks, and structured query execution.",
+            "Record full tool traces and compare candidates on task success, unsupported claims, unauthorized tool attempts, cost, retries, and p95 latency. Review per-case regressions before promotion."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "name": "Google Developers Blog - Hill-Climbing Agent Quality with Agents CLI Evaluation",
+          "url": "https://developers.googleblog.com/en/hill-climbing-agent-quality-with-agents-cli-evaluation/",
+          "published": "2026-10-28",
+          "type": "Vendor technical article"
+        }
+      ],
+      "related": [
+        {
+          "date": "2026-10-27",
+          "id": "agent-judgment",
+          "label": "Related: Agent influence on expert judgment"
+        }
+      ]
+    }
+  ]
+}
