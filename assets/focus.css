@@ -171,3 +171,30 @@
  .paper-choice>span {font-size:11px;}
  .footer-inner {flex-direction:row;justify-content:space-between;}
 }
+
+
+/* Scan-friendly insights: bold meaning, full technical detail, no metadata microtext. */
+.insight-list,.paper-insight-list{
+  list-style:none; margin:9px 0 16px; padding:0;
+  display:grid; gap:12px;
+}
+.insight-list li,.paper-insight-list li {
+  position:relative; padding:0 0 0 19px; margin:0;
+  max-width:68ch; color:var(--ink); font-size:16px; line-height:1.65;
+  overflow-wrap:break-word;
+}
+.insight-list li::before,.paper-insight-list li::before{
+  content:""; position:absolute; left:1px; top:.72em;
+  width:6px; height:6px; border-radius:50%; background:var(--accent);
+}
+.insight-list li strong,.paper-insight-list li strong{
+  font:700 inherit; font-weight:700; color:var(--ink);
+}
+.story-section:has(.insight-list){margin-top:18px;}
+.story-section:has(.insight-list) h3{margin-bottom:7px;}
+.paper-chapter>.paper-prose:has(.paper-insight-list){margin-bottom:0;}
+.paper-chapter .paper-insight-list{margin-top:5px;}
+@media(max-width:860px){
+ .insight-list,.paper-insight-list{gap:12px;margin:8px 0 14px;}
+ .insight-list li,.paper-insight-list li{font-size:16px;line-height:1.65;padding-left:18px;}
+}
