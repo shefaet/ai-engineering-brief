@@ -22,6 +22,18 @@ In `data/posts/YYYY-MM-DD.json`, use `sections: [{ "title": "Mechanism", "bullet
 - Interactive figures replace prose when possible. Explain what cannot be inferred from a chart, not the numbers already printed on it.
 - Put detailed source URLs in the existing source disclosure, and avoid repeating citation boilerplate.
 
+## Concrete examples that replace exposition
+
+Whenever they clarify a non-obvious mechanism, include **small, source-grounded worked examples** rather than another paragraph. Good candidates include a before/after representation, sample input and output, miniature execution trace, counterexample, toy calculation, or constrained pseudocode.
+
+- Make the example answer a real technical question: what the system receives, produces, transforms, stores, or fails to handle.
+- Prefer the smallest faithful example that exposes the essential difference; do not add examples as decoration or to meet a quota.
+- If source material provides an appropriate original example, verify it. Otherwise construct a syntactically plausible illustration and label it **schematic**. Do not imply a schematic snippet is verbatim source output, production data, or benchmark evidence.
+- Keep benchmark setup, quantitative measurements, and synthetic illustration conceptually separate. Never derive reported speedups from arbitrary snippet lengths.
+- Remove prose that repeats exactly what the example makes evident. Use one short explanation for the *inference* a reader should draw.
+- For two code or payload variants, `sections[].example` supports `{ "type":"code-comparison", "caption":"...", "variants":[{"label":"...","code":"..."},{"label":"...","code":"..."}], "takeaway":"...", "note":"Schematic example..." }`. The renderer places variants in two columns on wide screens and stacks them on mobile. Content is rendered as inert text, not executed.
+- For other kinds of illustrations, use an existing validated interactive figure or a concise structured bullet with inline data. Do not inject custom executable content into article JSON.
+
 ## Selection criteria
 
 Prioritize technical papers with a new mechanism, nontrivial architecture, measurable trade-off, or strong implications for model systems. Do not create a pseudo-interactive article for an ordinary press release, minor incremental benchmark, or unverified claim. Publish **at most one substantial explainer when there is a suitable paper**. Do not create one to satisfy a quota.
