@@ -64,6 +64,71 @@
           "label": "Related: Agent influence on expert judgment"
         }
       ]
+    },
+    {
+      "id": "a2ui-express",
+      "category": "AGENT INFRASTRUCTURE",
+      "priority": "High",
+      "title": "A2UI Express separates UI generation from rendering",
+      "dek": "Google introduces a compact inference format that compiles into validated A2UI messages, reducing model output while keeping rendering under client control.",
+      "tags": [
+        "Agents",
+        "Infrastructure",
+        "Evaluation"
+      ],
+      "evidence": "Google vendor measurements; independent replication pending",
+      "published": "2026-10-27",
+      "takeaway": "Prototype A2UI Express against direct JSON on representative financial workflows. Measure end-to-end latency, valid render rate, authorization checks and correction cost before selecting a generation format.",
+      "sections": [
+        {
+          "title": "Architecture and trust boundary",
+          "paragraphs": [
+            "A2UI is a protocol for agent-generated user interfaces. The client advertises a catalog of trusted components. An agent proposes a component tree using that catalog, and the client renderer constructs the screen. This separates the model's UI proposal from the code that actually renders and handles interactions.",
+            "Previously, agents produced the JSON transport format directly. In the new Express mode, a model emits a compact, line-oriented intermediate representation. The agent SDK generates format instructions from the component catalog's schema, then deterministically compiles the completed model response into validated A2UI messages. An inference format can be replaced without changing the catalog or renderer.",
+            "Catalog validation limits which component types and properties the model can request. It does not by itself establish that displayed facts are accurate or that an action is authorized. Applications must still validate data access, server-side actions and user permissions."
+          ]
+        },
+        {
+          "title": "Latency and token benchmark specifics",
+          "paragraphs": [
+            "Google reports that Express uses up to three times fewer output tokens and can reduce latency by up to three times compared with Direct JSON for the same kinds of generated screens. These are vendor-reported upper bounds, not guaranteed speedups for every model or interface.",
+            "The team compared Direct JSON, Express, Atom and Elemental on a 51-task evaluation using gemini-3.5-flash with thinking enabled and disabled. Google says Express worked well without thinking, which can reduce generation time. The blog does not provide sufficient independent replication to establish production-wide performance.",
+            "Direct JSON can stream message chunks in the Python and TypeScript SDKs. Express compilation waits for the full model response. A shorter completion may therefore improve total time while delaying the first visible component. Benchmark time to first useful render as well as final completion.",
+            "For predefined layouts, Google describes a separate approach using the Jev decision model to select structures rather than generate a complete tree. Google cites up to 80 times faster layout decisions. In one small 11-prompt Apparite demonstration, component trees appeared in 92 to 298 milliseconds and full screens completed in 0.8 to 1.7 seconds. Those figures come from a limited demonstration, not a controlled independent comparison against Express."
+          ]
+        },
+        {
+          "title": "Limitations and evidence",
+          "paragraphs": [
+            "The main source is an October 27, 2026 Google Developers Blog engineering announcement. The performance results are vendor measurements. They should not be interpreted as an independent evaluation of correctness, security or cost under real production traffic.",
+            "Express is suitable when the model must choose from the full approved component catalog. A decision-model approach can be faster for known screen templates, but it cannot produce layouts outside its predefined grammar. The A2UI SDKs do not yet include the Jev decision-model inference format described in the demonstration.",
+            "A generated interface can still omit critical context, misstate financial values or suggest an unauthorized operation. Treat component-schema validation, data provenance, entitlements and server-side action authorization as separate release gates."
+          ]
+        },
+        {
+          "title": "Bloomberg engineering experiment",
+          "paragraphs": [
+            "Select 50 to 100 representative internal tasks: document search results, market-data comparison cards, alert setup, and multi-step research workflows. Use synthetic or authorized data. Keep the component catalog, backend responses and model fixed while comparing Direct JSON with Express.",
+            "Capture end-to-end p50 and p95 latency, time to first useful render, output tokens, total model cost, schema validity, missing or incorrect fields, and retries. For interactive actions, test denied entitlements, invalid parameters and attempts to use components or actions outside the catalog.",
+            "Run regression evaluations on every change to prompts, models, catalogs or inference formats. Pilot constrained layouts only where they cover the actual task distribution. Promote the faster format only if its task-completion and safety results meet the same thresholds as the baseline."
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "name": "Google Developers Blog - Fast, reliable A2UI, with swappable inference formats",
+          "url": "https://developers.googleblog.com/fast-reliable-a2ui/",
+          "published": "2026-10-27",
+          "type": "Official vendor technical article"
+        }
+      ],
+      "related": [
+        {
+          "date": "2026-10-28",
+          "id": "agent-eval-loop",
+          "label": "Related: Evaluating agents as evolving systems"
+        }
+      ]
     }
   ]
 }
