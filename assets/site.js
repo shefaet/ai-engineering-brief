@@ -4,6 +4,20 @@ const dateText=s=>new Date(s+"T12:00:00").toLocaleDateString("en-US",{month:"sho
 const linkFor=(date,id)=>"post.html?date="+encodeURIComponent(date)+(id?"#"+encodeURIComponent(id):"");
 async function json(path){const r=await fetch(path,{cache:"no-store"});if(!r.ok)throw Error("Cannot retrieve "+path+" ("+r.status+")");return r.json()}
 function appendP(node,paras){for(const p of paras||[])node.append(el("p","",p))}
+function appendBullets(node,items){
+ if(!Array.isArray(items)||!items.length)return;
+ const list=el("ul","insight-list");
+ for(const item of items){
+  const li=el("li");
+  if(typeof item==="string"){li.textContent=item}
+  else if(item&&typeof item==="object"){
+   if(item.lead)li.append(el("strong","",item.lead+(String(item.lead).endsWith(":")?"":":")));
+   if(item.detail)li.append(document.createTextNode((item.lead?" ":"")+item.detail));
+  }
+  list.append(li);
+ }
+ node.append(list);
+}
 function error(node,msg){node.replaceChildren(el("div","empty",msg))}
 async function home(){
  const root=$("#article-list");
@@ -102,7 +116,7 @@ async function post(){
    if(s.takeaway) article.append(el("p","story-lead",s.takeaway));
    if(s.paperSlug){const dive=el("a","paper-callout");dive.href="paper.html?slug="+encodeURIComponent(s.paperSlug);dive.append(el("strong","","Explore the paper interactively →"));article.append(dive)}
    for(const section of s.sections||[]){
-    const box=el("section","story-section");box.append(el("h3","",section.title));appendP(box,section.paragraphs);
+    const box=el("section","story-section");if(section.title)box.append(el("h3","",section.title));appendBullets(box,section.bullets);if(!(section.bullets||[]).length)appendP(box,section.paragraphs);
     if(section.interactive==="anthropic-chart")interactiveChart(box,section.chartData||{});
     if(section.interactive==="eval-loop")interactiveCycle(box);
     article.append(box)
