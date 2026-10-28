@@ -1,0 +1,60 @@
+{
+  "id": "oracle-cerebras-oci-2027",
+  "date": "2026-10-28",
+  "published": "2026-10-27",
+  "category": "INFERENCE INFRASTRUCTURE",
+  "priority": "High",
+  "title": "Oracle plans Cerebras wafer-scale inference capacity for 2027",
+  "dek": "OCI expands accelerator choices beyond GPUs; service timing is announced but deployment-level token throughput and price are not.",
+  "tags": [
+    "Infrastructure",
+    "Economics"
+  ],
+  "evidence": "Oracle roadmap announcement; no workload-specific service benchmark",
+  "takeaway": "Treat specialized inference platforms as a workload-level latency and cost experiment, not an assumed speedup.",
+  "sections": [
+    {
+      "title": "Roadmap",
+      "bullets": [
+        {
+          "lead": "Planned service",
+          "detail": "Oracle says Cerebras wafer-scale inference will come to OCI in 2027 alongside planned SambaNova SN50 offerings and existing GPU/other accelerators."
+        },
+        {
+          "lead": "Architecture",
+          "detail": "Wafer-scale processors reduce some off-chip communication, potentially benefiting latency-sensitive autoregressive token generation; actual performance depends on model, batching and service overhead."
+        }
+      ],
+      "paragraphs": [
+        "Planned service: Oracle says Cerebras wafer-scale inference will come to OCI in 2027 alongside planned SambaNova SN50 offerings and existing GPU/other accelerators.",
+        "Architecture: Wafer-scale processors reduce some off-chip communication, potentially benefiting latency-sensitive autoregressive token generation; actual performance depends on model, batching and service overhead."
+      ]
+    },
+    {
+      "title": "Validation",
+      "bullets": [
+        {
+          "lead": "Evidence gap",
+          "detail": "The October announcement did not give OCI workload-specific tokens/s, p95 latency, model availability or price, so no quantitative service advantage can be established."
+        },
+        {
+          "lead": "Benchmark",
+          "detail": "Compare prefill/decode latency, queueing, network/tool overhead, batching, model quality and cost per completed task across equal prompts and concurrency."
+        }
+      ],
+      "paragraphs": [
+        "Evidence gap: The October announcement did not give OCI workload-specific tokens/s, p95 latency, model availability or price, so no quantitative service advantage can be established.",
+        "Benchmark: Compare prefill/decode latency, queueing, network/tool overhead, batching, model quality and cost per completed task across equal prompts and concurrency."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Oracle — Building the Next Decade of OCI",
+      "url": "https://www.oracle.com/news/announcement/blog/ai-world-building-the-next-decade-of-oracle-cloud-infrastructure-2026-10-27/",
+      "published": "2026-10-27",
+      "type": "Official product roadmap"
+    }
+  ],
+  "related": []
+}
