@@ -30,6 +30,10 @@ for edition in archive["editions"]:
         assert len(search) >= 20, f"Missing search text: {date}/{story_id}"
         assert story["title"] == index_stories[story_id]["title"], f"Title mismatch: {date}/{story_id}"
         assert story["sources"], f"Missing sources: {date}/{story_id}"
+        for section in story.get("sections", []):
+            assert section.get("paragraphs") or section.get("bullets") or section.get("interactive"), f"Empty article section: {date}/{story_id}"
+            for item in section.get("bullets", []):
+                assert isinstance(item, dict) and isinstance(item.get("lead"), str) and item["lead"].strip() and isinstance(item.get("detail"), str) and item["detail"].strip(), f"Malformed article bullet: {date}/{story_id}"
         for source in story["sources"]:
             url = urlparse(source["url"])
             assert url.scheme == "https" and url.netloc, f"Invalid source URL: {source['url']}"
@@ -70,7 +74,9 @@ for edition in archive["editions"]:
         for chapter in paper["chapters"]:
             assert chapter.get("id") and chapter["id"] not in chapter_ids, f"Duplicate chapter: {slug}"
             chapter_ids.add(chapter["id"])
-            assert chapter.get("title") and chapter.get("paragraphs"), f"Missing chapter text: {slug}"
+            assert chapter.get("title") and (chapter.get("paragraphs") or chapter.get("bullets")), f"Missing chapter text: {slug}"
+            for item in chapter.get("bullets", []):
+                assert isinstance(item, dict) and isinstance(item.get("lead"), str) and item["lead"].strip() and isinstance(item.get("detail"), str) and item["detail"].strip(), f"Malformed paper bullet: {slug}"
             if not chapter.get("explainer"):
                 continue
             figures += 1
