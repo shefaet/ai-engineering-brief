@@ -198,3 +198,20 @@
  .insight-list,.paper-insight-list{gap:12px;margin:8px 0 14px;}
  .insight-list li,.paper-insight-list li{font-size:16px;line-height:1.65;padding-left:18px;}
 }
+
+
+/* Content-first code comparison: two compact examples, no ornamental UI. */
+.code-comparison {margin:17px 0 22px;max-width:735px;min-width:0;}
+.comparison-caption {font-size:14px;font-weight:680;color:var(--ink);line-height:1.45;margin:0 0 10px;}
+.comparison-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+.comparison-panel {min-width:0;background:var(--surface-alt);border:1px solid var(--line);border-radius:9px;overflow:hidden;}
+.comparison-label {font-size:12px;font-weight:700;letter-spacing:0;color:var(--muted);padding:10px 13px 8px;border-bottom:1px solid var(--line);}
+.comparison-code {font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;font-size:12.5px;line-height:1.55;tab-size:2;color:var(--ink);background:transparent;padding:13px;margin:0;overflow-x:auto;white-space:pre;}
+.comparison-code code {font:inherit;}
+.comparison-takeaway {font-size:14px!important;color:var(--ink)!important;line-height:1.55!important;margin:11px 0 0!important;}
+.comparison-note {font-size:12px!important;line-height:1.5!important;color:var(--muted)!important;margin:5px 0 0!important;}
+@media(max-width:640px) {
+ .comparison-grid{grid-template-columns:1fr;gap:9px;}
+ .comparison-code{font-size:12.5px;padding:12px;max-height:280px;}
+ .comparison-label{padding:8px 12px;}
+}
