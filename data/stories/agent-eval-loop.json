@@ -1,0 +1,89 @@
+{
+  "date": "2026-10-28",
+  "id": "agent-eval-loop",
+  "category": "AGENT ENGINEERING",
+  "priority": "High",
+  "title": "Google describes a hill-climbing workflow for agent evaluation",
+  "dek": "The unit of improvement is the complete agent system, not an isolated model score.",
+  "tags": [
+    "Agents",
+    "Evaluation",
+    "Infrastructure"
+  ],
+  "evidence": "Vendor engineering walkthrough; not independent results",
+  "published": "2026-10-28",
+  "takeaway": "Track full traces and per-case outcomes on a frozen regression set. Do not promote a model or prompt change based only on a mean score.",
+  "sections": [
+    {
+      "title": "What changed",
+      "bullets": [
+        {
+          "lead": "Evaluation as a pipeline",
+          "detail": "Google's Agents CLI separates trace generation, grading, run comparisons, failure analysis, and prompt optimization; the unit of evaluation is the tool-using agent, not the model alone."
+        },
+        {
+          "lead": "Failure mode",
+          "detail": "A system-prompt edit can suppress tool calls and produce unsupported answers while the application code still executes."
+        }
+      ],
+      "paragraphs": [
+        "Evaluation as a pipeline: Google's Agents CLI separates trace generation, grading, run comparisons, failure analysis, and prompt optimization; the unit of evaluation is the tool-using agent, not the model alone.",
+        "Failure mode: A system-prompt edit can suppress tool calls and produce unsupported answers while the application code still executes."
+      ]
+    },
+    {
+      "title": "Inspect the loop",
+      "bullets": [],
+      "interactive": "eval-loop"
+    },
+    {
+      "title": "Evidence & limits",
+      "bullets": [
+        {
+          "lead": "Measured in example",
+          "detail": "Across four test cases, mean response-quality score dropped from 4.00 to 2.75 / 5 after a prompt regression."
+        },
+        {
+          "lead": "What it does not show",
+          "detail": "Four examples illustrate the regression-detection workflow; they are insufficient to estimate production reliability."
+        }
+      ],
+      "paragraphs": [
+        "Measured in example: Across four test cases, mean response-quality score dropped from 4.00 to 2.75 / 5 after a prompt regression.",
+        "What it does not show: Four examples illustrate the regression-detection workflow; they are insufficient to estimate production reliability."
+      ]
+    },
+    {
+      "title": "Engineering test",
+      "bullets": [
+        {
+          "lead": "Dataset",
+          "detail": "Freeze representative financial retrieval, numerical reconciliation, citations, entitlement checks, and structured-query tasks."
+        },
+        {
+          "lead": "Release gate",
+          "detail": "Compare per-case tool traces, task success, unsupported claims, unauthorized actions, p95 latency, and cost. Reject regressions masked by a stable mean."
+        }
+      ],
+      "paragraphs": [
+        "Dataset: Freeze representative financial retrieval, numerical reconciliation, citations, entitlement checks, and structured-query tasks.",
+        "Release gate: Compare per-case tool traces, task success, unsupported claims, unauthorized actions, p95 latency, and cost. Reject regressions masked by a stable mean."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Google Developers Blog - Hill-Climbing Agent Quality with Agents CLI Evaluation",
+      "url": "https://developers.googleblog.com/en/hill-climbing-agent-quality-with-agents-cli-evaluation/",
+      "published": "2026-10-28",
+      "type": "Vendor technical article"
+    }
+  ],
+  "related": [
+    {
+      "date": "2026-10-27",
+      "id": "agent-judgment",
+      "label": "Related: Agent influence on expert judgment"
+    }
+  ]
+}
