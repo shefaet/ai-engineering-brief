@@ -18,6 +18,23 @@ function appendBullets(node,items){
  }
  node.append(list);
 }
+function renderExample(where,spec){
+ if(!spec||spec.type!=="code-comparison"||!Array.isArray(spec.variants)||spec.variants.length!==2)return;
+ const figure=el("figure","code-comparison");
+ if(spec.caption)figure.append(el("figcaption","comparison-caption",spec.caption));
+ const grid=el("div","comparison-grid");
+ for(const variant of spec.variants){
+  const panel=el("div","comparison-panel");
+  panel.append(el("div","comparison-label",variant.label||"Example"));
+  const pre=el("pre","comparison-code");
+  const code=el("code","",variant.code||"");
+  pre.append(code);panel.append(pre);grid.append(panel);
+ }
+ figure.append(grid);
+ if(spec.takeaway)figure.append(el("p","comparison-takeaway",spec.takeaway));
+ if(spec.note)figure.append(el("p","comparison-note",spec.note));
+ where.append(figure);
+}
 function error(node,msg){node.replaceChildren(el("div","empty",msg))}
 async function home(){
  const root=$("#article-list");
@@ -116,7 +133,7 @@ async function post(){
    if(s.takeaway) article.append(el("p","story-lead",s.takeaway));
    if(s.paperSlug){const dive=el("a","paper-callout");dive.href="paper.html?slug="+encodeURIComponent(s.paperSlug);dive.append(el("strong","","Explore the paper interactively →"));article.append(dive)}
    for(const section of s.sections||[]){
-    const box=el("section","story-section");if(section.title)box.append(el("h3","",section.title));appendBullets(box,section.bullets);if(!(section.bullets||[]).length)appendP(box,section.paragraphs);
+    const box=el("section","story-section");if(section.title)box.append(el("h3","",section.title));appendBullets(box,section.bullets);if(!(section.bullets||[]).length)appendP(box,section.paragraphs);if(section.example)renderExample(box,section.example);
     if(section.interactive==="anthropic-chart")interactiveChart(box,section.chartData||{});
     if(section.interactive==="eval-loop")interactiveCycle(box);
     article.append(box)
