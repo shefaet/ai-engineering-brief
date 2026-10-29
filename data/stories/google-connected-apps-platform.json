@@ -11,7 +11,7 @@
     "MCP"
   ],
   "evidence": "Google platform announcement and developer documentation; preview access and no independent reliability data",
-  "takeaway": "Design connector actions as authenticated, scoped APIs with idempotency and confirmation; a shared discovery surface is not shared authorization.",
+  "takeaway": "A shared tool interface improves portability, but discovering a tool does not grant permission to execute it.",
   "sections": [
     {
       "title": "Context",
@@ -70,20 +70,20 @@
       ]
     },
     {
-      "title": "Why it matters",
+      "title": "Key takeaways",
       "bullets": [
         {
-          "lead": "Treat tools as public APIs",
-          "detail": "Validate user identity and tenant scope at execution, not only when a model selects a tool. Use explicit confirmation for purchases, messages and other irreversible writes."
+          "lead": "Discovery is not authorization",
+          "detail": "Finding a connector does not grant permission to act for a user. Execution still requires identity, scope and permission checks."
         },
         {
-          "lead": "Make retries safe",
-          "detail": "Test duplicate invocations, partial failures, expired grants and cancellation across both Search and Gemini. A repeated model action should not repeat a payment or destructive update."
+          "lead": "Retries affect correctness",
+          "detail": "Repeated tool calls after a timeout can duplicate an action. Schema compatibility alone does not provide safe transaction semantics."
         }
       ],
       "paragraphs": [
-        "Treat tools as public APIs: Validate user identity and tenant scope at execution, not only when a model selects a tool. Use explicit confirmation for purchases, messages and other irreversible writes.",
-        "Make retries safe: Test duplicate invocations, partial failures, expired grants and cancellation across both Search and Gemini. A repeated model action should not repeat a payment or destructive update."
+        "Discovery is not authorization: Finding a connector does not grant permission to act for a user. Execution still requires identity, scope and permission checks.",
+        "Retries affect correctness: Repeated tool calls after a timeout can duplicate an action. Schema compatibility alone does not provide safe transaction semantics."
       ]
     }
   ],
