@@ -15,37 +15,71 @@
   "takeaway": "Benchmark retention and adaptation jointly: new-fact accuracy is not valuable if it destroys existing competencies.",
   "sections": [
     {
-      "title": "Mechanism",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Problem",
-          "detail": "Continual parameter updates can cause catastrophic forgetting; in-context learning preserves new facts only while they remain in the prompt."
-        },
-        {
-          "lead": "Approach",
-          "detail": "Google introduces a sleep-like consolidation phase that integrates acquired information across learning cycles, aiming to preserve earlier knowledge and improve reasoning."
+          "lead": "The memory problem",
+          "detail": "Standard LLMs forget newly observed facts after the context ends; continual weight updates can overwrite previously learned abilities."
         }
       ],
       "paragraphs": [
-        "Problem: Continual parameter updates can cause catastrophic forgetting; in-context learning preserves new facts only while they remain in the prompt.",
-        "Approach: Google introduces a sleep-like consolidation phase that integrates acquired information across learning cycles, aiming to preserve earlier knowledge and improve reasoning."
+        "The memory problem: Standard LLMs forget newly observed facts after the context ends; continual weight updates can overwrite previously learned abilities."
       ]
     },
     {
-      "title": "Evaluation implications",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Trade-off",
-          "detail": "A model can appear better on recently introduced facts while regressing on established tasks. Claims of continual learning require both retention and adaptation measurements."
+          "lead": "Wake and consolidation",
+          "detail": "The proposed framework captures new information during active use, then consolidates it into longer-term parameters in an offline 'sleep' phase; MoE and low-rank mechanisms help manage memory."
         },
         {
-          "lead": "Test",
-          "detail": "Build a sequential curriculum with frozen old-task probes, newly learned facts, interference cases, update compute and post-update calibration. Measure forgetting per stage rather than only final accuracy."
+          "lead": "Dreaming stage",
+          "detail": "The approach also generates and filters synthetic rehearsal examples, then refines the model through supervised and reinforcement-learning steps."
         }
       ],
       "paragraphs": [
-        "Trade-off: A model can appear better on recently introduced facts while regressing on established tasks. Claims of continual learning require both retention and adaptation measurements.",
-        "Test: Build a sequential curriculum with frozen old-task probes, newly learned facts, interference cases, update compute and post-update calibration. Measure forgetting per stage rather than only final accuracy."
+        "Wake and consolidation: The proposed framework captures new information during active use, then consolidates it into longer-term parameters in an offline 'sleep' phase; MoE and low-rank mechanisms help manage memory.",
+        "Dreaming stage: The approach also generates and filters synthetic rehearsal examples, then refines the model through supervised and reinforcement-learning steps."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Reported long-context result",
+          "detail": "Google reports near-perfect BABILong performance up to 10M tokens by consolidating information into parameters, not by simply enlarging an attention window."
+        },
+        {
+          "lead": "Task-level numbers",
+          "detail": "The article reports 48.9% on a single-task factual-knowledge evaluation and 46.2% on continued pretraining; mathematics scores include 79.2% on AIME 2024. Values need their original benchmark setups for comparison."
+        },
+        {
+          "lead": "Evidence boundary",
+          "detail": "These are Google-reported research experiments. The work does not establish an always-learning, zero-forgetting production model across arbitrary domains."
+        }
+      ],
+      "paragraphs": [
+        "Reported long-context result: Google reports near-perfect BABILong performance up to 10M tokens by consolidating information into parameters, not by simply enlarging an attention window.",
+        "Task-level numbers: The article reports 48.9% on a single-task factual-knowledge evaluation and 46.2% on continued pretraining; mathematics scores include 79.2% on AIME 2024. Values need their original benchmark setups for comparison.",
+        "Evidence boundary: These are Google-reported research experiments. The work does not establish an always-learning, zero-forgetting production model across arbitrary domains."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Memory is an update policy",
+          "detail": "Judge acquisition and retention together over many sequential updates, rather than testing only whether the latest fact can be recalled."
+        },
+        {
+          "lead": "Useful test",
+          "detail": "Interleave changing facts, old-skill regression probes, interference tasks and consolidation cost; chart performance after every learning cycle."
+        }
+      ],
+      "paragraphs": [
+        "Memory is an update policy: Judge acquisition and retention together over many sequential updates, rather than testing only whether the latest fact can be recalled.",
+        "Useful test: Interleave changing facts, old-skill regression probes, interference tasks and consolidation cost; chart performance after every learning cycle."
       ]
     }
   ],
@@ -57,5 +91,6 @@
       "type": "Primary vendor research"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
