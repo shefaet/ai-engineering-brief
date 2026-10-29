@@ -15,37 +15,66 @@
   "takeaway": "Evaluate open-weight candidates with behavioral and manipulation suites before making trust assumptions based on licensing or model provenance.",
   "sections": [
     {
-      "title": "Design",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Scope",
-          "detail": "The researchers evaluated DeepSeek V4.1 Flash-1017 on 34 benchmarks, including five in-house suites, spanning evaluation integrity, loss-of-control behaviors and harmful manipulation."
-        },
-        {
-          "lead": "Context",
-          "detail": "The work targets a gap between model capability benchmarks and standardized safety assessment of openly distributed weights."
+          "lead": "Capability doesn't measure control",
+          "detail": "A model can score well at reasoning while being unreliable under malicious prompts, tool authority or evaluation pressure."
         }
       ],
       "paragraphs": [
-        "Scope: The researchers evaluated DeepSeek V4.1 Flash-1017 on 34 benchmarks, including five in-house suites, spanning evaluation integrity, loss-of-control behaviors and harmful manipulation.",
-        "Context: The work targets a gap between model capability benchmarks and standardized safety assessment of openly distributed weights."
+        "Capability doesn't measure control: A model can score well at reasoning while being unreliable under malicious prompts, tool authority or evaluation pressure."
       ]
     },
     {
-      "title": "Interpretation",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Evidence",
-          "detail": "Scores from selected scenarios characterize the tested model and harness. They cannot establish an absolute probability of misuse or guarantee that open weights remain controllable under fine-tuning."
+          "lead": "An independent safety harness",
+          "detail": "Researchers assessed DeepSeek V4.1 Flash-1017 on 34 benchmarks, including five newly constructed suites, spanning evaluation integrity, harmful manipulation and loss-of-control risks."
         },
         {
-          "lead": "Evaluation plan",
-          "detail": "Reproduce with fixed prompts, repeat seeds, tool permissions and deployment configuration; measure refusal consistency, deceptive behavior and capability regression separately."
+          "lead": "Separate behavioral categories",
+          "detail": "The study looks beyond generic refusals to whether the model misrepresents behavior, pursues a problematic goal or handles adversarial instructions poorly."
         }
       ],
       "paragraphs": [
-        "Evidence: Scores from selected scenarios characterize the tested model and harness. They cannot establish an absolute probability of misuse or guarantee that open weights remain controllable under fine-tuning.",
-        "Evaluation plan: Reproduce with fixed prompts, repeat seeds, tool permissions and deployment configuration; measure refusal consistency, deceptive behavior and capability regression separately."
+        "An independent safety harness: Researchers assessed DeepSeek V4.1 Flash-1017 on 34 benchmarks, including five newly constructed suites, spanning evaluation integrity, harmful manipulation and loss-of-control risks.",
+        "Separate behavioral categories: The study looks beyond generic refusals to whether the model misrepresents behavior, pursues a problematic goal or handles adversarial instructions poorly."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Scope of claims",
+          "detail": "Results characterize one version of a model under the chosen prompts and harness; they do not establish the probability of real incidents."
+        },
+        {
+          "lead": "What remains untested",
+          "detail": "Downstream fine-tunes, additional tool privileges, deployment policies and different sampling conditions can change behavior considerably."
+        }
+      ],
+      "paragraphs": [
+        "Scope of claims: Results characterize one version of a model under the chosen prompts and harness; they do not establish the probability of real incidents.",
+        "What remains untested: Downstream fine-tunes, additional tool privileges, deployment policies and different sampling conditions can change behavior considerably."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Make a threat-specific eval suite",
+          "detail": "Before deployment, test manipulation, deceptive reporting, unauthorized tool use and recovery on actual workflows."
+        },
+        {
+          "lead": "Reproducibility matters",
+          "detail": "Fix model IDs, prompts, temperatures, seeds when supported and tool permissions; compare safety and task completion independently."
+        }
+      ],
+      "paragraphs": [
+        "Make a threat-specific eval suite: Before deployment, test manipulation, deceptive reporting, unauthorized tool use and recovery on actual workflows.",
+        "Reproducibility matters: Fix model IDs, prompts, temperatures, seeds when supported and tool permissions; compare safety and task completion independently."
       ]
     }
   ],
@@ -57,5 +86,6 @@
       "type": "Primary research"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
