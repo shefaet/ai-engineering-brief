@@ -5,62 +5,86 @@
   "category": "FINANCIAL AI",
   "priority": "High",
   "title": "Inside hedge funds' AI agents: Citadel, Bridgewater and Man Group",
-  "dek": "How three hedge funds use AI for research—and why speed, judgment and trading authority must be measured separately.",
+  "dek": "How Citadel, Bridgewater and Man Group are using AI agents in investment research.",
   "tags": [
     "Financial AI",
     "Agents",
     "Governance"
   ],
   "evidence": "Oct 27 executive interviews plus earlier first-party technical disclosures; no independent comparison of fund alpha or security outcomes",
-  "takeaway": "Citadel, Bridgewater and Man Group are using agents to extend research capacity, not simply replace analysts. The lasting edge depends on expert knowledge, controlled tools and the ability to challenge AI-generated conclusions.",
+  "takeaway": "The real test is whether agents improve research quality without displacing independent judgment or acquiring trading authority.",
   "sections": [
     {
-      "title": "What each firm is doing",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Citadel",
-          "detail": "Some teams use agent counterparts to conduct independent research and challenge investment theses. Its disclosed Second Brain prototype updates research notes from filings, earnings calls and meetings; that prototype is not evidence of firm-wide deployment."
-        },
-        {
-          "lead": "Bridgewater",
-          "detail": "Its Pocket Analyst combines investment knowledge, proprietary data, tool use and analyst feedback. AIA Labs is scaling the methods, while leadership remains cautious about unconstrained agent autonomy."
-        },
-        {
-          "lead": "Man Group",
-          "detail": "Alpha Assistant can locate internal code, construct signals and run backtests under researcher-approved plans. Leadership warns against “cognitive surrender”: treating a fluent answer as independent research."
+          "lead": "The distinction",
+          "detail": "Investment research combines evidence gathering, hypothesis testing and judgment. Agents can accelerate the first two without being trusted to make the final investment decision."
         }
       ],
       "paragraphs": [
-        "Citadel: Some teams use agent counterparts to conduct independent research and challenge investment theses. Its disclosed Second Brain prototype updates research notes from filings, earnings calls and meetings; that prototype is not evidence of firm-wide deployment.",
-        "Bridgewater: Its Pocket Analyst combines investment knowledge, proprietary data, tool use and analyst feedback. AIA Labs is scaling the methods, while leadership remains cautious about unconstrained agent autonomy.",
-        "Man Group: Alpha Assistant can locate internal code, construct signals and run backtests under researcher-approved plans. Leadership warns against “cognitive surrender”: treating a fluent answer as independent research."
+        "The distinction: Investment research combines evidence gathering, hypothesis testing and judgment. Agents can accelerate the first two without being trusted to make the final investment decision."
       ]
     },
     {
-      "title": "Four takeaways worth remembering",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Expert judgment is a training asset",
-          "detail": "On six document-filtering tasks, Bridgewater reports 84.7% accuracy for a specialized Qwen3 derivative versus a 78.2% frontier-model baseline, at 13.8× lower inference cost. Vendor-reported task metrics—not investment returns."
+          "lead": "Citadel",
+          "detail": "Some analysts use agent counterparts to independently research and challenge theses. Its Second Brain prototype updates research notes from filings, earnings calls and meetings."
         },
         {
-          "lead": "The capability boundary matters more than the prompt",
-          "detail": "Read-only document research and sandboxed backtests are not the same risk as modifying a portfolio or placing an order. Enforce the boundary at tool and identity layers, with approvals for writes."
+          "lead": "Bridgewater",
+          "detail": "Pocket Analyst connects an LLM to specialized investment knowledge, internal data, tools and analyst feedback. AIA Labs is expanding those methods while evaluating agent autonomy."
         },
         {
-          "lead": "Human sign-off can hide AI dependence",
-          "detail": "Record an analyst’s initial thesis and assumptions before showing the agent’s recommendation. Compare changes, contrary evidence and alternative methods—not just whether the reviewer clicked approve."
-        },
-        {
-          "lead": "More backtests do not mean more alpha",
-          "detail": "Agentic research increases the number of hypotheses tested, and therefore the risk of false discoveries. Require out-of-sample validation, multiple-testing controls, transaction costs and realistic capacity assumptions."
+          "lead": "Man Group",
+          "detail": "Alpha Assistant orchestrates code search, signal construction and backtests under researcher-approved plans; leadership warns against accepting polished AI conclusions uncritically."
         }
       ],
       "paragraphs": [
-        "Expert judgment is a training asset: On six document-filtering tasks, Bridgewater reports 84.7% accuracy for a specialized Qwen3 derivative versus a 78.2% frontier-model baseline, at 13.8× lower inference cost. Vendor-reported task metrics—not investment returns.",
-        "The capability boundary matters more than the prompt: Read-only document research and sandboxed backtests are not the same risk as modifying a portfolio or placing an order. Enforce the boundary at tool and identity layers, with approvals for writes.",
-        "Human sign-off can hide AI dependence: Record an analyst’s initial thesis and assumptions before showing the agent’s recommendation. Compare changes, contrary evidence and alternative methods—not just whether the reviewer clicked approve.",
-        "More backtests do not mean more alpha: Agentic research increases the number of hypotheses tested, and therefore the risk of false discoveries. Require out-of-sample validation, multiple-testing controls, transaction costs and realistic capacity assumptions."
+        "Citadel: Some analysts use agent counterparts to independently research and challenge theses. Its Second Brain prototype updates research notes from filings, earnings calls and meetings.",
+        "Bridgewater: Pocket Analyst connects an LLM to specialized investment knowledge, internal data, tools and analyst feedback. AIA Labs is expanding those methods while evaluating agent autonomy.",
+        "Man Group: Alpha Assistant orchestrates code search, signal construction and backtests under researcher-approved plans; leadership warns against accepting polished AI conclusions uncritically."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Measured advantage",
+          "detail": "Bridgewater reports 84.7% accuracy for a specialized Qwen3 derivative versus a 78.2% frontier baseline across six document-filtering tasks, at 13.8× lower inference cost per task. These are firm-reported results, not investment returns."
+        },
+        {
+          "lead": "What's missing",
+          "detail": "The firms describe workflows and selected prototypes, but provide no comparable public measurements of research productivity, autonomous-action failures or incremental trading alpha."
+        }
+      ],
+      "paragraphs": [
+        "Measured advantage: Bridgewater reports 84.7% accuracy for a specialized Qwen3 derivative versus a 78.2% frontier baseline across six document-filtering tasks, at 13.8× lower inference cost per task. These are firm-reported results, not investment returns.",
+        "What's missing: The firms describe workflows and selected prototypes, but provide no comparable public measurements of research productivity, autonomous-action failures or incremental trading alpha."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Authority beats prompting",
+          "detail": "Read-only retrieval and sandboxed backtests are fundamentally different from portfolio changes or order placement. Enforce that boundary through tools, identities and approvals."
+        },
+        {
+          "lead": "Approval isn't independence",
+          "detail": "Record analysts' assumptions before exposing them to AI recommendations, then check whether they challenge the model's method and contradictory evidence."
+        },
+        {
+          "lead": "More research isn't necessarily more alpha",
+          "detail": "Automated hypothesis generation increases false-discovery risk. Require out-of-sample testing, multiple-testing controls, transaction costs and capacity constraints."
+        }
+      ],
+      "paragraphs": [
+        "Authority beats prompting: Read-only retrieval and sandboxed backtests are fundamentally different from portfolio changes or order placement. Enforce that boundary through tools, identities and approvals.",
+        "Approval isn't independence: Record analysts' assumptions before exposing them to AI recommendations, then check whether they challenge the model's method and contradictory evidence.",
+        "More research isn't necessarily more alpha: Automated hypothesis generation increases false-discovery risk. Require out-of-sample testing, multiple-testing controls, transaction costs and capacity constraints."
       ],
       "example": {
         "type": "code-comparison",
