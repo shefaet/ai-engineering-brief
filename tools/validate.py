@@ -44,6 +44,12 @@ for record in indexed:
     stories[story_id] = story
     assert story["id"] == story_id and story["date"] == record["date"], f"Story/date mismatch: {story_id}"
     assert story["title"] == record["title"], f"Title mismatch: {story_id}"
+    if story.get("editorialFormat") == "four-part":
+        expected = ["What's new", "Evidence & limitations", "Why it matters"]
+        titles = [section.get("title") for section in story.get("sections", [])]
+        if titles and titles[0] == "Context":
+            titles = titles[1:]
+        assert titles == expected, f"Incorrect four-part headings or order: {story_id}"
     assert story.get("sources"), f"Missing primary source: {story_id}"
     for source in story["sources"]:
         https_url(source["url"])
