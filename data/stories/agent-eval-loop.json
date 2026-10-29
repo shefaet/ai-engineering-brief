@@ -15,59 +15,67 @@
   "takeaway": "Track full traces and per-case outcomes on a frozen regression set. Do not promote a model or prompt change based only on a mean score.",
   "sections": [
     {
-      "title": "What changed",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Evaluation as a pipeline",
-          "detail": "Google's Agents CLI separates trace generation, grading, run comparisons, failure analysis, and prompt optimization; the unit of evaluation is the tool-using agent, not the model alone."
-        },
-        {
-          "lead": "Failure mode",
-          "detail": "A system-prompt edit can suppress tool calls and produce unsupported answers while the application code still executes."
+          "lead": "Why evals regress",
+          "detail": "An agent is a system of model, prompt, tools and permissions. A model upgrade can improve one answer while silently breaking tool use elsewhere."
         }
       ],
       "paragraphs": [
-        "Evaluation as a pipeline: Google's Agents CLI separates trace generation, grading, run comparisons, failure analysis, and prompt optimization; the unit of evaluation is the tool-using agent, not the model alone.",
-        "Failure mode: A system-prompt edit can suppress tool calls and produce unsupported answers while the application code still executes."
+        "Why evals regress: An agent is a system of model, prompt, tools and permissions. A model upgrade can improve one answer while silently breaking tool use elsewhere."
       ]
     },
     {
-      "title": "Inspect the loop",
-      "bullets": [],
+      "title": "What's new",
+      "bullets": [
+        {
+          "lead": "Five-stage loop",
+          "detail": "Google's Agents CLI runs cases (`eval generate`), grades complete traces, diffs runs, clusters recurring failures and optionally optimizes prompts."
+        },
+        {
+          "lead": "Concrete failure",
+          "detail": "In the walkthrough, a prompt change discouraged necessary tool calls; responses looked plausible but lost grounded information."
+        }
+      ],
+      "paragraphs": [
+        "Five-stage loop: Google's Agents CLI runs cases (`eval generate`), grades complete traces, diffs runs, clusters recurring failures and optionally optimizes prompts.",
+        "Concrete failure: In the walkthrough, a prompt change discouraged necessary tool calls; responses looked plausible but lost grounded information."
+      ],
       "interactive": "eval-loop"
     },
     {
-      "title": "Evidence & limits",
+      "title": "Evidence & limitations",
       "bullets": [
         {
-          "lead": "Measured in example",
-          "detail": "Across four test cases, mean response-quality score dropped from 4.00 to 2.75 / 5 after a prompt regression."
+          "lead": "Illustrative regression",
+          "detail": "Four test cases fell from a mean 4.00 to 2.75 on a five-point response-quality rubric. That tiny dataset demonstrates detection, not a production failure rate."
         },
         {
-          "lead": "What it does not show",
-          "detail": "Four examples illustrate the regression-detection workflow; they are insufficient to estimate production reliability."
+          "lead": "Reproducibility",
+          "detail": "Exact case-level traces and rubric versions matter more than a single mean; tool-call differences can reveal regressions invisible in final-text scoring."
         }
       ],
       "paragraphs": [
-        "Measured in example: Across four test cases, mean response-quality score dropped from 4.00 to 2.75 / 5 after a prompt regression.",
-        "What it does not show: Four examples illustrate the regression-detection workflow; they are insufficient to estimate production reliability."
+        "Illustrative regression: Four test cases fell from a mean 4.00 to 2.75 on a five-point response-quality rubric. That tiny dataset demonstrates detection, not a production failure rate.",
+        "Reproducibility: Exact case-level traces and rubric versions matter more than a single mean; tool-call differences can reveal regressions invisible in final-text scoring."
       ]
     },
     {
-      "title": "Engineering test",
+      "title": "Why it matters",
       "bullets": [
         {
-          "lead": "Dataset",
-          "detail": "Freeze representative financial retrieval, numerical reconciliation, citations, entitlement checks, and structured-query tasks."
+          "lead": "Promote systems, not prompts",
+          "detail": "Gate changes on frozen per-case tasks, tool actions, unsupported claims, cost and latency, with manual review of material regressions."
         },
         {
-          "lead": "Release gate",
-          "detail": "Compare per-case tool traces, task success, unsupported claims, unauthorized actions, p95 latency, and cost. Reject regressions masked by a stable mean."
+          "lead": "Inspect failure clusters",
+          "detail": "If five failures stem from missing retrieval, repair tool selection once rather than rewriting five unrelated answers."
         }
       ],
       "paragraphs": [
-        "Dataset: Freeze representative financial retrieval, numerical reconciliation, citations, entitlement checks, and structured-query tasks.",
-        "Release gate: Compare per-case tool traces, task success, unsupported claims, unauthorized actions, p95 latency, and cost. Reject regressions masked by a stable mean."
+        "Promote systems, not prompts: Gate changes on frozen per-case tasks, tool actions, unsupported claims, cost and latency, with manual review of material regressions.",
+        "Inspect failure clusters: If five failures stem from missing retrieval, repair tool selection once rather than rewriting five unrelated answers."
       ]
     }
   ],
@@ -85,5 +93,6 @@
       "id": "agent-judgment",
       "label": "Related: Agent influence on expert judgment"
     }
-  ]
+  ],
+  "editorialFormat": "four-part"
 }
