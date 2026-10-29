@@ -1,0 +1,114 @@
+{
+  "id": "github-agentic-workflows-ga",
+  "category": "AGENT INFRASTRUCTURE",
+  "priority": "High",
+  "title": "GitHub Agentic Workflows reaches general availability with policy-gated outputs",
+  "dek": "Markdown-defined agent tasks compile into GitHub Actions and run with read-only defaults, sandboxing and a separate checked-output path.",
+  "tags": [
+    "Agents",
+    "Infrastructure",
+    "Security",
+    "Evaluation"
+  ],
+  "evidence": "Official GitHub GA release and project documentation; customer case study is not controlled evidence",
+  "takeaway": "Use the agent to propose repository changes, but keep credential scope, change application and CI verification outside the agent's unrestricted control.",
+  "sections": [
+    {
+      "title": "Context",
+      "bullets": [
+        {
+          "lead": "Why scheduled agents differ",
+          "detail": "A CI automation that can reason about issues and code may also read untrusted text and propose changes. Ordinary workflow credentials and direct write access make prompt injection consequential."
+        }
+      ],
+      "paragraphs": [
+        "Why scheduled agents differ: A CI automation that can reason about issues and code may also read untrusted text and propose changes. Ordinary workflow credentials and direct write access make prompt injection consequential."
+      ]
+    },
+    {
+      "title": "What's new",
+      "bullets": [
+        {
+          "lead": "Declarative compilation",
+          "detail": "GitHub's open-source Agentic Workflows project is generally available. A natural-language Markdown workflow compiles into standard GitHub Actions YAML for tasks such as issue triage, CI diagnosis, documentation and tests."
+        },
+        {
+          "lead": "Layered execution controls",
+          "detail": "Agents have read-only permissions by default, a content integrity filter, a sandbox behind Agent Workflow Firewall, validated safe outputs, and a separate threat-detection job before proposed changes are applied."
+        },
+        {
+          "lead": "GA additions",
+          "detail": "The release adds support for self-hosted Actions Runner Controller with Docker-in-Docker, Cloud Hypervisor or NVX micro-VM isolation, cross-repository enclaves, model-provider selection and `gh aw forecast` budget estimates."
+        }
+      ],
+      "paragraphs": [
+        "Declarative compilation: GitHub's open-source Agentic Workflows project is generally available. A natural-language Markdown workflow compiles into standard GitHub Actions YAML for tasks such as issue triage, CI diagnosis, documentation and tests.",
+        "Layered execution controls: Agents have read-only permissions by default, a content integrity filter, a sandbox behind Agent Workflow Firewall, validated safe outputs, and a separate threat-detection job before proposed changes are applied.",
+        "GA additions: The release adds support for self-hosted Actions Runner Controller with Docker-in-Docker, Cloud Hypervisor or NVX micro-VM isolation, cross-repository enclaves, model-provider selection and `gh aw forecast` budget estimates."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Availability",
+          "detail": "GitHub says Agentic Workflows is generally available on github.com for Free, Team and Enterprise. Using the default Copilot CLI engine requires a Copilot license; alternative agents can be configured."
+        },
+        {
+          "lead": "Case-study caution",
+          "detail": "GitHub quotes one customer's estimated 29 hours saved per week by a lead engineer and a reduction in daily production errors. These are uncontrolled customer observations, not independent causal measurements of the framework."
+        },
+        {
+          "lead": "Security boundary",
+          "detail": "A firewall and sandbox constrain capabilities, but cannot determine whether a semantically valid patch is correct or whether an approved write is authorized in business context."
+        }
+      ],
+      "paragraphs": [
+        "Availability: GitHub says Agentic Workflows is generally available on github.com for Free, Team and Enterprise. Using the default Copilot CLI engine requires a Copilot license; alternative agents can be configured.",
+        "Case-study caution: GitHub quotes one customer's estimated 29 hours saved per week by a lead engineer and a reduction in daily production errors. These are uncontrolled customer observations, not independent causal measurements of the framework.",
+        "Security boundary: A firewall and sandbox constrain capabilities, but cannot determine whether a semantically valid patch is correct or whether an approved write is authorized in business context."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Compile reviewable policy",
+          "detail": "Review generated Actions YAML, trigger conditions, token scopes and permitted outputs as code. Do not treat the Markdown prompt as the complete security specification."
+        },
+        {
+          "lead": "Test malicious repository content",
+          "detail": "Place adversarial instructions in issues, pull requests and documentation. Verify that agent proposals cannot bypass output checks, obtain write tokens or exfiltrate secrets."
+        }
+      ],
+      "paragraphs": [
+        "Compile reviewable policy: Review generated Actions YAML, trigger conditions, token scopes and permitted outputs as code. Do not treat the Markdown prompt as the complete security specification.",
+        "Test malicious repository content: Place adversarial instructions in issues, pull requests and documentation. Verify that agent proposals cannot bypass output checks, obtain write tokens or exfiltrate secrets."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "GitHub - Agentic Workflows generally available",
+      "url": "https://github.blog/changelog/2026-10-28-github-agentic-workflows-generally-available/",
+      "published": "2026-10-28",
+      "type": "Official GA announcement"
+    },
+    {
+      "name": "GitHub - Agentic Workflows documentation",
+      "url": "https://github.github.com/gh-aw/",
+      "published": "2026-10-28",
+      "type": "Project documentation, consulted with release"
+    }
+  ],
+  "related": [
+    {
+      "id": "anthropic-unintended-agent-actions",
+      "date": "2026-10-26",
+      "label": "Related: Agents crossing action boundaries"
+    }
+  ],
+  "date": "2026-10-29",
+  "published": "2026-10-28",
+  "editorialFormat": "four-part"
+}
