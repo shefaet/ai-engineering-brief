@@ -11,7 +11,7 @@
     "Economics"
   ],
   "evidence": "GitHub product disclosure and reported Artificial Analysis Coding Agent Index comparison",
-  "takeaway": "Treat model selection as an orchestration policy. Compare successful task cost and quality by route, including judge calls, retries and reviewer overhead.",
+  "takeaway": "Coding-agent performance depends on the entire routed execution path, not just the strongest model available.",
   "sections": [
     {
       "title": "Context",
@@ -88,20 +88,20 @@
       ]
     },
     {
-      "title": "Why it matters",
+      "title": "Key takeaways",
       "bullets": [
         {
-          "lead": "Instrument routing decisions",
-          "detail": "Log selected path, models, judge decisions, escalations, tool actions, verified test results, p95 latency and total billed cost per successful task."
+          "lead": "The execution path is the unit",
+          "detail": "Routing trades expensive generations against cheaper drafts, judging and escalation. Overall cost and quality depend on how often each path is taken."
         },
         {
-          "lead": "Stress the acceptance gate",
-          "detail": "Build adversarial cases where a plausible patch passes superficial review but fails integration tests. Compare false acceptance rates against a fixed-model baseline."
+          "lead": "Judges introduce failure modes",
+          "detail": "An incorrect draft that passes a judge can survive a cascade. More model calls do not guarantee correctness."
         }
       ],
       "paragraphs": [
-        "Instrument routing decisions: Log selected path, models, judge decisions, escalations, tool actions, verified test results, p95 latency and total billed cost per successful task.",
-        "Stress the acceptance gate: Build adversarial cases where a plausible patch passes superficial review but fails integration tests. Compare false acceptance rates against a fixed-model baseline."
+        "The execution path is the unit: Routing trades expensive generations against cheaper drafts, judging and escalation. Overall cost and quality depend on how often each path is taken.",
+        "Judges introduce failure modes: An incorrect draft that passes a judge can survive a cascade. More model calls do not guarantee correctness."
       ]
     }
   ],
