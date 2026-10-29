@@ -15,20 +15,32 @@
   "takeaway": "Prototype A2UI Express against direct JSON on representative financial workflows. Measure end-to-end latency, valid render rate, authorization checks and correction cost before selecting a generation format.",
   "sections": [
     {
-      "title": "Mechanism",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Trust boundary",
-          "detail": "The client supplies a catalog of allowed UI components. The agent proposes a component tree; the client renders validated structures rather than executing model-generated interface code."
-        },
-        {
-          "lead": "Authorization",
-          "detail": "Catalog constraints restrict UI structures, not the truth of displayed values or permission to execute actions. Server-side entitlements and data provenance remain separate controls."
+          "lead": "The bottleneck",
+          "detail": "Traditional generative UI asks a model to emit verbose A2UI JSON messages. Tokens and validation cost make complex screens slow to appear."
         }
       ],
       "paragraphs": [
-        "Trust boundary: The client supplies a catalog of allowed UI components. The agent proposes a component tree; the client renders validated structures rather than executing model-generated interface code.",
-        "Authorization: Catalog constraints restrict UI structures, not the truth of displayed values or permission to execute actions. Server-side entitlements and data provenance remain separate controls."
+        "The bottleneck: Traditional generative UI asks a model to emit verbose A2UI JSON messages. Tokens and validation cost make complex screens slow to appear."
+      ]
+    },
+    {
+      "title": "What's new",
+      "bullets": [
+        {
+          "lead": "Shorter intermediate format",
+          "detail": "A2UI Express uses compact assignment-like syntax; an SDK compiler turns it into validated A2UI JSON for the same trusted component catalog and renderer."
+        },
+        {
+          "lead": "No generated executable UI code",
+          "detail": "The model chooses from an approved catalog. The client retains component rendering and server actions keep their own authorization checks."
+        }
+      ],
+      "paragraphs": [
+        "Shorter intermediate format: A2UI Express uses compact assignment-like syntax; an SDK compiler turns it into validated A2UI JSON for the same trusted component catalog and renderer.",
+        "No generated executable UI code: The model chooses from an approved catalog. The client retains component rendering and server actions keep their own authorization checks."
       ],
       "example": {
         "type": "code-comparison",
@@ -50,47 +62,42 @@
       }
     },
     {
-      "title": "Performance claims",
+      "title": "Evidence & limitations",
       "bullets": [
         {
-          "lead": "Vendor benchmark",
-          "detail": "Google reports up to 3× fewer output tokens and up to 3× lower latency versus Direct JSON; its comparison spans 51 tasks with gemini-3.5-flash under different thinking settings."
+          "lead": "Vendor measurements",
+          "detail": "Google reports up to 3× fewer output tokens and up to 3× lower latency than Direct JSON in its 51-task Gemini 3.5 Flash format study."
         },
         {
-          "lead": "Streaming trade-off",
-          "detail": "Direct JSON can stream chunks; Express waits for the full response before compilation. Faster completion does not guarantee earlier first useful render."
+          "lead": "First-render caveat",
+          "detail": "Direct JSON can stream components; Express waits for full output before compilation. End-to-end completion and time to first useful render can move differently."
         },
         {
-          "lead": "Constrained layouts",
-          "detail": "Google separately cites up to 80× faster layout decisions with Jev. An 11-prompt demonstration reported 92–298 ms component trees and 0.8–1.7 s complete screens; this is not an independent Express comparison."
+          "lead": "Another approach",
+          "detail": "A constrained decision model such as Jev may choose predefined layouts faster (Google cites up to 80× faster layout decisions), but it cannot generate arbitrary catalog trees."
         }
       ],
       "paragraphs": [
-        "Vendor benchmark: Google reports up to 3× fewer output tokens and up to 3× lower latency versus Direct JSON; its comparison spans 51 tasks with gemini-3.5-flash under different thinking settings.",
-        "Streaming trade-off: Direct JSON can stream chunks; Express waits for the full response before compilation. Faster completion does not guarantee earlier first useful render.",
-        "Constrained layouts: Google separately cites up to 80× faster layout decisions with Jev. An 11-prompt demonstration reported 92–298 ms component trees and 0.8–1.7 s complete screens; this is not an independent Express comparison."
+        "Vendor measurements: Google reports up to 3× fewer output tokens and up to 3× lower latency than Direct JSON in its 51-task Gemini 3.5 Flash format study.",
+        "First-render caveat: Direct JSON can stream components; Express waits for full output before compilation. End-to-end completion and time to first useful render can move differently.",
+        "Another approach: A constrained decision model such as Jev may choose predefined layouts faster (Google cites up to 80× faster layout decisions), but it cannot generate arbitrary catalog trees."
       ]
     },
     {
-      "title": "What to verify",
+      "title": "Why it matters",
       "bullets": [
         {
-          "lead": "Evidence gap",
-          "detail": "Published figures are vendor measurements, not independently replicated production latency, cost, correctness, or security results. Jev's format is not yet included in the cited SDKs."
+          "lead": "Pick by screen shape",
+          "detail": "Use predetermined layouts when the workflow is known; choose Express when the model needs compositional freedom."
         },
         {
-          "lead": "Controlled experiment",
-          "detail": "Run 50–100 representative document, market-data, alert, and research tasks with the same model, catalog, and backend; compare Direct JSON with Express."
-        },
-        {
-          "lead": "Release gates",
-          "detail": "Measure p50/p95 end-to-end time, first useful render, token cost, valid renders, missing fields, retries, and denied-action behavior. Only promote when correctness and authorization meet baseline thresholds."
+          "lead": "Benchmark the user experience",
+          "detail": "Compare first useful render, total completion, schema correctness, denied actions and cost for equal tasks—not token count alone."
         }
       ],
       "paragraphs": [
-        "Evidence gap: Published figures are vendor measurements, not independently replicated production latency, cost, correctness, or security results. Jev's format is not yet included in the cited SDKs.",
-        "Controlled experiment: Run 50–100 representative document, market-data, alert, and research tasks with the same model, catalog, and backend; compare Direct JSON with Express.",
-        "Release gates: Measure p50/p95 end-to-end time, first useful render, token cost, valid renders, missing fields, retries, and denied-action behavior. Only promote when correctness and authorization meet baseline thresholds."
+        "Pick by screen shape: Use predetermined layouts when the workflow is known; choose Express when the model needs compositional freedom.",
+        "Benchmark the user experience: Compare first useful render, total completion, schema correctness, denied actions and cost for equal tasks—not token count alone."
       ]
     }
   ],
@@ -108,5 +115,6 @@
       "id": "agent-eval-loop",
       "label": "Related: Evaluating agents as evolving systems"
     }
-  ]
+  ],
+  "editorialFormat": "four-part"
 }
