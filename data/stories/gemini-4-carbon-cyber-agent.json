@@ -1,0 +1,108 @@
+{
+  "id": "gemini-4-carbon-cyber-agent",
+  "category": "MODEL RELEASES",
+  "priority": "Critical",
+  "title": "Google introduces Gemini 4 Carbon with stronger cyber and long-horizon agent performance",
+  "dek": "Carbon leads an independently run composite model index and posts high vendor-reported cyber benchmark scores, but broad access is not yet available.",
+  "tags": [
+    "Models",
+    "Security",
+    "Agents",
+    "Evaluation"
+  ],
+  "evidence": "Independent Artificial Analysis composite score; Google-reported cybersecurity and alignment evaluations",
+  "takeaway": "Separate the independently measured general-capability gain from vendor cyber and safety claims; run permission-bound, end-to-end security tasks before trusting autonomous fixes.",
+  "sections": [
+    {
+      "title": "Context",
+      "bullets": [
+        {
+          "lead": "Different cyber tasks",
+          "detail": "Finding a vulnerability, proving exploitability and producing a safe patch are different tasks. A model can score well on one without closing the full remediation loop."
+        }
+      ],
+      "paragraphs": [
+        "Different cyber tasks: Finding a vulnerability, proving exploitability and producing a safe patch are different tasks. A model can score well on one without closing the full remediation loop."
+      ]
+    },
+    {
+      "title": "What's new",
+      "bullets": [
+        {
+          "lead": "Frontier model",
+          "detail": "Google announced Gemini 4 Carbon as the successor to Gemini 4 Argon, targeting coding, cybersecurity and agent workflows that can persist through multi-step engineering work."
+        },
+        {
+          "lead": "Deployment boundary",
+          "detail": "Initial access starts with selected cyber defenders and trusted partners. General developer API and consumer access were not available at announcement; Google is conducting pre-release safety testing."
+        },
+        {
+          "lead": "Introductory economics",
+          "detail": "Google lists $2 per million input tokens and $10 per million output tokens, with cached input priced 95% below regular input. After the introductory period, stated prices rise to $4 and $20 per million respectively."
+        }
+      ],
+      "paragraphs": [
+        "Frontier model: Google announced Gemini 4 Carbon as the successor to Gemini 4 Argon, targeting coding, cybersecurity and agent workflows that can persist through multi-step engineering work.",
+        "Deployment boundary: Initial access starts with selected cyber defenders and trusted partners. General developer API and consumer access were not available at announcement; Google is conducting pre-release safety testing.",
+        "Introductory economics: Google lists $2 per million input tokens and $10 per million output tokens, with cached input priced 95% below regular input. After the introductory period, stated prices rise to $4 and $20 per million respectively."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Independent composite",
+          "detail": "Artificial Analysis independently evaluates its nine-benchmark Intelligence Index v5.0. Gemini 4 Carbon at High effort scores 59 versus Claude Opus 5.5 at Max with 58. The one-point lead is not a universal win across workloads."
+        },
+        {
+          "lead": "Cyber evaluations",
+          "detail": "Google reports 88.2% on SEC-bench Pro (vulnerability discovery), 54.8% on ExploitGym (exploitation), and 71.0% on CWE-bench (patching). Google says these cyber benchmark runs were evaluated without guardrails; they do not measure a guarded production deployment."
+        },
+        {
+          "lead": "Behavioral claims",
+          "detail": "Google reports 0.0% successful cheating on Terminal-Bench 4.0, 0.4% cheating attempts, 0.0% attack success on Gray Swan's indirect prompt-injection evaluation, and roughly half as many unsupported claims as Argon in internal tests. Zero observed successes is not proof of zero risk outside those test sets."
+        }
+      ],
+      "paragraphs": [
+        "Independent composite: Artificial Analysis independently evaluates its nine-benchmark Intelligence Index v5.0. Gemini 4 Carbon at High effort scores 59 versus Claude Opus 5.5 at Max with 58. The one-point lead is not a universal win across workloads.",
+        "Cyber evaluations: Google reports 88.2% on SEC-bench Pro (vulnerability discovery), 54.8% on ExploitGym (exploitation), and 71.0% on CWE-bench (patching). Google says these cyber benchmark runs were evaluated without guardrails; they do not measure a guarded production deployment.",
+        "Behavioral claims: Google reports 0.0% successful cheating on Terminal-Bench 4.0, 0.4% cheating attempts, 0.0% attack success on Gray Swan's indirect prompt-injection evaluation, and roughly half as many unsupported claims as Argon in internal tests. Zero observed successes is not proof of zero risk outside those test sets."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Evaluate the full repair chain",
+          "detail": "Score discovery, exploit confirmation, patch correctness, regression tests and authorized deployment separately. A high exploit score can increase risk unless tool permissions and review gates are explicit."
+        },
+        {
+          "lead": "Do not extrapolate a composite",
+          "detail": "The index spans coding, science, general knowledge and knowledge work. Reproduce representative tasks with fixed effort, tools, time limits and cost accounting before changing model routing."
+        }
+      ],
+      "paragraphs": [
+        "Evaluate the full repair chain: Score discovery, exploit confirmation, patch correctness, regression tests and authorized deployment separately. A high exploit score can increase risk unless tool permissions and review gates are explicit.",
+        "Do not extrapolate a composite: The index spans coding, science, general knowledge and knowledge work. Reproduce representative tasks with fixed effort, tools, time limits and cost accounting before changing model routing."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Google - Gemini 4 Carbon announcement",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
+      "published": "2026-10-28",
+      "type": "Vendor model announcement"
+    }
+  ],
+  "related": [
+    {
+      "id": "gpt-61-terra-release",
+      "date": "2026-10-27",
+      "label": "Related: Computer-use model economics"
+    }
+  ],
+  "date": "2026-10-29",
+  "published": "2026-10-28",
+  "editorialFormat": "four-part"
+}
