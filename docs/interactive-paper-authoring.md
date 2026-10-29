@@ -7,6 +7,17 @@ This repository publishes **two related products**:
 
 A story post at `story.html?id=SLUG` references its optional explainer via `paperSlug`; the matching flat record in `data/archive.json` must carry the same `paperSlug`. The page renderer links both entries automatically.
 
+## Four-part editorial format (default for new stories)
+
+Every **new standalone story** should use this scan-friendly section sequence, allowing Context to be omitted if the headline and gist already make the prior situation obvious:
+
+1. **Context** — the minimum background necessary to understand why the development matters. Prefer one brief bullet; omit if self-evident.
+2. **What's new** — the actual new mechanism, product, architecture, workflow or change. Use concrete examples rather than abstract descriptions; this is usually the main factual section.
+3. **Evidence & limitations** — the strongest measurements with model, dataset, comparator, units and evaluation setup where reported, plus the most material boundary on the claim. If no relevant measurements were disclosed, say so plainly. Distinguish vendor-reported performance from independent validation.
+4. **Why it matters** — one to three non-obvious, memorable implications. Explain what changes in engineering practice, risk, or strategic understanding. Avoid generic predictions and do not repeat the introduction or headline.
+
+Use short bold lead-ins followed by substantive details. Depth is determined by complexity, not by a word quota. One explanatory diagram, code comparison, or interactive example can replace multiple sentences. Never add filler to populate a heading. Keep 'Evidence & limitations' even when evidence is qualitative. Mark new story JSON with `editorialFormat: "four-part"`, with those exact section titles in order (Context is optional). For backwards compatibility, retain legacy `paragraphs` for each `bullets` array. Historical stories without this marker remain valid pending editorial revision. A separate deep paper explainer can follow a research-specific structure.
+
 ## Dense, bullet-first editorial schema
 
 Use structured bullets on both the daily edition and interactive paper chapters. Preserve exact technical nuance without forcing the reader through introductory prose.
