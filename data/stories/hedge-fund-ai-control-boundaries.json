@@ -114,7 +114,7 @@
       }
     },
     {
-      "title": "The three measurements that matter",
+      "title": "How to evaluate the trade-offs",
       "bullets": [
         {
           "lead": "Research utility",
@@ -138,23 +138,6 @@
         "Analyst independence: Have analysts record their assumptions before seeing AI output; then measure how often they change methods, accept unsupported claims or fail to notice injected errors. Test the same thesis with randomized agent-favored conclusions to detect undue influence.",
         "Operational safety: Replay read-only tasks with decoy confidential files, revoked entitlements, an accessible order API and prompt-injected source documents. Measure unauthorized tool attempts, exfiltration, execution-policy violations and whether human approval truly blocks a state-changing action.",
         "Alpha is the hardest outcome: Hours saved and faster research do not establish out-of-sample investment performance. Any proposed alpha improvement needs an economically realistic evaluation: walk-forward or prospective testing, full transaction costs, capacity limits, multiple-testing correction and a pre-specified benchmark."
-      ]
-    },
-    {
-      "title": "Bottom line",
-      "bullets": [
-        {
-          "lead": "A nuanced progression",
-          "detail": "The firms are not uniformly 'human-only' or 'autonomous.' They operate at different levels—from research prep and internal prototypes to highly specialized AI investing systems. The responsible boundary depends on the tool's privileges, risk controls and validated task performance."
-        },
-        {
-          "lead": "Where differentiation may persist",
-          "detail": "Commodity models and common datasets can be bought by competitors. Expert-labeled judgments, proprietary data with correct point-in-time semantics, rigorous evaluation, validated research code and the discipline to reject weak signals are harder to replicate."
-        }
-      ],
-      "paragraphs": [
-        "A nuanced progression: The firms are not uniformly 'human-only' or 'autonomous.' They operate at different levels—from research prep and internal prototypes to highly specialized AI investing systems. The responsible boundary depends on the tool's privileges, risk controls and validated task performance.",
-        "Where differentiation may persist: Commodity models and common datasets can be bought by competitors. Expert-labeled judgments, proprietary data with correct point-in-time semantics, rigorous evaluation, validated research code and the discipline to reject weak signals are harder to replicate."
       ]
     }
   ],
