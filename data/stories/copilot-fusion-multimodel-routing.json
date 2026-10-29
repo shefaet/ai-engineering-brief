@@ -70,7 +70,7 @@
       "bullets": [
         {
           "lead": "Reported agent benchmark",
-          "detail": "GitHub reports Copilot Fusion Max scoring 60 on the Artificial Analysis Coding Agent Index, within two points of Claude Code with Opus 5.5 Max. GitHub says the Fusion run used about half the API cost and output tokens and took roughly 40% less time per task."
+          "detail": "GitHub reports Copilot Fusion Max scoring 60 on the Artificial Analysis Coding Agent Index, within two points of Claude Code with Opus 5.5 Max. GitHub says the Fusion run used about half the API cost and tokens and took roughly 40% less time per task."
         },
         {
           "lead": "Comparability caveat",
@@ -82,7 +82,7 @@
         }
       ],
       "paragraphs": [
-        "Reported agent benchmark: GitHub reports Copilot Fusion Max scoring 60 on the Artificial Analysis Coding Agent Index, within two points of Claude Code with Opus 5.5 Max. GitHub says the Fusion run used about half the API cost and output tokens and took roughly 40% less time per task.",
+        "Reported agent benchmark: GitHub reports Copilot Fusion Max scoring 60 on the Artificial Analysis Coding Agent Index, within two points of Claude Code with Opus 5.5 Max. GitHub says the Fusion run used about half the API cost and tokens and took roughly 40% less time per task.",
         "Comparability caveat: Those figures describe one evaluated coding-agent configuration. They do not establish the same savings for every repository, task distribution, model policy or human-review workflow.",
         "Hidden failure mode: A judge can accept an incorrect efficient-model draft, while a critique loop can add cost and latency without fixing the error. A task-average score hides these route-specific failures."
       ]
