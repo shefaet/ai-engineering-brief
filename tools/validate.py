@@ -44,6 +44,7 @@ for record in indexed:
     stories[story_id] = story
     assert story["id"] == story_id and story["date"] == record["date"], f"Story/date mismatch: {story_id}"
     assert story["title"] == record["title"], f"Title mismatch: {story_id}"
+    assert story.get("editorialFormat") == "four-part", f"Missing required editorial format: {story_id}"
     if story.get("editorialFormat") == "four-part":
         expected = ["What's new", "Evidence & limitations", "Why it matters"]
         titles = [section.get("title") for section in story.get("sections", [])]
