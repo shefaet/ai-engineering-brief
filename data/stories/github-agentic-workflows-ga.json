@@ -11,7 +11,7 @@
     "Evaluation"
   ],
   "evidence": "Official GitHub GA release and project documentation; customer case study is not controlled evidence",
-  "takeaway": "Use the agent to propose repository changes, but keep credential scope, change application and CI verification outside the agent's unrestricted control.",
+  "takeaway": "Agentic CI separates the ability to propose changes from authority to apply them.",
   "sections": [
     {
       "title": "Context",
@@ -70,20 +70,20 @@
       ]
     },
     {
-      "title": "Why it matters",
+      "title": "Key takeaways",
       "bullets": [
         {
-          "lead": "Compile reviewable policy",
-          "detail": "Review generated Actions YAML, trigger conditions, token scopes and permitted outputs as code. Do not treat the Markdown prompt as the complete security specification."
+          "lead": "Separate boundaries",
+          "detail": "Sandboxing limits agent access. Output validation limits which proposed effects can become repository actions."
         },
         {
-          "lead": "Test malicious repository content",
-          "detail": "Place adversarial instructions in issues, pull requests and documentation. Verify that agent proposals cannot bypass output checks, obtain write tokens or exfiltrate secrets."
+          "lead": "Prompts are not permissions",
+          "detail": "A Markdown task expresses intent, but workflow tokens, triggers and output gates determine enforceable authority."
         }
       ],
       "paragraphs": [
-        "Compile reviewable policy: Review generated Actions YAML, trigger conditions, token scopes and permitted outputs as code. Do not treat the Markdown prompt as the complete security specification.",
-        "Test malicious repository content: Place adversarial instructions in issues, pull requests and documentation. Verify that agent proposals cannot bypass output checks, obtain write tokens or exfiltrate secrets."
+        "Separate boundaries: Sandboxing limits agent access. Output validation limits which proposed effects can become repository actions.",
+        "Prompts are not permissions: A Markdown task expresses intent, but workflow tokens, triggers and output gates determine enforceable authority."
       ]
     }
   ],
