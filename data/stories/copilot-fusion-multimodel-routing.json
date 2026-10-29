@@ -1,0 +1,126 @@
+{
+  "id": "copilot-fusion-multimodel-routing",
+  "category": "AGENT ENGINEERING",
+  "priority": "High",
+  "title": "GitHub makes Copilot Fusion multi-model orchestration generally available",
+  "dek": "Coding requests can take single-model, cascade or critique paths instead of binding every task to one manually selected model.",
+  "tags": [
+    "Agents",
+    "Models",
+    "Evaluation",
+    "Economics"
+  ],
+  "evidence": "GitHub product disclosure and reported Artificial Analysis Coding Agent Index comparison",
+  "takeaway": "Treat model selection as an orchestration policy. Compare successful task cost and quality by route, including judge calls, retries and reviewer overhead.",
+  "sections": [
+    {
+      "title": "Context",
+      "bullets": [
+        {
+          "lead": "Static model selection",
+          "detail": "A single selected model can be excessive for routine edits and insufficient for hard debugging. Manual switching does not scale across heterogeneous tasks."
+        }
+      ],
+      "paragraphs": [
+        "Static model selection: A single selected model can be excessive for routine edits and insufficient for hard debugging. Manual switching does not scale across heterogeneous tasks."
+      ]
+    },
+    {
+      "title": "What's new",
+      "bullets": [
+        {
+          "lead": "Three execution paths",
+          "detail": "Fusion chooses Single (one model), Cascade (efficient draft checked and escalated to a stronger fresh-start answer when needed), or Critique (a second model reviews a draft and requests revision)."
+        },
+        {
+          "lead": "Effort controls",
+          "detail": "Standard, High and Max select an orchestration budget and model mix rather than a fixed model. Enterprise policies constrain which models Fusion can select."
+        },
+        {
+          "lead": "Pricing and rollout",
+          "detail": "Fusion is generally available in VS Code, Copilot CLI, the Copilot app and JetBrains. Each underlying model is billed at its standard rate, with a temporary 30% Fusion discount on paid plans."
+        }
+      ],
+      "paragraphs": [
+        "Three execution paths: Fusion chooses Single (one model), Cascade (efficient draft checked and escalated to a stronger fresh-start answer when needed), or Critique (a second model reviews a draft and requests revision).",
+        "Effort controls: Standard, High and Max select an orchestration budget and model mix rather than a fixed model. Enterprise policies constrain which models Fusion can select.",
+        "Pricing and rollout: Fusion is generally available in VS Code, Copilot CLI, the Copilot app and JetBrains. Each underlying model is billed at its standard rate, with a temporary 30% Fusion discount on paid plans."
+      ],
+      "example": {
+        "type": "code-comparison",
+        "caption": "Schematic: fixed model versus cascade with a quality gate",
+        "variants": [
+          {
+            "label": "Before: one model for every task",
+            "language": "python",
+            "code": "def answer(task):\n    return strong_model(task)"
+          },
+          {
+            "label": "After: cascade route",
+            "language": "python",
+            "code": "def answer(task):\n    draft = efficient_model(task)\n    if judge(task, draft).accept:\n        return draft\n    return strong_model(task)  # fresh start"
+          }
+        ],
+        "takeaway": "The cheap route saves money only when the judge accepts enough valid drafts to offset extra checks and escalations.",
+        "note": "Schematic pseudocode based on GitHub's documented Cascade path, not product API syntax or benchmark evidence."
+      }
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Reported agent benchmark",
+          "detail": "GitHub reports Copilot Fusion Max scoring 60 on the Artificial Analysis Coding Agent Index, within two points of Claude Code with Opus 5.5 Max. GitHub says the Fusion run used about half the API cost and output tokens and took roughly 40% less time per task."
+        },
+        {
+          "lead": "Comparability caveat",
+          "detail": "Those figures describe one evaluated coding-agent configuration. They do not establish the same savings for every repository, task distribution, model policy or human-review workflow."
+        },
+        {
+          "lead": "Hidden failure mode",
+          "detail": "A judge can accept an incorrect efficient-model draft, while a critique loop can add cost and latency without fixing the error. A task-average score hides these route-specific failures."
+        }
+      ],
+      "paragraphs": [
+        "Reported agent benchmark: GitHub reports Copilot Fusion Max scoring 60 on the Artificial Analysis Coding Agent Index, within two points of Claude Code with Opus 5.5 Max. GitHub says the Fusion run used about half the API cost and output tokens and took roughly 40% less time per task.",
+        "Comparability caveat: Those figures describe one evaluated coding-agent configuration. They do not establish the same savings for every repository, task distribution, model policy or human-review workflow.",
+        "Hidden failure mode: A judge can accept an incorrect efficient-model draft, while a critique loop can add cost and latency without fixing the error. A task-average score hides these route-specific failures."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Instrument routing decisions",
+          "detail": "Log selected path, models, judge decisions, escalations, tool actions, verified test results, p95 latency and total billed cost per successful task."
+        },
+        {
+          "lead": "Stress the acceptance gate",
+          "detail": "Build adversarial cases where a plausible patch passes superficial review but fails integration tests. Compare false acceptance rates against a fixed-model baseline."
+        }
+      ],
+      "paragraphs": [
+        "Instrument routing decisions: Log selected path, models, judge decisions, escalations, tool actions, verified test results, p95 latency and total billed cost per successful task.",
+        "Stress the acceptance gate: Build adversarial cases where a plausible patch passes superficial review but fails integration tests. Compare false acceptance rates against a fixed-model baseline."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "GitHub - Route and orchestrate models with GitHub Copilot Fusion",
+      "url": "https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion/",
+      "published": "2026-10-28",
+      "type": "Official product changelog"
+    }
+  ],
+  "related": [
+    {
+      "id": "agent-eval-loop",
+      "date": "2026-10-28",
+      "label": "Related: Trace-level agent evaluation"
+    }
+  ],
+  "date": "2026-10-29",
+  "published": "2026-10-28",
+  "editorialFormat": "four-part"
+}
