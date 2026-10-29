@@ -15,37 +15,66 @@
   "takeaway": "Evaluate portability of model weights, hosting rights and know-how transfers separately from ordinary API availability.",
   "sections": [
     {
-      "title": "Draft scope",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Transfer boundary",
-          "detail": "The proposals would allow many overseas customers to consume hosted Chinese AI, while requiring approval for certain transfers of models, data, advanced agents and related technology."
-        },
-        {
-          "lead": "Scope",
-          "detail": "Reuters reports 23 technologies added to proposed control lists, with additional attention to large-scale compute operations, model capability thresholds and ownership transfers."
+          "lead": "Compute restrictions cut both ways",
+          "detail": "Chinese labs can offer models globally while governments separately regulate exports of technology, know-how and model deployment artifacts."
         }
       ],
       "paragraphs": [
-        "Transfer boundary: The proposals would allow many overseas customers to consume hosted Chinese AI, while requiring approval for certain transfers of models, data, advanced agents and related technology.",
-        "Scope: Reuters reports 23 technologies added to proposed control lists, with additional attention to large-scale compute operations, model capability thresholds and ownership transfers."
+        "Compute restrictions cut both ways: Chinese labs can offer models globally while governments separately regulate exports of technology, know-how and model deployment artifacts."
       ]
     },
     {
-      "title": "What changes",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Uncertainty",
-          "detail": "The measures are proposals, with comments due November 15, and their implementation and definitions may change before adoption."
+          "lead": "Hosted access versus transfer",
+          "detail": "China proposed licensing for selected AI technology exports while generally exempting use through hosted APIs, apps and SaaS."
         },
         {
-          "lead": "Engineering consequence",
-          "detail": "Map models by provenance, weight custody, inference location, hosting terms and fallback options; distinguish SaaS access from exportable deployment artifacts."
+          "lead": "Broader scope",
+          "detail": "Reuters reports 23 AI-related technologies in draft controls, including advanced models, autonomous agents and large compute systems, with threshold-based coverage."
         }
       ],
       "paragraphs": [
-        "Uncertainty: The measures are proposals, with comments due November 15, and their implementation and definitions may change before adoption.",
-        "Engineering consequence: Map models by provenance, weight custody, inference location, hosting terms and fallback options; distinguish SaaS access from exportable deployment artifacts."
+        "Hosted access versus transfer: China proposed licensing for selected AI technology exports while generally exempting use through hosted APIs, apps and SaaS.",
+        "Broader scope: Reuters reports 23 AI-related technologies in draft controls, including advanced models, autonomous agents and large compute systems, with threshold-based coverage."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Draft, not effective ban",
+          "detail": "The rules were under consultation through November 15. Definitions, approvals and implementation may change; access through an API is not equivalent to licensed model export."
+        },
+        {
+          "lead": "Borderline cases",
+          "detail": "Overseas model hosting, access to weights and transfer of training or operations expertise may trigger distinct requirements."
+        }
+      ],
+      "paragraphs": [
+        "Draft, not effective ban: The rules were under consultation through November 15. Definitions, approvals and implementation may change; access through an API is not equivalent to licensed model export.",
+        "Borderline cases: Overseas model hosting, access to weights and transfer of training or operations expertise may trigger distinct requirements."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Hosting isn't portability",
+          "detail": "For any external model, distinguish API use, weight possession, fine-tuning rights and data-center deployment rights."
+        },
+        {
+          "lead": "Plan alternatives",
+          "detail": "Keep provenance, export jurisdiction, contract permissions and fallback serving options visible before making a model a hard dependency."
+        }
+      ],
+      "paragraphs": [
+        "Hosting isn't portability: For any external model, distinguish API use, weight possession, fine-tuning rights and data-center deployment rights.",
+        "Plan alternatives: Keep provenance, export jurisdiction, contract permissions and fallback serving options visible before making a model a hard dependency."
       ]
     }
   ],
@@ -57,5 +86,6 @@
       "type": "Independent regulatory reporting"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
