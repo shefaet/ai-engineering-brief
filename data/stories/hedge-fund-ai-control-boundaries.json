@@ -5,140 +5,81 @@
   "category": "FINANCIAL AI",
   "priority": "High",
   "title": "Inside hedge funds' AI agents: Citadel, Bridgewater and Man Group",
-  "dek": "What three large funds disclosed about agent-driven research—and what their prior technical work reveals about model specialization, tool access, and human judgment.",
+  "dek": "How three hedge funds use AI for research—and why speed, judgment and trading authority must be measured separately.",
   "tags": [
     "Financial AI",
     "Agents",
     "Governance"
   ],
   "evidence": "Oct 27 executive interviews plus earlier first-party technical disclosures; no independent comparison of fund alpha or security outcomes",
-  "takeaway": "The investment edge is not possession of an LLM. It is the combination of proprietary research judgment, reliable data/tool integration, disciplined evaluation, and tightly bounded authority.",
+  "takeaway": "Citadel, Bridgewater and Man Group are using agents to extend research capacity, not simply replace analysts. The lasting edge depends on expert knowledge, controlled tools and the ability to challenge AI-generated conclusions.",
   "sections": [
     {
-      "title": "What the three firms actually disclosed",
+      "title": "What each firm is doing",
       "bullets": [
         {
-          "lead": "Citadel: research counterparts",
-          "detail": "Some investing teams have built agent counterparts that conduct independent research. Interim CTO Andrew Janian described fundamental analysts using AI to prepare for meetings and challenge a thesis—not delegating thesis ownership. Citadel also invests in containment so agents cannot act outside their sandbox. The interview does not disclose clone architecture or adoption rates."
+          "lead": "Citadel",
+          "detail": "Some teams use agent counterparts to conduct independent research and challenge investment theses. Its disclosed Second Brain prototype updates research notes from filings, earnings calls and meetings; that prototype is not evidence of firm-wide deployment."
         },
         {
-          "lead": "Bridgewater: scaling AIA methods",
-          "detail": "AIA Labs is transferring its accumulated research techniques and processes to other teams. Founding AIA partner Aaron Linksy called it unresolved whether unrestricted agents can operate without exposing the firm to risk. This caution concerns delegated authority, not an assertion that Bridgewater's AI research is merely experimental."
+          "lead": "Bridgewater",
+          "detail": "Its Pocket Analyst combines investment knowledge, proprietary data, tool use and analyst feedback. AIA Labs is scaling the methods, while leadership remains cautious about unconstrained agent autonomy."
         },
         {
-          "lead": "Man Group: automate implementation, retain judgment",
-          "detail": "CIO Greg Bond said the aim is to shed repetitive work while resisting 'cognitive surrender': analysts accepting fluent results without independently questioning them. His argument is that faster research production is not synonymous with a differentiated investing thesis."
-        },
-        {
-          "lead": "What this reporting does not establish",
-          "detail": "The executives gave qualitative deployment examples, not comparable figures for analyst hours saved, agent error rates, guardrail escape rates, live investment returns, or the percentage of trades affected by AI. Those metrics should not be inferred from the anecdotes."
+          "lead": "Man Group",
+          "detail": "Alpha Assistant can locate internal code, construct signals and run backtests under researcher-approved plans. Leadership warns against “cognitive surrender”: treating a fluent answer as independent research."
         }
       ],
       "paragraphs": [
-        "Citadel: research counterparts: Some investing teams have built agent counterparts that conduct independent research. Interim CTO Andrew Janian described fundamental analysts using AI to prepare for meetings and challenge a thesis—not delegating thesis ownership. Citadel also invests in containment so agents cannot act outside their sandbox. The interview does not disclose clone architecture or adoption rates.",
-        "Bridgewater: scaling AIA methods: AIA Labs is transferring its accumulated research techniques and processes to other teams. Founding AIA partner Aaron Linksy called it unresolved whether unrestricted agents can operate without exposing the firm to risk. This caution concerns delegated authority, not an assertion that Bridgewater's AI research is merely experimental.",
-        "Man Group: automate implementation, retain judgment: CIO Greg Bond said the aim is to shed repetitive work while resisting 'cognitive surrender': analysts accepting fluent results without independently questioning them. His argument is that faster research production is not synonymous with a differentiated investing thesis.",
-        "What this reporting does not establish: The executives gave qualitative deployment examples, not comparable figures for analyst hours saved, agent error rates, guardrail escape rates, live investment returns, or the percentage of trades affected by AI. Those metrics should not be inferred from the anecdotes."
+        "Citadel: Some teams use agent counterparts to conduct independent research and challenge investment theses. Its disclosed Second Brain prototype updates research notes from filings, earnings calls and meetings; that prototype is not evidence of firm-wide deployment.",
+        "Bridgewater: Its Pocket Analyst combines investment knowledge, proprietary data, tool use and analyst feedback. AIA Labs is scaling the methods, while leadership remains cautious about unconstrained agent autonomy.",
+        "Man Group: Alpha Assistant can locate internal code, construct signals and run backtests under researcher-approved plans. Leadership warns against “cognitive surrender”: treating a fluent answer as independent research."
       ]
     },
     {
-      "title": "Under the hood: earlier technical disclosures",
+      "title": "Four takeaways worth remembering",
       "bullets": [
         {
-          "lead": "Citadel's evolving research notebook (September)",
-          "detail": "In a disclosed engineering-hackathon prototype called Second Brain, agents consume filings, earnings calls and meeting notes to maintain a continually updated research notebook for fundamental investors. Another prototype retained raw Treasury emails alongside structured summaries for verification. Both illustrate retrieval, update and provenance patterns—not independently demonstrated firm-wide deployments."
+          "lead": "Expert judgment is a training asset",
+          "detail": "On six document-filtering tasks, Bridgewater reports 84.7% accuracy for a specialized Qwen3 derivative versus a 78.2% frontier-model baseline, at 13.8× lower inference cost. Vendor-reported task metrics—not investment returns."
         },
         {
-          "lead": "Bridgewater's Pocket Analyst (May)",
-          "detail": "AIA's PAT combines codified investment knowledge, LLM tool orchestration and analyst feedback, aiming to turn hours of exploratory research into minutes. It is a more specific architecture than a generic chat assistant: model reasoning is tied to institutional datasets, reusable methods and investor corrections."
+          "lead": "The capability boundary matters more than the prompt",
+          "detail": "Read-only document research and sandboxed backtests are not the same risk as modifying a portfolio or placing an order. Enforce the boundary at tool and identity layers, with approvals for writes."
         },
         {
-          "lead": "Bridgewater's expert-label advantage (June)",
-          "detail": "On six document-filtering tasks, Bridgewater reported a best frontier baseline of 78.2% accuracy versus 84.7% for its trained Qwen3-235B derivative, with 13.8× lower inference cost per task. The workflow used expert-verified labels, disagreement-based relabeling, interleaved multitask batches, modified RL loss and on-policy distillation. These are vendor-reported held-out task results, not a measure of trading alpha."
+          "lead": "Human sign-off can hide AI dependence",
+          "detail": "Record an analyst’s initial thesis and assumptions before showing the agent’s recommendation. Compare changes, contrary evidence and alternative methods—not just whether the reviewer clicked approve."
         },
         {
-          "lead": "Man AHL's Alpha Assistant (February)",
-          "detail": "Man describes an orchestrator with access to proprietary code, data, specialized tools and subagents. For a trend-following study it can locate internal functions, construct momentum signals, run backtests and return standardized reports. Researchers approve the proposed plan; missing-data handling, look-ahead bias, normalization, trading cost and slippage assumptions remain integral to validity."
-        },
-        {
-          "lead": "Man's AlphaGPT research pipeline (earlier disclosure)",
-          "detail": "A separate system divides quant research into idea generation, code implementation and evaluation. The last stage tests statistical significance, economic rationale and implementation consistency; investment and technology reviewers retain approval roles. The risk grows with throughput: exploring thousands of hypotheses quickly also creates more chances to discover spurious in-sample patterns."
+          "lead": "More backtests do not mean more alpha",
+          "detail": "Agentic research increases the number of hypotheses tested, and therefore the risk of false discoveries. Require out-of-sample validation, multiple-testing controls, transaction costs and realistic capacity assumptions."
         }
       ],
       "paragraphs": [
-        "Citadel's evolving research notebook (September): In a disclosed engineering-hackathon prototype called Second Brain, agents consume filings, earnings calls and meeting notes to maintain a continually updated research notebook for fundamental investors. Another prototype retained raw Treasury emails alongside structured summaries for verification. Both illustrate retrieval, update and provenance patterns—not independently demonstrated firm-wide deployments.",
-        "Bridgewater's Pocket Analyst (May): AIA's PAT combines codified investment knowledge, LLM tool orchestration and analyst feedback, aiming to turn hours of exploratory research into minutes. It is a more specific architecture than a generic chat assistant: model reasoning is tied to institutional datasets, reusable methods and investor corrections.",
-        "Bridgewater's expert-label advantage (June): On six document-filtering tasks, Bridgewater reported a best frontier baseline of 78.2% accuracy versus 84.7% for its trained Qwen3-235B derivative, with 13.8× lower inference cost per task. The workflow used expert-verified labels, disagreement-based relabeling, interleaved multitask batches, modified RL loss and on-policy distillation. These are vendor-reported held-out task results, not a measure of trading alpha.",
-        "Man AHL's Alpha Assistant (February): Man describes an orchestrator with access to proprietary code, data, specialized tools and subagents. For a trend-following study it can locate internal functions, construct momentum signals, run backtests and return standardized reports. Researchers approve the proposed plan; missing-data handling, look-ahead bias, normalization, trading cost and slippage assumptions remain integral to validity.",
-        "Man's AlphaGPT research pipeline (earlier disclosure): A separate system divides quant research into idea generation, code implementation and evaluation. The last stage tests statistical significance, economic rationale and implementation consistency; investment and technology reviewers retain approval roles. The risk grows with throughput: exploring thousands of hypotheses quickly also creates more chances to discover spurious in-sample patterns."
-      ]
-    },
-    {
-      "title": "What an auditable research agent should look like",
-      "bullets": [
-        {
-          "lead": "Read versus act",
-          "detail": "Retrieving filings, reading market data and running an isolated backtest is a materially different permission set from changing a portfolio, sending confidential information or submitting an order. Apply tool-side access controls, egress restrictions, per-agent identities and approval gates; a system prompt alone is not a sandbox."
-        },
-        {
-          "lead": "A falsifiable challenge task",
-          "detail": "Rather than asking an agent to 'find the best trade,' give it an analyst-authored thesis, an as-of date and a permitted source set. Require at least one disconfirming explanation, explicit assumptions, citations, time-aligned data and a sensitivity test. The analyst makes the investment judgment after seeing both sides."
-        },
-        {
-          "lead": "Preserve decision provenance",
-          "detail": "Store the original human thesis, the agent's proposed changes, source versions, tool calls and the final accepted methodology. That distinguishes an independent human check from a reviewer simply signing the model's conclusion. Model output quality alone cannot reveal cognitive dependence."
-        }
-      ],
-      "paragraphs": [
-        "Read versus act: Retrieving filings, reading market data and running an isolated backtest is a materially different permission set from changing a portfolio, sending confidential information or submitting an order. Apply tool-side access controls, egress restrictions, per-agent identities and approval gates; a system prompt alone is not a sandbox.",
-        "A falsifiable challenge task: Rather than asking an agent to 'find the best trade,' give it an analyst-authored thesis, an as-of date and a permitted source set. Require at least one disconfirming explanation, explicit assumptions, citations, time-aligned data and a sensitivity test. The analyst makes the investment judgment after seeing both sides.",
-        "Preserve decision provenance: Store the original human thesis, the agent's proposed changes, source versions, tool calls and the final accepted methodology. That distinguishes an independent human check from a reviewer simply signing the model's conclusion. Model output quality alone cannot reveal cognitive dependence."
+        "Expert judgment is a training asset: On six document-filtering tasks, Bridgewater reports 84.7% accuracy for a specialized Qwen3 derivative versus a 78.2% frontier-model baseline, at 13.8× lower inference cost. Vendor-reported task metrics—not investment returns.",
+        "The capability boundary matters more than the prompt: Read-only document research and sandboxed backtests are not the same risk as modifying a portfolio or placing an order. Enforce the boundary at tool and identity layers, with approvals for writes.",
+        "Human sign-off can hide AI dependence: Record an analyst’s initial thesis and assumptions before showing the agent’s recommendation. Compare changes, contrary evidence and alternative methods—not just whether the reviewer clicked approve.",
+        "More backtests do not mean more alpha: Agentic research increases the number of hypotheses tested, and therefore the risk of false discoveries. Require out-of-sample validation, multiple-testing controls, transaction costs and realistic capacity assumptions."
       ],
       "example": {
         "type": "code-comparison",
-        "caption": "One research question, two different authority boundaries",
+        "caption": "Same task, different authority — schematic",
         "variants": [
           {
-            "label": "Unbounded request · schematic",
+            "label": "Unbounded",
             "language": "text",
-            "code": "Goal: Find the best trade on a company.\nSources: Whatever the agent finds.\nTools: Research + portfolio + order APIs.\nOutput: A confident recommendation.\nApprovals: Final human sign-off only."
+            "code": "Goal: Find the best trade.\nTools: Research + portfolio + order APIs.\nOutput: Recommendation."
           },
           {
-            "label": "Bounded research task · schematic",
+            "label": "Bounded",
             "language": "text",
-            "code": "Goal: Challenge an existing investment thesis.\nAs-of: 2026-10-27; approved filings and data.\nTools: Read-only search + sandboxed analysis.\nOutput: Evidence, countercase, sensitivities.\nLog: Sources, assumptions, tool traces.\nAuthority: No order or portfolio writes.\nDecision: Analyst reviews and approves."
+            "code": "Goal: Challenge an analyst's thesis.\nTools: Read-only sources + sandboxed backtests.\nOutput: Counterevidence + sensitivities.\nDecision: Analyst; no trading permissions."
           }
         ],
-        "takeaway": "The critical change is capability isolation and an auditable challenge, not just a more detailed prompt.",
-        "note": "Illustrative workflow design, not an actual configuration disclosed by any of the firms."
+        "takeaway": "The same underlying model can have radically different consequences depending on its permitted actions.",
+        "note": "Illustrative control design, not a disclosed firm configuration."
       }
-    },
-    {
-      "title": "How to evaluate the trade-offs",
-      "bullets": [
-        {
-          "lead": "Research utility",
-          "detail": "On matched historical questions, measure source-attribution precision, numerical accuracy, substantive counterarguments, analyst time to a defensible answer and reproducibility. Compare agents against a realistic non-agent workflow, not an empty prompt."
-        },
-        {
-          "lead": "Analyst independence",
-          "detail": "Have analysts record their assumptions before seeing AI output; then measure how often they change methods, accept unsupported claims or fail to notice injected errors. Test the same thesis with randomized agent-favored conclusions to detect undue influence."
-        },
-        {
-          "lead": "Operational safety",
-          "detail": "Replay read-only tasks with decoy confidential files, revoked entitlements, an accessible order API and prompt-injected source documents. Measure unauthorized tool attempts, exfiltration, execution-policy violations and whether human approval truly blocks a state-changing action."
-        },
-        {
-          "lead": "Alpha is the hardest outcome",
-          "detail": "Hours saved and faster research do not establish out-of-sample investment performance. Any proposed alpha improvement needs an economically realistic evaluation: walk-forward or prospective testing, full transaction costs, capacity limits, multiple-testing correction and a pre-specified benchmark."
-        }
-      ],
-      "paragraphs": [
-        "Research utility: On matched historical questions, measure source-attribution precision, numerical accuracy, substantive counterarguments, analyst time to a defensible answer and reproducibility. Compare agents against a realistic non-agent workflow, not an empty prompt.",
-        "Analyst independence: Have analysts record their assumptions before seeing AI output; then measure how often they change methods, accept unsupported claims or fail to notice injected errors. Test the same thesis with randomized agent-favored conclusions to detect undue influence.",
-        "Operational safety: Replay read-only tasks with decoy confidential files, revoked entitlements, an accessible order API and prompt-injected source documents. Measure unauthorized tool attempts, exfiltration, execution-policy violations and whether human approval truly blocks a state-changing action.",
-        "Alpha is the hardest outcome: Hours saved and faster research do not establish out-of-sample investment performance. Any proposed alpha improvement needs an economically realistic evaluation: walk-forward or prospective testing, full transaction costs, capacity limits, multiple-testing correction and a pre-specified benchmark."
-      ]
     }
   ],
   "sources": [
