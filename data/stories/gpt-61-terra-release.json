@@ -15,37 +15,66 @@
   "takeaway": "Compare cost and successful completion across identical computer-use tasks before substituting a cheaper model.",
   "sections": [
     {
-      "title": "Model trade-off",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "API pricing",
-          "detail": "Standard API prices are $1 per million input tokens, $0.05 per million cached input tokens and $5 per million output tokens. Its token prices differ from total workflow cost."
-        },
-        {
-          "lead": "Positioning",
-          "detail": "OpenAI reports improved computer use and visual reasoning versus GPT-5.6 Terra, with deployments in Work, Codex and the API rather than general ChatGPT conversation."
+          "lead": "Agent costs multiply",
+          "detail": "Desktop agents spend tokens on interpreting screens, planning and retries. Cost per useful completed workflow matters more than token price alone."
         }
       ],
       "paragraphs": [
-        "API pricing: Standard API prices are $1 per million input tokens, $0.05 per million cached input tokens and $5 per million output tokens. Its token prices differ from total workflow cost.",
-        "Positioning: OpenAI reports improved computer use and visual reasoning versus GPT-5.6 Terra, with deployments in Work, Codex and the API rather than general ChatGPT conversation."
+        "Agent costs multiply: Desktop agents spend tokens on interpreting screens, planning and retries. Cost per useful completed workflow matters more than token price alone."
       ]
     },
     {
-      "title": "Evaluation",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Reported benchmark",
-          "detail": "At medium effort, OpenAI cites a 15-percentage-point gain on Agents' Last Exam versus GPT-5.6 Terra at roughly one-third of the cost; this is a vendor comparison."
+          "lead": "Computer-use specialization",
+          "detail": "OpenAI positions GPT-6.1 Terra for visual reasoning, form and application interaction, diagram interpretation and natural writing across API, Work and Codex."
         },
         {
-          "lead": "Deployment test",
-          "detail": "Use a frozen set of visual navigation, form entry, spreadsheet and tool-recovery tasks; measure cost per verified task, p95 duration and unauthorized-action attempts."
+          "lead": "Pricing",
+          "detail": "Standard API text pricing is $1/M input, $0.05/M cached input and $5/M output tokens; tools and other modalities may have separate charges."
         }
       ],
       "paragraphs": [
-        "Reported benchmark: At medium effort, OpenAI cites a 15-percentage-point gain on Agents' Last Exam versus GPT-5.6 Terra at roughly one-third of the cost; this is a vendor comparison.",
-        "Deployment test: Use a frozen set of visual navigation, form entry, spreadsheet and tool-recovery tasks; measure cost per verified task, p95 duration and unauthorized-action attempts."
+        "Computer-use specialization: OpenAI positions GPT-6.1 Terra for visual reasoning, form and application interaction, diagram interpretation and natural writing across API, Work and Codex.",
+        "Pricing: Standard API text pricing is $1/M input, $0.05/M cached input and $5/M output tokens; tools and other modalities may have separate charges."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Task-level vendor comparison",
+          "detail": "At medium effort on Agents' Last Exam, OpenAI reports a 15-percentage-point gain over GPT-5.6 Terra at about one-third the cost."
+        },
+        {
+          "lead": "Limits",
+          "detail": "The release announcement is a vendor evaluation; task complexity, retries, tools, thinking effort and app latency alter realized cost and success."
+        }
+      ],
+      "paragraphs": [
+        "Task-level vendor comparison: At medium effort on Agents' Last Exam, OpenAI reports a 15-percentage-point gain over GPT-5.6 Terra at about one-third the cost.",
+        "Limits: The release announcement is a vendor evaluation; task complexity, retries, tools, thinking effort and app latency alter realized cost and success."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Evaluate verified task success",
+          "detail": "Compare like-for-like screen navigation, data-entry, error recovery and complex multi-app work with the same tools and success rubric."
+        },
+        {
+          "lead": "Price the entire loop",
+          "detail": "Track cost per successful action and p95 completion time, including failed attempts—not just nominal $/million tokens."
+        }
+      ],
+      "paragraphs": [
+        "Evaluate verified task success: Compare like-for-like screen navigation, data-entry, error recovery and complex multi-app work with the same tools and success rubric.",
+        "Price the entire loop: Track cost per successful action and p95 completion time, including failed attempts—not just nominal $/million tokens."
       ]
     }
   ],
@@ -63,5 +92,6 @@
       "type": "Official product documentation"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
