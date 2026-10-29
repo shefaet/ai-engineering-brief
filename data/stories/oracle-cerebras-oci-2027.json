@@ -14,37 +14,66 @@
   "takeaway": "Treat specialized inference platforms as a workload-level latency and cost experiment, not an assumed speedup.",
   "sections": [
     {
-      "title": "Roadmap",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Planned service",
-          "detail": "Oracle says Cerebras wafer-scale inference will come to OCI in 2027 alongside planned SambaNova SN50 offerings and existing GPU/other accelerators."
-        },
-        {
-          "lead": "Architecture",
-          "detail": "Wafer-scale processors reduce some off-chip communication, potentially benefiting latency-sensitive autoregressive token generation; actual performance depends on model, batching and service overhead."
+          "lead": "Inference hardware is fragmenting",
+          "detail": "GPUs are not optimal for every mixture of prefill, token decoding and batch sizes; cloud platforms increasingly offer specialized alternatives."
         }
       ],
       "paragraphs": [
-        "Planned service: Oracle says Cerebras wafer-scale inference will come to OCI in 2027 alongside planned SambaNova SN50 offerings and existing GPU/other accelerators.",
-        "Architecture: Wafer-scale processors reduce some off-chip communication, potentially benefiting latency-sensitive autoregressive token generation; actual performance depends on model, batching and service overhead."
+        "Inference hardware is fragmenting: GPUs are not optimal for every mixture of prefill, token decoding and batch sizes; cloud platforms increasingly offer specialized alternatives."
       ]
     },
     {
-      "title": "Validation",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Evidence gap",
-          "detail": "The October announcement did not give OCI workload-specific tokens/s, p95 latency, model availability or price, so no quantitative service advantage can be established."
+          "lead": "Cerebras planned for 2027",
+          "detail": "Oracle says it will add Cerebras wafer-scale inference to OCI, alongside future SambaNova SN50 systems."
         },
         {
-          "lead": "Benchmark",
-          "detail": "Compare prefill/decode latency, queueing, network/tool overhead, batching, model quality and cost per completed task across equal prompts and concurrency."
+          "lead": "Broader hardware portfolio",
+          "detail": "The same roadmap includes Google TPUs on OCI beginning in 2027, plus NVIDIA, AMD, Intel and network/storage changes; availability dates remain forward-looking."
         }
       ],
       "paragraphs": [
-        "Evidence gap: The October announcement did not give OCI workload-specific tokens/s, p95 latency, model availability or price, so no quantitative service advantage can be established.",
-        "Benchmark: Compare prefill/decode latency, queueing, network/tool overhead, batching, model quality and cost per completed task across equal prompts and concurrency."
+        "Cerebras planned for 2027: Oracle says it will add Cerebras wafer-scale inference to OCI, alongside future SambaNova SN50 systems.",
+        "Broader hardware portfolio: The same roadmap includes Google TPUs on OCI beginning in 2027, plus NVIDIA, AMD, Intel and network/storage changes; availability dates remain forward-looking."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "No service benchmark yet",
+          "detail": "The announcement does not provide OCI model-specific token throughput, first-token latency, per-token pricing or supported model sizes for Cerebras."
+        },
+        {
+          "lead": "Architecture is not outcome",
+          "detail": "Wafer-scale compute can reduce some communication costs, but batching, memory, compilation, queueing and hosting overhead control real service performance."
+        }
+      ],
+      "paragraphs": [
+        "No service benchmark yet: The announcement does not provide OCI model-specific token throughput, first-token latency, per-token pricing or supported model sizes for Cerebras.",
+        "Architecture is not outcome: Wafer-scale compute can reduce some communication costs, but batching, memory, compilation, queueing and hosting overhead control real service performance."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Route by workload",
+          "detail": "Latency-critical low-batch decoding and throughput-heavy serving may favor different accelerators."
+        },
+        {
+          "lead": "Validate economics end to end",
+          "detail": "Compare first token, tokens/s, output quality, queuing, utilization and total cost per completed task at equal concurrency."
+        }
+      ],
+      "paragraphs": [
+        "Route by workload: Latency-critical low-batch decoding and throughput-heavy serving may favor different accelerators.",
+        "Validate economics end to end: Compare first token, tokens/s, output quality, queuing, utilization and total cost per completed task at equal concurrency."
       ]
     }
   ],
@@ -56,5 +85,6 @@
       "type": "Official product roadmap"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
