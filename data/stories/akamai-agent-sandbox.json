@@ -15,37 +15,66 @@
   "takeaway": "Test sandbox escape resistance, filesystem and network policy, cold starts and observability before adopting an agent runtime.",
   "sections": [
     {
-      "title": "Architecture",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Two layers",
-          "detail": "Akamai Inference provides managed model-serving capacity; Akamai Agent Sandbox provides isolated execution boundaries for agents using tools and data."
-        },
-        {
-          "lead": "Placement",
-          "detail": "Akamai positions deployment across its distributed cloud to reduce proximity to applications/data while retaining controlled execution."
+          "lead": "An agent needs two runtimes",
+          "detail": "A model-serving endpoint and the code executed on an agent's behalf have different isolation and scaling requirements."
         }
       ],
       "paragraphs": [
-        "Two layers: Akamai Inference provides managed model-serving capacity; Akamai Agent Sandbox provides isolated execution boundaries for agents using tools and data.",
-        "Placement: Akamai positions deployment across its distributed cloud to reduce proximity to applications/data while retaining controlled execution."
+        "An agent needs two runtimes: A model-serving endpoint and the code executed on an agent's behalf have different isolation and scaling requirements."
       ]
     },
     {
-      "title": "Evaluation",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Security boundary",
-          "detail": "Sandboxing reduces host blast radius but does not by itself validate tool authorization, data exfiltration policies or model prompt-injection resistance."
+          "lead": "Akamai Inference",
+          "detail": "A managed service handles model execution, authentication and requests over Akamai Cloud."
         },
         {
-          "lead": "Measurement",
-          "detail": "Compare p50/p95 tool latency, cold-start cost, network egress enforcement, resource limits, tenant separation and incident logging to a self-hosted baseline."
+          "lead": "Akamai Agent Sandbox",
+          "detail": "Agent code runs using Akamai Functions, while code it creates executes in a separate WebAssembly-isolated environment implemented with the Spin framework; resource and network capabilities can be constrained."
         }
       ],
       "paragraphs": [
-        "Security boundary: Sandboxing reduces host blast radius but does not by itself validate tool authorization, data exfiltration policies or model prompt-injection resistance.",
-        "Measurement: Compare p50/p95 tool latency, cold-start cost, network egress enforcement, resource limits, tenant separation and incident logging to a self-hosted baseline."
+        "Akamai Inference: A managed service handles model execution, authentication and requests over Akamai Cloud.",
+        "Akamai Agent Sandbox: Agent code runs using Akamai Functions, while code it creates executes in a separate WebAssembly-isolated environment implemented with the Spin framework; resource and network capabilities can be constrained."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Vendor capability statement",
+          "detail": "Akamai describes its architecture but does not publish independent container-escape testing or apples-to-apples p95 latency comparisons against microVMs."
+        },
+        {
+          "lead": "Boundary",
+          "detail": "Wasm isolation constrains compute, memory and system capabilities. It does not establish that a permitted outbound request or tool action is safe."
+        }
+      ],
+      "paragraphs": [
+        "Vendor capability statement: Akamai describes its architecture but does not publish independent container-escape testing or apples-to-apples p95 latency comparisons against microVMs.",
+        "Boundary: Wasm isolation constrains compute, memory and system capabilities. It does not establish that a permitted outbound request or tool action is safe."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Separate host risk from agent policy",
+          "detail": "Limit filesystem and egress capabilities, then separately check tool permissions and user authorization for state-changing actions."
+        },
+        {
+          "lead": "Measure real isolation overhead",
+          "detail": "Test cold starts, multi-tenant separation, egress rules, long-running tools and p95 round-trip latency against containers or microVMs."
+        }
+      ],
+      "paragraphs": [
+        "Separate host risk from agent policy: Limit filesystem and egress capabilities, then separately check tool permissions and user authorization for state-changing actions.",
+        "Measure real isolation overhead: Test cold starts, multi-tenant separation, egress rules, long-running tools and p95 round-trip latency against containers or microVMs."
       ]
     }
   ],
@@ -57,5 +86,6 @@
       "type": "Vendor announcement"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
