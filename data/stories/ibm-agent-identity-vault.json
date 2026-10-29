@@ -15,37 +15,66 @@
   "takeaway": "Model each agent as a distinct principal with scoped, expiring credentials, not a shared service account.",
   "sections": [
     {
-      "title": "Architecture",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Identity layer",
-          "detail": "IBM Agent Identity records agent ownership and delegated authority. Vault applies machine-identity credential controls, including short-lived access, rotation and revocation."
-        },
-        {
-          "lead": "Runtime integration",
-          "detail": "IBM also describes agent discovery, sandbox isolation, evaluation and an NVIDIA OpenShell integration. Some capabilities are generally available while others remain in preview."
+          "lead": "Agents outgrow shared API keys",
+          "detail": "A background agent needs its own principal, purpose and revocation path; borrowing an employee's blanket permissions makes audit trails ambiguous."
         }
       ],
       "paragraphs": [
-        "Identity layer: IBM Agent Identity records agent ownership and delegated authority. Vault applies machine-identity credential controls, including short-lived access, rotation and revocation.",
-        "Runtime integration: IBM also describes agent discovery, sandbox isolation, evaluation and an NVIDIA OpenShell integration. Some capabilities are generally available while others remain in preview."
+        "Agents outgrow shared API keys: A background agent needs its own principal, purpose and revocation path; borrowing an employee's blanket permissions makes audit trails ambiguous."
       ]
     },
     {
-      "title": "Control gaps",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Authorization",
-          "detail": "An agent identity is useful only when all tools validate that principal and its delegated scope at execution time; possession of a token is not sufficient evidence of user intent."
+          "lead": "Agent Identity plus Vault",
+          "detail": "IBM introduced managed agent ownership and delegated authority, combined with HashiCorp Vault's short-lived machine credentials, rotation and revocation."
         },
         {
-          "lead": "Test",
-          "detail": "Simulate expired/revoked tokens, cross-agent delegation, tool chaining and partial failures; measure which actions remain possible after rights are removed."
+          "lead": "Broader runtime controls",
+          "detail": "The announcement also covers agent discovery, testing and isolation integrations; some features remain in preview rather than full production availability."
         }
       ],
       "paragraphs": [
-        "Authorization: An agent identity is useful only when all tools validate that principal and its delegated scope at execution time; possession of a token is not sufficient evidence of user intent.",
-        "Test: Simulate expired/revoked tokens, cross-agent delegation, tool chaining and partial failures; measure which actions remain possible after rights are removed."
+        "Agent Identity plus Vault: IBM introduced managed agent ownership and delegated authority, combined with HashiCorp Vault's short-lived machine credentials, rotation and revocation.",
+        "Broader runtime controls: The announcement also covers agent discovery, testing and isolation integrations; some features remain in preview rather than full production availability."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Product announcement, not attack study",
+          "detail": "IBM describes capabilities, but provides no independent measurement of prevented privilege escalations or reduced incident rates."
+        },
+        {
+          "lead": "Enforcement is distributed",
+          "detail": "The identity registry alone cannot enforce scope: every downstream tool and API must check the acting agent and permission at execution time."
+        }
+      ],
+      "paragraphs": [
+        "Product announcement, not attack study: IBM describes capabilities, but provides no independent measurement of prevented privilege escalations or reduced incident rates.",
+        "Enforcement is distributed: The identity registry alone cannot enforce scope: every downstream tool and API must check the acting agent and permission at execution time."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Treat agents as distinct principals",
+          "detail": "Issue least-privilege, expiring credentials with clear owners and per-action logs. Avoid shared long-lived service tokens."
+        },
+        {
+          "lead": "Test revocation mid-workflow",
+          "detail": "Revoke authorization between planning and tool execution; verify cached credentials and delegated subagents fail closed."
+        }
+      ],
+      "paragraphs": [
+        "Treat agents as distinct principals: Issue least-privilege, expiring credentials with clear owners and per-action logs. Avoid shared long-lived service tokens.",
+        "Test revocation mid-workflow: Revoke authorization between planning and tool execution; verify cached credentials and delegated subagents fail closed."
       ]
     }
   ],
@@ -57,5 +86,6 @@
       "type": "Vendor announcement"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
