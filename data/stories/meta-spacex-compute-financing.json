@@ -14,37 +14,66 @@
   "takeaway": "Model compute economics with lease obligations, delivery timelines and financing terms rather than raw announced capex.",
   "sections": [
     {
-      "title": "Capital structures",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Meta",
-          "detail": "Meta announced approximately $35B of underwritten equity offerings and proposed a future $60B at-the-market program; the latter was not yet established and may never occur."
-        },
-        {
-          "lead": "SpaceX",
-          "detail": "SpaceX disclosed an approximately $40B commitment for Apollo-managed entities to purchase and lease GPU/server equipment, with leases beginning as tranches are delivered."
+          "lead": "AI hardware consumes capital before earning it back",
+          "detail": "Accelerator purchases require cash upfront while compute revenues, hardware depreciation and electricity costs accumulate over years."
         }
       ],
       "paragraphs": [
-        "Meta: Meta announced approximately $35B of underwritten equity offerings and proposed a future $60B at-the-market program; the latter was not yet established and may never occur.",
-        "SpaceX: SpaceX disclosed an approximately $40B commitment for Apollo-managed entities to purchase and lease GPU/server equipment, with leases beginning as tranches are delivered."
+        "AI hardware consumes capital before earning it back: Accelerator purchases require cash upfront while compute revenues, hardware depreciation and electricity costs accumulate over years."
       ]
     },
     {
-      "title": "Analysis",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Different risk",
-          "detail": "Equity issuance dilutes ownership; equipment finance leases create ongoing obligations tied to asset life and delivery. Announcement totals should not be conflated with cash spent today."
+          "lead": "Meta: equity financing",
+          "detail": "Meta announced about $35B of underwritten equity offerings and a proposed future $60B at-the-market program; proposed capacity is not financing already raised."
         },
         {
-          "lead": "Model",
-          "detail": "Compare fleet utilization, depreciation, financing cost, residual hardware value, networking and power readiness before inferring a unit cost per token."
+          "lead": "SpaceX: equipment lease",
+          "detail": "SpaceX disclosed about $40B in GPU/server-equipment financing from Apollo-managed entities; equipment is bought and leased to SpaceX for roughly five years as deliveries begin."
         }
       ],
       "paragraphs": [
-        "Different risk: Equity issuance dilutes ownership; equipment finance leases create ongoing obligations tied to asset life and delivery. Announcement totals should not be conflated with cash spent today.",
-        "Model: Compare fleet utilization, depreciation, financing cost, residual hardware value, networking and power readiness before inferring a unit cost per token."
+        "Meta: equity financing: Meta announced about $35B of underwritten equity offerings and a proposed future $60B at-the-market program; proposed capacity is not financing already raised.",
+        "SpaceX: equipment lease: SpaceX disclosed about $40B in GPU/server-equipment financing from Apollo-managed entities; equipment is bought and leased to SpaceX for roughly five years as deliveries begin."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "These are commitments, not spending totals",
+          "detail": "Financing structures and timing differ. A proposed equity program, an equipment lease and deployed working GPUs are distinct metrics."
+        },
+        {
+          "lead": "Missing operating data",
+          "detail": "The announcements do not provide a cross-company comparison of model-serving utilization, residual accelerator values or realized cost per token."
+        }
+      ],
+      "paragraphs": [
+        "These are commitments, not spending totals: Financing structures and timing differ. A proposed equity program, an equipment lease and deployed working GPUs are distinct metrics.",
+        "Missing operating data: The announcements do not provide a cross-company comparison of model-serving utilization, residual accelerator values or realized cost per token."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Funding changes the risk profile",
+          "detail": "Equity creates dilution; hardware leases create fixed multi-year obligations that may outlast a generation of accelerators."
+        },
+        {
+          "lead": "Evaluate the unit economics",
+          "detail": "Forecast fleet utilization, useful hardware life, power/network buildout, cash timing and price per completed inference task before assuming the expansion is profitable."
+        }
+      ],
+      "paragraphs": [
+        "Funding changes the risk profile: Equity creates dilution; hardware leases create fixed multi-year obligations that may outlast a generation of accelerators.",
+        "Evaluate the unit economics: Forecast fleet utilization, useful hardware life, power/network buildout, cash timing and price per completed inference task before assuming the expansion is profitable."
       ]
     }
   ],
@@ -62,5 +91,6 @@
       "type": "Independent reporting"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
