@@ -122,7 +122,7 @@ async function main(){
   document.title=data.title+" | Interactive paper | AI Engineering Brief";
   root.replaceChildren();
   const intro=E("header","paper-header");
-  intro.append(E("div","overline",data.category.toUpperCase()),heading("h1",data.title),E("p","paper-lede",data.subtitle));
+  intro.append(E("div","overline",data.category.toUpperCase()),heading("h1",data.title));
   root.append(intro);
   const layout=E("div","paper-layout"),body=E("div","paper-body"),toc=E("aside","paper-toc"),tocDetails=E("details","paper-toc-details"),tocTitle=E("summary","","Sections"),nav=E("nav");nav.setAttribute("aria-label","Explainer chapters");
   let figure=0;
