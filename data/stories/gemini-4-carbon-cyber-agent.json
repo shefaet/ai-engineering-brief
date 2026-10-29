@@ -11,7 +11,7 @@
     "Evaluation"
   ],
   "evidence": "Independent Artificial Analysis composite score; Google-reported cybersecurity and alignment evaluations",
-  "takeaway": "Separate the independently measured general-capability gain from vendor cyber and safety claims; run permission-bound, end-to-end security tasks before trusting autonomous fixes.",
+  "takeaway": "Cyber capability is not one score. Discovery, exploitation and safe patching are distinct abilities.",
   "sections": [
     {
       "title": "Context",
@@ -70,20 +70,20 @@
       ]
     },
     {
-      "title": "Why it matters",
+      "title": "Key takeaways",
       "bullets": [
         {
-          "lead": "Evaluate the full repair chain",
-          "detail": "Score discovery, exploit confirmation, patch correctness, regression tests and authorized deployment separately. A high exploit score can increase risk unless tool permissions and review gates are explicit."
+          "lead": "Different abilities",
+          "detail": "Finding a flaw, proving exploitability and writing a correct patch require different capabilities. A strong score in one does not establish reliable end-to-end remediation."
         },
         {
-          "lead": "Do not extrapolate a composite",
-          "detail": "The index spans coding, science, general knowledge and knowledge work. Reproduce representative tasks with fixed effort, tools, time limits and cost accounting before changing model routing."
+          "lead": "Test conditions shape claims",
+          "detail": "A benchmark without guardrails measures capability under that setup, not the behavior of a restricted production agent."
         }
       ],
       "paragraphs": [
-        "Evaluate the full repair chain: Score discovery, exploit confirmation, patch correctness, regression tests and authorized deployment separately. A high exploit score can increase risk unless tool permissions and review gates are explicit.",
-        "Do not extrapolate a composite: The index spans coding, science, general knowledge and knowledge work. Reproduce representative tasks with fixed effort, tools, time limits and cost accounting before changing model routing."
+        "Different abilities: Finding a flaw, proving exploitability and writing a correct patch require different capabilities. A strong score in one does not establish reliable end-to-end remediation.",
+        "Test conditions shape claims: A benchmark without guardrails measures capability under that setup, not the behavior of a restricted production agent."
       ]
     }
   ],
