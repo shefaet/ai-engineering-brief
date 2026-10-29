@@ -1,0 +1,96 @@
+{
+  "id": "copilot-local-cloud-routing",
+  "category": "AGENT INFRASTRUCTURE",
+  "priority": "Medium",
+  "title": "GitHub Copilot Fusion adds experimental routing between local and cloud models",
+  "dek": "Supported on-device models can join Copilot's routing pool, but cloud-based routing decisions mean the workflow is not offline.",
+  "tags": [
+    "Agents",
+    "Models",
+    "Infrastructure",
+    "Security"
+  ],
+  "evidence": "GitHub product preview documentation; no independent local-versus-cloud performance benchmark",
+  "takeaway": "Treat local inference as a selectable execution location, not an offline or private-by-default guarantee; test routing, data exposure and device capacity.",
+  "sections": [
+    {
+      "title": "What's new",
+      "bullets": [
+        {
+          "lead": "Managed Windows path",
+          "detail": "Copilot can download and configure MAI Code 1.1 Flash through Windows ML on supported Windows hardware. The feature is opt-in and uses Fusion Standard for automatic local/cloud routing."
+        },
+        {
+          "lead": "Bring-your-own runtime",
+          "detail": "Copilot CLI can route to supported manually configured local models on Windows, macOS and Linux through an OpenAI-compatible server. GitHub names MAI Code 1.1 Flash and Qwen3.8 Flash Next."
+        },
+        {
+          "lead": "Client differences",
+          "detail": "The Copilot app can select compatible local models directly, but automatic routing there currently supports managed Windows ML models only. Adding a BYOK model does not automatically make it eligible for Fusion routing."
+        }
+      ],
+      "paragraphs": [
+        "Managed Windows path: Copilot can download and configure MAI Code 1.1 Flash through Windows ML on supported Windows hardware. The feature is opt-in and uses Fusion Standard for automatic local/cloud routing.",
+        "Bring-your-own runtime: Copilot CLI can route to supported manually configured local models on Windows, macOS and Linux through an OpenAI-compatible server. GitHub names MAI Code 1.1 Flash and Qwen3.8 Flash Next.",
+        "Client differences: The Copilot app can select compatible local models directly, but automatic routing there currently supports managed Windows ML models only. Adding a BYOK model does not automatically make it eligible for Fusion routing."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Preview scope",
+          "detail": "GitHub labels the feature experimental and does not report a controlled task-success, token-cost, energy-use or latency comparison between routed local and cloud execution."
+        },
+        {
+          "lead": "Not offline",
+          "detail": "GitHub explicitly says Copilot Fusion still makes routing decisions in the cloud. Local model execution does not establish that prompts, metadata or control-plane traffic remain on the device."
+        },
+        {
+          "lead": "Protection variance",
+          "detail": "Local models can have different safety protections from Copilot's hosted models; the device also needs enough compute and memory for the selected runtime."
+        }
+      ],
+      "paragraphs": [
+        "Preview scope: GitHub labels the feature experimental and does not report a controlled task-success, token-cost, energy-use or latency comparison between routed local and cloud execution.",
+        "Not offline: GitHub explicitly says Copilot Fusion still makes routing decisions in the cloud. Local model execution does not establish that prompts, metadata or control-plane traffic remain on the device.",
+        "Protection variance: Local models can have different safety protections from Copilot's hosted models; the device also needs enough compute and memory for the selected runtime."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Define the trust boundary",
+          "detail": "For sensitive tasks, verify which content leaves the machine during model selection and tool use. An on-device decode path is not a substitute for an offline-mode guarantee."
+        },
+        {
+          "lead": "Benchmark on real hardware",
+          "detail": "Measure cold-start time, memory pressure, energy, p95 latency, routing frequency and verified coding success with the same task suite used for cloud models."
+        }
+      ],
+      "paragraphs": [
+        "Define the trust boundary: For sensitive tasks, verify which content leaves the machine during model selection and tool use. An on-device decode path is not a substitute for an offline-mode guarantee.",
+        "Benchmark on real hardware: Measure cold-start time, memory pressure, energy, p95 latency, routing frequency and verified coding success with the same task suite used for cloud models."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "GitHub - Copilot Fusion now supports selection of local models",
+      "url": "https://github.blog/changelog/2026-10-28-github-copilot-fusion-now-supports-selection-of-local-models/",
+      "published": "2026-10-28",
+      "type": "Official experimental preview changelog"
+    }
+  ],
+  "related": [
+    {
+      "id": "copilot-fusion-multimodel-routing",
+      "date": "2026-10-29",
+      "label": "Related: Copilot Fusion orchestration"
+    }
+  ],
+  "date": "2026-10-29",
+  "published": "2026-10-28",
+  "editorialFormat": "four-part"
+}
