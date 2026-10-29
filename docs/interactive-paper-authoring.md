@@ -18,6 +18,17 @@ Every **new standalone story** should use this scan-friendly section sequence, a
 
 Use short bold lead-ins followed by substantive details. Depth is determined by complexity, not by a word quota. One explanatory diagram, code comparison, or interactive example can replace multiple sentences. Never add filler to populate a heading. Keep 'Evidence & limitations' even when evidence is qualitative. Mark new story JSON with `editorialFormat: "four-part"`, with those exact section titles in order (Context is optional). For backwards compatibility, retain legacy `paragraphs` for each `bullets` array. Historical stories without this marker remain valid pending editorial revision. A separate deep paper explainer can follow a research-specific structure.
 
+## Default story format
+
+Use these section headings, in order, for new standalone stories:
+
+1. Context (optional): minimum background required to understand the update.
+2. What's new: the specific architecture, method, product or workflow change, with a compact worked example when useful.
+3. Evidence & limitations: measurements, baselines, test conditions, original sources and the most important qualification.
+4. Why it matters: one to three concrete, memorable implications; never repeat the headline or preceding sections.
+
+Use substantial bullet points with short lead-ins. Keep important technical depth and skip filler. If the headline explains the context, omit that section. Mark new story JSON with editorialFormat set to four-part. Older unmarked stories remain valid; interactive paper explainers may retain their own chapter structure. Provide equivalent paragraph fallbacks to bullet fields for browser compatibility.
+
 ## Dense, bullet-first editorial schema
 
 Use structured bullets on both the daily edition and interactive paper chapters. Preserve exact technical nuance without forcing the reader through introductory prose.
