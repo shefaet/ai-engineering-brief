@@ -15,37 +15,66 @@
   "takeaway": "Evaluate temporal state and object grounding before attributing multimodal agent failures to planning.",
   "sections": [
     {
-      "title": "Design",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Coverage",
-          "detail": "The authors manually selected 1,000 cases from 23 datasets across web agents, robotics, egocentric video, games and spatial planning."
-        },
-        {
-          "lead": "Result",
-          "detail": "The best of 22 evaluated models reached 58.5% accuracy. Error analysis emphasized UI localization, motion interpretation, evolving state and 3D relationships."
+          "lead": "Visual action needs state tracking",
+          "detail": "A model can describe one screenshot accurately yet miss what changed after a click or how two objects relate in space."
         }
       ],
       "paragraphs": [
-        "Coverage: The authors manually selected 1,000 cases from 23 datasets across web agents, robotics, egocentric video, games and spatial planning.",
-        "Result: The best of 22 evaluated models reached 58.5% accuracy. Error analysis emphasized UI localization, motion interpretation, evolving state and 3D relationships."
+        "Visual action needs state tracking: A model can describe one screenshot accurately yet miss what changed after a click or how two objects relate in space."
       ]
     },
     {
-      "title": "Interpretation",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Proxy boundary",
-          "detail": "Offline visual question answering is cheaper to compare than closed-loop execution, but cannot capture recovery, tool latency, policy violations or interactive exploration."
+          "lead": "AgentVQA benchmark",
+          "detail": "Researchers curated 1,000 difficult visual questions from 23 datasets covering web agents, robotics, egocentric video, games and spatial planning."
         },
         {
-          "lead": "Test",
-          "detail": "Add state-change questions to agent evaluation: what moved, what remains visible, which action changes state, and which UI element a proposed click actually targets."
+          "lead": "Offline proxy",
+          "detail": "The test turns interactive-world observations into repeatable offline questions, permitting broad VLM comparisons without rerunning every environment."
         }
       ],
       "paragraphs": [
-        "Proxy boundary: Offline visual question answering is cheaper to compare than closed-loop execution, but cannot capture recovery, tool latency, policy violations or interactive exploration.",
-        "Test: Add state-change questions to agent evaluation: what moved, what remains visible, which action changes state, and which UI element a proposed click actually targets."
+        "AgentVQA benchmark: Researchers curated 1,000 difficult visual questions from 23 datasets covering web agents, robotics, egocentric video, games and spatial planning.",
+        "Offline proxy: The test turns interactive-world observations into repeatable offline questions, permitting broad VLM comparisons without rerunning every environment."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "22-model evaluation",
+          "detail": "The best evaluated model reached 58.5% accuracy; reported failures centered on localization, motion, state changes and 3D relationships."
+        },
+        {
+          "lead": "Proxy limitation",
+          "detail": "The authors report that offline rankings track related online results, but an offline question cannot reveal action recovery, permission handling or long-horizon tool use."
+        }
+      ],
+      "paragraphs": [
+        "22-model evaluation: The best evaluated model reached 58.5% accuracy; reported failures centered on localization, motion, state changes and 3D relationships.",
+        "Proxy limitation: The authors report that offline rankings track related online results, but an offline question cannot reveal action recovery, permission handling or long-horizon tool use."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Don't overdiagnose planning",
+          "detail": "A seemingly poor plan may actually reflect an incorrect perception of the current interface or environment state."
+        },
+        {
+          "lead": "Add temporal evals",
+          "detail": "Test what moved, which button currently exists, what changed after an action and whether the visual state supports the next proposed tool call."
+        }
+      ],
+      "paragraphs": [
+        "Don't overdiagnose planning: A seemingly poor plan may actually reflect an incorrect perception of the current interface or environment state.",
+        "Add temporal evals: Test what moved, which button currently exists, what changed after an action and whether the visual state supports the next proposed tool call."
       ]
     }
   ],
@@ -63,5 +92,6 @@
       "type": "Primary benchmark website"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
