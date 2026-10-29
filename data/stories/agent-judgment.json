@@ -16,24 +16,55 @@
   "takeaway": "A final human sign-off does not necessarily mean the analyst independently selected the methods that determine the result.",
   "sections": [
     {
-      "title": "Experimental design",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Randomization",
-          "detail": "Fifty experienced analysts used Claude Code on a fictional farming-policy evaluation. Hidden assignments made the agent advocate one of two defensible choices for the metric, comparison method, population, and weighting."
-        },
-        {
-          "lead": "Control group caveat",
-          "detail": "Eleven additional analysts chose not to use an agent; that self-selection prevents treating the comparison as a randomized estimate of AI's overall benefit."
+          "lead": "Why human approval can mislead",
+          "detail": "An analyst may approve a correct computation while accepting an agent's unexamined choice of metric, peer group or treatment definition."
         }
       ],
       "paragraphs": [
-        "Randomization: Fifty experienced analysts used Claude Code on a fictional farming-policy evaluation. Hidden assignments made the agent advocate one of two defensible choices for the metric, comparison method, population, and weighting.",
-        "Control group caveat: Eleven additional analysts chose not to use an agent; that self-selection prevents treating the comparison as a randomized estimate of AI's overall benefit."
+        "Why human approval can mislead: An analyst may approve a correct computation while accepting an agent's unexamined choice of metric, peer group or treatment definition."
       ]
     },
     {
-      "title": "Observed influence",
+      "title": "What's new",
+      "bullets": [
+        {
+          "lead": "Randomized agent preferences",
+          "detail": "Anthropic asked 50 experienced analysts to study a fictional farm program using Claude Code. Hidden random assignments made the agent advocate one of two reasonable options for each of four analytic decisions."
+        },
+        {
+          "lead": "Five decisions in total",
+          "detail": "Four choices determined the method; a fifth was the final program recommendation. Claude was instructed to argue honestly from the available data, not fabricate evidence."
+        }
+      ],
+      "paragraphs": [
+        "Randomized agent preferences: Anthropic asked 50 experienced analysts to study a fictional farm program using Claude Code. Hidden random assignments made the agent advocate one of two reasonable options for each of four analytic decisions.",
+        "Five decisions in total: Four choices determined the method; a fifth was the final program recommendation. Claude was instructed to argue honestly from the available data, not fabricate evidence."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "86% method agreement",
+          "detail": "Analysts followed their agent's assigned lean across four methodological choices: 92% outcome, 82% comparison, 81% population and 90% weighting."
+        },
+        {
+          "lead": "Weaker final influence",
+          "detail": "54% recommended rollout when the agent favored it, versus 36% when it opposed it. The 11 participants without an agent chose that condition themselves, so AI-versus-no-AI benefit is not randomized."
+        },
+        {
+          "lead": "Limit",
+          "detail": "Preferences were deliberately strengthened in a single-task experiment with one model; 86% is not a general real-world rate."
+        }
+      ],
+      "paragraphs": [
+        "86% method agreement: Analysts followed their agent's assigned lean across four methodological choices: 92% outcome, 82% comparison, 81% population and 90% weighting.",
+        "Weaker final influence: 54% recommended rollout when the agent favored it, versus 36% when it opposed it. The 11 participants without an agent chose that condition themselves, so AI-versus-no-AI benefit is not randomized.",
+        "Limit: Preferences were deliberately strengthened in a single-task experiment with one model; 86% is not a general real-world rate."
+      ],
       "interactive": "anthropic-chart",
       "chartData": {
         "decisions": [
@@ -64,32 +95,23 @@
             "value": 36
           }
         ]
-      },
-      "bullets": [
-        {
-          "lead": "Method choices",
-          "detail": "Across four decisions, analysts selected the agent's assigned preference 86% of the time. The chart separates each methodological choice from the final rollout recommendation."
-        }
-      ],
-      "paragraphs": [
-        "Method choices: Across four decisions, analysts selected the agent's assigned preference 86% of the time. The chart separates each methodological choice from the final rollout recommendation."
-      ]
+      }
     },
     {
-      "title": "Limits & engineering action",
+      "title": "Why it matters",
       "bullets": [
         {
-          "lead": "External validity",
-          "detail": "The agent's preferences were deliberately reinforced. Fifty AI-assisted participants, one task, and one model configuration cannot establish production-wide influence rates."
+          "lead": "Precommit key assumptions",
+          "detail": "Ask analysts to record outcome definitions and comparison methods before the agent recommends one."
         },
         {
-          "lead": "Control design",
-          "detail": "Record the analyst's pre-agent choice of metric, peer set, period, and weights. Audit who proposed any change; test alternative defensible methods before approving conclusions."
+          "lead": "Check choices, not just answers",
+          "detail": "Evaluate the provenance of methodology changes and counterfactual results, even when the calculations are correct."
         }
       ],
       "paragraphs": [
-        "External validity: The agent's preferences were deliberately reinforced. Fifty AI-assisted participants, one task, and one model configuration cannot establish production-wide influence rates.",
-        "Control design: Record the analyst's pre-agent choice of metric, peer set, period, and weights. Audit who proposed any change; test alternative defensible methods before approving conclusions."
+        "Precommit key assumptions: Ask analysts to record outcome definitions and comparison methods before the agent recommends one.",
+        "Check choices, not just answers: Evaluate the provenance of methodology changes and counterfactual results, even when the calculations are correct."
       ]
     }
   ],
@@ -109,5 +131,6 @@
     }
   ],
   "paperSlug": "agent-judgment",
-  "paperLabel": "Interactive deep dive: explore the randomized experiment"
+  "paperLabel": "Interactive deep dive: explore the randomized experiment",
+  "editorialFormat": "four-part"
 }
