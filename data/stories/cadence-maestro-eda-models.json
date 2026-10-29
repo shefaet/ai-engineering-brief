@@ -15,37 +15,66 @@
   "takeaway": "Benchmark specialist models on validated task success and end-to-end workflow cost, not token benchmarks alone.",
   "sections": [
     {
-      "title": "Technical approach",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Specialization",
-          "detail": "Cadence pairs domain-trained models with its AI Super Agents, EDA/SDA tools and a vertically integrated reinforcement-learning environment."
-        },
-        {
-          "lead": "Deployment",
-          "detail": "The design supports cloud and customer-controlled on-premises operation, with some early-access models due in Q4 2026."
+          "lead": "Chip workflows are more than text",
+          "detail": "EDA tasks depend on tool execution, formal constraints, physical design rules and iterative feedback—not just generating a plausible answer."
         }
       ],
       "paragraphs": [
-        "Specialization: Cadence pairs domain-trained models with its AI Super Agents, EDA/SDA tools and a vertically integrated reinforcement-learning environment.",
-        "Deployment: The design supports cloud and customer-controlled on-premises operation, with some early-access models due in Q4 2026."
+        "Chip workflows are more than text: EDA tasks depend on tool execution, formal constraints, physical design rules and iterative feedback—not just generating a plausible answer."
       ]
     },
     {
-      "title": "What to test",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Claims",
-          "detail": "Cadence reports up to 30% higher design quality and up to 5× token efficiency versus general-purpose foundation models in selected workflows; baselines are vendor-selected."
+          "lead": "Specialist model portfolio",
+          "detail": "Cadence introduced Maestro domain-specialized models inside AI Super Agents, linked to EDA/SDA tools and a vertically integrated reinforcement-learning environment."
         },
         {
-          "lead": "Benchmark",
-          "detail": "Compare verified design-rule closure, timing/power/area targets, retries and engineer review time under identical design constraints."
+          "lead": "Deployment options",
+          "detail": "The firm positions a mix of specialist, frontier and open-weight models for cloud or customer-controlled on-premises design workflows."
         }
       ],
       "paragraphs": [
-        "Claims: Cadence reports up to 30% higher design quality and up to 5× token efficiency versus general-purpose foundation models in selected workflows; baselines are vendor-selected.",
-        "Benchmark: Compare verified design-rule closure, timing/power/area targets, retries and engineer review time under identical design constraints."
+        "Specialist model portfolio: Cadence introduced Maestro domain-specialized models inside AI Super Agents, linked to EDA/SDA tools and a vertically integrated reinforcement-learning environment.",
+        "Deployment options: The firm positions a mix of specialist, frontier and open-weight models for cloud or customer-controlled on-premises design workflows."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Reported comparison",
+          "detail": "Cadence claims up to 30% higher design quality and 5× better token efficiency than general-purpose foundation models in initial selected workflows."
+        },
+        {
+          "lead": "Missing details",
+          "detail": "The announcement does not supply a cross-vendor, independently replicated evaluation across identical chip designs, tool budgets and sign-off criteria."
+        }
+      ],
+      "paragraphs": [
+        "Reported comparison: Cadence claims up to 30% higher design quality and 5× better token efficiency than general-purpose foundation models in initial selected workflows.",
+        "Missing details: The announcement does not supply a cross-vendor, independently replicated evaluation across identical chip designs, tool budgets and sign-off criteria."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Use the design tool as an oracle",
+          "detail": "Only credit outputs that pass design-rule checks, timing/power targets and reproducible simulations."
+        },
+        {
+          "lead": "Measure engineer time saved",
+          "detail": "Compare end-to-end verified sign-off, retries and human review cost—not the number of prompts or generated RTL lines."
+        }
+      ],
+      "paragraphs": [
+        "Use the design tool as an oracle: Only credit outputs that pass design-rule checks, timing/power targets and reproducible simulations.",
+        "Measure engineer time saved: Compare end-to-end verified sign-off, retries and human review cost—not the number of prompts or generated RTL lines."
       ]
     }
   ],
@@ -57,5 +86,6 @@
       "type": "Vendor announcement"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
