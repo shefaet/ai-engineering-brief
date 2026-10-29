@@ -75,7 +75,6 @@ async function home(){
     meta.append(el("span","card-date",dateText(s.date)),el("span","card-category",s.category));
     card.append(meta);
     const h=el("h2","card-title"),a=el("a","",s.title);a.href=linkFor(s.date,s.id);h.append(a);card.append(h);
-    if(s.summary&&s.summary.trim().toLowerCase()!==s.title.trim().toLowerCase())card.append(el("p","card-summary",s.summary));
     if(s.paperSlug){
      const deep=el("a","paper-deep-link","Interactive explainer ↗");
      deep.href="paper.html?slug="+encodeURIComponent(s.paperSlug);card.append(deep);
@@ -172,7 +171,7 @@ async function storyPage(){
   const s=await json("data/stories/"+id+".json");
   if(s.id!==id||s.date!==meta.date)throw Error("Story index mismatch");
   document.title=s.title+" | AI Engineering Brief";
-  const issueCode=$("#issue-code");if(issueCode)issueCode.textContent=dateText(s.date);
+  const issueCode=$("#issue-code");if(issueCode)issueCode.textContent="";
   root.replaceChildren();
   const header=el("header","issue-header");
   header.append(el("div","story-kicker",s.category+" · "+dateText(s.date)),el("h1","",s.title));
