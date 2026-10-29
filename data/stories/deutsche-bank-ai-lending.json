@@ -14,37 +14,66 @@
   "takeaway": "Measure throughput together with exception handling, underwriting quality and auditability rather than decision speed alone.",
   "sections": [
     {
-      "title": "Deployment",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Reported result",
-          "detail": "Technology chief Marie-Jeanne Deverdun said smaller, less complex corporate cases now take minutes rather than weeks; some multinational decisions moved from months to weeks."
-        },
-        {
-          "lead": "Operating layer",
-          "detail": "The bank described ADA, an internal platform to create, monitor and govern agents, manage model risk and switch among models."
+          "lead": "Loan decisions are document-heavy",
+          "detail": "Corporate underwriting requires financial statements, compliance checks, risk models and human approval; latency may reflect workflow handoffs as much as calculation."
         }
       ],
       "paragraphs": [
-        "Reported result: Technology chief Marie-Jeanne Deverdun said smaller, less complex corporate cases now take minutes rather than weeks; some multinational decisions moved from months to weeks.",
-        "Operating layer: The bank described ADA, an internal platform to create, monitor and govern agents, manage model risk and switch among models."
+        "Loan decisions are document-heavy: Corporate underwriting requires financial statements, compliance checks, risk models and human approval; latency may reflect workflow handoffs as much as calculation."
       ]
     },
     {
-      "title": "What is not established",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Evidence",
-          "detail": "The reported turnaround improvement is a bank claim, not a controlled study of matched loan cohorts or a disclosed credit-quality benchmark."
+          "lead": "Faster simple cases",
+          "detail": "Deutsche Bank's technology chief said some smaller-company loan decisions now take minutes instead of weeks, and some complex multinational cases fell from months to weeks."
         },
         {
-          "lead": "Practical test",
-          "detail": "Compare cycle time by case complexity with overrides, human review, model drift and realized credit outcomes before extrapolating to high-risk underwriting."
+          "lead": "Governed agent platform",
+          "detail": "The bank describes ADA, a shared environment for building, monitoring and controlling agents, managing model risk and switching model backends."
         }
       ],
       "paragraphs": [
-        "Evidence: The reported turnaround improvement is a bank claim, not a controlled study of matched loan cohorts or a disclosed credit-quality benchmark.",
-        "Practical test: Compare cycle time by case complexity with overrides, human review, model drift and realized credit outcomes before extrapolating to high-risk underwriting."
+        "Faster simple cases: Deutsche Bank's technology chief said some smaller-company loan decisions now take minutes instead of weeks, and some complex multinational cases fell from months to weeks.",
+        "Governed agent platform: The bank describes ADA, a shared environment for building, monitoring and controlling agents, managing model risk and switching model backends."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Management-reported speed",
+          "detail": "Reuters relays an executive claim rather than an independently matched before/after comparison of loans, risk tiers and error rates."
+        },
+        {
+          "lead": "Missing outcome evidence",
+          "detail": "The report does not establish approval accuracy, defaults, fairness, exceptions or how much of the speedup is AI rather than process redesign."
+        }
+      ],
+      "paragraphs": [
+        "Management-reported speed: Reuters relays an executive claim rather than an independently matched before/after comparison of loans, risk tiers and error rates.",
+        "Missing outcome evidence: The report does not establish approval accuracy, defaults, fairness, exceptions or how much of the speedup is AI rather than process redesign."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Segment before generalizing",
+          "detail": "Evaluate decisions by complexity, data completeness, manual escalation rate and regulatory obligations."
+        },
+        {
+          "lead": "Track credit outcomes",
+          "detail": "Cycle time is valuable only with acceptable override rates, audit trail quality and credit loss performance."
+        }
+      ],
+      "paragraphs": [
+        "Segment before generalizing: Evaluate decisions by complexity, data completeness, manual escalation rate and regulatory obligations.",
+        "Track credit outcomes: Cycle time is valuable only with acceptable override rates, audit trail quality and credit loss performance."
       ]
     }
   ],
@@ -56,5 +85,6 @@
       "type": "Independent interview reporting"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
