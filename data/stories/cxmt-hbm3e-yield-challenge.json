@@ -15,37 +15,66 @@
   "takeaway": "Forecast accelerator availability from known-good stacked memory and packaging throughput, not nominal production starts.",
   "sections": [
     {
-      "title": "Production signal",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Low yield",
-          "detail": "Reuters sources estimate roughly 20–30% usable HBM3E output in CXMT's process versus about 70% at SK Hynix; samples have reportedly reached domestic accelerator designers."
-        },
-        {
-          "lead": "Schedule",
-          "detail": "Limited production was expected within two months. Reported sample performance was nearer prior-generation HBM3 than leading HBM3E."
+          "lead": "HBM is a throughput bottleneck",
+          "detail": "Accelerators need high-bandwidth stacked memory; usable stack yield and advanced packaging constrain production more than nominal chip design."
         }
       ],
       "paragraphs": [
-        "Low yield: Reuters sources estimate roughly 20–30% usable HBM3E output in CXMT's process versus about 70% at SK Hynix; samples have reportedly reached domestic accelerator designers.",
-        "Schedule: Limited production was expected within two months. Reported sample performance was nearer prior-generation HBM3 than leading HBM3E."
+        "HBM is a throughput bottleneck: Accelerators need high-bandwidth stacked memory; usable stack yield and advanced packaging constrain production more than nominal chip design."
+      ]
+    },
+    {
+      "title": "What's new",
+      "bullets": [
+        {
+          "lead": "Early HBM3E production",
+          "detail": "Reuters sources say CXMT intends limited production within two months despite preliminary yields of 20–30%, compared with about 70% cited for SK Hynix."
+        },
+        {
+          "lead": "Performance lag",
+          "detail": "Test samples reportedly perform closer to prior-generation HBM3 than leading HBM3E offerings."
+        }
+      ],
+      "paragraphs": [
+        "Early HBM3E production: Reuters sources say CXMT intends limited production within two months despite preliminary yields of 20–30%, compared with about 70% cited for SK Hynix.",
+        "Performance lag: Test samples reportedly perform closer to prior-generation HBM3 than leading HBM3E offerings."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Anonymous-source estimates",
+          "detail": "These yields are reporting from people familiar with the process, not audited factory data or a matched manufacturing-cost comparison."
+        },
+        {
+          "lead": "Yield math",
+          "detail": "At unchanged input volume, 25% versus 70% yield produces only ~36% as many usable units. Actual stacked-device throughput also depends on packaging and test yield."
+        }
+      ],
+      "paragraphs": [
+        "Anonymous-source estimates: These yields are reporting from people familiar with the process, not audited factory data or a matched manufacturing-cost comparison.",
+        "Yield math: At unchanged input volume, 25% versus 70% yield produces only ~36% as many usable units. Actual stacked-device throughput also depends on packaging and test yield."
       ]
     },
     {
       "title": "Why it matters",
       "bullets": [
         {
-          "lead": "Supply constraint",
-          "detail": "HBM stacks require dense interconnects, packaging and high known-good-die yield. Low yield raises cost per usable stack and limits the number of accelerators that can ship."
+          "lead": "Starts are not shipments",
+          "detail": "A fab announcing HBM3E production does not mean equivalent volumes of qualifying accelerator memory."
         },
         {
-          "lead": "Forecast",
-          "detail": "Sensitivity-test effective HBM bandwidth, yield, package capacity and qualification timing; do not infer export-independent accelerator scale from a launch announcement."
+          "lead": "Model supply with yield",
+          "detail": "Forecast deployable accelerators using known-good stacks, bandwidth, qualification lead times and packaging capacity—not only nameplate wafer output."
         }
       ],
       "paragraphs": [
-        "Supply constraint: HBM stacks require dense interconnects, packaging and high known-good-die yield. Low yield raises cost per usable stack and limits the number of accelerators that can ship.",
-        "Forecast: Sensitivity-test effective HBM bandwidth, yield, package capacity and qualification timing; do not infer export-independent accelerator scale from a launch announcement."
+        "Starts are not shipments: A fab announcing HBM3E production does not mean equivalent volumes of qualifying accelerator memory.",
+        "Model supply with yield: Forecast deployable accelerators using known-good stacks, bandwidth, qualification lead times and packaging capacity—not only nameplate wafer output."
       ]
     }
   ],
@@ -57,5 +86,6 @@
       "type": "Independent reporting"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
