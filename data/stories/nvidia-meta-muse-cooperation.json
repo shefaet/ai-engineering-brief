@@ -15,37 +15,66 @@
   "takeaway": "Distinguish announced hardware/model integration from reproducible latency and total-cost improvements.",
   "sections": [
     {
-      "title": "Agreement",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Technical layer",
-          "detail": "The companies plan to jointly optimize Muse-family training and inference, with Meta expanding Vera Rubin, Vera CPU, Spectrum-X and BlueField-4 deployments."
-        },
-        {
-          "lead": "Commercial layer",
-          "detail": "NVIDIA committed to invest $3B in Meta's equity offering; model and infrastructure plans are distinct from a measured production benchmark."
+          "lead": "Models and hardware co-evolve",
+          "detail": "Large-scale agent serving depends on accelerators, memory, interconnects and software optimization for long conversations and tool calls."
         }
       ],
       "paragraphs": [
-        "Technical layer: The companies plan to jointly optimize Muse-family training and inference, with Meta expanding Vera Rubin, Vera CPU, Spectrum-X and BlueField-4 deployments.",
-        "Commercial layer: NVIDIA committed to invest $3B in Meta's equity offering; model and infrastructure plans are distinct from a measured production benchmark."
+        "Models and hardware co-evolve: Large-scale agent serving depends on accelerators, memory, interconnects and software optimization for long conversations and tool calls."
       ]
     },
     {
-      "title": "Engineering test",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Security",
-          "detail": "The announcement also mentions potential work on OpenShell and Sentry to monitor or isolate agents; possible collaborations should not be treated as delivered features."
+          "lead": "Muse co-optimization",
+          "detail": "NVIDIA and Meta plan joint performance work on Meta's Muse models for training and inference, alongside expanded Vera Rubin/Vera CPU, Spectrum-X networking and BlueField-4 adoption."
         },
         {
-          "lead": "Performance",
-          "detail": "Compare throughput per watt, end-to-end tool latency, networking bottlenecks and workload-level dollars per successful task on representative workloads."
+          "lead": "Capital tie",
+          "detail": "NVIDIA announced a $3B investment in Meta's equity offering; the same announcement mentions possible, not delivered, OpenShell and Sentry agent-safety collaboration."
         }
       ],
       "paragraphs": [
-        "Security: The announcement also mentions potential work on OpenShell and Sentry to monitor or isolate agents; possible collaborations should not be treated as delivered features.",
-        "Performance: Compare throughput per watt, end-to-end tool latency, networking bottlenecks and workload-level dollars per successful task on representative workloads."
+        "Muse co-optimization: NVIDIA and Meta plan joint performance work on Meta's Muse models for training and inference, alongside expanded Vera Rubin/Vera CPU, Spectrum-X networking and BlueField-4 adoption.",
+        "Capital tie: NVIDIA announced a $3B investment in Meta's equity offering; the same announcement mentions possible, not delivered, OpenShell and Sentry agent-safety collaboration."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "No comparative TCO data",
+          "detail": "The public statement describes intended hardware rollouts and joint engineering, not a controlled tokens/s, power-per-token or workload-level cost comparison."
+        },
+        {
+          "lead": "Forward-looking elements",
+          "detail": "Planned infrastructure and security integration may change before deployment; projected capacity is not current installed capacity."
+        }
+      ],
+      "paragraphs": [
+        "No comparative TCO data: The public statement describes intended hardware rollouts and joint engineering, not a controlled tokens/s, power-per-token or workload-level cost comparison.",
+        "Forward-looking elements: Planned infrastructure and security integration may change before deployment; projected capacity is not current installed capacity."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Optimize the whole stack",
+          "detail": "Memory, networking, batching and model shape can dominate inference cost more than accelerator peak compute."
+        },
+        {
+          "lead": "Separate investment from benchmark evidence",
+          "detail": "An equity commitment says little about whether agents complete work more cheaply or safely; verify on representative workloads."
+        }
+      ],
+      "paragraphs": [
+        "Optimize the whole stack: Memory, networking, batching and model shape can dominate inference cost more than accelerator peak compute.",
+        "Separate investment from benchmark evidence: An equity commitment says little about whether agents complete work more cheaply or safely; verify on representative workloads."
       ]
     }
   ],
@@ -57,5 +86,6 @@
       "type": "Vendor press release"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
