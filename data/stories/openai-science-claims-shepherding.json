@@ -15,37 +15,66 @@
   "takeaway": "Separate model-generated proof artifacts from verified scientific conclusions; invest in reproducibility and expert review.",
   "sections": [
     {
-      "title": "Three distinct cases",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Mathematics",
-          "detail": "OpenAI published a claimed harmonic-analysis result and associated artifacts so outside researchers can study the argument."
-        },
-        {
-          "lead": "Complexity",
-          "detail": "A claimed result involving the Exponential Time Hypothesis is being examined with an external expert group; a claimed physics result is following a different, initially withheld-artifact review path."
+          "lead": "The bottleneck isn't generating proofs",
+          "detail": "AI can produce convincing research artifacts quickly; independent mathematical and scientific verification can take much longer."
         }
       ],
       "paragraphs": [
-        "Mathematics: OpenAI published a claimed harmonic-analysis result and associated artifacts so outside researchers can study the argument.",
-        "Complexity: A claimed result involving the Exponential Time Hypothesis is being examined with an external expert group; a claimed physics result is following a different, initially withheld-artifact review path."
+        "The bottleneck isn't generating proofs: AI can produce convincing research artifacts quickly; independent mathematical and scientific verification can take much longer."
       ]
     },
     {
-      "title": "What matters",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Verification gap",
-          "detail": "A formal-looking proof or model-generated manuscript is not equivalent to independent acceptance of a major theorem. Different disciplines require distinct validation processes."
+          "lead": "Separate validation routes",
+          "detail": "OpenAI disclosed model-generated claims in harmonic analysis, a complexity-theory question around the Exponential Time Hypothesis, and physics, each using a different process for external scrutiny."
         },
         {
-          "lead": "Engineering insight",
-          "detail": "Treat formal checks, reproducible experiments, external critical review and provenance as separate validation gates. Publish uncertainty at the same prominence as the claim."
+          "lead": "Artifacts are not endorsements",
+          "detail": "Some materials are published for direct inspection while others undergo expert review before full release."
         }
       ],
       "paragraphs": [
-        "Verification gap: A formal-looking proof or model-generated manuscript is not equivalent to independent acceptance of a major theorem. Different disciplines require distinct validation processes.",
-        "Engineering insight: Treat formal checks, reproducible experiments, external critical review and provenance as separate validation gates. Publish uncertainty at the same prominence as the claim."
+        "Separate validation routes: OpenAI disclosed model-generated claims in harmonic analysis, a complexity-theory question around the Exponential Time Hypothesis, and physics, each using a different process for external scrutiny.",
+        "Artifacts are not endorsements: Some materials are published for direct inspection while others undergo expert review before full release."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Verification is ongoing",
+          "detail": "The primary announcement describes candidate research and review arrangements—not broadly accepted proofs of major results."
+        },
+        {
+          "lead": "Different standards",
+          "detail": "Formal mathematical correctness, reproducible empirical prediction and domain-specialist scrutiny answer different questions. None is interchangeable with a model confidence score."
+        }
+      ],
+      "paragraphs": [
+        "Verification is ongoing: The primary announcement describes candidate research and review arrangements—not broadly accepted proofs of major results.",
+        "Different standards: Formal mathematical correctness, reproducible empirical prediction and domain-specialist scrutiny answer different questions. None is interchangeable with a model confidence score."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Publish provenance",
+          "detail": "Separate the proposed claim, generated proof/workflow, machine-checkable components and external verification state."
+        },
+        {
+          "lead": "Reward reproducibility",
+          "detail": "A strong science agent should produce falsifiable statements, executable checks and a clean audit trail, not just a persuasive manuscript."
+        }
+      ],
+      "paragraphs": [
+        "Publish provenance: Separate the proposed claim, generated proof/workflow, machine-checkable components and external verification state.",
+        "Reward reproducibility: A strong science agent should produce falsifiable statements, executable checks and a clean audit trail, not just a persuasive manuscript."
       ]
     }
   ],
@@ -57,5 +86,6 @@
       "type": "Primary vendor announcement"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
