@@ -176,7 +176,6 @@ async function storyPage(){
   root.replaceChildren();
   const header=el("header","issue-header");
   header.append(el("div","story-kicker",s.category+" · "+dateText(s.date)),el("h1","",s.title));
-  if(s.takeaway)header.append(el("p","story-lead",s.takeaway));
   root.append(header,el("div","issue-rule"));
   const article=el("article","story");article.id=id;
   renderStoryContent(article,s);root.append(article);
