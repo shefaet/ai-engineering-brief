@@ -15,37 +15,66 @@
   "takeaway": "Use world models as variable test environments only when their rules and state transitions can be validated independently.",
   "sections": [
     {
-      "title": "Architecture",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Generator",
-          "detail": "Genie 4 produces interactive visuals, ambient audio and dialogue; Gemini Omni helps anchor real-world appearance and behavior."
-        },
-        {
-          "lead": "Control loop",
-          "detail": "Gemini 3.8 Flash observes rendered frames, decomposes goals and updates its plan as the user modifies the simulated world. This separates environment generation from agent supervision."
+          "lead": "Why it matters for agents",
+          "detail": "An interactive world model can supply varied situations for training, but a convincing video is not necessarily a physically consistent simulator."
         }
       ],
       "paragraphs": [
-        "Generator: Genie 4 produces interactive visuals, ambient audio and dialogue; Gemini Omni helps anchor real-world appearance and behavior.",
-        "Control loop: Gemini 3.8 Flash observes rendered frames, decomposes goals and updates its plan as the user modifies the simulated world. This separates environment generation from agent supervision."
+        "Why it matters for agents: An interactive world model can supply varied situations for training, but a convincing video is not necessarily a physically consistent simulator."
       ]
     },
     {
-      "title": "Limitations and use",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Reliability",
-          "detail": "DeepMind reports remaining object-permanence drift, spatial inconsistency, physics errors and audio accuracy problems, especially after complex edits or long sessions."
+          "lead": "Native multimodal generation",
+          "detail": "DeepMind's Genie 4 generates interactive video, ambience and dialogue in one simulation. Gemini Omni provides grounding for realistic appearance and behavior."
         },
         {
-          "lead": "Evaluation",
-          "detail": "For agent testing, compare simulated outcomes with deterministic references on action validity, object state, temporal consistency and recovery; do not treat photorealistic visuals as proof of physical accuracy."
+          "lead": "Planner separation",
+          "detail": "Additional Gemini models observe evolving frames and help maintain the scene's coherence as a user acts or edits the world. Genie remains a research preview for selected testers."
         }
       ],
       "paragraphs": [
-        "Reliability: DeepMind reports remaining object-permanence drift, spatial inconsistency, physics errors and audio accuracy problems, especially after complex edits or long sessions.",
-        "Evaluation: For agent testing, compare simulated outcomes with deterministic references on action validity, object state, temporal consistency and recovery; do not treat photorealistic visuals as proof of physical accuracy."
+        "Native multimodal generation: DeepMind's Genie 4 generates interactive video, ambience and dialogue in one simulation. Gemini Omni provides grounding for realistic appearance and behavior.",
+        "Planner separation: Additional Gemini models observe evolving frames and help maintain the scene's coherence as a user acts or edits the world. Genie remains a research preview for selected testers."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Demonstrated, not calibrated",
+          "detail": "DeepMind shows interactive scenarios, but does not publish an independent closed-loop robotics success or physical-fidelity comparison."
+        },
+        {
+          "lead": "Known failures",
+          "detail": "Object permanence, long-session consistency, text rendering, complex physics, geometry and real-time audio still drift, particularly after many edits."
+        }
+      ],
+      "paragraphs": [
+        "Demonstrated, not calibrated: DeepMind shows interactive scenarios, but does not publish an independent closed-loop robotics success or physical-fidelity comparison.",
+        "Known failures: Object permanence, long-session consistency, text rendering, complex physics, geometry and real-time audio still drift, particularly after many edits."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Photorealism is not a test oracle",
+          "detail": "Use world models for diverse candidate scenarios; verify critical state transitions against deterministic environments or real-world data."
+        },
+        {
+          "lead": "Evaluate action consequences",
+          "detail": "Score object identity, state persistence, action validity and recovery—not simply frame aesthetics."
+        }
+      ],
+      "paragraphs": [
+        "Photorealism is not a test oracle: Use world models for diverse candidate scenarios; verify critical state transitions against deterministic environments or real-world data.",
+        "Evaluate action consequences: Score object identity, state persistence, action validity and recovery—not simply frame aesthetics."
       ]
     }
   ],
@@ -57,5 +86,6 @@
       "type": "Primary research announcement"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
