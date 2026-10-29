@@ -15,37 +15,66 @@
   "takeaway": "Include compiled-kernel integrity and performance anomalies in inference supply-chain threat models.",
   "sections": [
     {
-      "title": "Mechanism",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Target",
-          "detail": "The attack flips a bit in Triton's CPU-side MLIR/LLVM optimization pipeline, producing a functionally correct but suboptimal GPU kernel."
-        },
-        {
-          "lead": "Persistence",
-          "detail": "Triton caches generated kernels to disk. After the corruption, later inference runs can inherit the slowdown even when the bit-flip is no longer active."
+          "lead": "GPU kernels are compiled on CPUs",
+          "detail": "Triton's JIT pipeline transforms GPU kernels through CPU-side MLIR/LLVM passes, then caches generated binaries for reuse."
         }
       ],
       "paragraphs": [
-        "Target: The attack flips a bit in Triton's CPU-side MLIR/LLVM optimization pipeline, producing a functionally correct but suboptimal GPU kernel.",
-        "Persistence: Triton caches generated kernels to disk. After the corruption, later inference runs can inherit the slowdown even when the bit-flip is no longer active."
+        "GPU kernels are compiled on CPUs: Triton's JIT pipeline transforms GPU kernels through CPU-side MLIR/LLVM passes, then caches generated binaries for reuse."
       ]
     },
     {
-      "title": "Evidence and defense",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Observed impact",
-          "detail": "Across four open models on NVIDIA RTX 4090 and AMD RX 7900 XTX, the paper reports 4–16% server inference-latency increases; separate tests explore output corruption."
+          "lead": "LLVMhammer attack",
+          "detail": "Researchers show a Rowhammer-induced DRAM bit flip in a compiler optimization pass can yield a functionally correct but slower GPU kernel."
         },
         {
-          "lead": "Boundary",
-          "detail": "The paper demonstrates a physical-memory fault scenario rather than a typical remote prompt-injection pathway. Treat unusual kernel-cache changes, binary provenance and sustained latency regression as potential indicators."
+          "lead": "Persistent effect",
+          "detail": "The suboptimal kernel is cached on disk, so later inference requests can remain slower after the transient memory fault has passed."
         }
       ],
       "paragraphs": [
-        "Observed impact: Across four open models on NVIDIA RTX 4090 and AMD RX 7900 XTX, the paper reports 4–16% server inference-latency increases; separate tests explore output corruption.",
-        "Boundary: The paper demonstrates a physical-memory fault scenario rather than a typical remote prompt-injection pathway. Treat unusual kernel-cache changes, binary provenance and sustained latency regression as potential indicators."
+        "LLVMhammer attack: Researchers show a Rowhammer-induced DRAM bit flip in a compiler optimization pass can yield a functionally correct but slower GPU kernel.",
+        "Persistent effect: The suboptimal kernel is cached on disk, so later inference requests can remain slower after the transient memory fault has passed."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Measured slowdown",
+          "detail": "The paper reports 4–16% increased single-GPU server latency across four LLMs on NVIDIA RTX 4090 and AMD RX 7900 XTX, and tests more severe output corruption."
+        },
+        {
+          "lead": "Threat-model boundary",
+          "detail": "The attack assumes an exploitable DRAM fault in the compilation environment, not a generic remote prompt injection or ordinary model failure."
+        }
+      ],
+      "paragraphs": [
+        "Measured slowdown: The paper reports 4–16% increased single-GPU server latency across four LLMs on NVIDIA RTX 4090 and AMD RX 7900 XTX, and tests more severe output corruption.",
+        "Threat-model boundary: The attack assumes an exploitable DRAM fault in the compilation environment, not a generic remote prompt injection or ordinary model failure."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Compilation belongs in supply-chain security",
+          "detail": "Protect JIT-generated artifacts and kernel caches, and monitor surprising performance shifts following recompilation."
+        },
+        {
+          "lead": "Guard both speed and correctness",
+          "detail": "Compare kernel hashes, output checks and latency baselines after system updates or suspected hardware faults."
+        }
+      ],
+      "paragraphs": [
+        "Compilation belongs in supply-chain security: Protect JIT-generated artifacts and kernel caches, and monitor surprising performance shifts following recompilation.",
+        "Guard both speed and correctness: Compare kernel hashes, output checks and latency baselines after system updates or suspected hardware faults."
       ]
     }
   ],
@@ -57,5 +86,6 @@
       "type": "Primary research"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
