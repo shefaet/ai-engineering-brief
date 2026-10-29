@@ -15,37 +15,66 @@
   "takeaway": "Evaluate effective long-context retrieval and cost per completed task, not nominal context length.",
   "sections": [
     {
-      "title": "Model and serving",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Context",
-          "detail": "Moonshot describes K3.1 Pro as a 3T-class model with up to one million tokens of context, available in Kimi Code with thinking modes."
-        },
-        {
-          "lead": "Highspeed",
-          "detail": "The separate K3.1 Pro Highspeed tier is claimed to provide roughly 2–3× throughput at the same output quality."
+          "lead": "Long-context marketing can mislead",
+          "detail": "A model accepting a million tokens says nothing about whether it can retrieve the right evidence or complete a lengthy workflow economically."
         }
       ],
       "paragraphs": [
-        "Context: Moonshot describes K3.1 Pro as a 3T-class model with up to one million tokens of context, available in Kimi Code with thinking modes.",
-        "Highspeed: The separate K3.1 Pro Highspeed tier is claimed to provide roughly 2–3× throughput at the same output quality."
+        "Long-context marketing can mislead: A model accepting a million tokens says nothing about whether it can retrieve the right evidence or complete a lengthy workflow economically."
       ]
     },
     {
-      "title": "Evaluation priorities",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Caveat",
-          "detail": "Maximum context size and provider throughput do not measure recall fidelity across long documents or the total latency of tool-heavy workflows."
+          "lead": "K3.1 Pro rollout",
+          "detail": "Moonshot released a 3T-class flagship model in Kimi Code with an advertised maximum context window of roughly 1.05M tokens for eligible tiers; its model requires thinking mode."
         },
         {
-          "lead": "Test",
-          "detail": "Use long-document evidence attribution, codebase navigation and multi-step finance research; measure retrieval accuracy, cost, time to first token and completion-level success."
+          "lead": "Highspeed option",
+          "detail": "A separate tier claims 2–3× faster model output with similar capabilities, typically at about twice the quota usage."
         }
       ],
       "paragraphs": [
-        "Caveat: Maximum context size and provider throughput do not measure recall fidelity across long documents or the total latency of tool-heavy workflows.",
-        "Test: Use long-document evidence attribution, codebase navigation and multi-step finance research; measure retrieval accuracy, cost, time to first token and completion-level success."
+        "K3.1 Pro rollout: Moonshot released a 3T-class flagship model in Kimi Code with an advertised maximum context window of roughly 1.05M tokens for eligible tiers; its model requires thinking mode.",
+        "Highspeed option: A separate tier claims 2–3× faster model output with similar capabilities, typically at about twice the quota usage."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Product specifications",
+          "detail": "The context, mode restrictions and Highspeed throughput are provider documentation, not independently measured task-completion benchmarks."
+        },
+        {
+          "lead": "Throughput isn't end-to-end speed",
+          "detail": "File reads, tool calls, cache misses and compaction can dominate latency even if tokens stream faster."
+        }
+      ],
+      "paragraphs": [
+        "Product specifications: The context, mode restrictions and Highspeed throughput are provider documentation, not independently measured task-completion benchmarks.",
+        "Throughput isn't end-to-end speed: File reads, tool calls, cache misses and compaction can dominate latency even if tokens stream faster."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Test attention over distance",
+          "detail": "Use known facts at the beginning, middle and end of huge documents; score exact citation retrieval, contradictions and cross-section synthesis."
+        },
+        {
+          "lead": "Track total session economics",
+          "detail": "A bigger context can increase prefill/caching cost. Compare completed coding tasks, error recovery and time per result across tiers."
+        }
+      ],
+      "paragraphs": [
+        "Test attention over distance: Use known facts at the beginning, middle and end of huge documents; score exact citation retrieval, contradictions and cross-section synthesis.",
+        "Track total session economics: A bigger context can increase prefill/caching cost. Compare completed coding tasks, error recovery and time per result across tiers."
       ]
     }
   ],
@@ -63,5 +92,6 @@
       "type": "Vendor research listing"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
