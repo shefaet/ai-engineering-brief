@@ -3,6 +3,81 @@
   "updated": "2026-10-29",
   "stories": [
     {
+      "id": "gemini-4-carbon-cyber-agent",
+      "date": "2026-10-29",
+      "title": "Google introduces Gemini 4 Carbon with stronger cyber and long-horizon agent performance",
+      "category": "MODEL RELEASES",
+      "tags": [
+        "Models",
+        "Security",
+        "Agents",
+        "Evaluation"
+      ],
+      "evidence": "Independent Artificial Analysis composite score; Google-reported cybersecurity and alignment evaluations",
+      "summary": "Carbon leads an independently run composite model index and posts high vendor-reported cyber benchmark scores, but broad access is not yet available.",
+      "searchText": "Google introduces Gemini 4 Carbon with stronger cyber and long-horizon agent performance Carbon leads an independently run composite model index and posts high vendor-reported cyber benchmark scores, but broad access is not yet available. Separate the independently measured general-capability gain from vendor cyber and safety claims; run permission-bound, end-to-end security tasks before trusting autonomous fixes. Different cyber tasks Finding a vulnerability, proving exploitability and producing a safe patch are different tasks. A model can score well on one without closing the full remediation loop. Frontier model Google announced Gemini 4 Carbon as the successor to Gemini 4 Argon, targeting coding, cybersecurity and agent workflows that can persist through multi-step engineering work. Deployment boundary Initial access starts with selected cyber defenders and trusted partners. General developer API and consumer access were not available at announcement; Google is conducting pre-release safety testing. Introductory economics Google lists $2 per million input tokens and $10 per million output tokens, with cached input priced 95% below regular input. After the introductory period, stated prices rise to $4 and $20 per million respectively. Independent composite Artificial Analysis independently evaluates its nine-benchmark Intelligence Index v5.0. Gemini 4 Carbon at High effort scores 59 versus Claude Opus 5.5 at Max with 58. The one-point lead is not a universal win across workloads. Cyber evaluations Google reports 88.2% on SEC-bench Pro (vulnerability discovery), 54.8% on ExploitGym (exploitation), and 71.0% on CWE-bench (patching). Google says these cyber benchmark runs were evaluated without guardrails; they do not measure a guarded production deployment. Behavioral claims Google reports 0.0% successful cheating on Terminal-Bench 4.0, 0.4% cheating attempts, 0.0% attack success on Gray Swan's indirect prompt-injection evaluation, and roughly half as many unsupported claims as Argon in internal tests. Zero observed successes is not proof of zero risk outside those test sets. Evaluate the full repair chain Score discovery, exploit confirmation, patch correctness, regression tests and authorized deployment separately. A high exploit score can increase risk unless tool permissions and review gates are explicit. Do not extrapolate a composite The index spans coding, science, general knowledge and knowledge work. Reproduce representative tasks with fixed effort, tools, time limits and cost accounting before changing model routing."
+    },
+    {
+      "id": "copilot-fusion-multimodel-routing",
+      "date": "2026-10-29",
+      "title": "GitHub makes Copilot Fusion multi-model orchestration generally available",
+      "category": "AGENT ENGINEERING",
+      "tags": [
+        "Agents",
+        "Models",
+        "Evaluation",
+        "Economics"
+      ],
+      "evidence": "GitHub product disclosure and reported Artificial Analysis Coding Agent Index comparison",
+      "summary": "Coding requests can take single-model, cascade or critique paths instead of binding every task to one manually selected model.",
+      "searchText": "GitHub makes Copilot Fusion multi-model orchestration generally available Coding requests can take single-model, cascade or critique paths instead of binding every task to one manually selected model. Treat model selection as an orchestration policy. Compare successful task cost and quality by route, including judge calls, retries and reviewer overhead. Static model selection A single selected model can be excessive for routine edits and insufficient for hard debugging. Manual switching does not scale across heterogeneous tasks. Three execution paths Fusion chooses Single (one model), Cascade (efficient draft checked and escalated to a stronger fresh-start answer when needed), or Critique (a second model reviews a draft and requests revision). Effort controls Standard, High and Max select an orchestration budget and model mix rather than a fixed model. Enterprise policies constrain which models Fusion can select. Pricing and rollout Fusion is generally available in VS Code, Copilot CLI, the Copilot app and JetBrains. Each underlying model is billed at its standard rate, with a temporary 30% Fusion discount on paid plans. Reported agent benchmark GitHub reports Copilot Fusion Max scoring 60 on the Artificial Analysis Coding Agent Index, within two points of Claude Code with Opus 5.5 Max. GitHub says the Fusion run used about half the API cost and output tokens and took roughly 40% less time per task. Comparability caveat Those figures describe one evaluated coding-agent configuration. They do not establish the same savings for every repository, task distribution, model policy or human-review workflow. Hidden failure mode A judge can accept an incorrect efficient-model draft, while a critique loop can add cost and latency without fixing the error. A task-average score hides these route-specific failures. Instrument routing decisions Log selected path, models, judge decisions, escalations, tool actions, verified test results, p95 latency and total billed cost per successful task. Stress the acceptance gate Build adversarial cases where a plausible patch passes superficial review but fails integration tests. Compare false acceptance rates against a fixed-model baseline."
+    },
+    {
+      "id": "github-agentic-workflows-ga",
+      "date": "2026-10-29",
+      "title": "GitHub Agentic Workflows reaches general availability with policy-gated outputs",
+      "category": "AGENT INFRASTRUCTURE",
+      "tags": [
+        "Agents",
+        "Infrastructure",
+        "Security",
+        "Evaluation"
+      ],
+      "evidence": "Official GitHub GA release and project documentation; customer case study is not controlled evidence",
+      "summary": "Markdown-defined agent tasks compile into GitHub Actions and run with read-only defaults, sandboxing and a separate checked-output path.",
+      "searchText": "GitHub Agentic Workflows reaches general availability with policy-gated outputs Markdown-defined agent tasks compile into GitHub Actions and run with read-only defaults, sandboxing and a separate checked-output path. Use the agent to propose repository changes, but keep credential scope, change application and CI verification outside the agent's unrestricted control. Why scheduled agents differ A CI automation that can reason about issues and code may also read untrusted text and propose changes. Ordinary workflow credentials and direct write access make prompt injection consequential. Declarative compilation GitHub's open-source Agentic Workflows project is generally available. A natural-language Markdown workflow compiles into standard GitHub Actions YAML for tasks such as issue triage, CI diagnosis, documentation and tests. Layered execution controls Agents have read-only permissions by default, a content integrity filter, a sandbox behind Agent Workflow Firewall, validated safe outputs, and a separate threat-detection job before proposed changes are applied. GA additions The release adds support for self-hosted Actions Runner Controller with Docker-in-Docker, Cloud Hypervisor or NVX micro-VM isolation, cross-repository enclaves, model-provider selection and `gh aw forecast` budget estimates. Availability GitHub says Agentic Workflows is generally available on github.com for Free, Team and Enterprise. Using the default Copilot CLI engine requires a Copilot license; alternative agents can be configured. Case-study caution GitHub quotes one customer's estimated 29 hours saved per week by a lead engineer and a reduction in daily production errors. These are uncontrolled customer observations, not independent causal measurements of the framework. Security boundary A firewall and sandbox constrain capabilities, but cannot determine whether a semantically valid patch is correct or whether an approved write is authorized in business context. Compile reviewable policy Review generated Actions YAML, trigger conditions, token scopes and permitted outputs as code. Do not treat the Markdown prompt as the complete security specification. Test malicious repository content Place adversarial instructions in issues, pull requests and documentation. Verify that agent proposals cannot bypass output checks, obtain write tokens or exfiltrate secrets."
+    },
+    {
+      "id": "google-connected-apps-platform",
+      "date": "2026-10-29",
+      "title": "Google opens a shared Connected Apps integration path for Gemini and Search",
+      "category": "AGENT INFRASTRUCTURE",
+      "tags": [
+        "Agents",
+        "Infrastructure",
+        "Security",
+        "MCP"
+      ],
+      "evidence": "Google platform announcement and developer documentation; preview access and no independent reliability data",
+      "summary": "A developer can register one authorized tool integration for both surfaces using a remote MCP server or Android AppFunctions.",
+      "searchText": "Google opens a shared Connected Apps integration path for Gemini and Search A developer can register one authorized tool integration for both surfaces using a remote MCP server or Android AppFunctions. Design connector actions as authenticated, scoped APIs with idempotency and confirmation; a shared discovery surface is not shared authorization. Connector fragmentation An app previously needed separate product-specific integration work to expose user data and actions to different assistant surfaces. Two integration paths Google's preview supports a cloud-hosted Model Context Protocol server or Android MCP through AppFunctions. Remote MCP exposes server tools; AppFunctions can invoke supported native Android app functions on-device. One registration flow Google Connected Console handles tool registration, testing, review and publication. Developers choose Search, Gemini or both, and can inspect traffic, latency and error rates after launch. User authorization Google's developer guide describes OAuth 2.1 for remote MCP authorization. Users link an account; the tool server still must enforce each user's access rights and action scope. Current footprint Google says more than 50 Connected Apps already exist across Search and Gemini, while the unified developer platform itself is preview-only with phased access. Missing measurements Google did not publish cross-surface success rates, end-to-end latency distributions, OAuth failure rates or an independent security assessment for the new integration path. Scope of reuse Build once does not mean identical permissions or behavior on every surface. Product review, user consent, tool availability and local versus remote execution can differ. Treat tools as public APIs Validate user identity and tenant scope at execution, not only when a model selects a tool. Use explicit confirmation for purchases, messages and other irreversible writes. Make retries safe Test duplicate invocations, partial failures, expired grants and cancellation across both Search and Gemini. A repeated model action should not repeat a payment or destructive update."
+    },
+    {
+      "id": "copilot-local-cloud-routing",
+      "date": "2026-10-29",
+      "title": "GitHub Copilot Fusion adds experimental routing between local and cloud models",
+      "category": "AGENT INFRASTRUCTURE",
+      "tags": [
+        "Agents",
+        "Models",
+        "Infrastructure",
+        "Security"
+      ],
+      "evidence": "GitHub product preview documentation; no independent local-versus-cloud performance benchmark",
+      "summary": "Supported on-device models can join Copilot's routing pool, but cloud-based routing decisions mean the workflow is not offline.",
+      "searchText": "GitHub Copilot Fusion adds experimental routing between local and cloud models Supported on-device models can join Copilot's routing pool, but cloud-based routing decisions mean the workflow is not offline. Treat local inference as a selectable execution location, not an offline or private-by-default guarantee; test routing, data exposure and device capacity. Managed Windows path Copilot can download and configure MAI Code 1.1 Flash through Windows ML on supported Windows hardware. The feature is opt-in and uses Fusion Standard for automatic local/cloud routing. Bring-your-own runtime Copilot CLI can route to supported manually configured local models on Windows, macOS and Linux through an OpenAI-compatible server. GitHub names MAI Code 1.1 Flash and Qwen3.8 Flash Next. Client differences The Copilot app can select compatible local models directly, but automatic routing there currently supports managed Windows ML models only. Adding a BYOK model does not automatically make it eligible for Fusion routing. Preview scope GitHub labels the feature experimental and does not report a controlled task-success, token-cost, energy-use or latency comparison between routed local and cloud execution. Not offline GitHub explicitly says Copilot Fusion still makes routing decisions in the cloud. Local model execution does not establish that prompts, metadata or control-plane traffic remain on the device. Protection variance Local models can have different safety protections from Copilot's hosted models; the device also needs enough compute and memory for the selected runtime. Define the trust boundary For sensitive tasks, verify which content leaves the machine during model selection and tool use. An on-device decode path is not a substitute for an offline-mode guarantee. Benchmark on real hardware Measure cold-start time, memory pressure, energy, p95 latency, routing frequency and verified coding success with the same task suite used for cloud models."
+    },
+    {
       "id": "agent-eval-loop",
       "date": "2026-10-28",
       "title": "Google describes a hill-climbing workflow for agent evaluation",
