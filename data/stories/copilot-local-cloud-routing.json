@@ -11,7 +11,7 @@
     "Security"
   ],
   "evidence": "GitHub product preview documentation; no independent local-versus-cloud performance benchmark",
-  "takeaway": "Treat local inference as a selectable execution location, not an offline or private-by-default guarantee; test routing, data exposure and device capacity.",
+  "takeaway": "On-device inference is not the same as offline operation. Cloud routing can remain in the control path even when generation happens locally.",
   "sections": [
     {
       "title": "What's new",
@@ -58,20 +58,20 @@
       ]
     },
     {
-      "title": "Why it matters",
+      "title": "Key takeaways",
       "bullets": [
         {
-          "lead": "Define the trust boundary",
-          "detail": "For sensitive tasks, verify which content leaves the machine during model selection and tool use. An on-device decode path is not a substitute for an offline-mode guarantee."
+          "lead": "Compute and control are separate",
+          "detail": "A model can generate tokens on-device while a remote service still selects the model or coordinates execution."
         },
         {
-          "lead": "Benchmark on real hardware",
-          "detail": "Measure cold-start time, memory pressure, energy, p95 latency, routing frequency and verified coding success with the same task suite used for cloud models."
+          "lead": "Privacy follows the data path",
+          "detail": "Local generation reduces some remote processing, but privacy depends on which task data and metadata cross the network boundary."
         }
       ],
       "paragraphs": [
-        "Define the trust boundary: For sensitive tasks, verify which content leaves the machine during model selection and tool use. An on-device decode path is not a substitute for an offline-mode guarantee.",
-        "Benchmark on real hardware: Measure cold-start time, memory pressure, energy, p95 latency, routing frequency and verified coding success with the same task suite used for cloud models."
+        "Compute and control are separate: A model can generate tokens on-device while a remote service still selects the model or coordinates execution.",
+        "Privacy follows the data path: Local generation reduces some remote processing, but privacy depends on which task data and metadata cross the network boundary."
       ]
     }
   ],
