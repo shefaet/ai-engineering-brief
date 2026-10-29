@@ -15,37 +15,66 @@
   "takeaway": "Training-data provenance includes worker privacy, consent, identity checks and data-retention practices—not just annotation quality.",
   "sections": [
     {
-      "title": "Allegations",
+      "title": "Context",
       "bullets": [
         {
-          "lead": "Tracking",
-          "detail": "Noyb filed five GDPR complaints across Austria, France, Italy and the Netherlands, citing investigations alleging up to 19 trackers on Outlier contractor workflows."
-        },
-        {
-          "lead": "Biometrics",
-          "detail": "The complaints also question repeat identity verification with face video and ID documents, and handling of worker requests for access to personal data."
+          "lead": "Human feedback has its own data risk",
+          "detail": "Model trainers and annotators can be tracked and identity-verified while generating AI training labels; governance covers the people as well as the datasets."
         }
       ],
       "paragraphs": [
-        "Tracking: Noyb filed five GDPR complaints across Austria, France, Italy and the Netherlands, citing investigations alleging up to 19 trackers on Outlier contractor workflows.",
-        "Biometrics: The complaints also question repeat identity verification with face video and ID documents, and handling of worker requests for access to personal data."
+        "Human feedback has its own data risk: Model trainers and annotators can be tracked and identity-verified while generating AI training labels; governance covers the people as well as the datasets."
       ]
     },
     {
-      "title": "Interpretation",
+      "title": "What's new",
       "bullets": [
         {
-          "lead": "Status",
-          "detail": "These are regulatory allegations, not a completed regulator finding. Contractor-data processing needs a separate factual audit before conclusions."
+          "lead": "Five GDPR complaints",
+          "detail": "Privacy group noyb filed complaints about Scale AI's Outlier contractor platform in Austria, France, Italy and the Netherlands."
         },
         {
-          "lead": "Control",
-          "detail": "Inventory third-party analytics SDKs, keyboard/mouse telemetry, identity-provider data, lawful bases, access-request handling and retention for human-feedback pipelines."
+          "lead": "Allegations",
+          "detail": "The filings question third-party trackers (reportedly up to 19), recurring facial-video/identity checks, and access to stored worker information."
         }
       ],
       "paragraphs": [
-        "Status: These are regulatory allegations, not a completed regulator finding. Contractor-data processing needs a separate factual audit before conclusions.",
-        "Control: Inventory third-party analytics SDKs, keyboard/mouse telemetry, identity-provider data, lawful bases, access-request handling and retention for human-feedback pipelines."
+        "Five GDPR complaints: Privacy group noyb filed complaints about Scale AI's Outlier contractor platform in Austria, France, Italy and the Netherlands.",
+        "Allegations: The filings question third-party trackers (reportedly up to 19), recurring facial-video/identity checks, and access to stored worker information."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Legal status",
+          "detail": "The reported conduct remains allegations in complaints, not findings of a data protection authority or court."
+        },
+        {
+          "lead": "Key unknowns",
+          "detail": "Whether specific processing had valid consent or another lawful basis, what data was retained and which third parties received it require independent examination."
+        }
+      ],
+      "paragraphs": [
+        "Legal status: The reported conduct remains allegations in complaints, not findings of a data protection authority or court.",
+        "Key unknowns: Whether specific processing had valid consent or another lawful basis, what data was retained and which third parties received it require independent examination."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Data provenance includes workforce practices",
+          "detail": "Auditing an AI data supply chain means inspecting contractor-identity flows, analytics SDKs, data subject requests and retention policy."
+        },
+        {
+          "lead": "Minimize collection",
+          "detail": "Separate identity verification from productivity analytics and annotation output; avoid unrestricted behavioral telemetry just because a labeling platform enables it."
+        }
+      ],
+      "paragraphs": [
+        "Data provenance includes workforce practices: Auditing an AI data supply chain means inspecting contractor-identity flows, analytics SDKs, data subject requests and retention policy.",
+        "Minimize collection: Separate identity verification from productivity analytics and annotation output; avoid unrestricted behavioral telemetry just because a labeling platform enables it."
       ]
     }
   ],
@@ -57,5 +86,6 @@
       "type": "Independent reporting"
     }
   ],
-  "related": []
+  "related": [],
+  "editorialFormat": "four-part"
 }
