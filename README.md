@@ -19,7 +19,7 @@ Live: https://shefaet.github.io/ai-engineering-brief/
 
 ## Editorial policy
 
-Publish only consequential, source-verified AI stories. Keep each post self-contained, technical, concise, and rich in context. Favor structured `sections[].bullets` entries of `{lead,detail}`, one useful mechanism/evidence/limitation/engineering implication each. Keep equivalent `paragraphs` fallback text for cached browsers. Optional `sections[].example` supports a labeled, inert `code-comparison` with two code or payload variants. Do not add decorative diagrams, unverified data, or repetitive text.
+Publish only consequential, source-verified AI stories. Keep each post self-contained, technical, concise, and rich in context. Favor structured `sections[].bullets` entries of `{lead,detail}`, one useful mechanism, piece of evidence, limitation or durable technical insight each. Use the section heading `Key takeaways` rather than `Why it matters`. Explain general principles, challenged assumptions or technical tradeoffs, not managerial action items or reader-directed checklists. Keep equivalent `paragraphs` fallback text for cached browsers. Optional `sections[].example` supports a labeled, inert `code-comparison` with two code or payload variants. Do not add decorative diagrams, unverified data, or repetitive text.
 
 **Institution-neutral publication:** Never refer to the publication owner's employer or customize recommendations to any specific organization. A company's name—including Bloomberg—may appear when that company is substantively the news subject, not merely because of the reader's affiliation. Generic financial/enterprise use cases are acceptable when technically relevant.
 
