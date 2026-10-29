@@ -1,0 +1,114 @@
+{
+  "id": "google-connected-apps-platform",
+  "category": "AGENT INFRASTRUCTURE",
+  "priority": "High",
+  "title": "Google opens a shared Connected Apps integration path for Gemini and Search",
+  "dek": "A developer can register one authorized tool integration for both surfaces using a remote MCP server or Android AppFunctions.",
+  "tags": [
+    "Agents",
+    "Infrastructure",
+    "Security",
+    "MCP"
+  ],
+  "evidence": "Google platform announcement and developer documentation; preview access and no independent reliability data",
+  "takeaway": "Design connector actions as authenticated, scoped APIs with idempotency and confirmation; a shared discovery surface is not shared authorization.",
+  "sections": [
+    {
+      "title": "Context",
+      "bullets": [
+        {
+          "lead": "Connector fragmentation",
+          "detail": "An app previously needed separate product-specific integration work to expose user data and actions to different assistant surfaces."
+        }
+      ],
+      "paragraphs": [
+        "Connector fragmentation: An app previously needed separate product-specific integration work to expose user data and actions to different assistant surfaces."
+      ]
+    },
+    {
+      "title": "What's new",
+      "bullets": [
+        {
+          "lead": "Two integration paths",
+          "detail": "Google's preview supports a cloud-hosted Model Context Protocol server or Android MCP through AppFunctions. Remote MCP exposes server tools; AppFunctions can invoke supported native Android app functions on-device."
+        },
+        {
+          "lead": "One registration flow",
+          "detail": "Google Connected Console handles tool registration, testing, review and publication. Developers choose Search, Gemini or both, and can inspect traffic, latency and error rates after launch."
+        },
+        {
+          "lead": "User authorization",
+          "detail": "Google's developer guide describes OAuth 2.1 for remote MCP authorization. Users link an account; the tool server still must enforce each user's access rights and action scope."
+        }
+      ],
+      "paragraphs": [
+        "Two integration paths: Google's preview supports a cloud-hosted Model Context Protocol server or Android MCP through AppFunctions. Remote MCP exposes server tools; AppFunctions can invoke supported native Android app functions on-device.",
+        "One registration flow: Google Connected Console handles tool registration, testing, review and publication. Developers choose Search, Gemini or both, and can inspect traffic, latency and error rates after launch.",
+        "User authorization: Google's developer guide describes OAuth 2.1 for remote MCP authorization. Users link an account; the tool server still must enforce each user's access rights and action scope."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Current footprint",
+          "detail": "Google says more than 50 Connected Apps already exist across Search and Gemini, while the unified developer platform itself is preview-only with phased access."
+        },
+        {
+          "lead": "Missing measurements",
+          "detail": "Google did not publish cross-surface success rates, end-to-end latency distributions, OAuth failure rates or an independent security assessment for the new integration path."
+        },
+        {
+          "lead": "Scope of reuse",
+          "detail": "Build once does not mean identical permissions or behavior on every surface. Product review, user consent, tool availability and local versus remote execution can differ."
+        }
+      ],
+      "paragraphs": [
+        "Current footprint: Google says more than 50 Connected Apps already exist across Search and Gemini, while the unified developer platform itself is preview-only with phased access.",
+        "Missing measurements: Google did not publish cross-surface success rates, end-to-end latency distributions, OAuth failure rates or an independent security assessment for the new integration path.",
+        "Scope of reuse: Build once does not mean identical permissions or behavior on every surface. Product review, user consent, tool availability and local versus remote execution can differ."
+      ]
+    },
+    {
+      "title": "Why it matters",
+      "bullets": [
+        {
+          "lead": "Treat tools as public APIs",
+          "detail": "Validate user identity and tenant scope at execution, not only when a model selects a tool. Use explicit confirmation for purchases, messages and other irreversible writes."
+        },
+        {
+          "lead": "Make retries safe",
+          "detail": "Test duplicate invocations, partial failures, expired grants and cancellation across both Search and Gemini. A repeated model action should not repeat a payment or destructive update."
+        }
+      ],
+      "paragraphs": [
+        "Treat tools as public APIs: Validate user identity and tenant scope at execution, not only when a model selects a tool. Use explicit confirmation for purchases, messages and other irreversible writes.",
+        "Make retries safe: Test duplicate invocations, partial failures, expired grants and cancellation across both Search and Gemini. A repeated model action should not repeat a payment or destructive update."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Google - Build and manage Connected Apps in one place",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/connected-apps-one-place/",
+      "published": "2026-10-28",
+      "type": "Official product announcement"
+    },
+    {
+      "name": "Google Developers - Connected Apps Platform",
+      "url": "https://developers.google.com/connected-apps",
+      "published": "2026-10-28",
+      "type": "Developer documentation consulted with announcement"
+    }
+  ],
+  "related": [
+    {
+      "id": "a2ui-express",
+      "date": "2026-10-28",
+      "label": "Related: Structured agent UI output"
+    }
+  ],
+  "date": "2026-10-29",
+  "published": "2026-10-28",
+  "editorialFormat": "four-part"
+}
