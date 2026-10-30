@@ -96,12 +96,6 @@
       "url": "https://openai.com/index/updated-model-spec/",
       "published": "2026-10-29",
       "type": "Primary policy announcement"
-    },
-    {
-      "name": "OpenAI - Model Spec",
-      "url": "https://model-spec.openai.com/",
-      "published": "2026-10-29",
-      "type": "Current normative specification"
     }
   ]
 }
