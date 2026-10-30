@@ -1,0 +1,124 @@
+{
+  "id": "mistral-large-4-open-weights-october",
+  "date": "2026-10-30",
+  "published": "2026-10-29",
+  "category": "OPEN WEIGHTS",
+  "priority": "Critical",
+  "title": "Mistral releases improved Large 4 weights with sparse attention and cheaper coding",
+  "dek": "The downloadable trillion-parameter MoE combines token-level expert routing with sparse context selection; new coding results improve on its October preview.",
+  "tags": [
+    "Open weights",
+    "Models",
+    "Inference",
+    "Coding",
+    "Security"
+  ],
+  "evidence": "Mistral October 29 release, Hugging Face architecture and deployment notes, and cited third-party benchmark results; deployment measurements are vendor-reported",
+  "takeaway": "Sparse experts reduce active computation, not the memory needed to store a trillion-parameter checkpoint. Open weights change deployment control, but not hardware or license constraints.",
+  "editorialFormat": "four-part",
+  "sections": [
+    {
+      "title": "Context",
+      "bullets": [
+        {
+          "lead": "Preview versus release",
+          "detail": "Mistral introduced Large 4 through an API preview on October 6. The October 29 event is the first downloadable release of improved weights after further reinforcement learning, not the first announcement of the model."
+        }
+      ],
+      "paragraphs": [
+        "Preview versus release: Mistral introduced Large 4 through an API preview on October 6. The October 29 event is the first downloadable release of improved weights after further reinforcement learning, not the first announcement of the model."
+      ]
+    },
+    {
+      "title": "What's new",
+      "bullets": [
+        {
+          "lead": "Two kinds of sparsity",
+          "detail": "The text decoder uses 128 routed feed-forward experts, selecting four plus one shared expert per token. Separately, DeepSeek Sparse Attention selects up to 2,048 previous key positions while multi-head latent attention compresses KV state."
+        },
+        {
+          "lead": "Model and formats",
+          "detail": "The multimodal checkpoint has roughly 1 trillion total parameters, around 49 billion active in the main model per token, and about 52 billion including embeddings and output layers. It accepts text and images, with a stated 1 million-token context window. FP8, NVFP4 and community GGUF formats are available."
+        },
+        {
+          "lead": "Serving boundary",
+          "detail": "Hugging Face supports Transformers, vLLM and llama.cpp. Its published eight-H200 vLLM recipe serves up to 131,072 tokens of context, below the model's advertised 1 million-token limit. The NVFP4 variant targets Blackwell GPUs."
+        },
+        {
+          "lead": "Reasoning and license",
+          "detail": "Low, medium and high reasoning modes share the same weights. The Mistral Ecosystem Open-Weight License permits modification and commercial use but requires a separate agreement for commercial model-as-a-service offerings."
+        }
+      ],
+      "paragraphs": [
+        "Two kinds of sparsity: The text decoder uses 128 routed feed-forward experts, selecting four plus one shared expert per token. Separately, DeepSeek Sparse Attention selects up to 2,048 previous key positions while multi-head latent attention compresses KV state.",
+        "Model and formats: The multimodal checkpoint has roughly 1 trillion total parameters, around 49 billion active in the main model per token, and about 52 billion including embeddings and output layers. It accepts text and images, with a stated 1 million-token context window. FP8, NVFP4 and community GGUF formats are available.",
+        "Serving boundary: Hugging Face supports Transformers, vLLM and llama.cpp. Its published eight-H200 vLLM recipe serves up to 131,072 tokens of context, below the model's advertised 1 million-token limit. The NVFP4 variant targets Blackwell GPUs.",
+        "Reasoning and license: Low, medium and high reasoning modes share the same weights. The Mistral Ecosystem Open-Weight License permits modification and commercial use but requires a separate agreement for commercial model-as-a-service offerings."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Coding improvement",
+          "detail": "Mistral reports 41% on Terminal-Bench 4.0, up 13 percentage points from its preview, with 30% fewer output tokens. It reports 48% on the Artificial Analysis Coding Agent Index, approximately tied with GLM-5.3 while using 47% fewer tokens per task. These comparisons depend on the evaluated agent configurations."
+        },
+        {
+          "lead": "Cyber and refusal",
+          "detail": "Mistral reports 51% on the Artificial Analysis Cyber Index and 96.6% average refusal on malicious cyber prompts from JailbreakBench, StrongREJECT and AgentHarm. A cyber capability score and a refusal score measure different properties."
+        },
+        {
+          "lead": "Inference cost",
+          "detail": "On a reported eight-H200 FP8 endpoint, Hugging Face observed about 65 generated tokens per second for a single request and about 480 tokens per second aggregate over 1,000 ShareGPT conversations under load. These are hardware-specific serving measurements, not universal model speed."
+        },
+        {
+          "lead": "Memory footprint",
+          "detail": "The community Q4_K_M GGUF is listed at 635 GB, and the Q2_K at 381 GB. Only a subset of experts computes each token, but the full set of experts must still reside somewhere in the inference system."
+        }
+      ],
+      "paragraphs": [
+        "Coding improvement: Mistral reports 41% on Terminal-Bench 4.0, up 13 percentage points from its preview, with 30% fewer output tokens. It reports 48% on the Artificial Analysis Coding Agent Index, approximately tied with GLM-5.3 while using 47% fewer tokens per task. These comparisons depend on the evaluated agent configurations.",
+        "Cyber and refusal: Mistral reports 51% on the Artificial Analysis Cyber Index and 96.6% average refusal on malicious cyber prompts from JailbreakBench, StrongREJECT and AgentHarm. A cyber capability score and a refusal score measure different properties.",
+        "Inference cost: On a reported eight-H200 FP8 endpoint, Hugging Face observed about 65 generated tokens per second for a single request and about 480 tokens per second aggregate over 1,000 ShareGPT conversations under load. These are hardware-specific serving measurements, not universal model speed.",
+        "Memory footprint: The community Q4_K_M GGUF is listed at 635 GB, and the Q2_K at 381 GB. Only a subset of experts computes each token, but the full set of experts must still reside somewhere in the inference system."
+      ]
+    },
+    {
+      "title": "Key takeaways",
+      "bullets": [
+        {
+          "lead": "Compute sparsity is not storage sparsity",
+          "detail": "Activating roughly 52 billion parameters per token does not make a trillion-parameter model fit in the memory footprint of a dense 52-billion-parameter model."
+        },
+        {
+          "lead": "Context capacity differs from serving capacity",
+          "detail": "A model may advertise a million-token context while a practical deployment supports a smaller window because memory, latency and batching limits still apply."
+        }
+      ],
+      "paragraphs": [
+        "Compute sparsity is not storage sparsity: Activating roughly 52 billion parameters per token does not make a trillion-parameter model fit in the memory footprint of a dense 52-billion-parameter model.",
+        "Context capacity differs from serving capacity: A model may advertise a million-token context while a practical deployment supports a smaller window because memory, latency and batching limits still apply."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "Mistral - Mistral Large 4 open-weight release",
+      "url": "https://mistral.ai/news/mistral-large-4-oss/",
+      "published": "2026-10-29",
+      "type": "Primary model release"
+    },
+    {
+      "name": "Hugging Face - Large 4 architecture and inference guide",
+      "url": "https://huggingface.co/blog/mistral-large4",
+      "published": "2026-10-29",
+      "type": "Technical integration and measurements"
+    },
+    {
+      "name": "Mistral - initial Large 4 preview",
+      "url": "https://mistral.ai/news/mistral-large-4/",
+      "published": "2026-10-06",
+      "type": "Prior-release baseline"
+    }
+  ]
+}
