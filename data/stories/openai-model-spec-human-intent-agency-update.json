@@ -1,0 +1,107 @@
+{
+  "id": "openai-model-spec-human-intent-agency-update",
+  "date": "2026-10-30",
+  "published": "2026-10-29",
+  "category": "GOVERNANCE",
+  "priority": "Medium",
+  "title": "OpenAI revises its Model Spec around human intent, agency and side effects",
+  "dek": "The public behavior contract adds context-sensitive intent guidance and clearer side-effect controls, but does not establish that deployed models already follow every rule.",
+  "tags": [
+    "Governance",
+    "Agents",
+    "Safety",
+    "Alignment"
+  ],
+  "evidence": "October 29 public Model Spec announcement and linked normative specification; no controlled model-behavior evaluation accompanies the policy revision",
+  "takeaway": "An agent's instruction hierarchy, inferred user intent and permission to cause side effects are different concepts. A published behavior policy defines targets, not measured compliance.",
+  "editorialFormat": "four-part",
+  "sections": [
+    {
+      "title": "Context",
+      "bullets": [
+        {
+          "lead": "Beyond literal commands",
+          "detail": "Long-running agents encounter situations that instructions do not describe. The public Model Spec sets intended behavior and authority rules for those cases, rather than documenting an executable access-control system."
+        }
+      ],
+      "paragraphs": [
+        "Beyond literal commands: Long-running agents encounter situations that instructions do not describe. The public Model Spec sets intended behavior and authority rules for those cases, rather than documenting an executable access-control system."
+      ]
+    },
+    {
+      "title": "What's new",
+      "bullets": [
+        {
+          "lead": "Five organizing values",
+          "detail": "The revised specification groups guidance under faithfulness to human intent, harm minimization, honesty and transparency, human agency, and care. Faithfulness is framed as understanding intended goals, not merely copying literal wording."
+        },
+        {
+          "lead": "Authority and context",
+          "detail": "An updated chain of command explains instruction conflicts. A new section addresses how conversations, memories and other context inform intent, while requiring assumptions to remain visible and correctable."
+        },
+        {
+          "lead": "Agency and effects",
+          "detail": "New or expanded defaults address supporting user choice, following relevant social norms, and controlling and communicating side effects. Most defaults can be overridden within firm higher-priority boundaries."
+        },
+        {
+          "lead": "Style becomes adaptable",
+          "detail": "The update retires much detailed style guidance and favors user and developer preferences, while retaining stronger defaults such as objective treatment of contested questions."
+        }
+      ],
+      "paragraphs": [
+        "Five organizing values: The revised specification groups guidance under faithfulness to human intent, harm minimization, honesty and transparency, human agency, and care. Faithfulness is framed as understanding intended goals, not merely copying literal wording.",
+        "Authority and context: An updated chain of command explains instruction conflicts. A new section addresses how conversations, memories and other context inform intent, while requiring assumptions to remain visible and correctable.",
+        "Agency and effects: New or expanded defaults address supporting user choice, following relevant social norms, and controlling and communicating side effects. Most defaults can be overridden within firm higher-priority boundaries.",
+        "Style becomes adaptable: The update retires much detailed style guidance and favors user and developer preferences, while retaining stronger defaults such as objective treatment of contested questions."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Normative, not empirical",
+          "detail": "OpenAI explicitly says its models do not yet fully reflect the updated specification. The announcement gives no controlled before-and-after compliance rates for these changes."
+        },
+        {
+          "lead": "Training is separate",
+          "detail": "OpenAI describes work on training models to apply the underlying values in unfamiliar situations, but does not publish results or a release schedule for that training in this announcement."
+        }
+      ],
+      "paragraphs": [
+        "Normative, not empirical: OpenAI explicitly says its models do not yet fully reflect the updated specification. The announcement gives no controlled before-and-after compliance rates for these changes.",
+        "Training is separate: OpenAI describes work on training models to apply the underlying values in unfamiliar situations, but does not publish results or a release schedule for that training in this announcement."
+      ]
+    },
+    {
+      "title": "Key takeaways",
+      "bullets": [
+        {
+          "lead": "Intent is not authority",
+          "detail": "Inferring what a person probably wants can improve assistance, but it does not automatically grant permission for external actions. Instruction priority and side-effect control remain distinct."
+        },
+        {
+          "lead": "Policies and guarantees differ",
+          "detail": "A written model-behavior contract can define expected conduct without proving that the model follows it. Reliable agents still depend on independently enforced permissions and observable outcomes."
+        }
+      ],
+      "paragraphs": [
+        "Intent is not authority: Inferring what a person probably wants can improve assistance, but it does not automatically grant permission for external actions. Instruction priority and side-effect control remain distinct.",
+        "Policies and guarantees differ: A written model-behavior contract can define expected conduct without proving that the model follows it. Reliable agents still depend on independently enforced permissions and observable outcomes."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI - An updated Model Spec for more capable and beneficial AI",
+      "url": "https://openai.com/index/updated-model-spec/",
+      "published": "2026-10-29",
+      "type": "Primary policy announcement"
+    },
+    {
+      "name": "OpenAI - Model Spec",
+      "url": "https://model-spec.openai.com/",
+      "published": "2026-10-29",
+      "type": "Current normative specification"
+    }
+  ]
+}
