@@ -14,7 +14,7 @@ Every **new standalone story** should use this scan-friendly section sequence, a
 1. **Context** — the minimum background necessary to understand why the development matters. Prefer one brief bullet; omit if self-evident.
 2. **What's new** — the actual new mechanism, product, architecture, workflow or change. Use concrete examples rather than abstract descriptions; this is usually the main factual section.
 3. **Evidence & limitations** — the strongest measurements with model, dataset, comparator, units and evaluation setup where reported, plus the most material boundary on the claim. If no relevant measurements were disclosed, say so plainly. Distinguish vendor-reported performance from independent validation.
-4. **Why it matters** — one to three non-obvious, memorable implications. Explain what changes in engineering practice, risk, or strategic understanding. Avoid generic predictions and do not repeat the introduction or headline.
+4. **Key takeaways** — one to three memorable technical insights. Explain a general principle, challenged assumption or technical tradeoff. Avoid managerial action items and do not repeat earlier sections.
 
 Use short bold lead-ins followed by substantive details. Depth is determined by complexity, not by a word quota. One explanatory diagram, code comparison, or interactive example can replace multiple sentences. Never add filler to populate a heading. Keep 'Evidence & limitations' even when evidence is qualitative. Mark new story JSON with `editorialFormat: "four-part"`, with those exact section titles in order (Context is optional). For backwards compatibility, retain legacy `paragraphs` for each `bullets` array. Historical stories without this marker remain valid pending editorial revision. A separate deep paper explainer can follow a research-specific structure.
 
@@ -25,7 +25,7 @@ Use these section headings, in order, for new standalone stories:
 1. Context (optional): minimum background required to understand the update.
 2. What's new: the specific architecture, method, product or workflow change, with a compact worked example when useful.
 3. Evidence & limitations: measurements, baselines, test conditions, original sources and the most important qualification.
-4. Why it matters: one to three concrete, memorable implications; never repeat the headline or preceding sections.
+4. Key takeaways: one to three durable technical insights, not recommendations or checklists; never repeat the headline or preceding sections.
 
 Use substantial bullet points with short lead-ins. Keep important technical depth and skip filler. If the headline explains the context, omit that section. Mark new story JSON with editorialFormat set to four-part. Older unmarked stories remain valid; interactive paper explainers may retain their own chapter structure. Provide equivalent paragraph fallbacks to bullet fields for browser compatibility.
 
@@ -37,8 +37,8 @@ In `data/stories/SLUG.json`, use `sections: [{ "title": "Mechanism", "bullets": 
 
 - Each bullet is one useful idea: a **short bold claim or dimension** followed by its causal/technical explanation. Use natural sentences, not slogan fragments.
 - Aim for 2-4 bullets per section and 4-9 per article when justified. This is not a quota; a difficult method may require more detail and a straightforward update much less.
-- Preserve architecture, actual benchmark setup (model, dataset, baseline, units), quantitative results, failure modes, major evidence caveat and an actionable engineering test. Omit dimensions without new information.
-- Make the headline state **what happened** and the takeaway state **what decision changes**. The bullets should explain **why/how/evidence**; never repeat either.
+- Preserve architecture, actual benchmark setup (model, dataset, baseline, units), quantitative results, failure modes, major evidence caveat and a non-obvious engineering insight. Omit dimensions without new information.
+- Make the headline state **what happened** and the takeaway state **the main durable insight**. The bullets should explain **why/how/evidence**; never repeat either.
 - Don't use bullet labels like "Key point", "Important" or "Context". Prefer "Streaming", "Evaluation", "Failure mode", "Deployment gate", etc.
 - A concise but rigorous list beats superficial bullets. Avoid the habit of mechanically converting each sentence into a separate bullet or hiding missing reasoning under a short label.
 - Interactive figures replace prose when possible. Explain what cannot be inferred from a chart, not the numbers already printed on it.
