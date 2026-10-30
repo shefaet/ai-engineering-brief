@@ -46,7 +46,9 @@ for record in indexed:
     assert story["title"] == record["title"], f"Title mismatch: {story_id}"
     assert story.get("editorialFormat") == "four-part", f"Missing required editorial format: {story_id}"
     if story.get("editorialFormat") == "four-part":
-        expected = ["What's new", "Evidence & limitations", "Why it matters"]
+        expected = ["What's new", "Evidence & limitations"]
+        assert titles[-1:] in (["Why it matters"], ["Key takeaways"]), f"Missing conclusion: {story_id}"
+        titles = titles[:-1]
         titles = [section.get("title") for section in story.get("sections", [])]
         if titles and titles[0] == "Context":
             titles = titles[1:]
