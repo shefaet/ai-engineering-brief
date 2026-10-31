@@ -47,11 +47,11 @@ for record in indexed:
     assert story.get("editorialFormat") == "four-part", f"Missing required editorial format: {story_id}"
     if story.get("editorialFormat") == "four-part":
         expected = ["What's new", "Evidence & limitations"]
-        assert titles[-1:] in (["Why it matters"], ["Key takeaways"]), f"Missing conclusion: {story_id}"
-        titles = titles[:-1]
         titles = [section.get("title") for section in story.get("sections", [])]
         if titles and titles[0] == "Context":
             titles = titles[1:]
+        assert titles[-1:] in (["Why it matters"], ["Key takeaways"]), f"Missing conclusion: {story_id}"
+        titles = titles[:-1]
         assert titles == expected, f"Incorrect four-part headings or order: {story_id}"
     assert story.get("sources"), f"Missing primary source: {story_id}"
     for source in story["sources"]:
