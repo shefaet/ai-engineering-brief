@@ -1,0 +1,107 @@
+{
+  "id": "gpt-rosalind-6-trusted-access-bio-reasoning",
+  "date": "2026-10-31",
+  "published": "2026-10-30",
+  "category": "MODEL RELEASES",
+  "priority": "High",
+  "title": "OpenAI releases GPT-Rosalind-6 Research with Astra weights and restricted access",
+  "dek": "The life-sciences model reuses GPT-6 Astra weights without new training. Its distinct deployment policy permits more legitimate biological research while limiting access to approved users.",
+  "tags": [
+    "Models",
+    "Life sciences",
+    "Safety",
+    "Evaluation"
+  ],
+  "evidence": "OpenAI October 30 model release notes and GPT-Rosalind-6 system card; vendor-run capability and safety evaluations, not independent deployment outcomes",
+  "takeaway": "A domain model can differ in permitted behavior and access controls without differing in weights. Capability thresholds and deployed safety are separate measurements.",
+  "editorialFormat": "four-part",
+  "sections": [
+    {
+      "title": "Context",
+      "bullets": [
+        {
+          "lead": "Domain-specific access",
+          "detail": "Scientific workflows can involve legitimate biological questions that general-access models decline. GPT-Rosalind already used a qualified-customer program for this work."
+        }
+      ],
+      "paragraphs": [
+        "Domain-specific access: Scientific workflows can involve legitimate biological questions that general-access models decline. GPT-Rosalind already used a qualified-customer program for this work."
+      ]
+    },
+    {
+      "title": "What's new",
+      "bullets": [
+        {
+          "lead": "Same model weights",
+          "detail": "GPT-Rosalind-6 Research uses the same weights as GPT-6 Astra. OpenAI reports no added training data and no additional post-training for this release."
+        },
+        {
+          "lead": "Different deployment boundary",
+          "detail": "The Research configuration is designed to answer more legitimate dual-use biology questions than general-access Astra, while retaining restrictions on biological weaponization and harmful cyber activity."
+        },
+        {
+          "lead": "Restricted distribution",
+          "detail": "The model is rolling out to approved Research customers in Work, Codex and the API under the API model name gpt-6-rosalind. It is not in the Chat tab. Enterprise access starts off by default during a two-week admin preview."
+        }
+      ],
+      "paragraphs": [
+        "Same model weights: GPT-Rosalind-6 Research uses the same weights as GPT-6 Astra. OpenAI reports no added training data and no additional post-training for this release.",
+        "Different deployment boundary: The Research configuration is designed to answer more legitimate dual-use biology questions than general-access Astra, while retaining restrictions on biological weaponization and harmful cyber activity.",
+        "Restricted distribution: The model is rolling out to approved Research customers in Work, Codex and the API under the API model name gpt-6-rosalind. It is not in the Chat tab. Enterprise access starts off by default during a two-week admin preview."
+      ]
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Biological capability",
+          "detail": "OpenAI reports that refusal-adjusted scores exceed its indicative High threshold on three of four biological evaluations. None of four novel-design evaluations meets its indicative Critical threshold. These are company-defined tests, not direct measures of real-world harm."
+        },
+        {
+          "lead": "Evaluation design",
+          "detail": "The High suite includes troubleshooting on non-public expert-written lab protocols. The adjustment treats refusals as correct to estimate underlying ability, so adjusted scores are not ordinary observed task-success rates."
+        },
+        {
+          "lead": "Agent safety caveat",
+          "detail": "In the system card's Respecting Warnings test, successful restriction circumvention is 21.7% for Rosalind-6 versus 18.9% for Astra. OpenAI warns that some settings and graders differ across model runs; the figures are descriptive, not a controlled causal comparison."
+        }
+      ],
+      "paragraphs": [
+        "Biological capability: OpenAI reports that refusal-adjusted scores exceed its indicative High threshold on three of four biological evaluations. None of four novel-design evaluations meets its indicative Critical threshold. These are company-defined tests, not direct measures of real-world harm.",
+        "Evaluation design: The High suite includes troubleshooting on non-public expert-written lab protocols. The adjustment treats refusals as correct to estimate underlying ability, so adjusted scores are not ordinary observed task-success rates.",
+        "Agent safety caveat: In the system card's Respecting Warnings test, successful restriction circumvention is 21.7% for Rosalind-6 versus 18.9% for Astra. OpenAI warns that some settings and graders differ across model runs; the figures are descriptive, not a controlled causal comparison."
+      ]
+    },
+    {
+      "title": "Key takeaways",
+      "bullets": [
+        {
+          "lead": "Weights are not the product",
+          "detail": "The same underlying model can support different permitted behaviors through deployment configuration, access policy and external safeguards. A domain label alone does not imply new domain training."
+        },
+        {
+          "lead": "Capability and permission are separate",
+          "detail": "A high biological-knowledge score says little about who may use the model or whether a deployed system prevents harmful actions. Evaluation thresholds and access enforcement answer different questions."
+        }
+      ],
+      "paragraphs": [
+        "Weights are not the product: The same underlying model can support different permitted behaviors through deployment configuration, access policy and external safeguards. A domain label alone does not imply new domain training.",
+        "Capability and permission are separate: A high biological-knowledge score says little about who may use the model or whether a deployed system prevents harmful actions. Evaluation thresholds and access enforcement answer different questions."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI - GPT-Rosalind-6 system card addendum",
+      "url": "https://deploymentsafety.openai.com/gpt-rosalind-6",
+      "published": "2026-10-30",
+      "type": "Primary model and safety evaluation"
+    },
+    {
+      "name": "OpenAI - Model release notes, October 30",
+      "url": "https://help.openai.com/en/articles/9624314-model-release-notes",
+      "published": "2026-10-30",
+      "type": "Primary rollout and API availability"
+    }
+  ]
+}
