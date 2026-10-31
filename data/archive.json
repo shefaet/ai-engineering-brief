@@ -1,7 +1,37 @@
 {
   "schemaVersion": 2,
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "stories": [
+    {
+      "id": "gpt-rosalind-6-trusted-access-bio-reasoning",
+      "date": "2026-10-31",
+      "title": "OpenAI releases GPT-Rosalind-6 Research with Astra weights and restricted access",
+      "category": "MODEL RELEASES",
+      "tags": [
+        "Models",
+        "Life sciences",
+        "Safety",
+        "Evaluation"
+      ],
+      "evidence": "OpenAI October 30 model release notes and GPT-Rosalind-6 system card; vendor-run capability and safety evaluations, not independent deployment outcomes",
+      "summary": "The life-sciences model reuses GPT-6 Astra weights without new training. Its distinct deployment policy permits more legitimate biological research while limiting access to approved users.",
+      "searchText": "OpenAI releases GPT-Rosalind-6 Research with Astra weights and restricted access The life-sciences model reuses GPT-6 Astra weights without new training. Its distinct deployment policy permits more legitimate biological research while limiting access to approved users. A domain model can differ in permitted behavior and access controls without differing in weights. Capability thresholds and deployed safety are separate measurements. Domain-specific access Scientific workflows can involve legitimate biological questions that general-access models decline. GPT-Rosalind already used a qualified-customer program for this work. Same model weights GPT-Rosalind-6 Research uses the same weights as GPT-6 Astra. OpenAI reports no added training data and no additional post-training for this release. Different deployment boundary The Research configuration is designed to answer more legitimate dual-use biology questions than general-access Astra, while retaining restrictions on biological weaponization and harmful cyber activity. Restricted distribution The model is rolling out to approved Research customers in Work, Codex and the API under the API model name gpt-6-rosalind. It is not in the Chat tab. Enterprise access starts off by default during a two-week admin preview. Biological capability OpenAI reports that refusal-adjusted scores exceed its indicative High threshold on three of four biological evaluations. None of four novel-design evaluations meets its indicative Critical threshold. These are company-defined tests, not direct measures of real-world harm. Evaluation design The High suite includes troubleshooting on non-public expert-written lab protocols. The adjustment treats refusals as correct to estimate underlying ability, so adjusted scores are not ordinary observed task-success rates. Agent safety caveat In the system card's Respecting Warnings test, successful restriction circumvention is 21.7% for Rosalind-6 versus 18.9% for Astra. OpenAI warns that some settings and graders differ across model runs; the figures are descriptive, not a controlled causal comparison. Weights are not the product The same underlying model can support different permitted behaviors through deployment configuration, access policy and external safeguards. A domain label alone does not imply new domain training. Capability and permission are separate A high biological-knowledge score says little about who may use the model or whether a deployed system prevents harmful actions. Evaluation thresholds and access enforcement answer different questions."
+    },
+    {
+      "id": "shared-robots-txt-ai-training-preference-token",
+      "date": "2026-10-31",
+      "title": "OpenAI backs a shared robots.txt signal for AI training preferences",
+      "category": "GOVERNANCE",
+      "tags": [
+        "Governance",
+        "Training data",
+        "Standards",
+        "Infrastructure"
+      ],
+      "evidence": "OpenAI October 30 commitment and the original October 30 individual IETF Internet-Draft; proposed syntax is documented, but provider support is not yet deployed",
+      "summary": "An October 30 Internet-Draft defines a cross-provider policy token that reuses existing robots.txt syntax but keeps training preferences separate from crawler access.",
+      "searchText": "OpenAI backs a shared robots.txt signal for AI training preferences An October 30 Internet-Draft defines a cross-provider policy token that reuses existing robots.txt syntax but keeps training preferences separate from crawler access. Permission to crawl and permission to train are distinct decisions. A shared robots.txt policy token can express both without changing existing crawler behavior. Per-crawler controls Website operators commonly express restrictions through crawler-specific User-agent groups. Those rules do not by themselves provide a common, purpose-specific signal about training generative models. Common policy token The draft defines User-agent: __usage_ai-training. Standard Allow and Disallow path rules express preferences about using retrieved content to modify generative-model parameters; no new robots.txt directive is introduced. Independent semantics The training policy group does not govern whether a bot may fetch a page. Crawler-specific rules still control crawling. A wildcard User-agent: * group does not count as an AI-training preference. Path-level choices A site can express a preference against training on most paths while allowing it for selected paths. If no matching policy-token group exists, the draft treats the training preference as unspecified, not as explicit consent. Provider commitment OpenAI says it will honor the shared signal alongside existing crawler-specific controls. Implementation is planned for the coming months, not announced as already active. Standards status The source is draft-kelley-aipref-training-preference-signal-00, an individual Internet-Draft dated October 30. It is not an approved IETF standard or evidence of industry-wide implementation. Scope of training The draft covers use of an asset to change learned parameters of a generative model. It excludes models used exclusively for non-generative classification, ranking or scoring; the signal is not a universal content-use prohibition. Enforcement limit robots.txt expresses a machine-readable preference. It does not technically prevent retrieval, copying or training by a non-cooperating actor. Compliance depends on consumers and any separate legal or contractual obligations. Access and use are different axes A crawler can be allowed to retrieve content while its operator is asked not to train a generative model on that content. Combining these into one allow-or-block decision loses information. Compatibility favors existing grammar Reusing robots.txt groups and longest-path matching lets new policy-aware consumers read the signal without changing legacy crawlers. A shared vocabulary is useful only when consumers agree to honor it."
+    },
     {
       "id": "openai-model-spec-human-intent-agency-update",
       "date": "2026-10-30",
