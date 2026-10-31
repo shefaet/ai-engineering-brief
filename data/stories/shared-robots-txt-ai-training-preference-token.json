@@ -1,0 +1,128 @@
+{
+  "id": "shared-robots-txt-ai-training-preference-token",
+  "date": "2026-10-31",
+  "published": "2026-10-30",
+  "category": "GOVERNANCE",
+  "priority": "High",
+  "title": "OpenAI backs a shared robots.txt signal for AI training preferences",
+  "dek": "An October 30 Internet-Draft defines a cross-provider policy token that reuses existing robots.txt syntax but keeps training preferences separate from crawler access.",
+  "tags": [
+    "Governance",
+    "Training data",
+    "Standards",
+    "Infrastructure"
+  ],
+  "evidence": "OpenAI October 30 commitment and the original October 30 individual IETF Internet-Draft; proposed syntax is documented, but provider support is not yet deployed",
+  "takeaway": "Permission to crawl and permission to train are distinct decisions. A shared robots.txt policy token can express both without changing existing crawler behavior.",
+  "editorialFormat": "four-part",
+  "sections": [
+    {
+      "title": "Context",
+      "bullets": [
+        {
+          "lead": "Per-crawler controls",
+          "detail": "Website operators commonly express restrictions through crawler-specific User-agent groups. Those rules do not by themselves provide a common, purpose-specific signal about training generative models."
+        }
+      ],
+      "paragraphs": [
+        "Per-crawler controls: Website operators commonly express restrictions through crawler-specific User-agent groups. Those rules do not by themselves provide a common, purpose-specific signal about training generative models."
+      ]
+    },
+    {
+      "title": "What's new",
+      "bullets": [
+        {
+          "lead": "Common policy token",
+          "detail": "The draft defines User-agent: __usage_ai-training. Standard Allow and Disallow path rules express preferences about using retrieved content to modify generative-model parameters; no new robots.txt directive is introduced."
+        },
+        {
+          "lead": "Independent semantics",
+          "detail": "The training policy group does not govern whether a bot may fetch a page. Crawler-specific rules still control crawling. A wildcard User-agent: * group does not count as an AI-training preference."
+        },
+        {
+          "lead": "Path-level choices",
+          "detail": "A site can express a preference against training on most paths while allowing it for selected paths. If no matching policy-token group exists, the draft treats the training preference as unspecified, not as explicit consent."
+        },
+        {
+          "lead": "Provider commitment",
+          "detail": "OpenAI says it will honor the shared signal alongside existing crawler-specific controls. Implementation is planned for the coming months, not announced as already active."
+        }
+      ],
+      "paragraphs": [
+        "Common policy token: The draft defines User-agent: __usage_ai-training. Standard Allow and Disallow path rules express preferences about using retrieved content to modify generative-model parameters; no new robots.txt directive is introduced.",
+        "Independent semantics: The training policy group does not govern whether a bot may fetch a page. Crawler-specific rules still control crawling. A wildcard User-agent: * group does not count as an AI-training preference.",
+        "Path-level choices: A site can express a preference against training on most paths while allowing it for selected paths. If no matching policy-token group exists, the draft treats the training preference as unspecified, not as explicit consent.",
+        "Provider commitment: OpenAI says it will honor the shared signal alongside existing crawler-specific controls. Implementation is planned for the coming months, not announced as already active."
+      ],
+      "example": {
+        "type": "code-comparison",
+        "caption": "Schematic robots.txt groups: crawler access and training use are independent",
+        "variants": [
+          {
+            "label": "Crawler access rule",
+            "code": "User-agent: ExampleBot\nDisallow: /private/"
+          },
+          {
+            "label": "AI training preference",
+            "code": "User-agent: __usage_ai-training\nDisallow: /\nAllow: /press-kit/"
+          }
+        ],
+        "takeaway": "ExampleBot's crawl restriction does not define the site's training preference. The policy token expresses a separate choice for training use.",
+        "note": "Schematic pairing. The training-token example follows the October 30 Internet-Draft; ExampleBot is illustrative."
+      }
+    },
+    {
+      "title": "Evidence & limitations",
+      "bullets": [
+        {
+          "lead": "Standards status",
+          "detail": "The source is draft-kelley-aipref-training-preference-signal-00, an individual Internet-Draft dated October 30. It is not an approved IETF standard or evidence of industry-wide implementation."
+        },
+        {
+          "lead": "Scope of training",
+          "detail": "The draft covers use of an asset to change learned parameters of a generative model. It excludes models used exclusively for non-generative classification, ranking or scoring; the signal is not a universal content-use prohibition."
+        },
+        {
+          "lead": "Enforcement limit",
+          "detail": "robots.txt expresses a machine-readable preference. It does not technically prevent retrieval, copying or training by a non-cooperating actor. Compliance depends on consumers and any separate legal or contractual obligations."
+        }
+      ],
+      "paragraphs": [
+        "Standards status: The source is draft-kelley-aipref-training-preference-signal-00, an individual Internet-Draft dated October 30. It is not an approved IETF standard or evidence of industry-wide implementation.",
+        "Scope of training: The draft covers use of an asset to change learned parameters of a generative model. It excludes models used exclusively for non-generative classification, ranking or scoring; the signal is not a universal content-use prohibition.",
+        "Enforcement limit: robots.txt expresses a machine-readable preference. It does not technically prevent retrieval, copying or training by a non-cooperating actor. Compliance depends on consumers and any separate legal or contractual obligations."
+      ]
+    },
+    {
+      "title": "Key takeaways",
+      "bullets": [
+        {
+          "lead": "Access and use are different axes",
+          "detail": "A crawler can be allowed to retrieve content while its operator is asked not to train a generative model on that content. Combining these into one allow-or-block decision loses information."
+        },
+        {
+          "lead": "Compatibility favors existing grammar",
+          "detail": "Reusing robots.txt groups and longest-path matching lets new policy-aware consumers read the signal without changing legacy crawlers. A shared vocabulary is useful only when consumers agree to honor it."
+        }
+      ],
+      "paragraphs": [
+        "Access and use are different axes: A crawler can be allowed to retrieve content while its operator is asked not to train a generative model on that content. Combining these into one allow-or-block decision loses information.",
+        "Compatibility favors existing grammar: Reusing robots.txt groups and longest-path matching lets new policy-aware consumers read the signal without changing legacy crawlers. A shared vocabulary is useful only when consumers agree to honor it."
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "name": "OpenAI - Making it easier for websites to express AI training preferences",
+      "url": "https://openai.com/index/helping-websites-express-ai-training-preferences/",
+      "published": "2026-10-30",
+      "type": "Primary provider commitment"
+    },
+    {
+      "name": "IETF Internet-Draft - Machine-Readable Training Preference Signal",
+      "url": "https://datatracker.ietf.org/doc/draft-kelley-aipref-training-preference-signal/",
+      "published": "2026-10-30",
+      "type": "Original individual technical proposal"
+    }
+  ]
+}
