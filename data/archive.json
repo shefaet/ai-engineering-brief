@@ -1,7 +1,22 @@
 {
   "schemaVersion": 2,
-  "updated": "2026-10-31",
+  "updated": "2026-11-01",
   "stories": [
+    {
+      "id": "deepseek-dsh-superagent-research-prototype",
+      "date": "2026-11-01",
+      "title": "DeepSeek open-sources a repository-scoped Super-agent research prototype",
+      "category": "AGENT INFRASTRUCTURE",
+      "tags": [
+        "Agents",
+        "Infrastructure",
+        "Open source",
+        "Security"
+      ],
+      "evidence": "DeepSeek first-party GitHub repository and deployment documentation; no independent performance validation",
+      "summary": "The DeepSeek Harness bundle routes GitHub events into authorized, persistent work items and separate worker sessions, but its execution process is not sandboxed.",
+      "searchText": "DeepSeek open-sources a repository-scoped Super-agent research prototype The DeepSeek Harness bundle routes GitHub events into authorized, persistent work items and separate worker sessions, but its execution process is not sandboxed. Persistent agents need durable work ownership and event routing. Authorization limits which tasks start, but does not isolate the machine that executes them. Session boundary A coding agent usually receives work inside one session. Long-running repository work also needs event intake, ownership of follow-up messages, and recovery after the original conversation ends. Repository-scoped runtime DeepSeek published an MIT-licensed dsh-superagent research prototype on October 31. It runs as a DeepSeek Harness bundle for one GitHub repository, with optional Feishu/Lark messages. Event-to-work pipeline Sources emit Triggers. An admission gate and Eval decide whether to create a Ticket with a bounded Mandate. An Executor runs each accepted Ticket in its own agent Session and work directory; results return to the originating conversation, often as a pull request. Follow-up ownership A Ticket subscribes to relevant Threads. Later comments and CI messages reach its Executor as context without creating a new authorization grant. The Executor can continue the same work or return a request for routing. Authorization before autonomy Direct requests require an allowed sender. Unsolicited work needs an explicit rule, initially in observation-only mode. The host enforces Policy and Mandate boundaries rather than letting quoted content or model output rewrite permissions. Primary evidence The public repository contains the implementation, numbered architecture and authorization documents, setup instructions and a test command. This verifies the design is published, not that it is reliable under production workloads. Process isolation is not security isolation The deployment guide states that router and worker presets run with danger-full-access as the operator's OS user. Separate Sessions and directories do not prevent a worker from reading that user's home directory. A separate restricted OS account is recommended. Prototype, not product DeepSeek explicitly calls the code research-only and warns it differs from its internal system and companion design article. No independently verified task-success, latency, safety or operating-cost comparison accompanies the release. Autonomy needs durable ownership A persistent Ticket and Thread subscription let later events continue the right task without relying on one ever-growing conversation. The coordination unit becomes the work item, not the chat session. Authority and isolation are independent An authorization gate can prevent unapproved tasks while still leaving approved workers with broad machine access. Policy checks and operating-system confinement solve different problems."
+    },
     {
       "id": "gpt-rosalind-6-trusted-access-bio-reasoning",
       "date": "2026-10-31",
